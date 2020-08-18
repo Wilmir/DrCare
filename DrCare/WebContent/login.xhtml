@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+   
+<head>    
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css"></link>
+</head>    
+<body>    
+    <h2>Dr Care Prescription Management</h2>
+    <br></br>  
+    <div class="login">    
+    <form name="login">  
+        <label><b>User Name     
+        </b>    
+        </label>    
+        <input type="text" name="Uname" id="Uname" placeholder="Username"></input>
+        <br></br>    
+        <label><b>Password     
+        </b>    
+        </label>    
+        <input type="password" name="Pass" id="Pass" placeholder="Password"></input>   
+        <br></br>    
+        <input type="button" name="log" id="log"  onclick="check(this.form)" value="Log In"></input>      
+        <br></br>    
+        <!-- Forgot <a href="#">Password</a> -->   
+    </form>
+<!--     <script language="javascript">
+		function check(form) /*function to check userid & password*/
+		{
+		 /*the following code checkes whether the entered userid and password are matching*/
+		 if(form.Uname.value == "myuserid" && form.Pass.value == "mypswrd")
+		  {
+		    window.open('index.xhtml')/*opens the target page while Id & password matches*/
+		  }
+		 else
+		 {
+		   alert("Error Password or Username")/*displays error message*/
+		  }
+		}
+	</script> -->
+    
+</div>    
+</body>    
+</html>
