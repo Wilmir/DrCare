@@ -15,7 +15,7 @@ public class RegistrationController {
 	private UserBean userBean;
 	
 	
-	// 1. Add a User object as a member variable here
+	// 1. Add a User reference as a member variable here
 	
 	
 	@PostConstruct
@@ -37,6 +37,7 @@ public class RegistrationController {
 		
 		// 2. Check if user is not existing
 		// 2.a Verify the user
+		// 2.b Add the user to the user list
 		
 		
 		// 3. If user is existing, return a message "User already exists"
@@ -45,13 +46,5 @@ public class RegistrationController {
 		return "Notification for registration status.";
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
