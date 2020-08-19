@@ -34,14 +34,15 @@
     <div class="select_role">
         <select name="roles">
            <option class="option">.... </option>
-           <option class="option" value ="#{userBean.role}">GP</option>
+
+		   <option class="option" value ="#{userBean.role}">GP</option>
            <option class="option" value="#{userBean.role}">Patient</option>
            <option class="option" value="#{userBean.role}">Pharmacist</option>
-        </select>
+
+	</select>
     </div>
     <p>By creating an account you agree to our <a href="#">Terms  Privacy</a>.</p>
 
-  <!--    <h:commandButton type="submit" action="#{registrationController.addUser}" value= "Register" class="registerbtn" Register />-->
     <h:commandButton id="submit" styleClass="ActionButton" action="#{registrationController.addUser}" value="Register" title="Register"/> 
    
   
