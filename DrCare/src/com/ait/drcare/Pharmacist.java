@@ -1,5 +1,5 @@
 package com.ait.drcare;
 
-public class Pharmacist {
+public class Pharmacist extends User{
 
 }
