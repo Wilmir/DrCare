@@ -51,11 +51,13 @@ public class RegistrationController {
 	public String addUser() {
 		// 1. Check if user is not existing
 		// Align with Fiona's userList implementation 
+		/*
 		for(User existingUser : existingUsers.getUsers()) {
 			if(existingUser.getTheEmail().equalsIgnoreCase(user.getTheEmail())) {
 				return "The email you entered already belongs to an existing user";
 			}	
 		}
+		*/
 		
 		// 2. Check if the passwords entered match
 		if(userBean.getPassword().equals(userBean.getPasswordConfirmation())) {
@@ -71,12 +73,18 @@ public class RegistrationController {
 		
 		
 		// 4 Verify the user through the admin utility verification method
-		// Align with Fiona's implem
+		// Align with Fiona's implem of userList
+		/*
 		if(true) {
 			// 5 Add the user to the user's list
-		}else {
+			return "Your account has been successfully created.";
+		}else{
 			return "We are unable to verify your account";
 		}
+		*/
+		
+		return "Registration status";
+	
 	}
 	
 }
