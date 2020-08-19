@@ -3,6 +3,7 @@ package com.ait.drcare.managedbeans;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+
 @ManagedBean
 @ViewScoped
 public class UserBean {
@@ -51,4 +52,5 @@ public class UserBean {
 	public void setRole(String role) {
 		this.role = role;
 	}
+		
 }

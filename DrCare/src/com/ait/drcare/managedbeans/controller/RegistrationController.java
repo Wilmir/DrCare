@@ -2,7 +2,6 @@ package com.ait.drcare.managedbeans.controller;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 import com.ait.drcare.managedbeans.UserBean;
@@ -11,7 +10,7 @@ import com.ait.drcare.managedbeans.UserBean;
 @RequestScoped
 public class RegistrationController {
 
-	@ManagedProperty(value = "#{studentBean}")
+//	@ManagedProperty(value = "#{studentBean}")
 	private UserBean userBean;
 	
 	
