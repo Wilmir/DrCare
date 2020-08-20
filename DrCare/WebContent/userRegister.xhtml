@@ -10,37 +10,42 @@
      <title>User Register</title>
 </head>
 <body>
+<h:form>
      <h1> Welcome to Dr Care</h1>
       
    	 <h2>Create your account</h2>
     
-      <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter Name" name="name" id="name" value="#{userBean.name}">
-     </input>
+     <h:outputLabel>Name</h:outputLabel>
+   
+    <h:inputText id="username" value="#{userBean.name}" label="username" maxlength="10"            
+		size="20" alt="username" autocomplete="off" readonly="false" required="true"              
+		requiredMessage="Username is required" />  
+ 
        <br></br>
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" value="#{userBean.email}">
-     </input>
+     <h:outputLabel>Email</h:outputLabel>
+    <h:inputText id="email" value="#{userBean.email}" label="email" maxlength="20"            
+		size="20" alt="email" autocomplete="off" readonly="false" required="true"              
+		requiredMessage="Email is required"/>  
+  
       <br></br>
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" value="#{userBean.password}">
-     </input>
+    <h:outputLabel>Password</h:outputLabel>
+   <h:inputText id="pwd" value="#{userBean.password}" label="pwd" maxlength="20"            
+		size="20" alt="pwd" autocomplete="off" readonly="false" required="true"              
+		requiredMessage="Password is required" />  
+ 
        <br></br>
-    <label for="psw-repeat"><b>Reenter Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" value="#{userBean.password}">
-    </input>
+    <h:outputLabel>Re-enter Password</h:outputLabel>
+   <h:inputText id="re-pwd" value="#{userBean.password}" label="re-pwd" maxlength="20"            
+		size="20" alt="re-pwd" autocomplete="off" readonly="false" required="true"              
+		requiredMessage="Password is required"/>  
+
      <br></br>
-    <label for="user-role"><b>Please Select</b></label>
-    <div class="select_role">
-        <select name="roles">
-           <option class="option">.... </option>
-
-		   <option class="option" value ="#{userBean.role}">GP</option>
-           <option class="option" value="#{userBean.role}">Patient</option>
-           <option class="option" value="#{userBean.role}">Pharmacist</option>
-
-	</select>
-    </div>
+    <h:outputLabel>Please Select</h:outputLabel>
+    <h:selectOneMenu id="hard-dropdown" value="#{userBean.role}">
+   		 <f:selectItem itemValue="1" itemLabel="GP"/>
+   		 <f:selectItem itemValue="2" itemLabel="Pharmacist"/>
+  	     <f:selectItem itemValue="3" itemLabel="Patient"/>
+	</h:selectOneMenu>
     <p>By creating an account you agree to our <a href="#">Terms  Privacy</a>.</p>
 
     <h:commandButton id="submit" styleClass="ActionButton" action="#{registrationController.addUser}" value="Register" title="Register"/> 
@@ -48,6 +53,6 @@
   
     <p>Already have an account? <a href="login.xhtml">Sign in</a>.</p>
   
-
+</h:form>
 </body>
 </html>
