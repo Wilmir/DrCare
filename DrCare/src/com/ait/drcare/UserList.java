@@ -3,25 +3,24 @@ package com.ait.drcare;
 import java.util.ArrayList;
 
 public class UserList {
-	//string placeholder until user class is created
-	private ArrayList<String> users;
+	private ArrayList<User> users;
 
-	public ArrayList<String> getUsers() {
+	public ArrayList<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(ArrayList<String> users) {
+	public void setUsers(ArrayList<User> users) {
 		this.users = users;
 	}
 	
-	public void addUser(String user) {
+	public void addUser(User user) {
 		this.users.add(user);
 	}
 	
-	public boolean userExists(String user) {
+	public boolean userExists(User user) {
 		boolean exists = false;
-		for (String u : users) {
-			if(u.equals(user)) {
+		for (User u : users) {
+			if(u.getTheID().equals(user.getTheID())) {
 				exists = true;
 			}
 		}
