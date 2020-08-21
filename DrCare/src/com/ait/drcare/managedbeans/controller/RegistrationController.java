@@ -24,6 +24,8 @@ public class RegistrationController {
 	
 	private User user;
 	
+	private String message;
+	
 	@PostConstruct
 	public void init() {
 		// instantiate a user depending on the roles bean type
@@ -48,22 +50,29 @@ public class RegistrationController {
 		this.userBean = userBean;
 	}
 	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	public String addUser() {
 		// 1. Check if user is not existing		
 		for(User existingUser : existingUsers.getUsers()) {
 			if(existingUser.getTheEmail().equalsIgnoreCase(user.getTheEmail())) {
-				return "The email you entered already belongs to an existing user";
+				message = "The email you entered already belongs to an existing user";
 			}	
 		}
 		
-		
+
 		// 2. Check if the passwords entered match
 		if(userBean.getPassword().equals(userBean.getPasswordConfirmation())) {
 			user.setThePassword(userBean.getPassword());
 		}else {
-			return "The passwords entered do not match";
+			message = "The passwords entered do not match";
 		}
-		
 		
 		// 3. Add the remaining attributes from the userBean to the User object
 		user.setTheName(userBean.getName());
@@ -82,8 +91,10 @@ public class RegistrationController {
 		}
 		*/
 		
-		return "Registration status";
+		
+		message = "Registration successul";
+		
+		return null;
 	
 	}
-	
 }
