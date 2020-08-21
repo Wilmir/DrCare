@@ -3,12 +3,12 @@ package com.ait.drcare;
 
 public class User
 {
-	private String theName;
-	private String theID;
-	private String thePassword;
-	private String theEmail;
-	private String theAddress;
-	public String role;
+	protected String theName;
+	protected String theID;
+	protected String thePassword;
+	protected String theEmail;
+	protected String theAddress;
+	protected String role;
 	
 	public User()
 	{
