@@ -1,12 +1,13 @@
 package com.ait.drcare;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Prescription {
 
 	private String theName;
-	private Date theDatePrescribed;
+	private LocalDate theDatePrescribed;
 	private String theStatus;
 	private Pharmacist thePharmacist;
 	private Patient thePatient;
@@ -23,7 +24,7 @@ public class Prescription {
 		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
 	}
 	
-	public Prescription(String name, Date datePrescribed)
+	public Prescription(String name, LocalDate datePrescribed)
 	{
 		this.theName = name;
 		this.theDatePrescribed = datePrescribed;		
@@ -38,11 +39,11 @@ public class Prescription {
 		this.theName = theName;
 	}
 
-	public Date getTheDatePrescribed() {
+	public LocalDate getTheDatePrescribed() {
 		return theDatePrescribed;
 	}
 
-	public void setTheDatePrescribed(Date theDatePrescribed) {
+	public void setTheDatePrescribed(LocalDate theDatePrescribed) {
 		this.theDatePrescribed = theDatePrescribed;
 	}
 
