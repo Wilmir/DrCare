@@ -11,7 +11,7 @@ public class Patient extends User{
 	
 	
 	public Patient() {
-		
+		this.role = "Patient";
 	}
 
 

@@ -12,7 +12,7 @@ public class Pharmacist extends User{
 	
 	public Pharmacist()
 	{
-		
+		this.role = "Pharmacist";
 	}
 	
 	public Pharmacist(String name, String ID, String password,
