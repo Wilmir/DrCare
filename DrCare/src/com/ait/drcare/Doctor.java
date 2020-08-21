@@ -9,7 +9,7 @@ public class Doctor extends User{
 	
 	public Doctor()
 	{
-		
+		super("Doctor");
 	}
 	
 	public Doctor(String name, String ID, String password,
