@@ -2,9 +2,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-   
-
+      xmlns:f="http://java.sun.com/jsf/core"> 
 <head>
    
      <title>User Register</title>
@@ -22,19 +20,19 @@
 		requiredMessage="Username is required" />  
  
        <br></br>
-     <h:outputLabel>Email</h:outputLabel>
+    <h:outputLabel>Email</h:outputLabel>
     <h:inputText id="email" value="#{userBean.email}" label="email" maxlength="20"            
 		size="20" alt="email" autocomplete="off" readonly="false" required="true"              
 		requiredMessage="Email is required"/>  
   
       <br></br>
-    <h:outputLabel>Password</h:outputLabel>
+   <h:outputLabel>Password</h:outputLabel>
    <h:inputText id="pwd" value="#{userBean.password}" label="pwd" maxlength="20"            
 		size="20" alt="pwd" autocomplete="off" readonly="false" required="true"              
 		requiredMessage="Password is required" />  
  
        <br></br>
-    <h:outputLabel>Re-enter Password</h:outputLabel>
+   <h:outputLabel>Re-enter Password</h:outputLabel>
    <h:inputText id="re-pwd" value="#{userBean.passwordConfirmation}" label="re-pwd" maxlength="20"            
 		size="20" alt="re-pwd" autocomplete="off" readonly="false" required="true"              
 		requiredMessage="Password is required"/>  
@@ -53,7 +51,6 @@
   
     <p>Already have an account? <a href="login.xhtml">Sign in</a>.</p> <br/>
   
-  	<h:outputText value = "#{registrationController.message}" />
 </h:form>
 </body>
 </html>
