@@ -5,9 +5,26 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-	<title>Test Page</title>
+ <link rel="stylesheet" type="text/css" href="style.css"></link>
+	<title>Welcome Page</title>
 </h:head>
 <body>
-	<h3>Hello World Example !!!</h3>
+
+	<h2>Welcome to Doctor Care!</h2>
+	 <div class="login">    
+    <form name="login">  
+	 <label><b>Join Our Services Today! </b> </label>      
+         
+        
+	<form action="userRegister.jsf">
+    	<input type="submit" id="register" value="Register" />
+	</form>
+	 <label><b>Already have an account?</b> </label>    
+	 <form action="login.xhtml">
+    	<input type="submit" id="log" value="Log In" />
+	</form>
+	</form>
+	</div>
+
 </body>
 </html>
