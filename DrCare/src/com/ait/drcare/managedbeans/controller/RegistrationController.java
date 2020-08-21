@@ -63,6 +63,7 @@ public class RegistrationController {
 		for(User existingUser : existingUsers.getUsers()) {
 			if(existingUser.getTheEmail().equalsIgnoreCase(user.getTheEmail())) {
 				message = "The email you entered already belongs to an existing user";
+				return null;
 			}	
 		}
 		
@@ -72,6 +73,7 @@ public class RegistrationController {
 			user.setThePassword(userBean.getPassword());
 		}else {
 			message = "The passwords entered do not match";
+			return null;
 		}
 		
 		// 3. Add the remaining attributes from the userBean to the User object
@@ -80,6 +82,8 @@ public class RegistrationController {
 		
 		existingUsers.addUser(user);
 				
+		message = "Registration successul";
+		
 		// 4 Verify the user through the admin utility verification method
 		// Align with Fiona's implem of userList
 		/*
@@ -90,9 +94,6 @@ public class RegistrationController {
 			return "We are unable to verify your account";
 		}
 		*/
-		
-		
-		message = "Registration successul";
 		
 		return null;
 	
