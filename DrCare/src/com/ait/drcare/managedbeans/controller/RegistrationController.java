@@ -1,9 +1,11 @@
 package com.ait.drcare.managedbeans.controller;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import com.ait.drcare.Doctor;
 import com.ait.drcare.Patient;
@@ -21,7 +23,6 @@ public class RegistrationController {
 	
 	private UserListBean existingUsers = Helper.getBean("userListBean", UserListBean.class);
 
-	
 	private User user;
 	
 	private String message ="";
@@ -63,7 +64,7 @@ public class RegistrationController {
 		for(User existingUser : existingUsers.getUsers()) {
 			if(existingUser.getTheEmail().equalsIgnoreCase(user.getTheEmail())) {
 				message = "The email you entered already belongs to an existing user";
-				System.out.println(message);
+				error(message);
 				return null;
 			}	
 		}
@@ -73,7 +74,7 @@ public class RegistrationController {
 			user.setThePassword(userBean.getPassword());
 		}else {
 			message = "The passwords entered do not match";
-			System.out.println(message);
+			error(message);
 			return null;
 		}
 		
@@ -85,15 +86,7 @@ public class RegistrationController {
 				
 		message = "Registration successul";
 		
-		
-		for(User existingUser : existingUsers.getUsers()) {
-			System.out.println(existingUser.getTheName() + " is now registered");
-		}
-		
-		
-		System.out.println(message);
-		
-		
+		info(message + "&nbsp;<a href='login.jsf'>Login</a>");	
 		
 		// 4 Verify the user through the admin utility verification method
 		// Align with Fiona's implem of userList
@@ -108,4 +101,20 @@ public class RegistrationController {
 		
 		return null;
 	}
+	
+    private void info(String message) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", message));
+    }
+     
+    private void warn(String message) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", message));
+    }
+     
+    private void error(String message) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", message));
+    }
+     
+    private void fatal(String message) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Fatal!", message));
+    }
 }
