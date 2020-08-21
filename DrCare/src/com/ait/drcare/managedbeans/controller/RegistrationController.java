@@ -31,10 +31,10 @@ public class RegistrationController {
 	public void init() {
 		// instantiate a user depending on the roles bean type
 		switch(userBean.getRole()) {
-			case "1":
+			case "GP":
 				user = new Doctor();
 				break;
-			case "2":
+			case "Pharmacist":
 				user = new Pharmacist();
 				break;
 			default:
@@ -87,6 +87,14 @@ public class RegistrationController {
 		message = "Registration successul";
 		
 		info(message + "&nbsp;<a href='login.jsf'>Login</a>");	
+		
+		System.out.println("New List of Users");
+		
+		for(User existingUser : existingUsers.getUsers()) {
+			System.out.println(existingUser);
+		}
+		
+		
 		
 		// 4 Verify the user through the admin utility verification method
 		// Align with Fiona's implem of userList

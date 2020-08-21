@@ -15,9 +15,6 @@ public class User
 		
 	}
 	
-	
-	
-	
 	public User(String name, String ID, String password,String email,String address, String role)
 	{
 		this.theName = name;
@@ -66,6 +63,15 @@ public class User
 
 	public void setTheAddress(String address) {
 		this.theAddress = address;
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "User [theName=" + theName + ", theID=" + theID + ", thePassword=" + thePassword + ", theEmail="
+				+ theEmail + ", theAddress=" + theAddress + ", role=" + role + "]";
 	}
 	
 	
