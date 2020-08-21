@@ -8,19 +8,21 @@ public class User
 	private String thePassword;
 	private String theEmail;
 	private String theAddress;
+	private String role;
 	
 	public User()
 	{
 		
 	}
 	
-	public User(String name, String ID, String password,String email,String address)
+	public User(String name, String ID, String password,String email,String address, String role)
 	{
 		this.theName = name;
 		this.theID = ID;
 		this.thePassword = password;
 		this.theEmail = email;
 		this.theAddress = address;
+		this.role = role;
 	}
 
 	public String getTheName() {

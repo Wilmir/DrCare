@@ -35,16 +35,16 @@
  
        <br></br>
     <h:outputLabel>Re-enter Password</h:outputLabel>
-   <h:inputText id="re-pwd" value="#{userBean.password}" label="re-pwd" maxlength="20"            
+   <h:inputText id="re-pwd" value="#{userBean.passwordConfirmation}" label="re-pwd" maxlength="20"            
 		size="20" alt="re-pwd" autocomplete="off" readonly="false" required="true"              
 		requiredMessage="Password is required"/>  
 
      <br></br>
     <h:outputLabel>Please Select</h:outputLabel>
     <h:selectOneMenu id="hard-dropdown" value="#{userBean.role}">
-   		 <f:selectItem itemValue="1" itemLabel="GP"/>
-   		 <f:selectItem itemValue="2" itemLabel="Pharmacist"/>
-  	     <f:selectItem itemValue="3" itemLabel="Patient"/>
+   		 <f:selectItem itemValue="GP" itemLabel="GP"/>
+   		 <f:selectItem itemValue="Pharmacist" itemLabel="Pharmacist"/>
+  	     <f:selectItem itemValue="Patient" itemLabel="Patient"/>
 	</h:selectOneMenu>
     <p>By creating an account you agree to our <a href="#">Terms  Privacy</a>.</p>
 
