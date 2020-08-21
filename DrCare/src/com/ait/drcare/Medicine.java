@@ -47,6 +47,14 @@ public class Medicine {
 	public void setTheSideEffects(ArrayList<String> theSideEffects) {
 		this.theSideEffects = theSideEffects;
 	}
+
+	public LocalDate getTheExpiracyDate() {
+		return theExpiracyDate;
+	}
+
+	public void setTheExpiracyDate(LocalDate theExpiracyDate) {
+		this.theExpiracyDate = theExpiracyDate;
+	}
 	
 	
 	
