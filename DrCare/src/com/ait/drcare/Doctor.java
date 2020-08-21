@@ -12,7 +12,7 @@ public class Doctor extends User{
 		this.role = "Doctor";
 	}
 	
-	public Doctor(String name, String ID, String password,
+	public Doctor(String name, int ID, String password,
 					String email,String phoneNumber,String address){
 		
 		super(name, ID, password, email,address,"Doctor");

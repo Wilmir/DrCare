@@ -4,7 +4,7 @@ package com.ait.drcare;
 public class User
 {
 	protected String theName;
-	protected String theID;
+	protected int theID;
 	protected String thePassword;
 	protected String theEmail;
 	protected String theAddress;
@@ -15,7 +15,7 @@ public class User
 		
 	}
 	
-	public User(String name, String ID, String password,String email,String address, String role)
+	public User(String name, int ID, String password,String email,String address, String role)
 	{
 		this.theName = name;
 		this.theID = ID;
@@ -33,11 +33,11 @@ public class User
 		this.theName = theName;
 	}
 
-	public String getTheID() {
+	public int getTheID() {
 		return theID;
 	}
 
-	public void setTheID(String theID) {
+	public void setTheID(int theID) {
 		this.theID = theID;
 	}
 
@@ -66,7 +66,13 @@ public class User
 	}
 
 
+	public String getRole() {
+		return role;
+	}
 
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	@Override
 	public String toString() {

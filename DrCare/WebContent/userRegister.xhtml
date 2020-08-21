@@ -21,36 +21,48 @@
 		size="20" alt="username" autocomplete="off" readonly="false" required="true"              
 		requiredMessage="Username is required" />  
  
-       <br></br>
+    <br></br>
     <h:outputLabel>Email</h:outputLabel>
     <h:inputText id="email" value="#{userBean.email}" label="email" maxlength="20"            
 		size="20" alt="email" autocomplete="off" readonly="false" required="true"              
 		requiredMessage="Email is required"/>  
+		
+	<br></br>
+    <h:outputLabel>Address</h:outputLabel>
+    <h:inputText id="address" value="#{userBean.address}" label="address" maxlength="200"            
+		size="20" alt="address" autocomplete="off" readonly="false"/>  
   
-      <br></br>
+   <br></br>
    <h:outputLabel>Password</h:outputLabel>
    <h:inputText id="pwd" value="#{userBean.password}" label="pwd" maxlength="20"            
 		size="20" alt="pwd" autocomplete="off" readonly="false" required="true"              
 		requiredMessage="Password is required" />  
  
-       <br></br>
+   <br></br>
    <h:outputLabel>Re-enter Password</h:outputLabel>
    <h:inputText id="re-pwd" value="#{userBean.passwordConfirmation}" label="re-pwd" maxlength="20"            
 		size="20" alt="re-pwd" autocomplete="off" readonly="false" required="true"              
 		requiredMessage="Password is required"/>  
 
-     <br></br>
-    <h:outputLabel>Please Select</h:outputLabel>
-    <h:selectOneMenu id="hard-dropdown" value="#{userBean.role}">
+    <br></br>
+    <h:outputLabel>Select Role</h:outputLabel>
+    <h:selectOneMenu id="hard-dropdown" value="#{userBean.role}" onchange = "submit()">
+      	 <f:selectItem itemValue="Patient" itemLabel="Patient"/>
    		 <f:selectItem itemValue="GP" itemLabel="GP"/>
    		 <f:selectItem itemValue="Pharmacist" itemLabel="Pharmacist"/>
-  	     <f:selectItem itemValue="Patient" itemLabel="Patient"/>
 	</h:selectOneMenu>
+	
+	<br></br>
+	<h:outputLabel for="licenseNumber" rendered = "#{userBean.role == 'Pharmacist' || userBean.role == 'GP'}">License Number</h:outputLabel>
+   	<h:inputText id="licenseNumber" rendered = "#{userBean.role == 'Pharmacist' || userBean.role == 'GP'}" value="#{userBean.licenseNumber}" label="licenseNumber" minlength="9" maxlength="9"            
+		size="20" alt="licenseNumber" autocomplete="off" readonly="false"            
+		requiredMessage="License number is required"/>  	
+	
     <p>By creating an account you agree to our <a href="#">Terms  Privacy</a>.</p>
 
     <h:commandButton id="submit" styleClass="ActionButton" action="#{registrationController.addUser}" value="Register" title="Register"/> 
-   
-  
+    
+ 
     <p>Already have an account? <a href="login.xhtml">Sign in</a>.</p> <br/>
   
 </h:form>

@@ -20,7 +20,7 @@ public class UserList {
 	public boolean userExists(User user) {
 		boolean exists = false;
 		for (User u : users) {
-			if(u.getTheID().equals(user.getTheID())) {
+			if(u.getTheID() == (user.getTheID())) {
 				exists = true;
 			}
 		}

@@ -1,8 +1,9 @@
 package com.ait.drcare.managedbeans;
 
 import java.util.ArrayList;
-import javax.faces.bean.ManagedBean;
+
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.ait.drcare.Doctor;
@@ -15,19 +16,37 @@ import com.ait.drcare.User;
 public class UserListBean {
 	private ArrayList<User> users;
 	
+	private ArrayList<Integer> qualifiedDoctorsLicenses;
+	
+	private ArrayList<Integer> qualifiedPharmacistsLicenses;
+
+
 	@PostConstruct
 	public void init() {
 		//predefined user list
 		users = new ArrayList<User>();
-		Doctor d1 = new Doctor("Alan Care", "1234", "passw0rd", "alan@drcare.ie", "08913486", "Athlone, Co. Westmeath");
+		qualifiedDoctorsLicenses = new ArrayList<>();
+		qualifiedPharmacistsLicenses = new ArrayList<>();
+		
+		Doctor d1 = new Doctor("Alan Care", 1234, "passw0rd", "alan@drcare.ie", "08913486", "Athlone, Co. Westmeath");
 		users.add(d1);
-		Pharmacist ph1 = new Pharmacist("Mary Bloggs", "2345", "password123", "mary@totalhealth.ie", "Athlone, Co. Westmeath");
+		Pharmacist ph1 = new Pharmacist("Mary Bloggs", 2345, "password123", "mary@totalhealth.ie", "Athlone, Co. Westmeath");
 		users.add(ph1);
 		ArrayList<String> allergies = new ArrayList<String>();
 		allergies.add("Penicillin");
 		allergies.add("Aspirin");
-		Patient p1 = new Patient("John Doe", "3456", "password234", "johndoe@gmail.com", allergies, "18734F", "Athlone, Co. Westmeath");
+		Patient p1 = new Patient("John Doe", 3456, "password234", "johndoe@gmail.com", allergies, "18734F", "Athlone, Co. Westmeath");
 		users.add(p1);
+		
+		// valid doctors licenses range from 300000000 - 300090000
+		for(int i=300000000; i<=300090000; i++) {
+			qualifiedDoctorsLicenses.add(i);
+		}
+		
+		// valid pharmacist licenses range from 600000000 - 600090000
+		for(int i=600000000; i<=60009000; i++) {
+			qualifiedPharmacistsLicenses.add(i);
+		}
 	}
 
 	public ArrayList<User> getUsers() {
@@ -38,8 +57,23 @@ public class UserListBean {
 		this.users = users;
 	}
 	
+	public ArrayList<Integer> getQualifiedDoctorsLicenses() {
+		return qualifiedDoctorsLicenses;
+	}
+
+	public void setQualifiedDoctorsLicenses(ArrayList<Integer> qualifiedDoctorsLicenses) {
+		this.qualifiedDoctorsLicenses = qualifiedDoctorsLicenses;
+	}
+
+	public ArrayList<Integer> getQualifiedPharmacistsLicenses() {
+		return qualifiedPharmacistsLicenses;
+	}
+
+	public void setQualifiedPharmacistsLicenses(ArrayList<Integer> qualifiedPharmacistsLicenses) {
+		this.qualifiedPharmacistsLicenses = qualifiedPharmacistsLicenses;
+	}
+
 	public void addUser(User user) {
 		users.add(user);
 	}
-
 }

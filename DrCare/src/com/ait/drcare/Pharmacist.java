@@ -15,7 +15,7 @@ public class Pharmacist extends User{
 		this.role = "Pharmacist";
 	}
 	
-	public Pharmacist(String name, String ID, String password,
+	public Pharmacist(String name, int ID, String password,
 						String email,String address){
 		//Send to parent class constructor
 		super(name, ID, password, email,address,"Pharmacist");
