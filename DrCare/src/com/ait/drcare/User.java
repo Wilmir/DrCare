@@ -15,6 +15,12 @@ public class User
 		
 	}
 	
+	public User(String role)
+	{
+		this.role = role;
+	}
+	
+	
 	public User(String name, String ID, String password,String email,String address, String role)
 	{
 		this.theName = name;
