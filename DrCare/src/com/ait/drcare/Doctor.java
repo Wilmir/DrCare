@@ -15,7 +15,7 @@ public class Doctor extends User{
 	public Doctor(String name, String ID, String password,
 					String email,String phoneNumber,String address){
 		
-		super(name, ID, password, email,address);
+		super(name, ID, password, email,address,"Doctor");
 		this.phoneNumber = phoneNumber;
 		
 	}
