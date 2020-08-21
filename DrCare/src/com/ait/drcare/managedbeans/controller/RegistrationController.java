@@ -69,7 +69,8 @@ public class RegistrationController {
 		user.setTheName(userBean.getName());
 		user.setTheEmail(userBean.getEmail());
 		
-		
+		existingUsers.addUser(user);
+				
 		// 4 Verify the user through the admin utility verification method
 		// Align with Fiona's implem of userList
 		/*
