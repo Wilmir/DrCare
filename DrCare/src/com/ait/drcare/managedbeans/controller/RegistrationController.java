@@ -2,13 +2,13 @@ package com.ait.drcare.managedbeans.controller;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 import com.ait.drcare.Doctor;
 import com.ait.drcare.Patient;
 import com.ait.drcare.Pharmacist;
 import com.ait.drcare.User;
-import com.ait.drcare.UserList;
 import com.ait.drcare.managedbeans.Helper;
 import com.ait.drcare.managedbeans.UserBean;
 import com.ait.drcare.managedbeans.UserListBean;
@@ -16,15 +16,15 @@ import com.ait.drcare.managedbeans.UserListBean;
 @ManagedBean
 @RequestScoped
 public class RegistrationController {
-
+	
 	private UserBean userBean = Helper.getBean("userBean", UserBean.class);
 	
-	// Align with Fiona's implementation on UserList. 
 	private UserListBean existingUsers = Helper.getBean("userListBean", UserListBean.class);
+
 	
 	private User user;
 	
-	private String message;
+	private String message ="";
 	
 	@PostConstruct
 	public void init() {
@@ -66,7 +66,6 @@ public class RegistrationController {
 				return null;
 			}	
 		}
-		
 
 		// 2. Check if the passwords entered match
 		if(userBean.getPassword().equals(userBean.getPasswordConfirmation())) {
@@ -83,6 +82,9 @@ public class RegistrationController {
 		existingUsers.addUser(user);
 				
 		message = "Registration successul";
+		System.out.println(message);
+		
+		
 		
 		// 4 Verify the user through the admin utility verification method
 		// Align with Fiona's implem of userList
@@ -96,6 +98,5 @@ public class RegistrationController {
 		*/
 		
 		return null;
-	
 	}
 }
