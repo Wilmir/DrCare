@@ -84,6 +84,9 @@ public class RegistrationController {
 		existingUsers.addUser(user);
 				
 		message = "Registration successul";
+		
+		System.out.println(user.getTheName() + " is now registered");
+		
 		System.out.println(message);
 		
 		
