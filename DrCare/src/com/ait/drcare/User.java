@@ -8,17 +8,14 @@ public class User
 	private String thePassword;
 	private String theEmail;
 	private String theAddress;
-	private String role;
+	public String role;
 	
 	public User()
 	{
 		
 	}
 	
-	public User(String role)
-	{
-		this.role = role;
-	}
+	
 	
 	
 	public User(String name, String ID, String password,String email,String address, String role)
