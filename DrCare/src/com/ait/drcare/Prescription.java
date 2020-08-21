@@ -7,9 +7,10 @@ public class Prescription {
 
 	private String theName;
 	private Date theDatePrescribed;
-	private ArrayList<String> theContents;
-	private ArrayList<String> theSideEffects;
 	private String theStatus;
+	private Pharmacist thePharmacist;
+	private Patient thePatient;
+	private ArrayList<Medicine> theMedicines;
 	
 	final String PRESCRIPTION_WAITING_PAYMENT = "Waiting for payment",
 				 PRESCRIPTION_DISPENSED = "Order Dispenced",
@@ -18,18 +19,55 @@ public class Prescription {
 	
 	public Prescription()
 	{
-		this.theContents = new ArrayList<String>();
-		this.theSideEffects = new ArrayList<String>();
-		this.theStatus = "Not paid";
+
+		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
 	}
 	
 	public Prescription(String name, Date datePrescribed)
 	{
 		this.theName = name;
 		this.theDatePrescribed = datePrescribed;		
-		this.theContents = new ArrayList<String>();
-		this.theSideEffects = new ArrayList<String>();
 		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
+	}
+
+	public String getTheName() {
+		return theName;
+	}
+
+	public void setTheName(String theName) {
+		this.theName = theName;
+	}
+
+	public Date getTheDatePrescribed() {
+		return theDatePrescribed;
+	}
+
+	public void setTheDatePrescribed(Date theDatePrescribed) {
+		this.theDatePrescribed = theDatePrescribed;
+	}
+
+	public String getTheStatus() {
+		return theStatus;
+	}
+
+	public void setTheStatus(String theStatus) {
+		this.theStatus = theStatus;
+	}
+
+	public Pharmacist getThePharmacist() {
+		return thePharmacist;
+	}
+
+	public void setThePharmacist(Pharmacist thePharmacist) {
+		this.thePharmacist = thePharmacist;
+	}
+
+	public Patient getThePatient() {
+		return thePatient;
+	}
+
+	public void setThePatient(Patient thePatient) {
+		this.thePatient = thePatient;
 	}
 	
 	

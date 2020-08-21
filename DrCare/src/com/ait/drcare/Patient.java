@@ -7,7 +7,6 @@ public class Patient extends User{
 	
 	private String theMedicalCardNumber;
 	private ArrayList<String> Allergies;
-	private ArrayList<Prescription> Prescriptions;
 	private Doctor gp;
 	
 	
@@ -33,17 +32,6 @@ public class Patient extends User{
 	public void setAllergies(ArrayList<String> allergies) {
 		Allergies = allergies;
 	}
-
-
-	public ArrayList<Prescription> getPrescriptions() {
-		return Prescriptions;
-	}
-
-
-	public void setPrescriptions(ArrayList<Prescription> prescriptions) {
-		Prescriptions = prescriptions;
-	}
-
 
 	public Doctor getGp() {
 		return gp;

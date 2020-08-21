@@ -14,34 +14,35 @@ public class Doctor extends User{
 	
 	public Doctor(String name, String ID, String password,
 					String email,String phoneNumber,String address){
+		
 		super(name, ID, password, email,address);
 		this.phoneNumber = phoneNumber;
 		
 	}
 	
 	
-	public void addPatient()
+	public void AddPatient()
 	{
 		
 	}
 
-	public void removePatient() {
+	public void RemovePatient() {
 		
 	}
 	
-	public void findPatient() {
+	public void FindPatient() {
 		
 	}
 	
-	public void disPlayPatient() {
+	public void DisplayPatient() {
 		
 	}
 	
-	public void accessAllergies() {
+	public void AccessAllergies() {
 		
 	}
 	
-	public void createPrescription()
+	public void CreatePrescription()
 	{
 		
 	}
