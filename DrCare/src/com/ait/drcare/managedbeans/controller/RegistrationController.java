@@ -9,17 +9,18 @@ import com.ait.drcare.Patient;
 import com.ait.drcare.Pharmacist;
 import com.ait.drcare.User;
 import com.ait.drcare.UserList;
+import com.ait.drcare.managedbeans.Helper;
 import com.ait.drcare.managedbeans.UserBean;
+import com.ait.drcare.managedbeans.UserListBean;
 
 @ManagedBean
 @RequestScoped
 public class RegistrationController {
 
-//	@ManagedProperty(value = "#{studentBean}")
-	private UserBean userBean;
+	private UserBean userBean = Helper.getBean("userBean", UserBean.class);
 	
 	// Align with Fiona's implementation on UserList. 
-	private UserList existingUsers = new UserList();
+	private UserListBean existingUsers = Helper.getBean("userListBean", UserListBean.class);
 	
 	private User user;
 	
@@ -48,15 +49,13 @@ public class RegistrationController {
 	}
 	
 	public String addUser() {
-		// 1. Check if user is not existing
-		// Align with Fiona's userList implementation 
-		/*
+		// 1. Check if user is not existing		
 		for(User existingUser : existingUsers.getUsers()) {
 			if(existingUser.getTheEmail().equalsIgnoreCase(user.getTheEmail())) {
 				return "The email you entered already belongs to an existing user";
 			}	
 		}
-		*/
+		
 		
 		// 2. Check if the passwords entered match
 		if(userBean.getPassword().equals(userBean.getPasswordConfirmation())) {
