@@ -63,6 +63,7 @@ public class RegistrationController {
 		for(User existingUser : existingUsers.getUsers()) {
 			if(existingUser.getTheEmail().equalsIgnoreCase(user.getTheEmail())) {
 				message = "The email you entered already belongs to an existing user";
+				System.out.println(message);
 				return null;
 			}	
 		}
@@ -72,6 +73,7 @@ public class RegistrationController {
 			user.setThePassword(userBean.getPassword());
 		}else {
 			message = "The passwords entered do not match";
+			System.out.println(message);
 			return null;
 		}
 		
