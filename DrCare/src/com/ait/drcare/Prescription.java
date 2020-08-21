@@ -9,10 +9,12 @@ public class Prescription {
 	private String theName;
 	private LocalDate theDatePrescribed;
 	private String theStatus;
-	private Pharmacist thePharmacist;
-	private Patient thePatient;
 	private ArrayList<Medicine> theMedicines;
 	
+	
+	private Pharmacist thePharmacist;
+	private Patient thePatient;
+
 	final String PRESCRIPTION_WAITING_PAYMENT = "Waiting for payment",
 				 PRESCRIPTION_DISPENSED = "Order Dispenced",
 				 PRESCRIPTION_READY_FOR_PICKUP = "Ready for pickup";
@@ -69,6 +71,14 @@ public class Prescription {
 
 	public void setThePatient(Patient thePatient) {
 		this.thePatient = thePatient;
+	}
+
+	public ArrayList<Medicine> getTheMedicines() {
+		return theMedicines;
+	}
+
+	public void setTheMedicines(ArrayList<Medicine> theMedicines) {
+		this.theMedicines = theMedicines;
 	}
 	
 	

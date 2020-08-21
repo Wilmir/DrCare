@@ -18,7 +18,7 @@ public class Pharmacist extends User{
 	public Pharmacist(String name, String ID, String password,
 						String email,String address){
 		//Send to parent class constructor
-		super(name, ID, password, email,address);
+		super(name, ID, password, email,address,"Pharmacist");
 		
 	}
 

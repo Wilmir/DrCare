@@ -18,7 +18,8 @@ public class Patient extends User{
 	public Patient(String name,String ID,String Password,String Email,
 			ArrayList<String> Allergies,String medicalCard,String address)
 	{
-		super(name,ID,Password,Email,address);
+	
+		super(name,ID,Password,Email,address,"Patient");
 		this.Allergies = Allergies;	
 		this.theMedicalCardNumber = medicalCard;
 	}
