@@ -17,9 +17,9 @@ public class Patient extends User{
 
 
 	public Patient(String name,String ID,String Password,String Email,
-			ArrayList<String> Allergies,String medicalCard)
+			ArrayList<String> Allergies,String medicalCard,String address)
 	{
-		super(name,ID,Password,Email);
+		super(name,ID,Password,Email,address);
 		this.Allergies = Allergies;	
 		this.theMedicalCardNumber = medicalCard;
 	}
@@ -52,6 +52,16 @@ public class Patient extends User{
 
 	public void setGp(Doctor gp) {
 		this.gp = gp;
+	}
+
+
+	public String getTheMedicalCardNumber() {
+		return theMedicalCardNumber;
+	}
+
+
+	public void setTheMedicalCardNumber(String theMedicalCardNumber) {
+		this.theMedicalCardNumber = theMedicalCardNumber;
 	}
 	
 	

@@ -7,18 +7,20 @@ public class User
 	private String theID;
 	private String thePassword;
 	private String theEmail;
+	private String theAddress;
 	
 	public User()
 	{
 		
 	}
 	
-	public User(String name, String ID, String password,String email)
+	public User(String name, String ID, String password,String email,String address)
 	{
 		this.theName = name;
 		this.theID = ID;
 		this.thePassword = password;
 		this.theEmail = email;
+		this.theAddress = address;
 	}
 
 	public String getTheName() {
@@ -53,7 +55,13 @@ public class User
 		this.theEmail = theEmail;
 	}
 	
-	
+	public String getTheAddress() {
+		return theAddress;
+	}
+
+	public void setTheAddress(String address) {
+		this.theAddress = address;
+	}
 	
 	
 	
