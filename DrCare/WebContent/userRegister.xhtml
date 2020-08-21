@@ -51,8 +51,9 @@
     <h:commandButton id="submit" styleClass="ActionButton" action="#{registrationController.addUser}" value="Register" title="Register"/> 
    
   
-    <p>Already have an account? <a href="login.xhtml">Sign in</a>.</p>
+    <p>Already have an account? <a href="login.xhtml">Sign in</a>.</p> <br/>
   
+  	<h:outputText value = "#{registrationController.message}" />
 </h:form>
 </body>
 </html>
