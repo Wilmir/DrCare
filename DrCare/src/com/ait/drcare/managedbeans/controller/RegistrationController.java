@@ -85,7 +85,11 @@ public class RegistrationController {
 				
 		message = "Registration successul";
 		
-		System.out.println(user.getTheName() + " is now registered");
+		
+		for(User existingUser : existingUsers.getUsers()) {
+			System.out.println(existingUser.getTheName() + " is now registered");
+		}
+		
 		
 		System.out.println(message);
 		
