@@ -58,8 +58,6 @@ public class RegistrationController {
 			return null;
 		}
 		
-		
-		
 		// 2. Check if user is not existing		
 		if(isExistingUser()) {
 				error("The credentials you entered already belongs to an existing user");
@@ -68,14 +66,14 @@ public class RegistrationController {
 		
 		//3.a Verify the GP
 		if(user.getRole().equals("Doctor") && !isVerifiedGP()){
-			System.out.println("GP Verification failed. Valid License Number ranges from 300000000 - 399999999");
+			System.out.println("GP Verification failed. Valid License Number ranges from 300000000 to 300090000");
 			error("We are not able to verify your GP qualification");
 			return null;
 		}
 		
 		//3.b Verify Pharmacist
 		if(user.getRole().equals("Pharmacist") && !isVerifiedPharmacist()){
-			System.out.println("Pharmacist Verification failed. Valid License Number ranges from 600000000 - 699999999");
+			System.out.println("Pharmacist Verification failed. Valid License Number ranges from 600000000 to 600090000");
 			error("We are not able to verify your Pharmacist qualification");
 			return null;
 		}
@@ -87,6 +85,8 @@ public class RegistrationController {
 		
 		//5. Add the new user to the User's List
 		registry.addUser(user);
+		
+		
 		success("Registration successul" + "&nbsp;<a href='login.jsf'>Login</a>");	
 		
 		System.out.println("New List of Users");
@@ -106,7 +106,7 @@ public class RegistrationController {
 	}
 	
 	
-	// Existing user email validation
+	// Existing user validation
 	private boolean isExistingUser() {
 		for(User existingUser : registry.getUsers()) {
 			if(existingUser.getTheEmail().equalsIgnoreCase(userBean.getEmail())) {
@@ -118,8 +118,6 @@ public class RegistrationController {
 		}
 		return false;
 	}
-	
-	
 	
 	// GP verification
 	private boolean isVerifiedGP() {
@@ -147,6 +145,7 @@ public class RegistrationController {
 			for(int i = users.size()-1; i >= 0; i--) {
 				if(registry.getUsers().get(i).getRole().equals("Patient")) {
 					user.setTheID(registry.getUsers().get(i).getTheID() + 1);
+					return;
 				}
 			}
 		}else {
