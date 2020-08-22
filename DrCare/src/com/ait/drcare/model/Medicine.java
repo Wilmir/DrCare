@@ -1,4 +1,4 @@
-package com.ait.drcare;
+package com.ait.drcare.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -6,7 +6,7 @@ import javax.faces.bean.RequestScoped;
 import com.ait.drcare.managedbeans.Helper;
 import com.ait.drcare.managedbeans.UserBean;
 import com.ait.drcare.managedbeans.UserListBean;
-import com.ait.drcare.User;
+import com.ait.drcare.model.User;
 
 @ManagedBean
 @RequestScoped

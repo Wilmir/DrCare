@@ -6,10 +6,10 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import com.ait.drcare.Doctor;
-import com.ait.drcare.Patient;
-import com.ait.drcare.Pharmacist;
-import com.ait.drcare.User;
+import com.ait.drcare.model.Doctor;
+import com.ait.drcare.model.Patient;
+import com.ait.drcare.model.Pharmacist;
+import com.ait.drcare.model.User;
 
 @ManagedBean
 @SessionScoped
