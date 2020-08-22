@@ -2,6 +2,7 @@ package com.ait.drcare.managedbeans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.ValueChangeEvent;
 
 
 @ManagedBean
@@ -9,8 +10,10 @@ import javax.faces.bean.ViewScoped;
 public class UserBean {
 	private String name;
 	private String email;
+	private String address;
 	private String password;
 	private String passwordConfirmation;
+	private int licenseNumber;
 	private String role;
 	
 	public String getName() {
@@ -29,6 +32,14 @@ public class UserBean {
 		this.email = email;
 	}
 	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -45,6 +56,14 @@ public class UserBean {
 		this.passwordConfirmation = passwordConfirmation;
 	}
 	
+	public int getLicenseNumber() {
+		return licenseNumber;
+	}
+
+	public void setLicenseNumber(int licenseNumber) {
+		this.licenseNumber = licenseNumber;
+	}
+
 	public String getRole() {
 		return role;
 	}
@@ -52,5 +71,6 @@ public class UserBean {
 	public void setRole(String role) {
 		this.role = role;
 	}
-		
+
+	
 }

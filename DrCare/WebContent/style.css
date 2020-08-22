@@ -52,6 +52,17 @@ label{
   
   
 }  
+#register{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;
+    margin: 10px;
+    padding-left: 7px;  
+    color: black;  
+  
+  
+}  
 span{  
     color: white;  
     font-size: 17px;  

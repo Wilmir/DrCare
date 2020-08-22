@@ -15,7 +15,7 @@ public class Patient extends User{
 	}
 
 
-	public Patient(String name,String ID,String Password,String Email,
+	public Patient(String name,int ID,String Password,String Email,
 			ArrayList<String> Allergies,String medicalCard,String address)
 	{
 	
