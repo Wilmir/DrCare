@@ -87,7 +87,7 @@ public class RegistrationController {
 		registry.addUser(user);
 		
 		
-		success("Registration successul" + "&nbsp;<a href='login.jsf'>Login</a>");	
+		/*success("Registration successul" + "&nbsp;<a href='login.jsf'>Login</a>");*/
 		
 		System.out.println("New List of Users");
 		
@@ -95,7 +95,9 @@ public class RegistrationController {
 			System.out.println(existingUser);
 		}
 		
-		return null;
+		
+		//6. Redirect the user to Login page, faces-redirect changes the URl to login.jsf
+		return "login?faces-redirect=true";
 	}
 		
 	
