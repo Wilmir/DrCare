@@ -46,6 +46,12 @@ public class LoginController {
 			return;
 		}
 		
+		if(registeredUser.getAccountLock().equals(true)) {
+			message = "Account Locked";
+			System.out.println(message);
+			return;
+		}
+		
 		if(givenPassword.equals(registeredUser.getThePassword())){
 			message = "Login Successfull";
 			System.out.println(message);
@@ -55,12 +61,11 @@ public class LoginController {
 				numOfAttempts++;
 		        if (numOfAttempts > 5)
 		        {
-		       // this.setLabel1("Account Locked");
-		        System.out.println("loginlocked");
+		         System.out.println("loginlocked");
+		         registeredUser.setAccountLock(true);
 		        }
 		        else
 		        {
-		          //  this.setLabel1("Login Failure" + numOfAttempts);
 		         System.out.println("loginfailure");
 		        }
 		}

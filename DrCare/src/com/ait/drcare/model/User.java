@@ -9,6 +9,7 @@ public class User
 	protected String theEmail;
 	protected String theAddress;
 	protected String role;
+	protected Boolean accountLock = false;
 	
 	public User()
 	{
@@ -74,6 +75,15 @@ public class User
 		this.role = role;
 	}
 
+	public Boolean getAccountLock() {
+		return accountLock;
+	}
+
+	public void setAccountLock(Boolean lock) {
+		this.accountLock = lock;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "User [theName=" + theName + ", theID=" + theID + ", thePassword=" + thePassword + ", theEmail="
