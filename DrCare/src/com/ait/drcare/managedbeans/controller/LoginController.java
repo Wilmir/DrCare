@@ -55,12 +55,10 @@ public class LoginController {
 				numOfAttempts++;
 		        if (numOfAttempts > 5)
 		        {
-		       // this.setLabel1("Account Locked");
-		        System.out.println("loginlocked");
+		          System.out.println("loginlocked");
 		        }
 		        else
 		        {
-		          //  this.setLabel1("Login Failure" + numOfAttempts);
 		         System.out.println("loginfailure");
 		        }
 		}
