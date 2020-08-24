@@ -10,6 +10,7 @@ public class Patient extends User{
 	private Doctor gp;
 	
 	
+	
 	public Patient() {
 		this.role = "Patient";
 	}

@@ -1,26 +1,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
-
-<head>    
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:head>    
     <title>Doctor Page</title>
-</head>    
-<body> 
+</h:head>    
+<h:body> 
 <h:form>
     <h2>Welcome Dr Alan!</h2>
   
-    <h:outputLabel>Enter Patient's Name</h:outputLabel>
-    <h:inputText id="patientname"  label="patientname" autocomplete="off" /> 
-    <br></br>
-	<h:outputLabel>OR</h:outputLabel><br></br>
-	<h:outputLabel>Enter Patient's ID</h:outputLabel>
-    <h:inputText id="patientid"  label="patientid" autocomplete="off"/>  
-	
+   <h:dataTable value ="#{userListBean.patients}" var = "name"
+					 styleClass = "nameTable"
+					 headerClass = "nameTable"
+					 rowClasses = "nameTableOddRow,nameTableEvenRow">
+				<h:column>
+					<f:facet name="header"> Name</f:facet>
+						<h:inputText value = "#{patient.theMedicalCardNumber}" rendered="#{patient.canEdit}"/>
+						<h:outputText value = "#{patient.theMedicalCardNumber}"  rendered="#{not patient.canEdit}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+						<h:inputText value = "#{patient.theID}" rendered="#{patient.canEdit}"/>
+						<h:outputText value = "#{patient.theID}"  rendered="#{not patient.canEdit}" />
+				</h:column> 
+				<h:column>
+					<f:facet name="header">Edit</f:facet>
+					<h:commandLink value="Edit" action="#{userListBean.editPatient(patient)}"
+						rendered="#{not patient.canEdit}" />
+				</h:column> 
+				
+		</h:dataTable>
 	
 </h:form>  
-</body>    
+</h:body>    
 </html>
+
+

@@ -9,7 +9,8 @@ public class User
 	protected String theEmail;
 	protected String theAddress;
 	protected String role;
-	protected Boolean accountLock = false;
+	protected boolean accountLock = false;
+	boolean canEdit;
 	
 	public User()
 	{
@@ -75,11 +76,11 @@ public class User
 		this.role = role;
 	}
 
-	public Boolean getAccountLock() {
+	public boolean getAccountLock() {
 		return accountLock;
 	}
 
-	public void setAccountLock(Boolean lock) {
+	public void setAccountLock(boolean lock) {
 		this.accountLock = lock;
 	}
 
@@ -88,8 +89,16 @@ public class User
 	public String toString() {
 		return "User [theName=" + theName + ", theID=" + theID + ", thePassword=" + thePassword + ", theEmail="
 				+ theEmail + ", theAddress=" + theAddress + ", role=" + role + "]";
+		
+	}
+	public boolean isCanEdit() {
+		return canEdit;
 	}
 	
+	public void setCanEdit(boolean canEdit) {
+		this.canEdit= canEdit;
+	}
+
 	
 	
 }
