@@ -69,16 +69,8 @@ public class UserListBean {
 		return qualifiedDoctorsLicenses;
 	}
 
-	public void setQualifiedDoctorsLicenses(ArrayList<Integer> qualifiedDoctorsLicenses) {
-		this.qualifiedDoctorsLicenses = qualifiedDoctorsLicenses;
-	}
-
 	public ArrayList<Integer> getQualifiedPharmacistsLicenses() {
 		return qualifiedPharmacistsLicenses;
-	}
-
-	public void setQualifiedPharmacistsLicenses(ArrayList<Integer> qualifiedPharmacistsLicenses) {
-		this.qualifiedPharmacistsLicenses = qualifiedPharmacistsLicenses;
 	}
 
 	public void addUser(User user) {
