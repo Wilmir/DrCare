@@ -39,19 +39,19 @@ public class LoginController {
 			}
 		
 		}
-			
+		//if no user exists
 		if(userFound.equals(false)) {
 			message = "The given user is not registed in the System. Please Register";
 			System.out.println(message);
 			return;
 		}
-		
+		//If account is locked
 		if(registeredUser.getAccountLock().equals(true)) {
 			message = "Account Locked";
 			System.out.println(message);
 			return;
 		}
-		
+		//If user's login is successful
 		if(givenPassword.equals(registeredUser.getThePassword())){
 			message = "Login Successfull";
 			System.out.println(message);
