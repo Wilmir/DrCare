@@ -3,7 +3,7 @@ body
     margin: 0;  
     padding: 0;  
     font-family: 'Arial'; 
-    background-image: url("HSMGMT.jpg"); 
+    background-image: url("#{resource['images/HSMGMT.jpg']}");
 }  
 .login{  
         width: 382px;  

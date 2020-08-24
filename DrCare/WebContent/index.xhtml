@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
- <link rel="stylesheet" type="text/css" href="style.css"></link>
+	<h:outputStylesheet name = "style.css" library = "css"/>
 	<title>Welcome Page</title>
 </h:head>
 <body>
@@ -15,7 +15,6 @@
     <form name="login">  
 	 <label><b>Join Our Services Today! </b> </label>      
          
-        
 	<form action="userRegister.jsf">
     	<input type="submit" id="register" value="Register" />
 	</form>
