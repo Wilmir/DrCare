@@ -16,6 +16,8 @@ public class LoginController {
 	private UserBean userBean = Helper.getBean("userBean", UserBean.class);
 	private UserListBean existingUsers = Helper.getBean("userListBean", UserListBean.class);
 	private String message ="";
+	private final String ROLE_PATIENT = "Patient",ROLE_PHARMACIST = "Pharmacist",ROLE_DOCTOR = "Doctor";
+	
 	private int numOfAttempts=1;
 	
 	public String getMessage() {
@@ -26,7 +28,7 @@ public class LoginController {
 		this.message = message;
 	}
 	
-	public void validateUserLogin() {
+	public String validateUserLogin() {
 		String givenUser = userBean.getEmail();
 		String givenPassword = userBean.getPassword();
 		User registeredUser = new User();
@@ -43,21 +45,44 @@ public class LoginController {
 		if(userFound.equals(false)) {
 			message = "The given user is not registed in the System. Please Register";
 			System.out.println(message);
-			return;
+			return null;
 		}
 		//If account is locked
 		if(registeredUser.getAccountLock().equals(true)) {
 			message = "Account Locked";
 			System.out.println(message);
-			return;
+			return null;
 		}
+		
+		
 		//If user's login is successful
 		if(givenPassword.equals(registeredUser.getThePassword())){
 			message = "Login Successfull";
 			System.out.println(message);
-			return;
+			
+			//if user is a patient
+			if(registeredUser.getRole().equals("Patient")){
+				System.out.println("Patient Recognised, sending to patient page");		
+				return "patient?faces-redirect=true";
+			}
+			
+			//if user is a gp
+			if(registeredUser.getRole().equals("Doctor")){
+				System.out.println("GP Recognised, sending to GP page");		
+				return "doctor?faces-redirect=true";
+			}
+			
+			//if user is a pharmacist
+			if(registeredUser.getRole().equals(ROLE_PHARMACIST)){
+				System.out.println("Pharmacist Recognised, sending to Pharmacist page");		
+				return "pharmacist?faces-redirect=true";
+			}
+			
+			return "wut";
 		}
-		else {
+		
+		//Track number of logins
+			else {
 				numOfAttempts++;
 		        if (numOfAttempts > 5)
 		        {
@@ -68,6 +93,10 @@ public class LoginController {
 		        {
 		         System.out.println("loginfailure");
 		        }
-		}
+			}
+		
+		//End function if all else fails
+		return null;
+		
 		}
 	}

@@ -16,7 +16,7 @@
         Password:
         <h:inputText id="password" size="10" maxlength="20" value="#{userBean.password}"/>
         <br></br>
-        <h:commandButton id="submit" value="submit" action="#{loginController.validateUserLogin()}"/>
+        <h:commandButton id="submit" styleClass="ActionButton"  action="#{loginController.validateUserLogin()}" value="submit" title="Log in"/>
         <br></br>
         <br></br>
         <p>New User? Please <a href="userRegister.jsf">Register</a></p> <br/>

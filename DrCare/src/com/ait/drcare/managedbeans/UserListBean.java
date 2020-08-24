@@ -38,6 +38,14 @@ public class UserListBean {
 		Patient p1 = new Patient("John Doe", 3456, "password234", "johndoe@gmail.com", allergies, "18734F", "Athlone, Co. Westmeath");
 		users.add(p1);
 		
+		//Quick test users
+		Patient p2 = new Patient("Patient A", 3535, "A", "A",allergies,"A","A,A,A");
+		Pharmacist ph2 = new Pharmacist("Pharmacist B", 6969,"B", "B","B,B,B");
+		Doctor doco = new Doctor("Doc",5050,"Doc","Doc","087696969","Doc,Doc,doc");
+		users.add(p2);		
+		users.add(ph2);
+		users.add(doco);
+		
 		// valid doctors licenses range from 300000000 - 300090000
 		for(int i=300000000; i<=300090000; i++) {
 			qualifiedDoctorsLicenses.add(i);
