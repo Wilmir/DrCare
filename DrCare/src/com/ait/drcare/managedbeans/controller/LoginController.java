@@ -18,8 +18,6 @@ public class LoginController {
 	private String message = "";
 	private final String ROLE_PATIENT = "Patient", ROLE_PHARMACIST = "Pharmacist", ROLE_DOCTOR = "Doctor";
 
-	private int numOfAttempts = 0;
-
 	public String getMessage() {
 		return message;
 	}
@@ -32,7 +30,7 @@ public class LoginController {
 		String givenUser = userBean.getEmail();
 		String givenPassword = userBean.getPassword();
 		User registeredUser = new User();
-		Boolean userFound = false;
+		boolean userFound = false;
 
 		for (User existingUser : existingUsers.getUsers()) {
 			if (existingUser.getTheEmail().equalsIgnoreCase(givenUser)) {
@@ -42,13 +40,13 @@ public class LoginController {
 
 		}
 		// if no user exists
-		if (userFound.equals(false)) {
+		if (userFound) {
 			message = "The given user is not registed in the System. Please Register";
 			System.out.println(message);
 			return null;
 		}
 		// If account is locked
-		if (registeredUser.getAccountLock().equals(true)) {
+		if (registeredUser.getAccountLock()) {
 			message = "Account Locked";
 			System.out.println(message);
 			return null;
