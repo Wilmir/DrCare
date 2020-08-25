@@ -16,10 +16,8 @@
 <h:form>
     <h2>Welcome Dr Alan!</h2>
   
-   <h:dataTable value ="#{userListBean.patients}" var = "patient"
-					 styleClass = "nameTable"
-					 headerClass = "nameTable"
-					 rowClasses = "nameTableOddRow,nameTableEvenRow">
+   <h:dataTable value ="#{userListBean.patients}" var = "patient">
+					
 				<h:column>
 					<f:facet name="header"> Name</f:facet>
 						<h:outputText value = "#{patient.theName}" />
