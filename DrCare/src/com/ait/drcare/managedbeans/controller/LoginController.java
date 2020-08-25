@@ -26,6 +26,34 @@ public class LoginController {
 		this.message = message;
 	}
 
+	public UserBean getUserBean() {
+		return userBean;
+	}
+
+	public void setUserBean(UserBean userBean) {
+		this.userBean = userBean;
+	}
+
+	public UserListBean getExistingUsers() {
+		return existingUsers;
+	}
+
+	public void setExistingUsers(UserListBean existingUsers) {
+		this.existingUsers = existingUsers;
+	}
+
+	public String getROLE_PATIENT() {
+		return ROLE_PATIENT;
+	}
+
+	public String getROLE_PHARMACIST() {
+		return ROLE_PHARMACIST;
+	}
+
+	public String getROLE_DOCTOR() {
+		return ROLE_DOCTOR;
+	}
+
 	public String validateUserLogin() {
 		String givenUser = userBean.getEmail();
 		String givenPassword = userBean.getPassword();
