@@ -12,26 +12,38 @@
 <h:form>
     <h2>Welcome Dr Alan!</h2>
   
-   <h:dataTable value ="#{userListBean.patients}" var = "name"
+   <h:dataTable value ="#{userListBean.patients}" var = "patient"
 					 styleClass = "nameTable"
 					 headerClass = "nameTable"
 					 rowClasses = "nameTableOddRow,nameTableEvenRow">
 				<h:column>
 					<f:facet name="header"> Name</f:facet>
-						<h:inputText value = "#{patient.theMedicalCardNumber}" rendered="#{patient.canEdit}"/>
-						<h:outputText value = "#{patient.theMedicalCardNumber}"  rendered="#{not patient.canEdit}" />
+						<h:outputText value = "#{patient.theName}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">ID</f:facet>
-						<h:inputText value = "#{patient.theID}" rendered="#{patient.canEdit}"/>
-						<h:outputText value = "#{patient.theID}"  rendered="#{not patient.canEdit}" />
+						<h:outputText value = "#{patient.theID}" />
 				</h:column> 
 				<h:column>
-					<f:facet name="header">Edit</f:facet>
-					<h:commandLink value="Edit" action="#{userListBean.editPatient(patient)}"
-						rendered="#{not patient.canEdit}" />
-				</h:column> 
+					<f:facet name="header"> M.Card No.</f:facet>
+						<h:outputText value = "#{patient.theMedicalCardNumber}" />
+				</h:column>
 				
+				<h:column>
+					<f:facet name="header">Allergies</f:facet>
+					<h:commandLink value="View" action="allergies.xhtml"/>
+						 
+				</h:column>
+				<h:column>
+					<f:facet name="header">View Prescription</f:facet>
+					<h:commandLink value="View" action="prescription.xhtml"/>
+						 
+				</h:column>
+				<h:column>
+					<f:facet name="header">Create new Prescription</f:facet>
+					<h:commandLink value="Add" action="prescription.xhtml"/>
+						 
+				</h:column>
 		</h:dataTable>
 	
 </h:form>  
