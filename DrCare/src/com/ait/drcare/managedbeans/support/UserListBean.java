@@ -1,4 +1,4 @@
-package com.ait.drcare.managedbeans;
+package com.ait.drcare.managedbeans.support;
 
 
 import java.util.ArrayList;

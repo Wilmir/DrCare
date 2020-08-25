@@ -8,9 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import com.ait.drcare.managedbeans.Helper;
-import com.ait.drcare.managedbeans.UserBean;
-import com.ait.drcare.managedbeans.UserListBean;
+import com.ait.drcare.helpers.Helper;
+import com.ait.drcare.managedbeans.backing.UserBean;
+import com.ait.drcare.managedbeans.support.UserListBean;
 import com.ait.drcare.model.Doctor;
 import com.ait.drcare.model.Patient;
 import com.ait.drcare.model.Pharmacist;

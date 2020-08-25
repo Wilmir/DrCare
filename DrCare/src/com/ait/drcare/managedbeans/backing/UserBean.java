@@ -1,4 +1,4 @@
-package com.ait.drcare.managedbeans;
+package com.ait.drcare.managedbeans.backing;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;

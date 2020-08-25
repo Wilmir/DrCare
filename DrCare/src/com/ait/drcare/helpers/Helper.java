@@ -1,4 +1,4 @@
-package com.ait.drcare.managedbeans;
+package com.ait.drcare.helpers;
 
 import javax.faces.application.Application;
 import javax.faces.context.FacesContext;
