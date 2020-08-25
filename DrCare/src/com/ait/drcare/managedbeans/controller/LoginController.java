@@ -40,7 +40,7 @@ public class LoginController {
 
 		}
 		// if no user exists
-		if (userFound) {
+		if (!userFound) {
 			message = "The given user is not registed in the System. Please Register";
 			System.out.println(message);
 			return null;
