@@ -1,5 +1,6 @@
 package com.ait.drcare.managedbeans.controller;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -13,11 +14,17 @@ import com.ait.drcare.model.User;
 @RequestScoped
 public class LoginController {
 
-	private UserBean userBean = Helper.getBean("userBean", UserBean.class);
-	private UserListBean existingUsers = Helper.getBean("userListBean", UserListBean.class);
+	private UserBean userBean;
+	private UserListBean existingUsers;
 	private String message = "";
 	private final String ROLE_PATIENT = "Patient", ROLE_PHARMACIST = "Pharmacist", ROLE_DOCTOR = "Doctor";
 
+	@PostConstruct
+	public void init() {
+		userBean = Helper.getBean("userBean", UserBean.class);
+		existingUsers = Helper.getBean("userListBean", UserListBean.class);
+	}
+	
 	public String getMessage() {
 		return message;
 	}
