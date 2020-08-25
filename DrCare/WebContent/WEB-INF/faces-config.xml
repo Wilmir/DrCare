@@ -6,7 +6,7 @@
     version="2.2">
 	<managed-bean>
 		<managed-bean-name>userBean</managed-bean-name>
-		<managed-bean-class>com.ait.drcare.managedbeans.UserBean</managed-bean-class>
+		<managed-bean-class>com.ait.drcare.managedbeans.backing.UserBean</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
@@ -16,7 +16,7 @@
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>userListBean</managed-bean-name>
-		<managed-bean-class>com.ait.drcare.managedbeans.UserListBean</managed-bean-class>
+		<managed-bean-class>com.ait.drcare.managedbeans.support.UserListBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 
