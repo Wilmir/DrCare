@@ -11,6 +11,7 @@ public class User
 	protected String role;
 	protected boolean accountLock = false;
 	boolean canEdit;
+	protected int failedAttempts = 0;
 	
 	public User()
 	{
@@ -82,6 +83,14 @@ public class User
 
 	public void setAccountLock(boolean lock) {
 		this.accountLock = lock;
+	}
+	
+	public int getFailedAttempts() {
+		return failedAttempts;
+	}
+
+	public void setFailedAttempts() {
+		this.failedAttempts++;
 	}
 
 	

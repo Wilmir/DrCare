@@ -2,7 +2,6 @@ package com.ait.drcare.managedbeans.controller;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import com.ait.drcare.managedbeans.Helper;
@@ -11,7 +10,7 @@ import com.ait.drcare.managedbeans.UserListBean;
 import com.ait.drcare.model.User;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class LoginController {
 
 	private UserBean userBean = Helper.getBean("userBean", UserBean.class);
@@ -19,7 +18,7 @@ public class LoginController {
 	private String message = "";
 	private final String ROLE_PATIENT = "Patient", ROLE_PHARMACIST = "Pharmacist", ROLE_DOCTOR = "Doctor";
 
-	private int numOfAttempts = 1;
+	private int numOfAttempts = 0;
 
 	public String getMessage() {
 		return message;
@@ -83,12 +82,13 @@ public class LoginController {
 
 		// Track number of logins
 		else {
-			numOfAttempts++;
-			if (numOfAttempts > 5) {
+			
+			if (registeredUser.getFailedAttempts() >= 5) {
 				System.out.println("loginlocked");
 				registeredUser.setAccountLock(true);
 			} else {
 				System.out.println("loginfailure");
+				registeredUser.setFailedAttempts();
 			}
 		}
 
