@@ -6,7 +6,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import com.ait.drcare.helpers.Helper;
-import com.ait.drcare.managedbeans.backing.UserBean;
+import com.ait.drcare.managedbeans.backing.UserLoginBean;
 import com.ait.drcare.managedbeans.support.UserListBean;
 import com.ait.drcare.model.User;
 
@@ -14,19 +14,19 @@ import com.ait.drcare.model.User;
 @RequestScoped
 public class LoginController {
 
-	private UserBean userBean;
+	private UserLoginBean userLoginBean;
 	private UserListBean existingUsers;
 	private String message = "";
 	private final String ROLE_PATIENT = "Patient", ROLE_PHARMACIST = "Pharmacist", ROLE_DOCTOR = "Doctor";
 
 	@PostConstruct
 	public void init() {
-		userBean = Helper.getBean("userBean", UserBean.class);
+		userLoginBean = Helper.getBean("userLoginBean", UserLoginBean.class);
 		existingUsers = Helper.getBean("userListBean", UserListBean.class);
 	}
 	
-	public void setUserBean(UserBean userBean) {
-		this.userBean = userBean;
+	public void setUserBean(UserLoginBean userBean) {
+		this.userLoginBean = userBean;
 	}
 
 	public void setExistingUsers(UserListBean existingUsers) {
@@ -34,8 +34,8 @@ public class LoginController {
 	}
 
 	public String validateUserLogin() {
-		String givenUser = userBean.getEmail();
-		String givenPassword = userBean.getPassword();
+		String givenUser = userLoginBean.getEmail();
+		String givenPassword = userLoginBean.getPassword();
 		User registeredUser = new User();
 		boolean userFound = false;
 
@@ -63,6 +63,7 @@ public class LoginController {
 		if (givenPassword.equals(registeredUser.getThePassword())) {
 			message = "Login Successfull";
 			System.out.println(message);
+			registeredUser.resetFailedAttempts();
 
 			// if user is a patient
 			if (registeredUser.getRole().equals("Patient")) {
@@ -87,13 +88,14 @@ public class LoginController {
 
 		// Track number of logins
 		else {
-			if (registeredUser.getFailedAttempts() >= 5) {
-				System.out.println("loginlocked");
+			 registeredUser.setFailedAttempts();
+			 if (registeredUser.getFailedAttempts() >= 5) {
+				System.err.println("Login Failed !! Account Locked as no.of retries exceeded 5");
 				registeredUser.setAccountLock(true);
-			} else {
-				System.out.println("loginfailure");
-				registeredUser.setFailedAttempts();
-			}
+			} 
+			else {
+				System.err.println("Login Failure !!");
+				}
 		}
 
 		// End function if all else fails

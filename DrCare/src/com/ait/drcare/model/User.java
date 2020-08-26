@@ -93,6 +93,10 @@ public class User
 		this.failedAttempts++;
 	}
 
+	public void resetFailedAttempts() {
+		failedAttempts=0;
+	}
+
 	
 	@Override
 	public String toString() {

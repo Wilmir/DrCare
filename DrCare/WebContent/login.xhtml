@@ -11,10 +11,10 @@
 <body>
 <h:form>
         Email-ID:
-        <h:inputText id="emailID" size="10" maxlength="20" value="#{userBean.email}"/>
+        <h:inputText id="emailID" size="10" maxlength="20" value="#{userLoginBean.email}"/>
         <br></br>
         Password:
-        <h:inputText id="password" size="10" maxlength="20" value="#{userBean.password}"/>
+        <h:inputText id="password" size="10" maxlength="20" value="#{userLoginBean.password}"/>
         <br></br>
         <h:commandButton id="submit" styleClass="ActionButton"  action="#{loginController.validateUserLogin()}" value="submit" title="Log in"/>
         <br></br>
