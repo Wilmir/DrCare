@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Medicine {
 	
 	private String theName;
-	private LocalDate theExpiracyDate;
+	private LocalDate theExpiryDate;
 	private ArrayList<String> theContents;
 	private ArrayList<String> theSideEffects;
 	
@@ -17,11 +17,11 @@ public class Medicine {
 		this.theSideEffects = new ArrayList<String>();
 	}
 	
-	public Medicine(String name,LocalDate expiraryDate) {
+	public Medicine(String name,LocalDate expiryDate) {
 		this.theName = name;
 		this.theContents = new ArrayList<String>();
 		this.theSideEffects = new ArrayList<String>();
-		this.theExpiracyDate = expiraryDate;
+		this.theExpiryDate = expiryDate;
 	}
 
 	public String getTheName() {
@@ -48,12 +48,12 @@ public class Medicine {
 		this.theSideEffects = theSideEffects;
 	}
 
-	public LocalDate getTheExpiracyDate() {
-		return theExpiracyDate;
+	public LocalDate getTheExpiryDate() {
+		return theExpiryDate;
 	}
 
-	public void setTheExpiracyDate(LocalDate theExpiracyDate) {
-		this.theExpiracyDate = theExpiracyDate;
+	public void setTheExpiryDate(LocalDate theExpiracyDate) {
+		this.theExpiryDate = theExpiracyDate;
 	}
 	
 	
