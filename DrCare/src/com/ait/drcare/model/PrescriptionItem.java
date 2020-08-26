@@ -2,7 +2,7 @@ package com.ait.drcare.model;
 
 public class PrescriptionItem {
 
-	private Medicine meds;
+	private Medicine theMedicine;
 	private double dosagePerDay;
 	private int duration;
 	private  int quantity;
@@ -14,7 +14,7 @@ public class PrescriptionItem {
 	
 	public PrescriptionItem(Medicine aMedicine, double aDosagePerDay,
 			int aDuration, int aQuantity) {
-		this.meds = aMedicine;
+		this.theMedicine = aMedicine;
 		this.dosagePerDay = aDosagePerDay;
 		this.duration = aDuration;
 		this.quantity = aQuantity;
@@ -22,12 +22,12 @@ public class PrescriptionItem {
 		
 	}
 
-	public Medicine getMeds() {
-		return meds;
+	public Medicine getMedicine() {
+		return theMedicine;
 	}
 
-	public void setMeds(Medicine meds) {
-		this.meds = meds;
+	public void setMedicine(Medicine aMedicine) {
+		this.theMedicine = aMedicine;
 	}
 
 	public int getQuantity() {
