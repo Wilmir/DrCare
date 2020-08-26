@@ -9,7 +9,7 @@ public class Prescription {
 	private String theName;
 	private LocalDate theDatePrescribed;
 	private String theStatus;
-	private ArrayList<Medicine> theMedicines;
+	private ArrayList<PrescriptionItem> theItems;
 	
 	
 	private Pharmacist thePharmacist;
@@ -73,12 +73,12 @@ public class Prescription {
 		this.thePatient = thePatient;
 	}
 
-	public ArrayList<Medicine> getTheMedicines() {
-		return theMedicines;
+	public ArrayList<PrescriptionItem> getTheItems() {
+		return theItems;
 	}
 
-	public void setTheMedicines(ArrayList<Medicine> theMedicines) {
-		this.theMedicines = theMedicines;
+	public void setTheMedicines(ArrayList<PrescriptionItem> theItems) {
+		this.theItems = theItems;
 	}
 	
 	
