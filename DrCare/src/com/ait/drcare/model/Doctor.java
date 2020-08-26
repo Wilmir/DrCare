@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Doctor extends User{
 	
-	private ArrayList<String> Patients;
+	private ArrayList<Patient> Patients;
 	private String phoneNumber;
 	
 	public Doctor()
@@ -21,25 +21,39 @@ public class Doctor extends User{
 	}
 	
 	
-	public void AddPatient()
-	{
+	public void AddPatient(Patient aPatient){
 		
+		Patients.add(aPatient);	
 	}
 
-	public void RemovePatient() {
-		
+	public void RemovePatient(Patient aPatient) {
+		Patients.remove(aPatient);
 	}
 	
-	public void FindPatient() {
+	public void FindPatient(String Name) {
+		
+		Patient searchPatient = new Patient();
+		for (Patient patient : Patients) {
+			if (patient.getTheName() == Name) {
+				searchPatient = patient;
+			}
+		}
+		
+		//Update to display/ trim down displayed list
 		
 	}
 	
 	public void DisplayPatient() {
 		
+		//Access Patient's toString
+		
 	}
 	
-	public void AccessAllergies() {
+	public void AccessAllergies(Patient aPatient) {
 		
+		
+		ArrayList<String> patientAllergies = new ArrayList<String>();
+		//Display on form a list of the allergies
 	}
 	
 	public void CreatePrescription()
@@ -47,11 +61,11 @@ public class Doctor extends User{
 		
 	}
 
-	public ArrayList<String> getPatients() {
+	public ArrayList<Patient> getPatients() {
 		return Patients;
 	}
 
-	public void setPatients(ArrayList<String> patients) {
+	public void setPatients(ArrayList<Patient> patients) {
 		Patients = patients;
 	}
 
