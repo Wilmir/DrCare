@@ -27,10 +27,14 @@ public class Pharmacist extends User{
 	}
 
 	public void AddOrder(Prescription order){
-		
+		orders.add(order);
+		//Update display if needed
 	}
 
-	public void UpdateOrder() {
+	public void UpdateOrder(Prescription order) {
+		
+		
+		
 		
 	}
 	

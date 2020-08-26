@@ -30,7 +30,7 @@ public class Doctor extends User{
 		Patients.remove(aPatient);
 	}
 	
-	public void FindPatient(String Name) {
+	public Patient FindPatient(String Name) {
 		
 		Patient searchPatient = new Patient();
 		for (Patient patient : Patients) {
@@ -38,7 +38,7 @@ public class Doctor extends User{
 				searchPatient = patient;
 			}
 		}
-		
+		return searchPatient;
 		//Update to display/ trim down displayed list
 		
 	}
