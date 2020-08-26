@@ -9,13 +9,15 @@
     <title>Doctor Page</title>
 </h:head>    
 <h:body> 
+
+<h:form>
+	<h:commandButton id="logout" styleClass="ActionButton"  action="#{loginController.logout}" value="logout" title="Log Out"/>
+</h:form>
 <h:form>
     <h2>Welcome Dr Alan!</h2>
   
-   <h:dataTable value ="#{userListBean.patients}" var = "patient"
-					 styleClass = "nameTable"
-					 headerClass = "nameTable"
-					 rowClasses = "nameTableOddRow,nameTableEvenRow">
+   <h:dataTable value ="#{userListBean.patients}" var = "patient">
+					
 				<h:column>
 					<f:facet name="header"> Name</f:facet>
 						<h:outputText value = "#{patient.theName}" />
@@ -45,7 +47,8 @@
 						 
 				</h:column>
 		</h:dataTable>
-	
+		
+		
 </h:form>  
 </h:body>    
 </html>
