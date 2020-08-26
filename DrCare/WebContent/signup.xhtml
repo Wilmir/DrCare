@@ -61,7 +61,7 @@
     <h:outputLabel>By creating an account you agree to our </h:outputLabel>
      <h:outputLink value="#" >Terms </h:outputLink>
 	<br></br>
-    <h:commandButton id="submit" styleClass="ActionButton" action="#{registrationController.addUser}" value="Register" title="Register"/> 
+    <h:commandButton id="submit" styleClass="ActionButton" action="#{registrationController.addUser(userBean)}" value="Register" title="Register"/> 
     <br></br>
  	<h:outputLabel>Already have an account?</h:outputLabel>
    <h:outputLink value="login.xhtml" >Sign in</h:outputLink> <br/>
