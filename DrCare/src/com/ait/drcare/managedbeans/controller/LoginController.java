@@ -25,16 +25,8 @@ public class LoginController {
 		existingUsers = Helper.getBean("userListBean", UserListBean.class);
 	}
 	
-	public UserBean getUserBean() {
-		return userBean;
-	}
-
 	public void setUserBean(UserBean userBean) {
 		this.userBean = userBean;
-	}
-
-	public UserListBean getExistingUsers() {
-		return existingUsers;
 	}
 
 	public void setExistingUsers(UserListBean existingUsers) {
@@ -85,7 +77,7 @@ public class LoginController {
 			}
 
 			// if user is a pharmacist
-			if (registeredUser.getRole().equals(ROLE_PHARMACIST)) {
+			if (registeredUser.getRole().equals("Pharmacist")) {
 				System.out.println("Pharmacist Recognised, sending to Pharmacist page");
 				return "pharmacist?faces-redirect=true";
 			}
@@ -95,7 +87,6 @@ public class LoginController {
 
 		// Track number of logins
 		else {
-			
 			if (registeredUser.getFailedAttempts() >= 5) {
 				System.out.println("loginlocked");
 				registeredUser.setAccountLock(true);
