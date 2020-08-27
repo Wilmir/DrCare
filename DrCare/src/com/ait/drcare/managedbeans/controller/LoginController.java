@@ -65,6 +65,9 @@ public class LoginController {
 			System.out.println(message);
 			registeredUser.resetFailedAttempts();
 
+			//Add user attribute to session
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", registeredUser.getTheEmail());
+
 			// if user is a patient
 			if (registeredUser.getRole().equals("Patient")) {
 				System.out.println("Patient Recognised, sending to patient page");
@@ -74,6 +77,7 @@ public class LoginController {
 			// if user is a gp
 			if (registeredUser.getRole().equals("Doctor")) {
 				System.out.println("GP Recognised, sending to GP page");
+				
 				return "doctor?faces-redirect=true";
 			}
 
