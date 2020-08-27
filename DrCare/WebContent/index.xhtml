@@ -5,25 +5,46 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-	<h:outputStylesheet name = "style.css" library = "css"/>
-	<title>Welcome Page</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet" />
+   <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+   <h:outputStylesheet name = "style.css" library = "css"/>
+   <title>Welcome Page</title>
+	   <!-- Required meta tags -->
 </h:head>
 <body>
-
-	<h2>Welcome to Doctor Care!</h2>
-	 <div class="login">    
-
-	 <label><b>Join Our Services Today! </b> </label>      
-         
-	<form action="signup.jsf">
-    	<input type="submit" id="register" value="Sign Up" />
-	</form>
-	 <label><b>Already have an account?</b> </label>    
-	 <form action="login.jsf">
-    	<input type="submit" id="log" value="Log In" />
-	</form>
-
+	<div class = "container">
+		<!-- Header -->		
+		<div class = "header">
+			<div class = "header-row">
+				<div class = "logo">Dr Care</div>
+				<div class = "header-login">Inline Login Form Goes here</div>
+			</div>
+		</div>
+		
+		<!-- Main -->
+		<div class = "main">	
+			<div class = "main-left">
+			
+			</div>
+			<div class = "main-right">
+				<h2>Welcome to Doctor Care!</h2>
+				<div class="login">    
+					<label><b>Join Our Services Today! </b> </label>       
+					<form action="signup.jsf">
+				    	<input type="submit" id="register" value="Sign Up" />
+					</form>
+					<label><b>Already have an account?</b> </label>    
+					<form action="login.jsf">
+				    	<input type="submit" id="log" value="Log In" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<div class = "footer">
+			<p>&copy; 2020 DrCare</p>
+		</div>
 	</div>
-
 </body>
 </html>
