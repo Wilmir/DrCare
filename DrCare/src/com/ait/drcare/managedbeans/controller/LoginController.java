@@ -70,12 +70,14 @@ public class LoginController {
 
 			// if user is a patient
 			if (registeredUser.getRole().equals("Patient")) {
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("role", "Patient");
 				System.out.println("Patient Recognised, sending to patient page");
 				return "patient?faces-redirect=true";
 			}
 
 			// if user is a gp
 			if (registeredUser.getRole().equals("Doctor")) {
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("role", "Doctor");
 				System.out.println("GP Recognised, sending to GP page");
 				
 				return "doctor?faces-redirect=true";
@@ -83,6 +85,7 @@ public class LoginController {
 
 			// if user is a pharmacist
 			if (registeredUser.getRole().equals("Pharmacist")) {
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("role", "Pharmacist");
 				System.out.println("Pharmacist Recognised, sending to Pharmacist page");
 				return "pharmacist?faces-redirect=true";
 			}
