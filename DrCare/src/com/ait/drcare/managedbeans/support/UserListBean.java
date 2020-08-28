@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import com.ait.drcare.model.Doctor;
 import com.ait.drcare.model.Patient;
 import com.ait.drcare.model.Pharmacist;
+import com.ait.drcare.model.Prescription;
 import com.ait.drcare.model.User;
 
 
@@ -23,8 +24,9 @@ public class UserListBean {
 	private ArrayList<Integer> qualifiedPharmacistsLicenses;
 	
 	private ArrayList<Patient> patients;
-	
-	
+
+	private ArrayList<Prescription> pharmacistOrders;
+
 	
 
 	@PostConstruct
@@ -53,6 +55,22 @@ public class UserListBean {
 		users.add(ph2);
 		users.add(doco);
 		
+		
+		
+		//Prescriptions In Data
+		Prescription prescription1 = new Prescription();
+		Prescription prescription2 = new Prescription();
+		Prescription prescription3 = new Prescription();
+		Prescription prescription4 = new Prescription();
+		Prescription prescription5 = new Prescription();
+		
+		
+		ph2.AddOrder(prescription1);
+		ph2.AddOrder(prescription2);
+		ph2.AddOrder(prescription3);
+		ph2.AddOrder(prescription4);
+		ph2.AddOrder(prescription5);
+	
 		
 		//add patients to a separate arraylist
 		for(int counter=0; counter<users.size(); counter++) {
