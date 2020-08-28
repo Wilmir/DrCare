@@ -37,13 +37,20 @@ public class Pharmacist extends User{
 		return order.getTheStatus();
 	}
 	
+
 	public String orderDispensed(Prescription order) {
 		order.setTheStatus(order.PRESCRIPTION_DISPENSED);
+		return null;
+	}
+	
+	public String DispenseOrder(Prescription order) {
+
 		
 		return order.getTheStatus();
 	}
 	
 	
+
 
 
 	public String removeOrder(Prescription order) {
@@ -53,6 +60,7 @@ public class Pharmacist extends User{
 	}
 	
 	//Intended for use of database
+
 	public void setOrders(ArrayList<Prescription> orders) {
 		this.orders = orders;
 	}
