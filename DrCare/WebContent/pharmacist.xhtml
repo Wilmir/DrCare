@@ -13,6 +13,7 @@
 <h:form>
 	<h:commandButton id="logout" styleClass="ActionButton"  action="#{loginController.logout}" value="logout" title="Log Out"/>
 </h:form>
+<h:panelGroup rendered="#{sessionScope.role == 'Pharmacist'}">
 <h2 style="text-align:center">User Profile </h2>
 
 <div class="card">
@@ -31,6 +32,10 @@
   <p><button>View Prescription</button></p>
   <p><button>Upload Videos about Medicine</button></p>
 </div>
+</h:panelGroup>
 
+<h:panelGroup rendered="#{sessionScope.role != 'Pharmacist' or sessionScope == null}">
+	<h1>You do not have access to this page. Return to <a href="login.jsf">Login</a></h1>
+</h:panelGroup>
 </body>
 </html>
