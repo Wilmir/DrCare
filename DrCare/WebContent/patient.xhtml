@@ -33,7 +33,7 @@
   <p><button>View Videos about medicine</button></p>
 </div>
 </h:panelGroup>
-<h:panelGroup rendered="#{sessionScope.role != 'Pharmacist' or sessionScope == null}">
+<h:panelGroup rendered="#{sessionScope.role != 'Patient' or sessionScope == null}">
 	<h1>You do not have access to this page. Return to <a href="login.jsf">Login</a></h1>
 </h:panelGroup>
 </body>
