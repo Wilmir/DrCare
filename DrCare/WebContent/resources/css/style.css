@@ -2,7 +2,6 @@
   box-sizing: border-box;
 }
 
-
 body  
 {  
     margin: 0;  
@@ -11,70 +10,13 @@ body
   	font-family: 'Raleway', sans-serif;
 }
   
-.container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
 
-.main {
-    flex-grow: 1;
-    width:100%;
-    display:flex;
-}
-
-.main-left, .main-right{
-	width:50%
-}
-
-
-.header{
-	padding: 10px;
-	background: #0c77a9; /* dark blue */
-    color: #ffffff; /* whitee */
-}
-
-.header-row{
-	display:flex;
-	justify-content: space-between;
-}
-
-
-
-.footer {
-	padding:10px;
-    flex-shrink: 0;
-    background: #434343ff; /* dark gray */
-    color: #ffffff; /* white */
-}
-
-.footer p{
-	margin:0;
-	padding:0;
-}
-
-
-.login{  
-        width: 382px;  
-        overflow: hidden;  
-        margin: auto;  
-        margin: 20 0 0 450px;  
-        padding: 50px;  
-        background: gray;  
-        border-radius: 15px ;      
-}  
-
-h2{  
-    text-align: center;  
-    color: gray;  
-    padding: 20px;  
-}  
 label{  
     color: white;  
     font-size: 17px;
     margin: 10px;   
 }  
+
 #Uname{  
     width: 300px;  
     height: 30px;  
@@ -83,6 +25,7 @@ label{
     padding-left: 8px; 
     margin: 10px;   
 }  
+
 #Pass{  
     width: 300px;  
     height: 30px;  
@@ -91,28 +34,7 @@ label{
     padding-left: 8px;
     margin: 10px;
 }  
-#log{  
-    width: 300px;  
-    height: 30px;  
-    border: none;  
-    border-radius: 17px;
-    margin: 10px;
-    padding-left: 7px;  
-    color: black;  
-  
-  
-}  
-#register{  
-    width: 300px;  
-    height: 30px;  
-    border: none;  
-    border-radius: 17px;
-    margin: 10px;
-    padding-left: 7px;  
-    color: black;  
-  
-  
-}  
+
 span{  
     color: white;  
     font-size: 17px;  
@@ -121,3 +43,6 @@ a{
     float: right;  
     background-color: grey;  
 }
+
+
+
