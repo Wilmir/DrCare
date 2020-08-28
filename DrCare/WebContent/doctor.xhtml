@@ -10,31 +10,42 @@
 </h:head>    
 <h:body>
 <h:panelGroup rendered="#{sessionScope.role == 'Doctor'}">
-<h:form>
-<h3>Search for Patient</h3>
-		<table>
-		<tr>
-			<td>Enter Patient ID :</td>
-			<td><h:inputText  size="10" id="name" value="#{patientController.patientID}"/></td>
-		</tr>
-		<tr>
-		<td><h:commandButton value="search"
-			action="#{patientController.searchPatient}" /></td>
-		</tr>	
-		</table>
-		
-	
-			
+	<h:form>
+    <h2>Welcome Dr Alan!</h2>
+  
+   <h:dataTable value ="#{userListBean.patients}" var = "patient">
+					
+				<h:column>
+					<f:facet name="header"> Name</f:facet>
+						<h:outputText value = "#{patient.theName}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+						<h:outputText value = "#{patient.theID}" />
+				</h:column> 
+				<h:column>
+					<f:facet name="header"> M.Card No.</f:facet>
+						<h:outputText value = "#{patient.theMedicalCardNumber}" />
+				</h:column>
 				
-			<h:dataTable value="#{patientController.patientSearch}" var="row">
 				<h:column>
-					<h:outputText value="ID: #{row.theName}"/>
+					<f:facet name="header">Allergies</f:facet>
+					<h:commandLink value="View" action="allergies.xhtml"/>
+						 
 				</h:column>
 				<h:column>
-					<h:outputText value="Qty: #{row.theID}"/>
+					<f:facet name="header">View Prescription</f:facet>
+					<h:commandLink value="View" action="prescription.xhtml"/>
+						 
 				</h:column>
-			</h:dataTable>
-	
+				<h:column>
+					<f:facet name="header">Create new Prescription</f:facet>
+					<h:commandLink value="Add" action="prescription.xhtml"/>
+						 
+				</h:column>
+		</h:dataTable>
+		
+		
 </h:form>
 
 <h:form>
