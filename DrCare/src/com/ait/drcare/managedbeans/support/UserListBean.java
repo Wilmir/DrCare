@@ -23,8 +23,8 @@ public class UserListBean {
 	private ArrayList<Integer> qualifiedPharmacistsLicenses;
 	
 	private ArrayList<Patient> patients;
-
-
+	
+	
 	
 
 	@PostConstruct
@@ -44,8 +44,7 @@ public class UserListBean {
 		allergies.add("Aspirin");
 		Patient p1 = new Patient("John Doe", 3456, "password234", "johndoe@gmail.com", allergies, "18734F", "Athlone, Co. Westmeath");
 		users.add(p1);
-		//patients.add(p1);
-		
+				
 		//Quick test users
 		Patient p2 = new Patient("Patient A", 3535, "A", "A",allergies,"A","A,A,A");
 		Pharmacist ph2 = new Pharmacist("Pharmacist B", 6969,"B", "B","B,B,B");
@@ -53,7 +52,7 @@ public class UserListBean {
 		users.add(p2);		
 		users.add(ph2);
 		users.add(doco);
-		//patients.add(p2);
+		
 		
 		//add patients to a separate arraylist
 		for(int counter=0; counter<users.size(); counter++) {
@@ -105,4 +104,7 @@ public class UserListBean {
 		patient.setCanEdit(true);
 		return null;
 	}
+	
+	
+	
 }

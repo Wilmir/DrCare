@@ -19,5 +19,10 @@
 		<managed-bean-class>com.ait.drcare.managedbeans.support.UserListBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>patientController</managed-bean-name>
+		<managed-bean-class>com.ait.drcare.managedbeans.controller.PatientController</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>
