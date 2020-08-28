@@ -39,9 +39,11 @@ public class Pharmacist extends User{
 	}
 	
 	public void DispenseOrder() {
+		//Get order, change status to DISPENSED
 		
 	}
 
+	//Intended for use of database
 	public void setOrders(ArrayList<Prescription> orders) {
 		this.orders = orders;
 	}

@@ -10,6 +10,7 @@ public class Doctor extends User{
 	public Doctor()
 	{
 		this.role = "Doctor";
+		this.Patients = new ArrayList<Patient>();
 	}
 	
 	public Doctor(String name, int ID, String password,
@@ -17,6 +18,7 @@ public class Doctor extends User{
 		
 		super(name, ID, password, email,address,"Doctor");
 		this.phoneNumber = phoneNumber;
+		this.Patients = new ArrayList<Patient>();
 		
 	}
 	
@@ -43,6 +45,11 @@ public class Doctor extends User{
 		
 	}
 	
+	public int getPatientCount() {
+		return Patients.size();
+	}
+	
+	
 	public void DisplayPatient() {
 		
 		//Access Patient's toString
@@ -65,6 +72,7 @@ public class Doctor extends User{
 		return Patients;
 	}
 
+	//Method designed with retreiving from database in mind
 	public void setPatients(ArrayList<Patient> patients) {
 		Patients = patients;
 	}

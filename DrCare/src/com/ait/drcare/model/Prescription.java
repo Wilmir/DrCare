@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Prescription {
 
 	private String theName;
-	private LocalDate theDatePrescribed;
+	private Date theDatePrescribed;
 	private String theStatus;
 	private ArrayList<PrescriptionItem> theItems;
 	
@@ -26,7 +26,7 @@ public class Prescription {
 		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
 	}
 	
-	public Prescription(String name, LocalDate datePrescribed)
+	public Prescription(String name, Date datePrescribed)
 	{
 		this.theName = name;
 		this.theDatePrescribed = datePrescribed;		
@@ -41,11 +41,11 @@ public class Prescription {
 		this.theName = theName;
 	}
 
-	public LocalDate getTheDatePrescribed() {
+	public Date getTheDatePrescribed() {
 		return theDatePrescribed;
 	}
 
-	public void setTheDatePrescribed(LocalDate theDatePrescribed) {
+	public void setTheDatePrescribed(Date theDatePrescribed) {
 		this.theDatePrescribed = theDatePrescribed;
 	}
 
