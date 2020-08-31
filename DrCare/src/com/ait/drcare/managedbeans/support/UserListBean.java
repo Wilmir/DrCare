@@ -1,7 +1,6 @@
 package com.ait.drcare.managedbeans.support;
 
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
@@ -33,7 +32,7 @@ public class UserListBean {
 	@PostConstruct
 	public void init() {
 		//predefined user list
-		//Instansiate Variables
+		//Instantiate Variables
 		users = new ArrayList<User>();
 		qualifiedDoctorsLicenses = new ArrayList<>();
 		qualifiedPharmacistsLicenses = new ArrayList<>();
@@ -62,38 +61,25 @@ public class UserListBean {
 		
 		
 		//Prescriptions In Data
-		Prescription prescription1 = new Prescription("Tommy 2 strings", new Date(1,1,1));
-		prescription1.setThePharmacist(ph2);
-		Prescription prescription2 = new Prescription("Beany 2 strings", new Date(1,1,1));
-		prescription2.setThePharmacist(ph1);
-		Prescription prescription3 = new Prescription("Beans McBeans", new Date(1,1,1));
-		prescription3.setThePharmacist(ph2);
-		Prescription prescription4 = new Prescription("Tommy loves Beans", new Date(1212,12,12));
-		Prescription prescription5 = new Prescription("Tommy 5 trings", new Date(1,1,1));
-		prescription5.setThePharmacist(ph2);
+		Prescription prescription1 = new Prescription();
+		Prescription prescription2 = new Prescription();
+		Prescription prescription3 = new Prescription();
+		Prescription prescription4 = new Prescription();
+		Prescription prescription5 = new Prescription();
+		
 		
 		prescriptions.add(prescription1);
-		prescriptions.add(prescription2);
+		/*prescriptions.add(prescription2);
 		prescriptions.add(prescription3);
 		prescriptions.add(prescription4);
-		prescriptions.add(prescription5); 
+		prescriptions.add(prescription5); */
 		
-		
-		//Patients in data
-		
-		Patient p3 = new Patient("Patient B", 3536, "A", "pB",allergies,"343","A,A,A");
-		Patient p4 = new Patient("Patient C", 3537, "A", "pC",allergies,"A3413","A,A,A");
-		Patient p5 = new Patient("Patient D", 3538, "A", "pD",allergies,"A999","A,A,A");
-		Patient p6 = new Patient("Patient E", 3539, "A", "pE",allergies,"Aw42","A,A,A");
-		Patient p7 = new Patient("Patient F", 3352, "A", "pF",allergies,"Beans","A,A,A");
-		Patient p8 = new Patient("Patient G", 3535, "A", "pG",allergies,"BEANSBEANS","A,A,A");
+		ph2.AddOrder(prescription1);
+		ph2.AddOrder(prescription2);
+		ph2.AddOrder(prescription3);
+		ph2.AddOrder(prescription4);
+		ph2.AddOrder(prescription5);
 	
-		users.add(p3);
-		users.add(p4);
-		users.add(p5);
-		users.add(p6);
-		users.add(p7);
-		users.add(p8);
 		
 		//add patients to a separate arraylist
 		for(int counter=0; counter<users.size(); counter++) {

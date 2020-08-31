@@ -6,37 +6,64 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-	<h:outputStylesheet name = "userpage.css" library = "css"/>
+	<h:outputStylesheet name="userpage.css" library="css" />
 </h:head>
 <body>
-<h:form>
-	<h:commandButton id="logout" styleClass="ActionButton"  action="#{loginController.logout}" value="logout" title="Log Out"/>
-</h:form>
-<h:panelGroup rendered="#{sessionScope.role == 'Patient'}">
-	<h2 style="text-align:center">User Profile </h2>
+	<h:form>
+		<h:commandButton id="logout" styleClass="ActionButton"
+			action="#{loginController.logout}" value="logout" title="Log Out" />
+	</h:form>
+	<h:panelGroup rendered="#{sessionScope.role == 'Patient'}">
+		<h2 style="text-align: center">User Profile</h2>
 
-<div class="card">
-  <img src="#{resource['images/patient.jpg']}" alt="pharmacist" style="width:100%"></img>
-  <h1>PATIENT</h1>
-  <p>User Name : </p>
-  <p>ID        : </p>
-  <p>email     : </p>
-  
-  <div style="margin: 24px 0;">
-    <a href="#"><i class="fa fa-ambulance"></i></a> 
-    <a href="#"><i class="fa fa-plus-square"></i></a>  
-    <a href="#"><i class="fa fa-user-md"></i></a>  
-    <a href="#"><i class="fa fa-hospital-o"></i></a> 
-  </div>
-  <p><button>View Prescription</button></p>
-  
-  <p><button>Pay</button></p>
-  <p><button>View Videos about medicine</button></p>
-</div>
-</h:panelGroup>
-<h:panelGroup rendered="#{sessionScope.role != 'Patient' or sessionScope == null}">
-	<h1>You do not have access to this page. Return to <a href="login.jsf">Login</a></h1>
-</h:panelGroup>
+		<div class="card">
+			<img src="#{resource['images/patient.jpg']}" alt="pharmacist"
+				style="width: 100%"></img>
+			<h1>PATIENT</h1>
+			<p>User Name :</p>
+			<p>ID :</p>
+			<p>email :</p>
+
+			<div style="margin: 24px 0;">
+				<a href="#"><i class="fa fa-ambulance"></i></a> <a href="#"><i
+					class="fa fa-plus-square"></i></a> <a href="#"><i
+					class="fa fa-user-md"></i></a> <a href="#"><i
+					class="fa fa-hospital-o"></i></a>
+			</div>
+			<h:form>
+				<h:dataTable value="#{patientBean.prescriptions}" var="presc">
+					<h:column>
+						<f:facet name="header">Name</f:facet>
+						<h:outputText value="#{presc.theName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Date Dispensed</f:facet>
+						<h:outputText value="#{presc.theDatePrescribed}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Pay</f:facet>
+						<h:commandLink value="Pay" />
+					</h:column>
+				</h:dataTable>
+			</h:form>
+			<p>
+				<button>View Prescription</button>
+			</p>
+
+			<p>
+				<button>Pay</button>
+			</p>
+			<p>
+				<button>View Videos about medicine</button>
+			</p>
+		</div>
+	</h:panelGroup>
+	<h:panelGroup
+		rendered="#{sessionScope.role != 'Patient' or sessionScope == null}">
+		<h1>
+			You do not have access to this page. Return to <a href="login.jsf">Login</a>
+		</h1>
+	</h:panelGroup>
 </body>
 </html>
 
