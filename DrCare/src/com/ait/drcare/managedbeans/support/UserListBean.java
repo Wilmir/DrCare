@@ -79,7 +79,21 @@ public class UserListBean {
 		prescriptions.add(prescription5); 
 		
 		
+		//Patients in data
+		
+		Patient p3 = new Patient("Patient B", 3536, "A", "pB",allergies,"343","A,A,A");
+		Patient p4 = new Patient("Patient C", 3537, "A", "pC",allergies,"A3413","A,A,A");
+		Patient p5 = new Patient("Patient D", 3538, "A", "pD",allergies,"A999","A,A,A");
+		Patient p6 = new Patient("Patient E", 3539, "A", "pE",allergies,"Aw42","A,A,A");
+		Patient p7 = new Patient("Patient F", 3352, "A", "pF",allergies,"Beans","A,A,A");
+		Patient p8 = new Patient("Patient G", 3535, "A", "pG",allergies,"BEANSBEANS","A,A,A");
 	
+		users.add(p3);
+		users.add(p4);
+		users.add(p5);
+		users.add(p6);
+		users.add(p7);
+		users.add(p8);
 		
 		//add patients to a separate arraylist
 		for(int counter=0; counter<users.size(); counter++) {
