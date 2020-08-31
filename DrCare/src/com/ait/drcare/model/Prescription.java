@@ -14,6 +14,8 @@ public class Prescription {
 	
 	private Pharmacist thePharmacist;
 	private Patient thePatient;
+	
+	private static int theCount;
 
 	final String PRESCRIPTION_WAITING_PAYMENT = "Waiting for payment",
 				 PRESCRIPTION_DISPENSED = "Order Dispenced",
@@ -23,7 +25,13 @@ public class Prescription {
 	public Prescription()
 	{
 
+		/*
+		 placehold Variables 	 
+		 */
+		this.theName = "Name";
+		this.theDatePrescribed = new Date(2020, 6, 21);	
 		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
+		theCount++;
 	}
 	
 	public Prescription(String name, Date datePrescribed)
@@ -31,6 +39,7 @@ public class Prescription {
 		this.theName = name;
 		this.theDatePrescribed = datePrescribed;		
 		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
+		theCount++;
 	}
 
 	public String getTheName() {

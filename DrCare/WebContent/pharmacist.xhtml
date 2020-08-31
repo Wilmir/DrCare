@@ -29,7 +29,35 @@
     <a href="#"><i class="fa fa-user-md"></i></a>  
     <a href="#"><i class="fa fa-hospital-o"></i></a> 
   </div>
-  <p><button>View Prescription</button></p>
+ <p><button>View Prescription</button></p>
+ 
+		
+	 <h:dataTable value ="#{pharmacistController.prescriptions}" var = "prescription">				
+				
+				<h:column>
+					<f:facet name="header"> Patient</f:facet>
+					<h:outputText value = "#{prescription.thePatient}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header"> Name</f:facet>
+					<h:outputText value = "#{prescription.theName}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header"> Date Issued</f:facet>
+					<h:outputText value = "#{prescription.theDatePrescribed}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header"> Prescription Status</f:facet>
+					<h:outputText value = "#{prescription.theStatus}" />
+				</h:column>
+				
+			
+		</h:dataTable>
+		
+		
   <p><button>Upload Videos about Medicine</button></p>
 </div>
 </h:panelGroup>

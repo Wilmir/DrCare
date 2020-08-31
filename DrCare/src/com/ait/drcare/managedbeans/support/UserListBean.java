@@ -17,6 +17,7 @@ import com.ait.drcare.model.User;
 @ManagedBean
 @SessionScoped
 public class UserListBean {
+	
 	private ArrayList<User> users;
 	
 	private ArrayList<Integer> qualifiedDoctorsLicenses;
@@ -25,16 +26,18 @@ public class UserListBean {
 	
 	private ArrayList<Patient> patients;
 
-	private ArrayList<Prescription> pharmacistOrders;
+	private ArrayList<Prescription> prescriptions;
 	
 
 	@PostConstruct
 	public void init() {
 		//predefined user list
+		//Instansiate Variables
 		users = new ArrayList<User>();
 		qualifiedDoctorsLicenses = new ArrayList<>();
 		qualifiedPharmacistsLicenses = new ArrayList<>();
 		patients= new ArrayList<Patient>();
+		prescriptions =  new ArrayList<Prescription>();
 		
 		Doctor d1 = new Doctor("Alan Care", 1234, "passw0rd", "alan@drcare.ie", "08913486", "Athlone, Co. Westmeath");
 		users.add(d1);
@@ -64,6 +67,12 @@ public class UserListBean {
 		Prescription prescription4 = new Prescription();
 		Prescription prescription5 = new Prescription();
 		
+		
+		prescriptions.add(prescription1);
+		/*prescriptions.add(prescription2);
+		prescriptions.add(prescription3);
+		prescriptions.add(prescription4);
+		prescriptions.add(prescription5); */
 		
 		ph2.AddOrder(prescription1);
 		ph2.AddOrder(prescription2);
@@ -122,4 +131,11 @@ public class UserListBean {
 		patient.setCanEdit(true);
 		return null;
 	}
+	
+	public ArrayList<Prescription> getPrescriptions(){
+		
+		//Insert code to only display for x user
+		return prescriptions;
+	}
+	
 }
