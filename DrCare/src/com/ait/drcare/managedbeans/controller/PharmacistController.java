@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import com.ait.drcare.helpers.Helper;
 import com.ait.drcare.managedbeans.support.UserListBean;
@@ -36,18 +37,10 @@ public class PharmacistController {
 		prescriptions= existingData.getPrescriptions();
 		
 		
-		Prescription prescription1 = new Prescription();
-		Prescription prescription2 = new Prescription();
-		Prescription prescription3 = new Prescription();
-		Prescription prescription4 = new Prescription();
-		Prescription prescription5 = new Prescription();
+
 		
 		
-		prescriptions.add(prescription1);
-		prescriptions.add(prescription2);
-		prescriptions.add(prescription3);
-		prescriptions.add(prescription4);
-		prescriptions.add(prescription5); 
+		findPrescriptionOrders();
 	}
 
 	public String getTheUserName() {
@@ -58,6 +51,29 @@ public class PharmacistController {
 		this.theUserName = theUserName;
 	}
 
+	
+	public void findPrescriptionOrders() {
+		
+		ArrayList<Prescription> orders = new ArrayList<Prescription>();
+		
+		String userEmail = "";
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+		userEmail= (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get( "user");
+		System.out.println(" User email is: " +userEmail);
+		
+		
+		//Filter out prescriptions for this specific pharmacist user
+		for (Prescription prescription : orders) {
+			
+			System.out.println(prescription.getThePharmacist().getTheName());
+			
+			if (prescription.getThePharmacist().getTheEmail() == userEmail) {
+				System.out.println("yes");
+			}
+		}
+		
+	}
+	
 	public ArrayList<Prescription> getPrescriptions() {
 		
 		//Foreach, find prescriptions assigned to this pharmacist
@@ -68,13 +84,8 @@ public class PharmacistController {
 		this.prescriptions = prescriptions;
 	}
 
-	public ArrayList<Patient> getPatientSearch() {
-		return patientSearch;
-	}
-
-	public void setPatientSearch(ArrayList<Patient> patientSearch) {
-		this.patientSearch = patientSearch;
-	}
+	
+	
 	
 
 

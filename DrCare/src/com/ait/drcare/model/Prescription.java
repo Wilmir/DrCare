@@ -39,6 +39,7 @@ public class Prescription {
 		this.theName = name;
 		this.theDatePrescribed = datePrescribed;		
 		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
+		
 		theCount++;
 	}
 

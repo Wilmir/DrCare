@@ -1,6 +1,7 @@
 package com.ait.drcare.managedbeans.support;
 
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
@@ -61,24 +62,23 @@ public class UserListBean {
 		
 		
 		//Prescriptions In Data
-		Prescription prescription1 = new Prescription();
-		Prescription prescription2 = new Prescription();
-		Prescription prescription3 = new Prescription();
-		Prescription prescription4 = new Prescription();
-		Prescription prescription5 = new Prescription();
-		
+		Prescription prescription1 = new Prescription("Tommy 2 strings", new Date(1,1,1));
+		prescription1.setThePharmacist(ph2);
+		Prescription prescription2 = new Prescription("Beany 2 strings", new Date(1,1,1));
+		prescription2.setThePharmacist(ph1);
+		Prescription prescription3 = new Prescription("Beans McBeans", new Date(1,1,1));
+		prescription3.setThePharmacist(ph2);
+		Prescription prescription4 = new Prescription("Tommy loves Beans", new Date(1212,12,12));
+		Prescription prescription5 = new Prescription("Tommy 5 trings", new Date(1,1,1));
+		prescription5.setThePharmacist(ph2);
 		
 		prescriptions.add(prescription1);
-		/*prescriptions.add(prescription2);
+		prescriptions.add(prescription2);
 		prescriptions.add(prescription3);
 		prescriptions.add(prescription4);
-		prescriptions.add(prescription5); */
+		prescriptions.add(prescription5); 
 		
-		ph2.AddOrder(prescription1);
-		ph2.AddOrder(prescription2);
-		ph2.AddOrder(prescription3);
-		ph2.AddOrder(prescription4);
-		ph2.AddOrder(prescription5);
+		
 	
 		
 		//add patients to a separate arraylist

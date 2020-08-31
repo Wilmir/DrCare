@@ -90,7 +90,7 @@ public class LoginController {
 				return "pharmacist?faces-redirect=true";
 			}
 
-			return "wut";
+			return "End of User check, You've taken a wrong turn";
 		}
 
 		// Track number of logins
