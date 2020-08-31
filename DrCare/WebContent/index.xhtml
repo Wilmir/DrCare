@@ -1,36 +1,36 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
 
 <h:head>
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet" />
-   <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet" />
-   <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
-   <h:outputStylesheet name = "index.css" library = "css"/>
+   <link href="https://fonts.googleapis.com/css2?family=Viga" rel="stylesheet" />
+   <h:outputStylesheet library="primefaces" name="primeicons/primeicons.css"  />
+   <h:outputStylesheet  name = "css/index.css"/>
    <title>Welcome Page</title>
 	   <!-- Required meta tags -->
 </h:head>
-<h:body>
-
+<body>
 	<div class = "container">
+		
 		<!-- Header -->		
 		<div class = "header">
 			<div class = "header-row">
 				<div class = "header-row-left">
 					<div class = "nav">
 						<ul>
-						  <li><a href="index.jsf">DrCare</a></li>
-						  <li><a href="#">About</a></li>
-						  <li><a href="#">Services</a></li>
+						  <li id = "logo"><a href="index.jsf">DrCare</a></li>
 						</ul>	
 					</div>
 				</div>
 				<div class = "header-row-right">
-					<div class = "login-form">
+					<div class = "login-form"> 
 						<h:form>
 							<div class="nav-login">
 						        <div class="nav-login-field">
@@ -48,36 +48,54 @@
 	    		</div>
 			</div>
 		</div>
-		
-		<!-- Main -->
-		<div class = "main">
-			<div class = "main-left">
-				<div class = "main-left-content">
-					<h1>Join DrCare today.</h1>
-					<h2>We're always looking for ways to make things a little simpler for our members.</h2>
-					<div class="form">    
-						<div class = "signup-form">
-							<form action="signup.jsf">
-						    	<input type="submit" id="register" value="Sign Up" />
-							</form>
+
+
+		<!-- Section -->
+		<div class = "section">
+			
+			<!-- My only purpose is to add an outline -->
+			<div class = "top-overlaid">
+				<div class = "main">
+					<div class = "main-left">
+						<div class = "main-left-content">
+							<div class = "h1-one-liner">
+								<div class ="one-liner-line">Manage your prescriptions online.</div>
+							</div>
+							<h4>Take the hassle out of visiting your doctor for common issues or repeat prescriptions.</h4>
+							<div class="form">    
+								<div class = "signup-form">
+									<form action="signup.jsf">
+								    	<input type="submit" id="register" value="Register" />
+									</form>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
-		<!-- Footer -->
-		<div class = "section">
+			
+			
+			<!-- Image overlate -->
+			<div class = "image-overlaid">
+			</div>
+				
+			<!-- My only purpose is to add an outline -->
+			<div class = "bottom-overlaid">
+			</div>
+			
+			
+			<!-- Footer -->
 			<div class = "footer">
 				<p>I am a footer</p>
 			</div>			
-			<!-- We can only put it here. If you need to adjust the wave, go to https://getwaves.io/ -->
+			<!-- We can only put it here. If you need to adjust the wave, go to https://getwaves.io/ --> 
 			<div class = "svg-container">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-				  <path fill="#ffffff" fill-opacity="1" d="M0,224L1440,64L1440,0L0,0Z"></path>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" height="320" width="100%" preserveAspectRatio="none">
+				  <path fill="#f0f3f8" fill-opacity="1.0" d="M0,256L80,250.7C160,245,320,235,480,197.3C640,160,800,96,960,69.3C1120,43,1280,53,1360,58.7L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
 				</svg>
 			</div>
+			
 		</div>
 	</div>
-</h:body>
+</body>
 </html>
