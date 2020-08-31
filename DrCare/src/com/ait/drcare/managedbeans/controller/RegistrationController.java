@@ -155,7 +155,10 @@ public class RegistrationController {
 
 	// Helper methods for notification   
     private void error(String message) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", message));
+        FacesContext currentInstance = FacesContext.getCurrentInstance();
+        if(currentInstance != null) {
+            currentInstance.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", message));
+        }
     }
     
     private void success(String message) {
