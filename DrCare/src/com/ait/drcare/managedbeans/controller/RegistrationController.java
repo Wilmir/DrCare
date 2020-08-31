@@ -42,7 +42,7 @@ public class RegistrationController {
 		}
 		
 		//3.a Verify the GP
-		if(userBean.getRole().equals("Doctor") && !isVerifiedGP(userBean)){
+		if(userBean.getRole().equals("GP") && !isVerifiedGP(userBean)){
 			System.out.println("GP Verification failed. Valid License Number ranges from 300000000 to 300090000");
 			error("We are not able to verify your GP qualification");
 			return null;
@@ -93,6 +93,7 @@ public class RegistrationController {
 	
 	// GP verification
 	private boolean isVerifiedGP(UserBean userBean) {
+		System.out.println(userBean.getLicenseNumber());
 		return userBean.getLicenseNumber() >= 300000000 && userBean.getLicenseNumber() <= 399999999;
 	}
 	
