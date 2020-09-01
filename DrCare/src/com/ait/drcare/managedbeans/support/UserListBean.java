@@ -166,4 +166,16 @@ public class UserListBean {
 		return prescriptionsForUser;
 	}
 	
+	//Pharmacist
+	public ArrayList<Prescription> getPrescriptions(Pharmacist pharmacist){
+		ArrayList<Prescription> prescriptionsForUser = new ArrayList<Prescription>();
+		//Insert code to only display for x user
+		for (Prescription prescription : prescriptions) {
+			if (prescription.getThePatient().equals(pharmacist)) {
+				prescriptionsForUser.add(prescription);
+			}
+		}
+		return prescriptionsForUser;
+	}
+	
 }
