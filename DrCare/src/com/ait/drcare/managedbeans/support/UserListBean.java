@@ -29,6 +29,7 @@ public class UserListBean {
 	
 	private ArrayList<Pharmacist> pharmacists;
 
+	
 	private ArrayList<Prescription> prescriptions;
 	
 
@@ -40,6 +41,7 @@ public class UserListBean {
 		qualifiedDoctorsLicenses = new ArrayList<>();
 		qualifiedPharmacistsLicenses = new ArrayList<>();
 		patients= new ArrayList<Patient>();
+		pharmacists = new ArrayList<Pharmacist>();
 		prescriptions =  new ArrayList<Prescription>();
 		
 		Doctor d1 = new Doctor("Alan Care", 1234, "passw0rd", "alan@drcare.ie", "08913486", "Athlone, Co. Westmeath");
@@ -106,10 +108,12 @@ public class UserListBean {
 		users.add(p7);
 		users.add(p8);
 		
-		//add patients to a separate arraylist
-		for(int counter=0; counter<users.size(); counter++) {
-			if (users.get(counter) instanceof Patient) {
-				patients.add((Patient) users.get(counter));
+		//add patients, and pharmnacist to a separate arraylist
+		for(User user: users) {
+			if (user instanceof Patient) {
+				patients.add((Patient) user);
+			}else if(user instanceof Pharmacist) {
+				pharmacists.add((Pharmacist) user);
 			}
 		}
 		
@@ -160,17 +164,28 @@ public class UserListBean {
 	public void setPatients(ArrayList<Patient> patients) {
 		this.patients = patients;
 	}
-	public String editPatient(Patient patient) {
-		patient.setCanEdit(true);
-		return null;
-	}
-	
+
+
 	public ArrayList<Pharmacist> getPharmacists(){
 		return pharmacists;
 	}
 	
 	
 	
+
+	public ArrayList<Prescription> getPrescriptions() {
+		return prescriptions;
+	}
+
+	public void setPrescriptions(ArrayList<Prescription> prescriptions) {
+		this.prescriptions = prescriptions;
+	}
+
+	public void setPharmacists(ArrayList<Pharmacist> pharmacists) {
+		this.pharmacists = pharmacists;
+	}
+
+
 	public ArrayList<Prescription> getPrescriptions(Patient patient){
 		ArrayList<Prescription> prescriptionsForUser = new ArrayList<Prescription>();
 		//Insert code to only display for x user

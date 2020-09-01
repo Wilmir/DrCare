@@ -114,9 +114,11 @@ public class RegistrationController {
 				break;
 			case "Pharmacist":
 				user = new Pharmacist();
+				registry.getPharmacists().add((Pharmacist) user);
 				break;
 			default:
 				user = new Patient();
+				registry.getPatients().add((Patient) user);
 				break;
 		}
 				
