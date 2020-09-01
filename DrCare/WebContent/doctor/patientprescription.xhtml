@@ -10,71 +10,14 @@
 	<ui:composition>
 		<h:form rendered="#{sessionScope.role == 'Doctor'}">
 			 <h2>Prescription</h2>
-			<!--<div class="p-field">
-			            <p:outputLabel for="patient" value="Patient" />
-				    	<p:selectOneMenu id = "patient" value="#{doctorBean.currentPatient}"
-				                     converter="#{userConverter}" 
-				                     panelStyle="width: 180px"
-				                     effect="fade" 
-				                     var="patient" 
-				                     style="width:180px" 
-				                     filter="true" 
-				                     filterMatchMode="startsWith"
-				                     label = "Search for Patient">
-				            <f:selectItems value="#{userListBean.patients}" 
-				                           var="patient" 
-				                           itemLabel="#{patient.theName}" 
-				                           itemValue="#{patient.theID}" />
-				        </p:selectOneMenu>
-			     </div>
-			     
-			     <div class="p-field">
-			            <p:outputLabel for="pharmacist" value="Pharmacist" />
-				    	<p:selectOneMenu id = "pharmacist" value="#{doctorBean.currentPatient}"
-				                     converter="#{userConverter}" 
-				                     panelStyle="width: 180px"
-				                     effect="fade" 
-				                     var="patient" 
-				                     style="width:180px" 
-				                     filter="true" 
-				                     filterMatchMode="startsWith"
-				                     label = "Search for Patient">
-				            <f:selectItems value="#{userListBean.patients}" 
-				                           var="patient" 
-				                           itemLabel="#{patient.theName}" 
-				                           itemValue="#{patient.theID}" />
-				        </p:selectOneMenu>
-			     </div>
-			     
-			     
-			     <h3>Medicine</h3>
-			     <div class="p-field">
-			     	    <p:outputLabel for="medicine" value="Medicine" />
-				    	<p:selectOneMenu id = "medicine" value="#{doctorBean.currentPatient}"
-				                     converter="#{userConverter}" 
-				                     panelStyle="width: 180px"
-				                     effect="fade" 
-				                     var="patient" 
-				                     style="width:180px" 
-				                     filter="true" 
-				                     filterMatchMode="startsWith"
-				                     label = "Search for Patient">
-				            <f:selectItems value="#{userListBean.patients}" 
-				                           var="patient" 
-				                           itemLabel="#{patient.theName}" 
-				                           itemValue="#{patient.theID}" />
-				        </p:selectOneMenu>
-			     </div>
-			     
-			     <div class="p-field">
-			     	<h:outputLabel for="dosage" value="Dosage: " />
-        			<p:spinner id="dosage" stepFactor="0.25" min="0.125"/>
-			     </div>
-			     
-			     <div class="p-field">
-			     	<h:outputLabel for="duration" value="Duration: " />
-        			<p:spinner id="duration"/>
-			     </div>  -->
+		
+		
+		<h:selectOneMenu value="Medicine">
+   			<f:selectItems value = "#{medicineListBean.medicineList}" var="medicine"
+   			 itemLabel="#{medicine.theName}"/>
+   		</h:selectOneMenu>
+
+	
 		</h:form>
 	</ui:composition>
 </html>

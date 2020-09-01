@@ -17,11 +17,11 @@ public class Medicine {
 		this.theSideEffects = new ArrayList<String>();
 	}
 	
-	public Medicine(String name,LocalDate expiryDate) {
+	public Medicine(String name) {
 		this.theName = name;
 		this.theContents = new ArrayList<String>();
 		this.theSideEffects = new ArrayList<String>();
-		this.theExpiryDate = expiryDate;
+	//	this.theExpiryDate = expiryDate;
 	}
 
 	public String getTheName() {

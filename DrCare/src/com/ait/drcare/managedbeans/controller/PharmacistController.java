@@ -12,18 +12,19 @@ import com.ait.drcare.helpers.Helper;
 import com.ait.drcare.managedbeans.support.UserListBean;
 import com.ait.drcare.model.Patient;
 import com.ait.drcare.model.Prescription;
-
+import com.ait.drcare.model.Pharmacist;
 
 @ManagedBean
 @SessionScoped
 public class PharmacistController {
 	
-	private String theUserName;
+	private String theUserEmail;
 	private ArrayList<Prescription> prescriptions;
+	private ArrayList<Pharmacist> pharmacists;
 	private PrescriptionController pController;
 	
 	
-	private UserListBean existingData;
+	private UserListBean dataStore;
 	
 	
 	private ArrayList<Patient> patientSearch; //Patients user is searching for
@@ -34,21 +35,28 @@ public class PharmacistController {
 		
 		
 		existingData = Helper.getBean("userListBean", UserListBean.class);
-		prescriptions= existingData.getPrescriptions();
 		
-		
+		theUserEmail = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+		dataStore = Helper.getBean("userListBean", UserListBean.class);
+		pharmacists = dataStore.getQualifiedPharmacistsLicenses()
+		for (Patient patient : patients) {
+			if (patient.getTheEmail().equals(userEmail)) {
+				currentUser = patient;
+			}
+			break;
+		}
 
 		
 		
 		findPrescriptionOrders();
 	}
 
-	public String getTheUserName() {
-		return theUserName;
+	public String getTheUserEmail() {
+		return theUserEmail;
 	}
 
-	public void setTheUserName(String theUserName) {
-		this.theUserName = theUserName;
+	public void setTheUserEmail(String theUserName) {
+		this.theUserEmail = theUserName;
 	}
 
 	
