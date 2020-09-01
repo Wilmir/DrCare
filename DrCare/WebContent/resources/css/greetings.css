@@ -1,0 +1,11 @@
+.greetings{
+	margin:0;
+	bottom:0;
+	width:100%;
+	font-size: 30px;
+}
+
+.greetings h2{
+	border: 1px solid #d3d3d3;
+	padding: 10px 0px;
+}
