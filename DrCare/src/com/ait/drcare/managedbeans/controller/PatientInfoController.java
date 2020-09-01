@@ -30,7 +30,44 @@ public class PatientInfoController {
 			if (patient.getTheEmail().equals(userEmail)) {
 				currentUser = patient;
 			}
+			break;
 		}
-		prescriptions = dataStore.getPrescriptions(); //pass current user to get only their prescriptions
+		prescriptions = dataStore.getPrescriptions(currentUser); //pass current user to get only their prescriptions
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	public Patient getCurrentUser() {
+		return currentUser;
+	}
+
+	public void setCurrentUser(Patient currentUser) {
+		this.currentUser = currentUser;
+	}
+
+	public ArrayList<Patient> getPatients() {
+		return patients;
+	}
+
+	public void setPatients(ArrayList<Patient> patients) {
+		this.patients = patients;
+	}
+
+	public ArrayList<Prescription> getPrescriptions() {
+		return prescriptions;
+	}
+
+	public void setPrescriptions(ArrayList<Prescription> prescriptions) {
+		this.prescriptions = prescriptions;
+	}
+	
+	public String pay() {
+		return "paypal?faces-redirect=true";
 	}
 }

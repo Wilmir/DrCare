@@ -72,6 +72,10 @@ public class UserListBean {
 		Prescription prescription5 = new Prescription("Tommy 5 trings", new Date());
 		prescription5.setThePharmacist(ph2);
 		
+		prescription1.setTheStatus("Ready for pickup");
+		prescription1.setThePatient(p2);
+		prescription2.setThePatient(p1);
+		
 		
 		prescriptions.add(prescription1);
 		prescriptions.add(prescription2);
@@ -151,10 +155,15 @@ public class UserListBean {
 		return null;
 	}
 	
-	public ArrayList<Prescription> getPrescriptions(){
-		
+	public ArrayList<Prescription> getPrescriptions(Patient patient){
+		ArrayList<Prescription> prescriptionsForUser = new ArrayList<Prescription>();
 		//Insert code to only display for x user
-		return prescriptions;
+		for (Prescription prescription : prescriptions) {
+			if (prescription.getThePatient().equals(patient)) {
+				prescriptionsForUser.add(prescription);
+			}
+		}
+		return prescriptionsForUser;
 	}
 	
 }

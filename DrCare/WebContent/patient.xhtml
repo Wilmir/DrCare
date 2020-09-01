@@ -31,7 +31,7 @@
 					class="fa fa-hospital-o"></i></a>
 			</div>
 			<h:form>
-				<h:dataTable value="#{patientBean.prescriptions}" var="presc">
+				<h:dataTable value="#{patientInfoController.prescriptions}" var="presc">
 					<h:column>
 						<f:facet name="header">Name</f:facet>
 						<h:outputText value="#{presc.theName}" />
@@ -42,7 +42,7 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header">Pay</f:facet>
-						<h:commandLink value="Pay" />
+						<h:commandLink value="Pay" action="#{patientInfoController.pay}" rendered="#{presc.theStatus != 'Waiting for payment'}"/>
 					</h:column>
 				</h:dataTable>
 			</h:form>
