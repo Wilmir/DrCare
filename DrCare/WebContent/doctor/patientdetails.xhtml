@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition>
+		<h3>Patient Details</h3>		
+	    <p:accordionPanel multiple="true" activeIndex = "0,1,2" rendered="#{sessionScope.role == 'Doctor'}" >
+	        <p:tab title="Bio">
+	            <p:panelGrid>
+					    <!-- ADD THE BIO DETAILS HERE -->
+	            </p:panelGrid>
+	        </p:tab>
+	        
+	        <p:tab title="Allergies">
+	            <p:panelGrid>
+					    <!-- ADD THE ALLERGIES HERE -->
+	            </p:panelGrid>
+	        </p:tab>
+	        
+	        <p:tab title="Prescriptions">
+	            <p:panelGrid>
+					    <!-- ADD THE PRESCRIPTIONS HERE -->
+	            </p:panelGrid>
+	           	 
+	           	 <!-- Need a controller bean that will set the patient object of the PatientInfo bean  -->
+	           	 <br/>
+			     <p:commandButton value="Add Prescription" 
+			                      action="#{doctorController.addPrescription(doctorBean.currentPatient)}" />
+	        </p:tab>
+	    </p:accordionPanel>
+	</ui:composition>
+</html>

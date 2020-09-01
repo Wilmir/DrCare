@@ -1,0 +1,111 @@
+.header{
+	padding: 0px 200px;	
+  	background-image: linear-gradient(#f0f3f8, #f0f3f8); /* light blue to blue */
+    font-size: 18px;
+}
+
+.header .nav{
+	flex-grow:1;
+}
+
+
+.header-row{
+	display:flex;
+	justify-content: space-between;
+	flex-wrap:wrap;
+}
+
+.header-row-left{
+	display:flex;
+}
+
+.header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  line-height:40px;
+  height:40px;
+}
+
+.header li {
+  display: inline;
+}
+
+.header li a{
+	text-decoration:none;
+	margin: 0px 10px;
+	transition: all 0.3s ease;
+	color:gray;
+}
+
+#logo{
+	font-size: 20px;
+	font-weight: 900;
+}
+
+
+
+.header .nav a:hover{
+	color: #0c374d; /* dark blue */
+}
+
+
+
+.nav-login{
+	display:flex;
+	flex-wrap:wrap;
+}
+
+.login-form{
+  line-height:40px;
+  height:40px;
+}
+
+
+.nav-login-field{
+	margin: 0px 10px;
+}
+
+
+input[type="text"], input[type="password"]{
+	font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+	border:none;
+	padding: 7px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: gray;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: gray;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: pink;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: gray;
+}
+
+
+.loginButton, .logoutButton{
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px;
+	height: 35px;
+	background:rgba(255,255,255, 0.8);
+	text-shadow: none;
+	border: 1px solid transparent;
+	box-shadow:none;
+}
+
+.loginButton:hover, .logoutButton:hover{
+		background:rgba(255,255,255, 0.4);
+}

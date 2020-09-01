@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"	>
+
+	<ui:composition>
+		<h:form rendered="#{sessionScope.role == 'Doctor'}">
+			 <h2>Prescription</h2>
+			<!--<div class="p-field">
+			            <p:outputLabel for="patient" value="Patient" />
+				    	<p:selectOneMenu id = "patient" value="#{doctorBean.currentPatient}"
+				                     converter="#{userConverter}" 
+				                     panelStyle="width: 180px"
+				                     effect="fade" 
+				                     var="patient" 
+				                     style="width:180px" 
+				                     filter="true" 
+				                     filterMatchMode="startsWith"
+				                     label = "Search for Patient">
+				            <f:selectItems value="#{userListBean.patients}" 
+				                           var="patient" 
+				                           itemLabel="#{patient.theName}" 
+				                           itemValue="#{patient.theID}" />
+				        </p:selectOneMenu>
+			     </div>
+			     
+			     <div class="p-field">
+			            <p:outputLabel for="pharmacist" value="Pharmacist" />
+				    	<p:selectOneMenu id = "pharmacist" value="#{doctorBean.currentPatient}"
+				                     converter="#{userConverter}" 
+				                     panelStyle="width: 180px"
+				                     effect="fade" 
+				                     var="patient" 
+				                     style="width:180px" 
+				                     filter="true" 
+				                     filterMatchMode="startsWith"
+				                     label = "Search for Patient">
+				            <f:selectItems value="#{userListBean.patients}" 
+				                           var="patient" 
+				                           itemLabel="#{patient.theName}" 
+				                           itemValue="#{patient.theID}" />
+				        </p:selectOneMenu>
+			     </div>
+			     
+			     
+			     <h3>Medicine</h3>
+			     <div class="p-field">
+			     	    <p:outputLabel for="medicine" value="Medicine" />
+				    	<p:selectOneMenu id = "medicine" value="#{doctorBean.currentPatient}"
+				                     converter="#{userConverter}" 
+				                     panelStyle="width: 180px"
+				                     effect="fade" 
+				                     var="patient" 
+				                     style="width:180px" 
+				                     filter="true" 
+				                     filterMatchMode="startsWith"
+				                     label = "Search for Patient">
+				            <f:selectItems value="#{userListBean.patients}" 
+				                           var="patient" 
+				                           itemLabel="#{patient.theName}" 
+				                           itemValue="#{patient.theID}" />
+				        </p:selectOneMenu>
+			     </div>
+			     
+			     <div class="p-field">
+			     	<h:outputLabel for="dosage" value="Dosage: " />
+        			<p:spinner id="dosage" stepFactor="0.25" min="0.125"/>
+			     </div>
+			     
+			     <div class="p-field">
+			     	<h:outputLabel for="duration" value="Duration: " />
+        			<p:spinner id="duration"/>
+			     </div>  -->
+		</h:form>
+	</ui:composition>
+</html>
