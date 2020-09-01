@@ -18,6 +18,7 @@ import com.ait.drcare.model.Pharmacist;
 @SessionScoped
 public class PharmacistController {
 	
+	private Pharmacist currentUser;
 	private String theUserEmail;
 	private ArrayList<Prescription> prescriptions;
 	private ArrayList<Pharmacist> pharmacists;
@@ -33,15 +34,17 @@ public class PharmacistController {
 	public void init() {
 		prescriptions = new ArrayList<Prescription>(); //insansiate 
 		
-		
-		existingData = Helper.getBean("userListBean", UserListBean.class);
-		
+		//Get email from session
 		theUserEmail = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
-		dataStore = Helper.getBean("userListBean", UserListBean.class);
-		pharmacists = dataStore.getQualifiedPharmacistsLicenses()
-		for (Patient patient : patients) {
-			if (patient.getTheEmail().equals(userEmail)) {
-				currentUser = patient;
+		//Access the data, chekc users
+		dataStore = Helper.getBean("userListBean", UserListBean.class);	
+		
+		pharmacists = dataStore.getPharmacists();
+		
+		
+		for (Pharmacist pharmacist : pharmacists) {
+			if (pharmacist.getTheEmail().equals(theUserEmail)) {
+				currentUser = pharmacist;
 			}
 			break;
 		}

@@ -26,6 +26,8 @@ public class UserListBean {
 	private ArrayList<Integer> qualifiedPharmacistsLicenses;
 	
 	private ArrayList<Patient> patients;
+	
+	private ArrayList<Pharmacist> pharmacists;
 
 	private ArrayList<Prescription> prescriptions;
 	
@@ -111,6 +113,14 @@ public class UserListBean {
 			}
 		}
 		
+		//Add Pharmacist users to pharmacists data arrayList
+		for(int counter=0; counter<users.size(); counter++) {
+			if (users.get(counter) instanceof Pharmacist) {
+				pharmacists.add((Pharmacist) users.get(counter));
+			}
+		}
+		
+		
 		// valid doctors licenses range from 300000000 - 300090000
 		for(int i=300000000; i<=300090000; i++) {
 			qualifiedDoctorsLicenses.add(i);
@@ -155,6 +165,12 @@ public class UserListBean {
 		return null;
 	}
 	
+	public ArrayList<Pharmacist> getPharmacists(){
+		return pharmacists;
+	}
+	
+	
+	
 	public ArrayList<Prescription> getPrescriptions(Patient patient){
 		ArrayList<Prescription> prescriptionsForUser = new ArrayList<Prescription>();
 		//Insert code to only display for x user
@@ -171,7 +187,7 @@ public class UserListBean {
 		ArrayList<Prescription> prescriptionsForUser = new ArrayList<Prescription>();
 		//Insert code to only display for x user
 		for (Prescription prescription : prescriptions) {
-			if (prescription.getThePatient().equals(pharmacist)) {
+			if (prescription.getThePharmacist().equals(pharmacist)) {
 				prescriptionsForUser.add(prescription);
 			}
 		}
