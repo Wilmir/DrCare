@@ -40,6 +40,7 @@ public class UserListBean {
 		qualifiedDoctorsLicenses = new ArrayList<>();
 		qualifiedPharmacistsLicenses = new ArrayList<>();
 		patients= new ArrayList<Patient>();
+		pharmacists = new ArrayList<Pharmacist>();
 		prescriptions =  new ArrayList<Prescription>();
 		
 		Doctor d1 = new Doctor("Alan Care", 1234, "passw0rd", "alan@drcare.ie", "08913486", "Athlone, Co. Westmeath");
