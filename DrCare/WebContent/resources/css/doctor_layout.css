@@ -31,4 +31,5 @@
 #dashboard-left, #dashboard-right{
 	border: 1px solid #d3d3d3;
 	padding: 5px;
+	width:100%;
 }
