@@ -30,7 +30,7 @@
 	           	 <!-- Need a controller bean that will set the patient object of the PatientInfo bean  -->
 	           	 <br/>
 			     <p:commandButton value="Add Prescription" 
-			                      action="#{doctorController.addPrescription(doctorBean.currentPatient)}" />
+			                      action="#{prescriptionController.createPrescription}" />
 	        </p:tab>
 	    </p:accordionPanel>
 	</ui:composition>
