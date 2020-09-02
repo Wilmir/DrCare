@@ -1,27 +1,45 @@
 package com.ait.drcare.model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Medicine {
 	
+	private int theID;
 	private String theName;
-	private LocalDate theExpiryDate;
+	private Date theExpiryDate;
 	private ArrayList<String> theContents;
 	private ArrayList<String> theSideEffects;
+	private double theUnitPrice;
 	
 	
 	public Medicine()
 	{
+		this.theID = (int) (Math.random()*(Integer.MAX_VALUE/10 - 1000000 + 1) + 1000000); // this has 1 trillionth chance of getting same ID for diff medicines;
 		this.theContents = new ArrayList<String>();
 		this.theSideEffects = new ArrayList<String>();
+		this.theExpiryDate = getDateThreeYearsFromNow();
+
 	}
-	
-	public Medicine(String name) {
+		
+	public Medicine(String name, double price) {
+		this.theID = (int) (Math.random()*(Integer.MAX_VALUE/10 - 1000000 + 1) + 1000000); // this has 1 trillionth chance of getting same ID for diff medicines;
 		this.theName = name;
+		this.theUnitPrice = price;
+		
 		this.theContents = new ArrayList<String>();
 		this.theSideEffects = new ArrayList<String>();
-	//	this.theExpiryDate = expiryDate;
+		
+		this.theExpiryDate = getDateThreeYearsFromNow();
+	}
+
+	public int getTheID() {
+		return theID;
+	}
+
+	public void setTheID(int theID) {
+		this.theID = theID;
 	}
 
 	public String getTheName() {
@@ -48,14 +66,36 @@ public class Medicine {
 		this.theSideEffects = theSideEffects;
 	}
 
-	public LocalDate getTheExpiryDate() {
+	public Date getTheExpiryDate() {
 		return theExpiryDate;
 	}
 
-	public void setTheExpiryDate(LocalDate theExpiracyDate) {
-		this.theExpiryDate = theExpiracyDate;
+	public void setTheExpiryDate(Date theExpiryDate) {
+		this.theExpiryDate = theExpiryDate;
+	}
+
+	public double getTheUnitPrice() {
+		return theUnitPrice;
+	}
+
+	public void setTheUnitPrice(double theUnitPrice) {
+		this.theUnitPrice = theUnitPrice;
 	}
 	
+	private Date getDateThreeYearsFromNow() {
+		Calendar c = Calendar.getInstance();
+		c.setTime(new Date());
+		c.add(Calendar.YEAR, 3); 
+		
+		Date threeYearsfromNow = c.getTime();
+		
+		return threeYearsfromNow;
+	}
+
+	@Override
+	public String toString() {
+		return theName;
+	}	
 	
 	
 }
