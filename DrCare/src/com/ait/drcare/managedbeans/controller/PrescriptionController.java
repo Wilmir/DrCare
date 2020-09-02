@@ -1,12 +1,15 @@
 package com.ait.drcare.managedbeans.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import javax.faces.bean.SessionScoped;
 
+import org.primefaces.PrimeFaces;
 
 import com.ait.drcare.model.Prescription;
 
@@ -38,9 +41,12 @@ public class PrescriptionController {
 		prescriptions.add(prescription5); 
 	}
 	
-	
-	
-	
-	
-	
+	// The method for displaying the Create Prescription modal
+	public void createPrescription() {
+		Map<String, Object> options  = new HashMap<String, Object>();
+		options.put("resizable", false);
+		options.put("height", "500");
+		options.put("contentHeight", "500");
+        PrimeFaces.current().dialog().openDynamic("createprescription", options, null);
+	}
 }
