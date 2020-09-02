@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Prescription Form</title>
+		<style>
+			.ui-widget-content.ui-datalist-content{
+				border: none;
+				width:100%;
+				padding: 5px;
+			}
+			
+			.ui-datalist-data{
+				margin-block-start: 0;
+   				margin-block-end: 0;
+
+   				width:100%;
+			}		
+		</style>
+	</h:head>
+
+
+	<!-- NOTE: theBackingBean does not exist, I only added it here so each of the components render in the browser -->
+	<!-- NOTE: All the theBackingBean attribute values need to be replaced when theBackingBean is developed -->
+	<h:body>
+		<h:form>
+			<p:panelGrid>
+				    <f:facet name="header">
+				    	<p:row>
+    						<p:column colspan="12"><h:outputText value="Prescription" /></p:column>
+    					</p:row>
+				    </f:facet>
+				    
+				    <!-- The Patient Dropdown -->
+				    <p:row>
+				    		<p:column colspan="2"><p:outputLabel for="patient" value="Patient" /></p:column>
+							<p:column colspan="4">
+								<!-- Lamiaa to create the userConverter class used here -->
+								<p:selectOneMenu value="#{theBackingBean.patient}"
+										 converter = "userConverter" 
+										 id = "patient">
+					            		<f:selectItems value="#{userListBean.patients}" 
+					                           var="patient" 
+					                           itemLabel="#{patient.theName}" 
+					                           itemValue="#{patient}" />
+								</p:selectOneMenu>
+							</p:column>
+							
+							<p:column colspan="2"><p:outputLabel for="date" value="Date" /></p:column>
+							<p:column colspan="4">
+								<h:outputText id="date" value = "#{theBackingBean.theDatePrescribed}">
+												<f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+								</h:outputText>
+							</p:column>		
+				    </p:row>
+				    
+				    <!-- The Pharmacist Dropdown -->
+				    <p:row>
+				    		<p:column colspan="2"><p:outputLabel for="pharmacist" value="Pharmacist  "/></p:column>
+							<p:column colspan="10">
+								<!-- Lamiaa to create the userConverter class used here -->
+								<p:selectOneMenu value="#{theBackingBean.pharmacist}"
+										 converter = "userConverter" 
+										 id = "pharmacist">
+					            		<f:selectItems value="#{userListBean.pharmacists}" 
+					                           var="pharmacist" 
+					                           itemLabel="#{pharmacist.theName}" 
+					                           itemValue="#{pharmacist}" />				    	
+								</p:selectOneMenu>
+							</p:column>
+				    </p:row>
+				    
+				    
+				    <!-- Add Medicine Section -->
+				    <p:row>
+				    	<p:column colspan="12">Medicine</p:column>
+				    </p:row>
+				    <p:row>
+				    	<!-- The Medicine Dropdown -->
+				    	<p:column colspan="2"><p:outputLabel for="medicine" value="Medicine  " /></p:column>
+						<p:column colspan="4">
+							<!-- See com.ait.drcare.converters MedicineConverter Class for the implem if the converter used here -->
+							<p:selectOneMenu value="#{theBackingBean.medicine}"
+										 converter = "medicineConverter"
+										 id = "medicine">
+										<p:ajax update="selectedMedicine"/>
+					            		<f:selectItems value="#{medicineListBean.medications}" 
+					                           var="medicine" 
+					                           itemLabel="#{medicine.theName}" 
+					                           itemValue="#{medicine}" />
+							</p:selectOneMenu>
+						 </p:column>
+						 
+						 <!-- The Medicine Details -->
+						 <p:column rowspan="5" colspan="6">
+				    		    <p:dataList id = "selectedMedicine" value="#{theBackingBean.medicine}" var="medicine" type="definition">
+				    		    	<f:facet name="header">
+							            Selected Medicine Details
+							        </f:facet>
+				    				        Name: #{medicine.theName} <br/>
+				    				        Content:
+				    				        <p:dataList id = "theContents" value="#{medicine.theContents}" var="medContent" type="unordered">
+				    				        	#{medContent}
+				    				        </p:dataList> 	
+				    				        Side Effects:
+				    				        <p:dataList id = "theSideEffects" value="#{medicine.theSideEffects}" var="sideEffect" type="unordered">
+				    				        	#{sideEffect}
+				    				        </p:dataList> 	
+				    			</p:dataList>
+				    	</p:column>
+					</p:row>
+					
+					<!-- The Dosage Spinner -->
+					<p:row>
+					     <p:column colspan="2"><p:outputLabel for="dosage" value="Dosage  " /></p:column>
+						 <p:column colspan="4"><p:spinner id="dosage" value="#{theBackingBean.dosage}" stepFactor="0.25" min = "0.25" /></p:column>
+				    </p:row>
+				    
+				    <!-- The Duration Spinner -->
+				    <p:row>
+				    	<p:column colspan="2"><p:outputLabel for="duration" value="Duration(days)"/></p:column>
+						<p:column colspan="4"><p:spinner id="duration" value="#{theBackingBean.duration}" min = "1"/></p:column>
+					</p:row>
+					
+					<!-- The Note Spinner -->
+				    <p:row>
+				    	<p:column colspan="2"><p:outputLabel for="note" value="Note  " /></p:column>
+						<p:column colspan="4"><p:inputText id="note" value="#{theBackingBean.duration}" /></p:column>
+					</p:row>
+					
+					<!-- The Button for Adding The Prescription Item -->
+					<!-- Need a Controller to handle this action -->
+					<p:row>
+						<p:column colspan = "6">
+							<p:commandButton value = "Add" update = "items" action="#"/>
+						</p:column>
+					</p:row>
+					<p:row>
+				    	<p:column colspan="12">Items</p:column>
+					</p:row>
+					
+					<!-- Placeholder for the PrescriptionItems Datatable -->
+					<p:row>
+				    	<p:column colspan="12">
+				    		<p:dataTable id = "items" var="item" value="#{theBackingBean.prescriptionItems}">
+							    <p:column headerText="Medicine">
+							        <h:outputText value="#{item.medicine.theName}" />
+							    </p:column>
+							 
+							    <p:column headerText="Dosage">
+							        <h:outputText value="#{item.dosage}" />
+							    </p:column>
+							 
+							    <p:column headerText="Duration">
+							        <h:outputText value="#{item.duration}" />
+							    </p:column>
+
+							</p:dataTable>
+				    	</p:column>
+					</p:row>
+					
+					<!-- The Button for Saving the Prescription -->
+					<!-- Need a Controller to handle this action -->
+					<p:row>
+						<p:column colspan = "12">
+							<p:commandButton value = "Save" update = "items" action="#"/>
+						</p:column>
+					</p:row>
+			</p:panelGrid>
+		</h:form>
+	</h:body>
+</html>
