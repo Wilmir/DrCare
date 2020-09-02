@@ -13,13 +13,10 @@ public class PrescriptionItem {
 	}
 	
 	public PrescriptionItem(Medicine aMedicine, double aDosagePerDay,
-			int aDuration, int aQuantity) {
+			int aDuration) {
 		this.theMedicine = aMedicine;
 		this.dosagePerDay = aDosagePerDay;
-		this.duration = aDuration;
-		this.quantity = aQuantity;
-		
-		
+		this.duration = aDuration;		
 	}
 
 	public Medicine getMedicine() {
