@@ -45,8 +45,8 @@ public class PrescriptionController {
 	public void createPrescription() {
 		Map<String, Object> options  = new HashMap<String, Object>();
 		options.put("resizable", false);
-		options.put("height", "500");
-		options.put("contentHeight", "500");
+		options.put("height", "600");
+		options.put("contentHeight", "600");
         PrimeFaces.current().dialog().openDynamic("createprescription", options, null);
 	}
 }
