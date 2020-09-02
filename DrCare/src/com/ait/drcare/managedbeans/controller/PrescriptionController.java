@@ -47,6 +47,6 @@ public class PrescriptionController {
 		options.put("resizable", false);
 		options.put("height", "600");
 		options.put("contentHeight", "600");
-        PrimeFaces.current().dialog().openDynamic("createprescription", options, null);
+        PrimeFaces.current().dialog().openDynamic("prescriptionForm", options, null);
 	}
 }
