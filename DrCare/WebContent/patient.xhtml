@@ -42,7 +42,7 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header">Pay</f:facet>
-						<h:commandLink value="Pay" action="#{patientInfoController.pay}" rendered="#{presc.theStatus != 'Waiting for payment'}"/>
+						<h:commandLink value="Pay" action="#{patientInfoController.pay}" rendered="#{presc.theStatus == 'Waiting for payment'}"/>
 					</h:column>
 				</h:dataTable>
 			</h:form>
