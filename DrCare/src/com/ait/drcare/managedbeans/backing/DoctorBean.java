@@ -9,6 +9,7 @@ import com.ait.drcare.helpers.Helper;
 import com.ait.drcare.managedbeans.support.UserListBean;
 import com.ait.drcare.model.Doctor;
 import com.ait.drcare.model.Patient;
+import com.ait.drcare.model.Pharmacist;
 import com.ait.drcare.model.User;
 
 @ManagedBean
@@ -17,6 +18,8 @@ public class DoctorBean {
 	private Doctor doctor;
 	private UserListBean existingUsers;
 	private Patient currentPatient;
+	private Pharmacist currentPharmacist;
+
 	
 	@PostConstruct
 	public void init() {
@@ -57,5 +60,14 @@ public class DoctorBean {
 	public void setCurrentPatient(Patient currentPatient) {
 		this.currentPatient = currentPatient;
 	}
+
+	public Pharmacist getCurrentPharmacist() {
+		return currentPharmacist;
+	}
+
+	public void setCurrentPharmacist(Pharmacist currentPharmacist) {
+		this.currentPharmacist = currentPharmacist;
+	}
+	
 
 }
