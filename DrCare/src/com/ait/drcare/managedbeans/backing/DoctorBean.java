@@ -9,13 +9,13 @@ import com.ait.drcare.helpers.Helper;
 import com.ait.drcare.managedbeans.support.UserListBean;
 import com.ait.drcare.model.Doctor;
 import com.ait.drcare.model.Patient;
-import com.ait.drcare.model.Pharmacist;
 import com.ait.drcare.model.User;
 
 @ManagedBean
 @ViewScoped
 public class DoctorBean {
 	private Doctor doctor;
+	private Patient currentPatient;
 	private UserListBean existingUsers;
 	
 	@PostConstruct
@@ -40,4 +40,14 @@ public class DoctorBean {
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 	}
+
+	public Patient getCurrentPatient() {
+		return currentPatient;
+	}
+
+	public void setCurrentPatient(Patient currentPatient) {
+		this.currentPatient = currentPatient;
+	}
+	
+	
 }
