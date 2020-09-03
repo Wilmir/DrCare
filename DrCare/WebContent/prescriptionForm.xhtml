@@ -42,9 +42,10 @@
 							<p:column colspan="4">
 								<!-- Lamiaa to create the userConverter class used here -->
 								<p:selectOneMenu value="#{prescriptionBean.placeholder}"
-										 id = "patient">
+										 id = "patient" rendered="#{sessionScope.role == 'Doctor'}">
 					            		<f:selectItems value="#{userListBean.patients}" 
 					                           var="patient" 
+					                           converter = "userConverter"
 					                           itemLabel="#{patient.theName}" 
 					                           itemValue="#{patient}" />
 								</p:selectOneMenu>
@@ -65,7 +66,7 @@
 							<p:column colspan="10">
 								<!-- Lamiaa to create the userConverter class used here -->
 								<p:selectOneMenu value="#{prescriptionBean.placeholder}"
-										 id = "pharmacist">
+										 id = "pharmacist" rendered="#{sessionScope.role == 'Doctor'}">
 					            		<f:selectItems value="#{userListBean.pharmacists}" 
 					                           var="pharmacist" 
 					                           itemLabel="#{pharmacist.theName}" 
@@ -86,7 +87,7 @@
 							<!-- See com.ait.drcare.converters MedicineConverter Class for the implem if the converter used here -->
 							<p:selectOneMenu value="#{prescriptionBean.placeholder}"
 										 converter = "medicineConverter"
-										 id = "medicine">
+										 id = "medicine" rendered="#{sessionScope.role == 'Doctor'}">
 										<p:ajax update="selectedMedicine"/>
 					            		<f:selectItems value="#{medicineListBean.medications}" 
 					                           var="medicine" 
@@ -96,7 +97,7 @@
 						 </p:column>
 						 
 						 <!-- The Medicine Details -->
-						 <p:column rowspan="5" colspan="6">
+						 <p:column rowspan="5" colspan="6" rendered="#{sessionScope.role == 'Doctor'}">
 				    		    <p:dataList id = "selectedMedicine" value="#{prescriptionBean.placeholder}" var="medicine" type="definition">
 				    		    	<f:facet name="header">
 							            Selected Medicine Details
@@ -117,24 +118,24 @@
 					<!-- The Dosage Spinner -->
 					<p:row>
 					     <p:column colspan="2"><p:outputLabel for="dosage" value="Dosage  " /></p:column>
-						 <p:column colspan="4"><p:spinner id="dosage" value="#{prescriptionBean.placeholder}" stepFactor="0.25" min = "0.25" /></p:column>
+						 <p:column colspan="4"><p:spinner id="dosage" value="#{prescriptionBean.placeholder}" stepFactor="0.25" min = "0.25" rendered="#{sessionScope.role == 'Doctor'}"/></p:column>
 				    </p:row>
 				    
 				    <!-- The Duration Spinner -->
 				    <p:row>
 				    	<p:column colspan="2"><p:outputLabel for="duration" value="Duration(days)"/></p:column>
-						<p:column colspan="4"><p:spinner id="duration" value="#{prescriptionBean.placeholder}" min = "1"/></p:column>
+						<p:column colspan="4"><p:spinner id="duration" value="#{prescriptionBean.placeholder}" min = "1" rendered="#{sessionScope.role == 'Doctor'}"/></p:column>
 					</p:row>
 					
 					<!-- The Note Spinner -->
 				    <p:row>
 				    	<p:column colspan="2"><p:outputLabel for="note" value="Note  " /></p:column>
-						<p:column colspan="4"><p:inputText id="note" value="#{tprescriptionBean.placeholder}" /></p:column>
+						<p:column colspan="4"><p:inputText id="note" value="#{tprescriptionBean.placeholder}" rendered="#{sessionScope.role == 'Doctor'}"/></p:column>
 					</p:row>
 					
 					<!-- The Button for Adding The Prescription Item -->
 					<!-- Need a Controller to handle this action -->
-					<p:row>
+					<p:row rendered="#{sessionScope.role == 'Doctor'}">
 						<p:column colspan = "6">
 							<p:commandButton value = "Add" update = "items" action="#"/>
 						</p:column>
@@ -167,7 +168,7 @@
 					<!-- Need a Controller to handle this action -->
 					<p:row>
 						<p:column colspan = "12">
-							<p:commandButton value = "Save" update = "items" action="#"/>
+							<p:commandButton rendered="#{sessionScope.role == 'Doctor' || sessionScope.role == 'Pharmacist' || sessionScope.role == 'Patient'}" value = "Save" action="#"/>
 						</p:column>
 					</p:row>
 			</p:panelGrid>

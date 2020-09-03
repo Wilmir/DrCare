@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = { "/patient.jsf", "/pharmacist.jsf", "/doctor.jsf"})
+@WebFilter(urlPatterns = { "/patient.jsf", "/pharmacist.jsf", "/doctor.jsf", "/prescriptionForm.jsf"})
 public class URLFilter implements Filter {
 
 	@Override
