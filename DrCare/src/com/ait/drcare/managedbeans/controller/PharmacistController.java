@@ -40,7 +40,7 @@ public class PharmacistController {
 		dataStore = Helper.getBean("userListBean", UserListBean.class);	
 		
 		pharmacists = dataStore.getPharmacists();
-		
+		prescriptions = dataStore.getPrescriptions();
 		
 		for (Pharmacist pharmacist : pharmacists) {
 			if (pharmacist.getTheEmail().equals(theUserEmail)) {
@@ -65,20 +65,16 @@ public class PharmacistController {
 	
 	public void findPrescriptionOrders() {
 		
-		ArrayList<Prescription> orders = new ArrayList<Prescription>();
+		//ArrayList<Prescription> orders = new ArrayList<Prescription>();
 		
-		String userEmail = "";
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
-		userEmail= (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get( "user");
-		System.out.println(" User email is: " +userEmail);
-		
+
 		
 		//Filter out prescriptions for this specific pharmacist user
-		for (Prescription prescription : orders) {
+		for (Prescription prescription : prescriptions) {
 			
 			System.out.println(prescription.getThePharmacist().getTheName());
 			
-			if (prescription.getThePharmacist().getTheEmail() == userEmail) {
+			if (prescription.getThePharmacist().getTheEmail() == theUserEmail) {
 				System.out.println("yes");
 			}
 		}

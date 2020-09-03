@@ -11,6 +11,8 @@ import javax.faces.bean.SessionScoped;
 
 import org.primefaces.PrimeFaces;
 
+import com.ait.drcare.helpers.Helper;
+import com.ait.drcare.managedbeans.support.UserListBean;
 import com.ait.drcare.model.Prescription;
 
 
@@ -22,12 +24,15 @@ public class PrescriptionController {
 	private ArrayList<Prescription> prescriptions;
 	
 	
+	//Change to prescriptionListBean later
+	private UserListBean dataStore;
+	
 	@PostConstruct
 	public void init() {
 		prescriptions = new ArrayList<Prescription>(); //insansiate 
 		
 		
-		Prescription prescription1 = new Prescription();
+/*		Prescription prescription1 = new Prescription();
 		Prescription prescription2 = new Prescription();
 		Prescription prescription3 = new Prescription();
 		Prescription prescription4 = new Prescription();
@@ -38,7 +43,13 @@ public class PrescriptionController {
 		prescriptions.add(prescription2);
 		prescriptions.add(prescription3);
 		prescriptions.add(prescription4);
-		prescriptions.add(prescription5); 
+		prescriptions.add(prescription5); */
+		
+		dataStore = Helper.getBean("userListBean", UserListBean.class);
+		prescriptions = dataStore.getPrescriptions();
+		
+		System.out.println(prescriptions.size());
+		
 	}
 	
 	// The method for displaying the Create Prescription modal
@@ -49,4 +60,9 @@ public class PrescriptionController {
 		options.put("contentHeight", "600");
         PrimeFaces.current().dialog().openDynamic("prescriptionForm", options, null);
 	}
+	
+	public ArrayList<Prescription> getPrescriptions() {
+		return prescriptions;
+	}
+	
 }
