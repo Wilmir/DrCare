@@ -116,13 +116,13 @@ public class UserListBean {
 				pharmacists.add((Pharmacist) user);
 			}
 		}
-		
-		//Add Pharmacist users to pharmacists data arrayList
-		for(int counter=0; counter<users.size(); counter++) {
-			if (users.get(counter) instanceof Pharmacist) {
-				pharmacists.add((Pharmacist) users.get(counter));
-			}
-		}
+//		
+//		//Add Pharmacist users to pharmacists data arrayList
+//		for(int counter=0; counter<users.size(); counter++) {
+//			if (users.get(counter) instanceof Pharmacist) {
+//				pharmacists.add((Pharmacist) users.get(counter));
+//			}
+//		}
 		
 		
 		// valid doctors licenses range from 300000000 - 300090000
