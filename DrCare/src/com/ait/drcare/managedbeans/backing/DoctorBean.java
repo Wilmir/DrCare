@@ -17,9 +17,6 @@ import com.ait.drcare.model.User;
 public class DoctorBean {
 	private Doctor doctor;
 	private UserListBean existingUsers;
-	private Patient currentPatient;
-	private Pharmacist currentPharmacist;
-
 	
 	@PostConstruct
 	public void init() {
@@ -40,34 +37,7 @@ public class DoctorBean {
 		return doctor;
 	}
 
-
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 	}
-
-	public UserListBean getExistingUsers() {
-		return existingUsers;
-	}
-
-	public void setExistingUsers(UserListBean existingUsers) {
-		this.existingUsers = existingUsers;
-	}
-
-	public Patient getCurrentPatient() {
-		return currentPatient;
-	}
-
-	public void setCurrentPatient(Patient currentPatient) {
-		this.currentPatient = currentPatient;
-	}
-
-	public Pharmacist getCurrentPharmacist() {
-		return currentPharmacist;
-	}
-
-	public void setCurrentPharmacist(Pharmacist currentPharmacist) {
-		this.currentPharmacist = currentPharmacist;
-	}
-	
-
 }
