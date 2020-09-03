@@ -7,7 +7,7 @@ import javax.faces.convert.FacesConverter;
 
 import com.ait.drcare.helpers.Helper;
 import com.ait.drcare.managedbeans.support.UserListBean;
-import com.ait.drcare.model.Patient;
+import com.ait.drcare.model.User;
 
 @FacesConverter("com.ait.drcare.converter.UserConverter")
 public class UserConverter implements Converter{
@@ -16,9 +16,9 @@ public class UserConverter implements Converter{
 	
 	   public Object getAsObject(FacesContext facesContext, 
 	      UIComponent component, String value) {
-			for(Patient patient : dataStore.getPatients()) {
-				if(patient.getTheName().equals(value)) {
-					return patient;
+			for(User user : dataStore.getUsers()) {
+				if(user.getTheName().equals(value)) {
+					return user;
 				}
 			}
 			
@@ -26,6 +26,6 @@ public class UserConverter implements Converter{
 			}
 	   @Override
 		public String getAsString(FacesContext context, UIComponent component, Object value) {
-			return ((Patient)value).toString();
+			return ((User)value).toString();
 		}
 }
