@@ -7,6 +7,7 @@ public class PrescriptionItem {
 	private int duration;
 	private  int quantity;
 	private double subtotal;
+	private String notefromPharmacist;
 	
 	public PrescriptionItem() {
 		
@@ -41,6 +42,14 @@ public class PrescriptionItem {
 
 	public int getDuration() {
 		return duration;
+	}
+
+	public String getNotefromPharmacist() {
+		return notefromPharmacist;
+	}
+
+	public void setNotefromPharmacist(String notefromPharmacist) {
+		this.notefromPharmacist = notefromPharmacist;
 	}
 
 	public double getSubtotal() {
