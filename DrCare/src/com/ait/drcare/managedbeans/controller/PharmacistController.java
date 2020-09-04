@@ -92,6 +92,14 @@ public class PharmacistController {
 		
 	}
 	
+	public String saveChanges() {
+		for (Prescription prescription : prescriptions) {
+			prescription.setCanEditNote(false);
+		}	
+		return null;
+	}
+	
+	
 	public ArrayList<Prescription> getPrescriptions() {
 		
 		//Foreach, find prescriptions assigned to this pharmacist
@@ -103,6 +111,8 @@ public class PharmacistController {
 	}
 
 	
+	
+	//note
 	public String getPrescriptionNote(Prescription prescription) {
 		
 		return prescription.getTheNote();

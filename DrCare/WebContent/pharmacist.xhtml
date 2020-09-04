@@ -70,7 +70,10 @@
 				<f:facet name="header">Note</f:facet>
 				<h:inputText value = "#{pharmacistController.getPrescriptionNote(prescription)}" rendered = "#{pharmacistController.getPrescriptionEdit(prescription)}"/>
 				<h:outputText value="#{pharmacistController.getPrescriptionNote(prescription)}" rendered = "#{pharmacistController.getPrescriptionEdit(prescription)}" />
-				<h:commandButton value="Edit Note" action="#{pharmacistController.enableEditNote(prescription)}" rendered="#{not prescription.canEditNote}"/>
+				</h:column>
+				
+				<h:column>
+					<h:commandButton value="Edit Note" action="#{pharmacistController.enableEditNote(prescription)}" rendered="#{not prescription.canEditNote}"/>
 				</h:column>
 				
 				<h:column>
@@ -78,8 +81,14 @@
 					<h:commandButton value="Dispense" action="#{pharmacistController.updateStatus(prescription)}"/>
 				</h:column>
 				
+					<h:column>
+					<h:commandButton value="Save Changes" action="#{pharmacistController.updateStatus(prescription)}"/>
+				</h:column>
+				
 				
 		</h:dataTable>
+		
+		<h:commandButton size="10" value="Save change" action="#{pharmacistController.saveChanges}"></h:commandButton>
 		</h:form>
 		
   <p><button>Upload Videos about Medicine</button></p>
