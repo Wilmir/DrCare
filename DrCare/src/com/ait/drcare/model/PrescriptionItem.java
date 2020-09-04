@@ -9,6 +9,7 @@ public class PrescriptionItem {
 	private double subtotal;
 	private String notefromPharmacist;
 	
+	
 	public PrescriptionItem() {
 		
 	}

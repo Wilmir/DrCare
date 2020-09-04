@@ -11,6 +11,8 @@ public class Prescription {
 	private String theStatus;
 	private PrescriptionItem theItem;
 	private ArrayList<String> statusValues;
+	private String theNote;
+	private boolean CanEditNote;
 	
 	private Pharmacist thePharmacist;
 	private Patient thePatient;
@@ -29,6 +31,8 @@ public class Prescription {
 		 placehold Variables 	 
 		 */
 		this.theName = "Name";
+		this.theNote = "";
+		this.CanEditNote = false;
 		this.theDatePrescribed = new Date(2020, 6, 21);	
 		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
 		this.statusValues = new ArrayList<String>();
@@ -41,6 +45,8 @@ public class Prescription {
 	public Prescription(String name, Date datePrescribed)
 	{
 		this.theName = name;
+		this.theNote = "";
+		this.CanEditNote = false;
 		this.theDatePrescribed = datePrescribed;		
 		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
 		
@@ -98,6 +104,30 @@ public class Prescription {
 
 	public ArrayList<String> getTheStatuses() {
 		return statusValues;
+	}
+
+	public String getTheNote() {
+		return theNote;
+	}
+
+	public void setTheNote(String theNote) {
+		this.theNote = theNote;
+	}
+
+	public ArrayList<String> getStatusValues() {
+		return statusValues;
+	}
+
+	public void setStatusValues(ArrayList<String> statusValues) {
+		this.statusValues = statusValues;
+	}
+
+	public boolean isCanEditNote() {
+		return CanEditNote;
+	}
+
+	public void setCanEditNote(boolean canEditNote) {
+		CanEditNote = canEditNote;
 	}
 	
 	
