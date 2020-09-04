@@ -12,19 +12,36 @@
 	    <p:accordionPanel multiple="true" activeIndex = "0,1,2" rendered="#{sessionScope.role == 'Doctor'}" >
 	        <p:tab title="Bio">
 	            <p:panelGrid>
-					    <!-- ADD THE BIO DETAILS HERE -->
+					   <p>Name: #{doctorBean.currentPatient.theName}</p>
+					   <p>Address: #{doctorBean.currentPatient.theAddress}</p>
 	            </p:panelGrid>
 	        </p:tab>
 	        
 	        <p:tab title="Allergies">
 	            <p:panelGrid>
-					    <!-- ADD THE ALLERGIES HERE -->
+	            	<h:selectOneListbox value="#{doctorController.selectedAllergy}">
+	            		<f:selectItems value="#{doctorBean.currentPatient.Allergies}" var="a"
+	            		itemLabel="a" itemValue="a"/>
+	            	</h:selectOneListbox>
 	            </p:panelGrid>
 	        </p:tab>
 	        
 	        <p:tab title="Prescriptions">
 	            <p:panelGrid>
-					    <!-- ADD THE PRESCRIPTIONS HERE -->
+					    <h:dataTable value="#{doctorController.patientPrescriptions}" var="presc">
+					    	<h:column>
+					    		<f:facet name="header">Pharmacist</f:facet>
+					    		<h:outputText>#{presc.thePharmacist.theName}</h:outputText>
+					    	</h:column>
+					    	<h:column>
+					    		<f:facet name="header">Date</f:facet>
+					    		<h:outputText>#{presc.theDatePrescribed}</h:outputText>
+					    	</h:column>
+					    	<h:column>
+					    		<f:facet name="header">Status</f:facet>
+					    		<h:outputText>#{presc.theStatus}</h:outputText>
+					    	</h:column>
+					    </h:dataTable>
 	            </p:panelGrid>
 	           	 
 	           	 <!-- Need a controller bean that will set the patient object of the PatientInfo bean  -->
