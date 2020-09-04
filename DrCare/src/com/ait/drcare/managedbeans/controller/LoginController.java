@@ -1,6 +1,7 @@
 package com.ait.drcare.managedbeans.controller;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -48,7 +49,7 @@ public class LoginController {
 		}
 		// if no user exists
 		if (!userFound) {
-			message = "The given user is not registed in the System. Please Register";
+			printMessage(givenUser, "The given user is not registed in the System. Please Register" );
 			System.out.println(message);
 			return null;
 		}
@@ -56,6 +57,8 @@ public class LoginController {
 		if (registeredUser.getAccountLock()) {
 			message = "Account Locked";
 			System.out.println(message);
+			printMessage(givenUser, message);
+
 			return null;
 		}
 
@@ -98,10 +101,13 @@ public class LoginController {
 			 registeredUser.setFailedAttempts();
 			 if (registeredUser.getFailedAttempts() >= 5) {
 				System.err.println("Login Failed !! Account Locked as no.of retries exceeded 5");
+				printMessage(givenUser, "Login Failed !! Account Locked as no.of retries exceeded 5" );
 				registeredUser.setAccountLock(true);
 			} 
 			else {
 				System.err.println("Login Failure !!");
+				printMessage(givenUser, "Login Failure !!" );
+
 				}
 		}
 
@@ -114,5 +120,12 @@ public class LoginController {
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "login?faces-redirect=true";
+	}
+	
+	// function prints messages for error handling
+	public void printMessage(String user, String printline) {
+		FacesMessage message =new FacesMessage (printline);
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage(user, message);
 	}
 }
