@@ -21,6 +21,9 @@ public class DoctorController {
 	private ArrayList<Prescription> prescriptions;
 	private UserListBean dataStore;
 	
+	private Object placeholder;
+	
+	
 	@PostConstruct
 	public void init() {
 		dataStore = Helper.getBean("userListBean", UserListBean.class);
@@ -30,4 +33,15 @@ public class DoctorController {
 		this.currentPatient = patient;
 	}
 
+	public Object getPlaceholder() {
+		return placeholder;
+	}
+
+	public void setPlaceholder(Object placeholder) {
+		this.placeholder = placeholder;
+	}
+
+	
+	
+	
 }

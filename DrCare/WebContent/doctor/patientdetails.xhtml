@@ -19,7 +19,7 @@
 	        
 	        <p:tab title="Allergies">
 	            <p:panelGrid>
-	            	<h:selectOneListbox value="#{doctorController.selectedAllergy}">
+	            	<h:selectOneListbox value="#{doctorController.placeholder}">
 	            		<f:selectItems value="#{doctorBean.currentPatient.Allergies}" var="a"
 	            		itemLabel="a" itemValue="a"/>
 	            	</h:selectOneListbox>
@@ -28,7 +28,7 @@
 	        
 	        <p:tab title="Prescriptions">
 	            <p:panelGrid>
-					    <h:dataTable value="#{doctorController.patientPrescriptions}" var="presc">
+					    <h:dataTable value="#{doctorController.placeholder}" var="presc">
 					    	<h:column>
 					    		<f:facet name="header">Pharmacist</f:facet>
 					    		<h:outputText>#{presc.thePharmacist.theName}</h:outputText>
