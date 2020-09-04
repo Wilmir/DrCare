@@ -17,7 +17,7 @@
 <h2 style="text-align:center">User Profile </h2>
 
 <div class="card">
-  <img src="#{resource['images/pharmacist.jpg']}" alt="pharmacist" style="width:100%"></img>
+ <!--  <img src="#{resource['images/pharmacist.jpg']}" alt="pharmacist" style="width:100%"></img> --> 
   <h1>PHARMACIST</h1>
   <p>User Name : </p>
   <p>ID        : </p>
@@ -36,12 +36,15 @@
 				
 				<h:column>
 					<f:facet name="header"> Patient</f:facet>
-					<h:outputText value = "#{prescription.thePatient}" />
+					<h:outputText value = "#{prescription.theName}" />
 				</h:column>
+							
+				
+				
 				
 				<h:column>
-					<f:facet name="header"> Name</f:facet>
-					<h:outputText value = "#{prescription.theName}" />
+					<f:facet name="header"> Medicine</f:facet>
+					<h:outputText value = "#{prescription.theItem.medicineName}" />
 				</h:column>
 				
 				<h:column>
@@ -54,7 +57,13 @@
 					<h:outputText value = "#{prescription.theStatus}" />
 				</h:column>
 				
-			
+				
+				<h:column>
+					<f:facet name="header">Dispense</f:facet>
+					<h:commandButton value="Dispense" action="#{pharmacistController.updateStatus(prescription)}"/>
+				</h:column>
+				
+				
 		</h:dataTable>
 		
 		

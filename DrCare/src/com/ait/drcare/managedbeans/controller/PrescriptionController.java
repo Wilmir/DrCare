@@ -32,18 +32,6 @@ public class PrescriptionController {
 		prescriptions = new ArrayList<Prescription>(); //insansiate 
 		
 		
-/*		Prescription prescription1 = new Prescription();
-		Prescription prescription2 = new Prescription();
-		Prescription prescription3 = new Prescription();
-		Prescription prescription4 = new Prescription();
-		Prescription prescription5 = new Prescription();
-		
-		
-		prescriptions.add(prescription1);
-		prescriptions.add(prescription2);
-		prescriptions.add(prescription3);
-		prescriptions.add(prescription4);
-		prescriptions.add(prescription5); */
 		
 		dataStore = Helper.getBean("userListBean", UserListBean.class);
 		prescriptions = dataStore.getPrescriptions();

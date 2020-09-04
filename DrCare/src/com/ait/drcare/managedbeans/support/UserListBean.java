@@ -9,9 +9,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.ait.drcare.model.Doctor;
+import com.ait.drcare.model.Medicine;
 import com.ait.drcare.model.Patient;
 import com.ait.drcare.model.Pharmacist;
 import com.ait.drcare.model.Prescription;
+import com.ait.drcare.model.PrescriptionItem;
 import com.ait.drcare.model.User;
 
 
@@ -67,7 +69,16 @@ public class UserListBean {
 		
 		//Prescriptions In Data
 		Prescription prescription1 = new Prescription("Tommy 2 strings", new Date());
+		
+		
+		//Test Prescription Item
+		Medicine med = new Medicine("Med Bean", 203);
+		PrescriptionItem pItem1 =  new PrescriptionItem(med, 0.25,4);
+		prescription1.setTheItem(pItem1);
 		prescription1.setThePharmacist(ph2);
+		
+		
+		
 		Prescription prescription2 = new Prescription("Beany 2 strings", new Date());
 		prescription2.setThePharmacist(ph1);
 		Prescription prescription3 = new Prescription("Beans McBeans", new Date());

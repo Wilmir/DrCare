@@ -9,8 +9,8 @@ public class Prescription {
 	private String theName;
 	private Date theDatePrescribed;
 	private String theStatus;
-	private ArrayList<PrescriptionItem> theItems;
-	
+	private PrescriptionItem theItem;
+	private ArrayList<String> statusValues;
 	
 	private Pharmacist thePharmacist;
 	private Patient thePatient;
@@ -31,6 +31,10 @@ public class Prescription {
 		this.theName = "Name";
 		this.theDatePrescribed = new Date(2020, 6, 21);	
 		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
+		this.statusValues = new ArrayList<String>();
+		this.statusValues.add(PRESCRIPTION_WAITING_PAYMENT);
+		this.statusValues.add(PRESCRIPTION_DISPENSED);
+		this.statusValues.add(PRESCRIPTION_READY_FOR_PICKUP);
 		theCount++;
 	}
 	
@@ -83,12 +87,17 @@ public class Prescription {
 		this.thePatient = thePatient;
 	}
 
-	public ArrayList<PrescriptionItem> getTheItems() {
-		return theItems;
+
+	public PrescriptionItem getTheItem() {
+		return theItem;
 	}
 
-	public void setTheMedicines(ArrayList<PrescriptionItem> theItems) {
-		this.theItems = theItems;
+	public void setTheItem(PrescriptionItem theItem) {
+		this.theItem = theItem;
+	}
+
+	public ArrayList<String> getTheStatuses() {
+		return statusValues;
 	}
 	
 	

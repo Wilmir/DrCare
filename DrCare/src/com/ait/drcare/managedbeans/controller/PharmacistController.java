@@ -10,8 +10,10 @@ import javax.faces.context.FacesContext;
 
 import com.ait.drcare.helpers.Helper;
 import com.ait.drcare.managedbeans.support.UserListBean;
+import com.ait.drcare.model.Medicine;
 import com.ait.drcare.model.Patient;
 import com.ait.drcare.model.Prescription;
+import com.ait.drcare.model.PrescriptionItem;
 import com.ait.drcare.model.Pharmacist;
 
 @ManagedBean
@@ -21,6 +23,9 @@ public class PharmacistController {
 	private Pharmacist currentUser;
 	private String theUserEmail;
 	private ArrayList<Prescription> prescriptions;
+	private Medicine theMedicine;
+	private PrescriptionItem theItem;
+	
 	private ArrayList<Pharmacist> pharmacists;
 	private PrescriptionController pController;
 	
@@ -36,12 +41,14 @@ public class PharmacistController {
 		
 		//Get email from session
 		theUserEmail = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
-		//Access the data, chekc users
+		//Access the data, check users
 		dataStore = Helper.getBean("userListBean", UserListBean.class);	
 		
 		pharmacists = dataStore.getPharmacists();
 		prescriptions = dataStore.getPrescriptions();
 		
+		
+		//find user in database
 		for (Pharmacist pharmacist : pharmacists) {
 			if (pharmacist.getTheEmail().equals(theUserEmail)) {
 				currentUser = pharmacist;
@@ -52,6 +59,7 @@ public class PharmacistController {
 		
 		
 		findPrescriptionOrders();
+		
 	}
 
 	public String getTheUserEmail() {
@@ -63,11 +71,14 @@ public class PharmacistController {
 	}
 
 	
+	public void updateStatus(Prescription prescription) {
+		prescription.setTheStatus("Dispensed");
+	}
+	
+	//Find prescriptions tied to this user
 	public void findPrescriptionOrders() {
 		
-		//ArrayList<Prescription> orders = new ArrayList<Prescription>();
-		
-
+	
 		
 		//Filter out prescriptions for this specific pharmacist user
 		for (Prescription prescription : prescriptions) {
