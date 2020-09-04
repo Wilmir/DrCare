@@ -12,16 +12,19 @@
 	    <p:accordionPanel multiple="true" activeIndex = "0,1,2" rendered="#{sessionScope.role == 'Doctor'}" >
 	        <p:tab title="Bio">
 	            <p:panelGrid>
-					   <p>Name: #{doctorBean.currentPatient.theName}</p>
-					   <p>Address: #{doctorBean.currentPatient.theAddress}</p>
+					   <h:outputText id="name" value="#{doctorController.patientName}"/>
+					   <br></br>
+					   <h:outputText id="email" value="#{doctorController.patientEmail}"/>
+					   <br></br>
+                       <h:outputText id="pid" value="#{doctorController.patientID}"/>
+                       <br></br>
+					   <h:outputText id="address" value="#{doctorController.patientAddress}"/>
 	            </p:panelGrid>
 	        </p:tab>
 	        
 	        <p:tab title="Allergies">
 	            <p:panelGrid>
 	            	<h:selectOneListbox value="#{doctorController.placeholder}">
-	            		<f:selectItems value="#{doctorBean.currentPatient.Allergies}" var="a"
-	            		itemLabel="a" itemValue="a"/>
 	            	</h:selectOneListbox>
 	            </p:panelGrid>
 	        </p:tab>

@@ -14,7 +14,7 @@ import com.ait.drcare.model.User;
 
 @ManagedBean(name = "userConverterController")
 @FacesConverter(value = "userConverter")
-//@ViewScoped
+@ViewScoped
 public class UserConverter implements Converter{
 	
 	   private UserListBean dataStore;
