@@ -24,7 +24,7 @@ public class DoctorController {
 	private String patientEmail;
 	private int patientID;
 	private String patientAddress;
-	
+	private ArrayList<String> allergies;
 	private Object placeholder;
 	
 	
@@ -35,22 +35,17 @@ public class DoctorController {
 	
 	public void show(Patient patient) {
 		this.currentPatient = patient;
-		this.patientName = patient.getTheName();
-		this.patientEmail = patient.getTheEmail();
-		this.patientID = patient.getTheID();
-		this.patientAddress = patient.getTheAddress();
+		this.allergies = patient.getAllergies();
 	}
 
-	public String getPatientName() {
-		return patientName;
+	
+	public ArrayList<String> getAllergies() {
+		System.out.println(allergies);
+		return allergies;
 	}
 
-	public void setPatientName(String patientName) {
-		this.patientName = patientName;
-	}
-
-	public String getPatientEmail() {
-		return patientEmail;
+	public void setAllergies(ArrayList<String> allergies) {
+		this.allergies = allergies;
 	}
 
 	public Patient getCurrentPatient() {
@@ -59,26 +54,6 @@ public class DoctorController {
 
 	public void setCurrentPatient(Patient currentPatient) {
 		this.currentPatient = currentPatient;
-	}
-
-	public void setPatientEmail(String patientEmail) {
-		this.patientEmail = patientEmail;
-	}
-
-	public int getPatientID() {
-		return patientID;
-	}
-
-	public void setPatientID(int patientID) {
-		this.patientID = patientID;
-	}
-
-	public String getPatientAddress() {
-		return patientAddress;
-	}
-
-	public void setPatientAddress(String patientAddress) {
-		this.patientAddress = patientAddress;
 	}
 
 	public Object getPlaceholder() {
