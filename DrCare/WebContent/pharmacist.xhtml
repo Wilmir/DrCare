@@ -6,9 +6,14 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 	
-<head>
+<h:head>
+
+<h:outputStylesheet library="css" name="pharmacist.css"></h:outputStylesheet>
 <!--  <link rel="stylesheet" type="text/css" href="userpage.css"> -->
-</head>
+
+		
+</h:head>
+	
 <body>
 <h:form>
 	<h:commandButton id="logout" styleClass="ActionButton"  action="#{loginController.logout}" value="logout" title="Log Out"/>
@@ -31,8 +36,11 @@
   </div>
  <p><button>View Prescription</button></p>
  
-		
-	 <h:dataTable value ="#{pharmacistController.prescriptions}" var = "prescription">				
+		<h:form>
+	 <h:dataTable value ="#{pharmacistController.prescriptions}" var = "prescription"
+				 styleClass="prescriptionsTable"
+				 headerClass="prescriptionsTableHeader"
+				 columnClasses="yes">				
 				
 				<h:column>
 					<f:facet name="header"> Patient</f:facet>
@@ -59,13 +67,20 @@
 				
 				
 				<h:column>
+				<f:facet name="header">Note</f:facet>
+				<h:inputText value = "#{pharmacistController.getPrescriptionNote(prescription)}" rendered = "#{pharmacistController.getPrescriptionEdit(prescription)}"/>
+				<h:outputText value="#{pharmacistController.getPrescriptionNote(prescription)}" rendered = "#{pharmacistController.getPrescriptionEdit(prescription)}" />
+				<h:commandButton value="Edit Note" action="#{pharmacistController.enableEditNote(prescription)}" rendered="#{not prescription.canEditNote}"/>
+				</h:column>
+				
+				<h:column>
 					<f:facet name="header">Dispense</f:facet>
 					<h:commandButton value="Dispense" action="#{pharmacistController.updateStatus(prescription)}"/>
 				</h:column>
 				
 				
 		</h:dataTable>
-		
+		</h:form>
 		
   <p><button>Upload Videos about Medicine</button></p>
 </div>

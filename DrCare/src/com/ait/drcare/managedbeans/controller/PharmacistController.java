@@ -103,9 +103,20 @@ public class PharmacistController {
 	}
 
 	
+	public String getPrescriptionNote(Prescription prescription) {
+		
+		return prescription.getTheNote();
+		
+	}
 	
+	public boolean getPrescriptionEdit(Prescription prescription) {
+		return prescription.isCanEditNote();
+	}
+	public String enableEditNote(Prescription prescription) {
+		prescription.setCanEditNote(true);
+		return null;
+	}
 	
-
 
 
 			
