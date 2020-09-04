@@ -68,8 +68,8 @@
 				
 				<h:column>
 				<f:facet name="header">Note</f:facet>
-				<h:inputText value = "#{pharmacistController.getPrescriptionNote(prescription)}" rendered = "#{pharmacistController.getPrescriptionEdit(prescription)}"/>
-				<h:outputText value="#{pharmacistController.getPrescriptionNote(prescription)}" rendered = "#{pharmacistController.getPrescriptionEdit(prescription)}" />
+				<h:inputText value = "#{prescription.theNote}" rendered = "#{pharmacistController.getPrescriptionEdit(prescription)}"/>
+				<h:outputText value="#{prescription.theNote}" rendered = "#{not pharmacistController.getPrescriptionEdit(prescription)}" />
 				</h:column>
 				
 				<h:column>
@@ -81,9 +81,6 @@
 					<h:commandButton value="Dispense" action="#{pharmacistController.updateStatus(prescription)}"/>
 				</h:column>
 				
-					<h:column>
-					<h:commandButton value="Save Changes" action="#{pharmacistController.updateStatus(prescription)}"/>
-				</h:column>
 				
 				
 		</h:dataTable>

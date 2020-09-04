@@ -32,7 +32,6 @@ public class Prescription {
 		 */
 		this.theName = "Name";
 		this.theNote = "";
-		this.CanEditNote = false;
 		this.theDatePrescribed = new Date(2020, 6, 21);	
 		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
 		this.statusValues = new ArrayList<String>();
