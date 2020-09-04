@@ -1,5 +1,6 @@
 package com.ait.drcare.model;
 
+import com.sun.org.apache.xml.internal.security.signature.reference.ReferenceData;
 
 public class User
 {
@@ -112,6 +113,15 @@ public class User
 		this.canEdit= canEdit;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+	    if (obj == null)
+	      return false;
+	    if (!(obj instanceof User))
+	      return false;
+	    else
+	      return true;
+	}
 	
 	
 }

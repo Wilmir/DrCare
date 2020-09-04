@@ -18,7 +18,7 @@
 				<!--  I need a converter that converts the user ID into a user object -->
 			    <!--<p:selectOneMenu value="#{doctorBean.currentPatient}"  -->
 			    	<p:selectOneMenu value="#{doctorBean.currentPatient}"
-			                     converter="#{userConverter}" 
+                                 converter="#{userConverterController}"
 			                     panelStyle="width: 180px"
 			                     effect="fade" 
 			                     var="patient" 
@@ -27,14 +27,13 @@
 			                     filterMatchMode="startsWith"
 			                     label = "Search for Patient">
 			            <f:selectItems value="#{userListBean.patients}" 
-			                           var="patient" 
-			                           itemLabel="#{patient.theName}" 
-			                           itemValue="#{patient.theID}" />
+                                       var="patient"
+                                       itemLabel="#{patient.theName}"
+                                       itemValue="#{patient}" />
+
 			        </p:selectOneMenu>
-			    
-			   	 <!-- Need a controller bean that will set the patient object of the PatientInfo bean  -->
-			     <p:commandButton value="Show" 
-			                      action="#{doctorController.show(doctorBean.currentPatient)}" />
+			        <p:commandButton value="Show"
+			                         action="#{doctorController.show(doctorBean.currentPatient)}" />
 			</h:panelGroup>
 		</h:form>
 	</ui:composition>
