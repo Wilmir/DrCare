@@ -18,16 +18,15 @@
 				<!--  I need a converter that converts the user ID into a user object -->
 			    <!--<p:selectOneMenu value="#{doctorBean.currentPatient}"  -->
 			    	<p:selectOneMenu value="#{doctorBean.currentPatient}"
-                                 converter="#{userConverterController}"
-			                     panelStyle="width: 180px"
+			    	             converter="#{userConverterController}"
+			    	             panelStyle="width: 180px"
 			                     effect="fade" 
-			                     var="patient" 
-			                     style="width:180px" 
+			                     style="width:180px"
 			                     filter="true" 
-			                     filterMatchMode="startsWith"
+			                     filterMatchMode="startsWith"    	
 			                     label = "Search for Patient">
-			            <f:selectItems value="#{userListBean.patients}" 
-                                       var="patient"
+			            <f:selectItems value="#{userListBean.patients}"
+									   var="patient"
                                        itemLabel="#{patient.theName}"
                                        itemValue="#{patient}" />
 
