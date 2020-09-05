@@ -36,8 +36,13 @@ public class DoctorController {
 	public void show(Patient patient) {
 		this.currentPatient = patient;
 		this.allergies = patient.getAllergies();
+		this.prescriptions = dataStore.getPrescriptions(patient);
 	}
 
+	public ArrayList<Prescription> getPrescriptions(){
+		return prescriptions;
+		
+	}
 	
 	public ArrayList<String> getAllergies() {
 		System.out.println(allergies);
