@@ -12,9 +12,7 @@ import com.ait.drcare.helpers.Helper;
 import com.ait.drcare.managedbeans.support.UserListBean;
 import com.ait.drcare.model.User;
 
-@ManagedBean(name = "userConverterController")
-@FacesConverter(value = "userConverter")
-@ViewScoped
+@FacesConverter("userConverter")
 public class UserConverter implements Converter{
 	
 	   private UserListBean dataStore;
@@ -30,6 +28,7 @@ public class UserConverter implements Converter{
 			for(User user : dataStore.getPatients()) {
 				if(user.getTheName().equals(value)) {
 					return user;
+					
 				}
 			}
 			
