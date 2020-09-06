@@ -44,7 +44,8 @@ public class PrescriptionController {
 	
 	public String addPrescription(PrescriptionBean prescriptionBean) {
 		
-		System.out.println(prescriptionBean.getDosage());
+		System.out.println(prescriptionBean);
+		
 		
 		return null;
 	}

@@ -42,10 +42,11 @@
 							<p:column colspan="4">
 								<!-- Lamiaa to create the userConverter class used here -->
 								<p:selectOneMenu value="#{prescriptionBean.patient}"
+												 converter = "userConverter"
 										 id = "patient" rendered="#{sessionScope.role == 'Doctor'}">
 					            		<f:selectItems value="#{userListBean.patients}" 
 					                           var="patient" 
-					                           converter = "userConverter"
+					                           
 					                           itemLabel="#{patient.theName}" 
 					                           itemValue="#{patient}" />
 								</p:selectOneMenu>
@@ -66,9 +67,11 @@
 							<p:column colspan="10">
 								<!-- Lamiaa to create the userConverter class used here -->
 								<p:selectOneMenu value="#{prescriptionBean.pharmacist}"
+												 converter = "userConverter"
 										 id = "pharmacist" rendered="#{sessionScope.role == 'Doctor'}">
 					            		<f:selectItems value="#{userListBean.pharmacists}" 
 					                           var="pharmacist" 
+					                           
 					                           itemLabel="#{pharmacist.theName}" 
 					                           itemValue="#{pharmacist}" />				    	
 								</p:selectOneMenu>
