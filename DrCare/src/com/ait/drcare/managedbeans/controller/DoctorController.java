@@ -31,6 +31,11 @@ public class DoctorController {
 	@PostConstruct
 	public void init() {
 		dataStore = Helper.getBean("userListBean", UserListBean.class);
+		
+		//get selected patient
+		//Get selected patient's prescriptions
+		//Get allergies
+		
 	}
 	
 	public void show(Patient patient) {
@@ -39,12 +44,14 @@ public class DoctorController {
 		this.prescriptions = dataStore.getPrescriptions(patient);
 	}
 
+
 	public ArrayList<Prescription> getPrescriptions(){
 		return prescriptions;
 		
 	}
 	
 	public ArrayList<String> getAllergies() {
+		System.out.println("DocController allergies get");
 		System.out.println(allergies);
 		return allergies;
 	}

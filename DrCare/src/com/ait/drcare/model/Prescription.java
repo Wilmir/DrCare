@@ -8,9 +8,12 @@ public class Prescription {
 
 	private String theName;
 	private Date theDatePrescribed;
+	
 	private String theStatus;
 	private PrescriptionItem theItem;
+	
 	private ArrayList<String> statusValues;
+	
 	private String theNote;
 	private boolean CanEditNote;
 	
