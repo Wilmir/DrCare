@@ -12,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 import org.primefaces.PrimeFaces;
 
 import com.ait.drcare.helpers.Helper;
+import com.ait.drcare.managedbeans.backing.PrescriptionBean;
 import com.ait.drcare.managedbeans.support.UserListBean;
 import com.ait.drcare.model.Prescription;
 
@@ -40,6 +41,16 @@ public class PrescriptionController {
 		
 	}
 	
+	
+	public String addPrescription(PrescriptionBean prescriptionBean) {
+		
+		System.out.println(prescriptionBean.getDosage());
+		
+		return null;
+	}
+	
+	
+	
 	// The method for displaying the Create Prescription modal
 	public void createPrescription() {
 		Map<String, Object> options  = new HashMap<String, Object>();
@@ -52,5 +63,10 @@ public class PrescriptionController {
 	public ArrayList<Prescription> getPrescriptions() {
 		return prescriptions;
 	}
+	
+	public void testPrep() {
+		System.out.println("howdy");
+	}
+	
 	
 }
