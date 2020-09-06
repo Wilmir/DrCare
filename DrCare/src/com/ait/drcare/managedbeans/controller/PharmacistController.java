@@ -45,7 +45,9 @@ public class PharmacistController {
 		dataStore = Helper.getBean("userListBean", UserListBean.class);	
 		
 		pharmacists = dataStore.getPharmacists();
-		prescriptions = dataStore.getPrescriptions();
+		
+		ArrayList<Prescription> dataPrescriptions = dataStore.getPrescriptions();
+
 		
 		
 		//find user in database
@@ -58,9 +60,27 @@ public class PharmacistController {
 
 		
 		
-		findPrescriptionOrders();
+		findPrescriptionOrders(dataPrescriptions);
 		
 	}
+
+	public void findPrescriptionOrders(ArrayList<Prescription>dataPrescriptions) {
+		
+	
+		
+		//Filter out prescriptions for this specific pharmacist user
+		for (Prescription prescription : dataPrescriptions) {
+			
+			System.out.println(prescription.getThePharmacist().getTheName());
+			
+			if (prescription.getThePharmacist().getTheEmail() == theUserEmail) {
+				System.out.println("yes");
+				prescriptions.add(prescription);
+			}
+		}
+		
+	}
+	
 
 	public String getTheUserEmail() {
 		return theUserEmail;
@@ -76,21 +96,6 @@ public class PharmacistController {
 	}
 	
 	//Find prescriptions tied to this user
-	public void findPrescriptionOrders() {
-		
-	
-		
-		//Filter out prescriptions for this specific pharmacist user
-		for (Prescription prescription : prescriptions) {
-			
-			System.out.println(prescription.getThePharmacist().getTheName());
-			
-			if (prescription.getThePharmacist().getTheEmail() == theUserEmail) {
-				System.out.println("yes");
-			}
-		}
-		
-	}
 	
 	public String saveChanges() {
 		for (Prescription prescription : prescriptions) {
