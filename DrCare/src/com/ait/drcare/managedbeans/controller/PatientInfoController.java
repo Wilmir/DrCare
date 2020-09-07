@@ -29,8 +29,8 @@ public class PatientInfoController {
 		for (Patient patient : patients) {
 			if (patient.getTheEmail().equals(userEmail)) {
 				currentUser = patient;
+				break;
 			}
-			break;
 		}
 		prescriptions = dataStore.getPrescriptions(currentUser); //pass current user to get only their prescriptions
 	}
