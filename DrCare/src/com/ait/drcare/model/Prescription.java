@@ -9,9 +9,10 @@ public class Prescription {
 	private String theName;
 	private Date theDatePrescribed;
 	
-	private String theStatus;
+	
 	private PrescriptionItem theItem;
 	
+	private String theStatus;
 	private ArrayList<String> statusValues;
 	
 	private String theNote;

@@ -74,7 +74,7 @@ public class PharmacistController {
 			System.out.println(prescription.getThePharmacist().getTheName());
 			
 			if (prescription.getThePharmacist().getTheEmail() == theUserEmail) {
-				System.out.println("yes");
+				System.out.println(prescription.getThePharmacist().getTheEmail());
 				prescriptions.add(prescription);
 			}
 		}

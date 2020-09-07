@@ -1,5 +1,8 @@
 package com.ait.drcare.managedbeans.backing;
 
+import java.sql.Date;
+import java.util.Calendar;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -15,7 +18,6 @@ public class PrescriptionBean {
 
 	// This variable is only used as a placeholder when developing the frontEnd
 	// Remove this and its getters and setters once you are done developing the PrescriptionBean
-	private Object placeholder;
 	private PrescriptionItem prescriptionItem;;
 	
 	private Patient patient = new Patient();
@@ -27,31 +29,22 @@ public class PrescriptionBean {
 	private int duration = 0;
 	private int quantity = 0;
 	private String theNote = "";
-	
+
+	private Object placeholder;
 
 
 	//when adding new prescription, use this bean
 	
-	public Object getPlaceholder() {
-		return placeholder;
-	}
-
-	public void setPlaceholder(Object placeholder) {
-		this.placeholder = placeholder;
-	}
 	
 	public void doTheThing() {
 	System.out.println("did a thing");
 	}
-	
-	
 	
 	public Patient getPatient() {
 		return patient;
 	}
 	
 	public void setPatient(Patient patient) {
-		System.out.println("setatient");
 		this.patient = patient;
 	}
 		
@@ -100,6 +93,14 @@ public class PrescriptionBean {
 
 	public void setTheNote(String theNote) {
 		this.theNote = theNote;
+	}
+
+	public Object getPlaceholder() {
+		return placeholder;
+	}
+
+	public void setPlaceholder(Object placeholder) {
+		this.placeholder = placeholder;
 	}
 	
 	

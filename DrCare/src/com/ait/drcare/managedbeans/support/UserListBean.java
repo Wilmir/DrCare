@@ -49,7 +49,13 @@ public class UserListBean {
 		Doctor d1 = new Doctor("Alan Care", 1234, "passw0rd", "alan@drcare.ie", "08913486", "Athlone, Co. Westmeath");
 		users.add(d1);
 		Pharmacist ph1 = new Pharmacist("Mary Bloggs", 2345, "password123", "mary@totalhealth.ie", "Athlone, Co. Westmeath");
+		Pharmacist ph3 = new Pharmacist("Pharm Acist", 2345, "password123", "pharm@totalhealth.ie", "Athlone, Co. Westmeath");
+		Pharmacist ph4 = new Pharmacist("Joseph Bloggs", 2345, "password123", "Jose[h@totalhealth.ie", "Athlone, Co. Westmeath");
+		Pharmacist ph5 = new Pharmacist("Sunny Bloggs", 2345, "password123", "Sunny@totalhealth.ie", "Athlone, Co. Westmeath");
 		users.add(ph1);
+		users.add(ph3);
+		users.add(ph4);
+		users.add(ph5);
 		ArrayList<String> allergies = new ArrayList<String>();
 		allergies.add("Penicillin");
 		allergies.add("Aspirin");
@@ -220,4 +226,23 @@ public class UserListBean {
 		return prescriptionsForUser;
 	}
 	
+	public void addPrescription(Prescription newPrescription) {
+	
+		prescriptions.add(newPrescription);
+		
+		PrintPrescriptions();
+	}
+	
+	
+	public void PrintPrescriptions() {
+		
+		System.out.println("UserListBean PrintPrescriptions");
+		System.out.println(prescriptions.size());
+		for (Prescription p : prescriptions) {
+			System.out.println(p);
+			System.out.println(p.getThePharmacist().getTheEmail());
+		}
+		
+		
+	}
 }

@@ -14,7 +14,9 @@ import org.primefaces.PrimeFaces;
 import com.ait.drcare.helpers.Helper;
 import com.ait.drcare.managedbeans.backing.PrescriptionBean;
 import com.ait.drcare.managedbeans.support.UserListBean;
+import com.ait.drcare.model.Medicine;
 import com.ait.drcare.model.Prescription;
+import com.ait.drcare.model.PrescriptionItem;
 
 
 @ManagedBean
@@ -44,9 +46,29 @@ public class PrescriptionController {
 	
 	public String addPrescription(PrescriptionBean prescriptionBean) {
 		
+		
+		
+		//set prescriptionitem
+		System.out.println(prescriptionBean);
+		Prescription p = new Prescription();
+		PrescriptionItem pItem = new PrescriptionItem();
+	
 		System.out.println(prescriptionBean);
 		
 		
+		pItem.setMedicine(prescriptionBean.getMedicine());
+		pItem.setDosagePerDay(prescriptionBean.getDosage());
+		pItem.setDuration(prescriptionBean.getDuration());
+		
+		
+		p.setThePharmacist(prescriptionBean.getPharmacist());
+		p.setThePatient(prescriptionBean.getPatient());
+		p.setTheNote(prescriptionBean.getTheNote());
+		
+		
+		
+		dataStore.addPrescription(p);
+	
 		return null;
 	}
 	

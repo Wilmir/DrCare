@@ -43,6 +43,14 @@ public class PrescriptionItem {
 		return dosagePerDay;
 	}
 
+	
+	public void setDosagePerDay(double dosagePerDay) {
+		this.dosagePerDay = dosagePerDay;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
 	public int getDuration() {
 		return duration;
 	}
