@@ -30,7 +30,13 @@
 	            <p:panelGrid>
 	            	<h:dataTable value="#{doctorController.allergies}" var="allergy">
 				    	<h:column>
-					        <h:outputText value="#{allergy}" > </h:outputText>
+					        <h:outputText value="#{allergy}"/>
+				    	</h:column>
+				    	<h:column>
+				    		<p:commandLink value="Edit" action="#{doctorController.editAllergy(allergy)}"/>
+				    	</h:column>
+				    	<h:column>
+				    		<p:commandLink value="Delete" action="#{doctorController.deleteAllergy(allergy)}"/>
 				    	</h:column>
 					</h:dataTable>
 	            </p:panelGrid>
