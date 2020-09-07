@@ -25,7 +25,7 @@ public class UserConverter implements Converter{
 	   @Override
 	   public Object getAsObject(FacesContext facesContext, 
 	      UIComponent component, String value) {
-			for(User user : dataStore.getPatients()) {
+			for(User user : dataStore.getUsers()) {
 				if(user.getTheName().equals(value)) {
 					return user;
 					
