@@ -140,7 +140,7 @@
 					<!-- Need a Controller to handle this action -->
 					<p:row rendered="#{sessionScope.role == 'Doctor'}">
 						<p:column colspan = "6">
-							<p:commandButton value = "Add" update = "items" action="#{prescriptionBean.addPrescription}"/>
+							<p:commandButton value = "Add" update = "items" action="#{prescriptionController.addPrescription(prescriptionBean)}"/>
 						</p:column>
 					</p:row>
 					<p:row>

@@ -49,23 +49,25 @@ public class PrescriptionController {
 		
 		
 		//set prescriptionitem
-		System.out.println(prescriptionBean);
+		System.out.println("PrescriptionController test");
 		Prescription p = new Prescription();
 		PrescriptionItem pItem = new PrescriptionItem();
 	
-		System.out.println(prescriptionBean);
+		
 		
 		
 		pItem.setMedicine(prescriptionBean.getMedicine());
 		pItem.setDosagePerDay(prescriptionBean.getDosage());
 		pItem.setDuration(prescriptionBean.getDuration());
 		
+		System.out.println(prescriptionBean.getPatient());
+		
 		
 		p.setThePharmacist(prescriptionBean.getPharmacist());
 		p.setThePatient(prescriptionBean.getPatient());
 		p.setTheNote(prescriptionBean.getTheNote());
 		
-		
+		System.out.println("PrescriptionController test end");
 		
 		dataStore.addPrescription(p);
 	
