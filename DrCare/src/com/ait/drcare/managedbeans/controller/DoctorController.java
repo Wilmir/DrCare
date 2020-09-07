@@ -44,6 +44,7 @@ public class DoctorController {
 		this.currentPatient = patient;
 		this.allergies = patient.getAllergies();
 		this.prescriptions = dataStore.getPrescriptions(patient);
+		this.currentPrescription = null;
 	}
 
 	// view prescription details 
