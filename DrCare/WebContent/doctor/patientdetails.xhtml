@@ -43,7 +43,7 @@
 	        </p:tab>
 	        
 	        <p:tab title="Prescriptions">
-	        	<p:commandButton value = "Create New Prescription" action="#{prescriptionController.createPrescription}" />
+	        	<p:commandButton value = "Create New Prescription" action="#{prescriptionController.createPrescription}" rendered="#{doctorController.currentPatient != null}"/>
 	        	<br/>
 	        	<br/>
 	        	<p:dataTable value="#{doctorController.prescriptions}" var="prescription" >
