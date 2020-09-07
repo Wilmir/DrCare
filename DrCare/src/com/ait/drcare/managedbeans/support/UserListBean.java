@@ -61,7 +61,6 @@ public class UserListBean {
 		allergies.add("Aspirin");
 		Patient p1 = new Patient("John Doe", 3456, "password234", "johndoe@gmail.com", allergies, "18734F", "Athlone, Co. Westmeath");
 		users.add(p1);
-		//patients.add(p1);
 		
 		//Quick test users
 		Patient p2 = new Patient("Patient A", 3535, "A", "A",allergies,"A","A,A,A");
