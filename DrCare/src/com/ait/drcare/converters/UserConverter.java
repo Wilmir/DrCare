@@ -1,8 +1,6 @@
 package com.ait.drcare.converters;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -27,8 +25,7 @@ public class UserConverter implements Converter{
 	      UIComponent component, String value) {
 			for(User user : dataStore.getUsers()) {
 				if(user.getTheName().equals(value)) {
-					return user;
-					
+					return user;	
 				}
 			}
 			

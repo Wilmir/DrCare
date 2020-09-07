@@ -31,7 +31,7 @@
 					class="fa fa-hospital-o"></i></a>
 			</div>
 			<h:form>
-				<h:dataTable value="#{patientInfoController.prescriptions}" var="presc">
+				<h:dataTable value="#{patientInfoController.currentUser.prescriptions}" var="presc">
 					<h:column>
 						<f:facet name="header">Name</f:facet>
 						<h:outputText value="#{presc.theName}" />

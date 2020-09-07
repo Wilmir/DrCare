@@ -94,8 +94,8 @@ public class Prescription {
 
 	public void setThePatient(Patient thePatient) {
 		this.thePatient = thePatient;
+		thePatient.addPrescription(this);
 	}
-
 
 	public PrescriptionItem getTheItem() {
 		return theItem;

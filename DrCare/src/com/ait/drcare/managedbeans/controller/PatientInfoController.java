@@ -18,7 +18,6 @@ public class PatientInfoController {
 	private String userEmail;
 	private Patient currentUser;
 	private ArrayList<Patient> patients;
-	private ArrayList<Prescription> prescriptions;
 	private UserListBean dataStore;
 	
 	@PostConstruct
@@ -32,7 +31,6 @@ public class PatientInfoController {
 				break;
 			}
 		}
-		prescriptions = dataStore.getPrescriptions(currentUser); //pass current user to get only their prescriptions
 	}
 
 	public String getUserEmail() {
@@ -59,14 +57,6 @@ public class PatientInfoController {
 		this.patients = patients;
 	}
 
-	public ArrayList<Prescription> getPrescriptions() {
-		return prescriptions;
-	}
-
-	public void setPrescriptions(ArrayList<Prescription> prescriptions) {
-		this.prescriptions = prescriptions;
-	}
-	
 	public String pay() {
 		return "paypal?faces-redirect=true";
 	}
