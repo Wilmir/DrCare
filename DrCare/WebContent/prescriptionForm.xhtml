@@ -40,16 +40,7 @@
 				    <p:row>
 				    		<p:column colspan="2"><p:outputLabel for="patient" value="Patient" /></p:column>
 							<p:column colspan="4">
-								<!-- Lamiaa to create the userConverter class used here -->
-								<p:selectOneMenu value="#{prescriptionBean.patient}"
-												 converter = "userConverter"
-										 id = "patient" rendered="#{sessionScope.role == 'Doctor'}">
-					            		<f:selectItems value="#{userListBean.patients}" 
-					                           var="patient" 
-					                           
-					                           itemLabel="#{patient.theName}" 
-					                           itemValue="#{patient}" />
-								</p:selectOneMenu>
+								<h:outputText id = "patient" value = "#{doctorController.currentPatient.theName}" />
 							</p:column>
 							
 							<!-- The Prescription Date Field -->
