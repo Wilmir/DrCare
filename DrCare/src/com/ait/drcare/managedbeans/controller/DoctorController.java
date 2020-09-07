@@ -18,6 +18,7 @@ import com.ait.drcare.model.*;
 @SessionScoped
 public class DoctorController {
 	private Patient currentPatient;
+	private Prescription currentPrescription;
 	private ArrayList<Prescription> prescriptions;
 	private UserListBean dataStore;
 	private String patientName;
@@ -38,18 +39,24 @@ public class DoctorController {
 		
 	}
 	
+	// show the Patient upon search
 	public void show(Patient patient) {
 		this.currentPatient = patient;
 		this.allergies = patient.getAllergies();
 		this.prescriptions = dataStore.getPrescriptions(patient);
 	}
 
+	// view prescription details 
+	public void viewPrescriptionDetails(Prescription prescription) {
+		this.currentPrescription = prescription;
+		System.out.println("View prescription details of : " + prescription.getTheName());
+	}
 
 	public ArrayList<Prescription> getPrescriptions(){
 		return prescriptions;
 		
 	}
-	
+
 	public ArrayList<String> getAllergies() {
 		System.out.println("DocController allergies get");
 		System.out.println(allergies);
@@ -76,7 +83,12 @@ public class DoctorController {
 		this.placeholder = placeholder;
 	}
 
-	
-	
+	public Prescription getCurrentPrescription() {
+		return currentPrescription;
+	}
+
+	public void setCurrentPrescription(Prescription currentPrescription) {
+		this.currentPrescription = currentPrescription;
+	}
 	
 }

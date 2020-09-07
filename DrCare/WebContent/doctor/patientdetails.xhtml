@@ -37,29 +37,24 @@
 	        </p:tab>
 	        
 	        <p:tab title="Prescriptions">
-	            <p:panelGrid>
-					    <h:dataTable value="#{doctorController.prescriptions}" var="presc" >
-					    	<h:column>
-					    	    <f:facet name="header">Presc ID</f:facet>
-					    		<h:outputText value="#{presc.theName}" > </h:outputText>
-					    	</h:column>
-					    	<h:column>
-					    		<f:facet name="header">Date</f:facet>
-					    		<h:outputText value="#{presc.theDatePrescribed}" > </h:outputText>
-					    	</h:column>
-					    	<h:column>
-					    		<f:facet name="header">Status</f:facet>
-					    		<h:outputText value="#{presc.theStatus}" > </h:outputText>
-					    	</h:column>
-					    </h:dataTable>
-	            </p:panelGrid>
-	           	 
-	           	 <!-- Need a controller bean that will set the patient object of the PatientInfo bean  -->
-	           	 <br/>
-			     <p:commandButton value="Add Prescription" 
-			                      action="#{prescriptionController.createPrescription}" />
-			                      
-			                    
+	        	<p:dataTable value="#{doctorController.prescriptions}" var="prescription" >
+	        		<p:column headerText="ID">
+						<p:commandLink value="#{prescription.theName}" 
+									   action = "#{doctorController.viewPrescriptionDetails(prescription)}" 
+									   update="prescriptionDetailsSection">
+						</p:commandLink>
+					</p:column>
+					
+					<p:column headerText="Patient">
+						<h:outputText value="#{prescription.thePatient.theName}" />
+					</p:column>
+					
+					<p:column headerText="Date">
+						<h:outputText value="#{prescription.theDatePrescribed}">
+							<f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+						</h:outputText>
+					</p:column>
+	        	</p:dataTable>                    
 	        </p:tab>
 	    </p:accordionPanel>
 	</ui:composition>

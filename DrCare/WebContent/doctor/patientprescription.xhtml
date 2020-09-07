@@ -8,16 +8,74 @@
 	xmlns:p="http://primefaces.org/ui"	>
 
 	<ui:composition>
-		<h:form rendered="#{sessionScope.role == 'Doctor'}">
-			 <h2>Prescription</h2>
-		
-		
-		<h:selectOneMenu value="Medicine">
-   			<f:selectItems value = "#{medicineListBean.medicineList}" var="medicine"
-   			 itemLabel="#{medicine.theName}"/>
-   		</h:selectOneMenu>
-
-	
+		<h:form  id = "prescriptionDetailsSection">
+			<p:panelGrid rendered = "#{doctorController.currentPrescription != null}">
+					<h3>Prescription ID : #{doctorController.currentPrescription.theName}</h3>
+				    
+				    <!-- The Patient -->
+				    <p:row>
+				    		<p:column colspan="2"><p:outputLabel for="patient" value="Patient" /></p:column>
+							<p:column colspan="4">
+								<h:outputText id="patient" value = "#{doctorController.currentPrescription.thePatient.theName}" />
+							</p:column>
+							
+							<!-- The Prescription Date-->
+							<p:column colspan="2"><p:outputLabel for="date" value="Date" /></p:column>
+							<p:column colspan="4">
+								<h:outputText id="date" value = "#{doctorController.currentPrescription.theDatePrescribed}">
+												<f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+								</h:outputText>
+							</p:column>		
+				    </p:row>
+				    
+				    <!-- The Pharmacist -->
+				    <p:row>
+				    		<p:column colspan="2"><p:outputLabel for="pharmacist" value="Pharmacist  "/></p:column>
+							<p:column colspan="10">
+								<h:outputText id="pharmacist" value = "#{doctorController.currentPrescription.thePharmacist.theName}" />
+							</p:column>
+				    </p:row>
+					
+					<!-- Placeholder for the PrescriptionItems Datatable -->
+					<p:row>
+				    	<p:column colspan="12">
+				    		<p:dataTable id = "items" var="item" value="#{doctorController.placeholder}">
+							    <p:column headerText="Medicine">
+							        <h:outputText value="#{item.medicine.theName}" />
+							    </p:column>
+							 
+							    <p:column headerText="Dose per day">
+							        <h:outputText value="#{item.dosage}" />
+							    </p:column>
+							 
+							    <p:column headerText="Duration">
+							        <h:outputText value="#{item.duration}" />
+							    </p:column>
+							    
+							    <p:column headerText="Quantity">
+							        <h:outputText value="#{item.quantity}" />
+							    </p:column>
+							    
+							    <p:column headerText="Unit Price">
+							        <h:outputText value="#{item.theUnitPrice}" />
+							    </p:column>
+							    
+							    <p:column headerText="Subtotal">
+							        <h:outputText value="#{item.subtotal}" />
+							    </p:column>
+							</p:dataTable>
+				    	</p:column>
+					</p:row>
+					
+					<!-- The Button for Saving the Prescription -->
+					<!-- Need a Controller to handle this action -->
+					<p:row>
+						<p:column colspan = "12">
+							<p:commandButton rendered="#{sessionScope.role == 'Doctor' || sessionScope.role == 'Pharmacist' || sessionScope.role == 'Patient'}" 
+										value = "Save" action="#{prescriptionController.addPrescription(prescriptionBean)}"/>
+						</p:column>
+					</p:row>
+			</p:panelGrid>
 		</h:form>
 	</ui:composition>
 </html>

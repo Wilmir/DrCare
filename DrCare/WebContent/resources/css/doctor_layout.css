@@ -33,3 +33,13 @@
 	padding: 5px;
 	width:100%;
 }
+
+#prescriptionDetailsSection .ui-panelgrid-cell{
+	border: 1px solid #ffffff;
+}
+
+#prescriptionDetailsSection{
+	border: 1px solid gray;
+	margin:20px;
+	padding:20px;
+}
