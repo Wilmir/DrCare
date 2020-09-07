@@ -113,15 +113,10 @@ public class User
 		this.canEdit= canEdit;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-	    if (obj == null)
-	      return false;
-	    if (!(obj instanceof User))
-	      return false;
-	    else
-	      return true;
-	}
+	/*
+	 * @Override public boolean equals(Object obj) { if (obj == null) return false;
+	 * if (!(obj instanceof User)) return false; else return true; }
+	 */
 	
 	
 }
