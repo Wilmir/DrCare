@@ -67,12 +67,11 @@
 				    	</p:column>
 					</p:row>
 					
-					<!-- The Button for Saving the Prescription -->
-					<!-- Need a Controller to handle this action -->
+					<!-- Need a Controller to handle this action, to be integrated with the CreatePrescription form -->
 					<p:row>
 						<p:column colspan = "12">
 							<p:commandButton rendered="#{sessionScope.role == 'Doctor' || sessionScope.role == 'Pharmacist' || sessionScope.role == 'Patient'}" 
-										value = "Save" action="#{prescriptionController.addPrescription(prescriptionBean)}"/>
+										value = "Update"/>
 						</p:column>
 					</p:row>
 			</p:panelGrid>
