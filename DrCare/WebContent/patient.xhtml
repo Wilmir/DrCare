@@ -20,9 +20,9 @@
 			<img src="#{resource['images/patient.jpg']}" alt="pharmacist"
 				style="width: 100%"></img>
 			<h1>PATIENT</h1>
-			<p>User Name :</p>
-			<p>ID :</p>
-			<p>email :</p>
+			<p>Name: #{patientInfoController.currentUser.theName}</p>
+			<p>ID: #{patientInfoController.currentUser.theID}</p>
+			<p>email: #{patientInfoController.currentUser.theEmail}</p>
 
 			<div style="margin: 24px 0;">
 				<a href="#"><i class="fa fa-ambulance"></i></a> <a href="#"><i
