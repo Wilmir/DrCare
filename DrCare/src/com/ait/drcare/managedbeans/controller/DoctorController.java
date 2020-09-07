@@ -49,7 +49,6 @@ public class DoctorController {
 	// view prescription details 
 	public void viewPrescriptionDetails(Prescription prescription) {
 		this.currentPrescription = prescription;
-		System.out.println("View prescription details of : " + prescription.getTheName());
 	}
 
 	public ArrayList<Prescription> getPrescriptions(){
@@ -58,8 +57,6 @@ public class DoctorController {
 	}
 
 	public ArrayList<String> getAllergies() {
-		System.out.println("DocController allergies get");
-		System.out.println(allergies);
 		return allergies;
 	}
 
