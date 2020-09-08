@@ -48,14 +48,7 @@ public class UserListBean {
 		
 		Doctor d1 = new Doctor("Alan Care", 1234, "passw0rd", "alan@drcare.ie", "08913486", "Athlone, Co. Westmeath");
 		users.add(d1);
-		Pharmacist ph1 = new Pharmacist("Mary Bloggs", 2345, "password123", "mary@totalhealth.ie", "Athlone, Co. Westmeath");
-		Pharmacist ph3 = new Pharmacist("Pharm Acist", 2345, "password123", "pharm@totalhealth.ie", "Athlone, Co. Westmeath");
-		Pharmacist ph4 = new Pharmacist("Joseph Bloggs", 2345, "password123", "Jose[h@totalhealth.ie", "Athlone, Co. Westmeath");
-		Pharmacist ph5 = new Pharmacist("Sunny Bloggs", 2345, "password123", "Sunny@totalhealth.ie", "Athlone, Co. Westmeath");
-		users.add(ph1);
-		users.add(ph3);
-		users.add(ph4);
-		users.add(ph5);
+		
 		ArrayList<String> allergies = new ArrayList<String>();
 		allergies.add("Penicillin");
 		allergies.add("Aspirin");
@@ -70,6 +63,15 @@ public class UserListBean {
 		users.add(ph2);
 		users.add(doco);
 		//patients.add(p2);
+		
+		Pharmacist ph1 = new Pharmacist("Mary Bloggs", 2345, "password123", "mary@totalhealth.ie", "Athlone, Co. Westmeath");
+		Pharmacist ph3 = new Pharmacist("Pharm Acist", 2345, "password123", "pharm@totalhealth.ie", "Athlone, Co. Westmeath");
+		Pharmacist ph4 = new Pharmacist("Joseph Bloggs", 2345, "password123", "Jose[h@totalhealth.ie", "Athlone, Co. Westmeath");
+		Pharmacist ph5 = new Pharmacist("Sunny Bloggs", 2345, "password123", "Sunny@totalhealth.ie", "Athlone, Co. Westmeath");
+		users.add(ph1);
+		users.add(ph3);
+		users.add(ph4);
+		users.add(ph5);
 		
 		
 		//Prescriptions In Data
@@ -89,6 +91,7 @@ public class UserListBean {
 		Prescription prescription3 = new Prescription("Beans McBeans", new Date());
 		prescription3.setThePharmacist(ph2);
 		Prescription prescription4 = new Prescription("Tommy loves Beans", new Date());
+		prescription4.setThePharmacist(ph2);
 		Prescription prescription5 = new Prescription("Tommy 5 trings", new Date());
 		prescription5.setThePharmacist(ph2);
 		
@@ -99,9 +102,12 @@ public class UserListBean {
 		
 		prescriptions.add(prescription1);
 		prescriptions.add(prescription2);
-		/*prescriptions.add(prescription2);
-		prescriptions.add(prescription3);
-		prescriptions.add(prescription4);
+		
+		
+		//this causes error
+		
+		//prescriptions.add(prescription3);
+	/*	prescriptions.add(prescription4);
 		prescriptions.add(prescription5); */
 		
 		
@@ -114,8 +120,8 @@ public class UserListBean {
 		ph2.AddOrder(prescription1);
 		ph2.AddOrder(prescription2);
 		ph2.AddOrder(prescription3);
-		ph2.AddOrder(prescription4);
-		ph2.AddOrder(prescription5);
+	//	ph2.AddOrder(prescription4);
+		//ph2.AddOrder(prescription5);
 	
 		users.add(p3);
 		users.add(p4);
@@ -226,6 +232,7 @@ public class UserListBean {
 	}
 	
 	public void addPrescription(Prescription newPrescription) {
+		
 	
 		prescriptions.add(newPrescription);
 		
@@ -236,12 +243,13 @@ public class UserListBean {
 	public void PrintPrescriptions() {
 		
 		System.out.println("UserListBean PrintPrescriptions");
-		System.out.println(prescriptions.size());
-		for (Prescription p : prescriptions) {
-			System.out.println(p);
-			System.out.println(p.getThePharmacist().getTheEmail());
-		}
 		
+		for (Prescription p : prescriptions) {
+			System.out.println("Patient Email:"+p.getThePatient().getTheEmail());
+			System.out.println("Pharmacist Email:"+p.getThePharmacist().getTheEmail());
+			
+		}
+		System.out.println("Number of prescriptions " + prescriptions.size());
 		
 	}
 }

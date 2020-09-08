@@ -46,7 +46,6 @@ public class PharmacistController {
 		
 		pharmacists = dataStore.getPharmacists();
 		
-		ArrayList<Prescription> dataPrescriptions = dataStore.getPrescriptions();
 
 		
 		
@@ -60,24 +59,28 @@ public class PharmacistController {
 
 		
 		
-		findPrescriptionOrders(dataPrescriptions);
+		findPrescriptionOrders();
 		
 	}
 
-	public void findPrescriptionOrders(ArrayList<Prescription>dataPrescriptions) {
+	public void findPrescriptionOrders() {
 		
-	
-		
+	ArrayList<Prescription> prescrips = new ArrayList<Prescription>();
+
+	dataStore = Helper.getBean("userListBean", UserListBean.class);
+	System.out.println("Number of Prescriptions" + dataStore.getPrescriptions().size());
 		//Filter out prescriptions for this specific pharmacist user
-		for (Prescription prescription : dataPrescriptions) {
-			
-			System.out.println(prescription.getThePharmacist().getTheName());
-			
-			if (prescription.getThePharmacist().getTheEmail() == theUserEmail) {
-				System.out.println(prescription.getThePharmacist().getTheEmail());
-				prescriptions.add(prescription);
+		for (Prescription prescription : dataStore.getPrescriptions()) {
+					
+			if (prescription.getThePharmacist() == currentUser) {
+			//	System.out.println("yay");
+				prescrips.add(prescription);
 			}
 		}
+		
+		prescriptions = prescrips;
+	
+		dataStore.PrintPrescriptions();
 		
 	}
 	

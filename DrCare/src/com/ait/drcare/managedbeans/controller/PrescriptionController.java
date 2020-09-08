@@ -25,7 +25,7 @@ public class PrescriptionController {
 	
 	
 	private ArrayList<Prescription> prescriptions;
-	
+	private DoctorController currentDoctor;
 	
 	//Change to prescriptionListBean later
 	private UserListBean dataStore;
@@ -39,6 +39,9 @@ public class PrescriptionController {
 		dataStore = Helper.getBean("userListBean", UserListBean.class);
 		prescriptions = dataStore.getPrescriptions();
 		
+		
+		currentDoctor = Helper.getBean("doctorController", DoctorController.class);	
+		
 		System.out.println(prescriptions.size());
 		
 	}
@@ -50,7 +53,7 @@ public class PrescriptionController {
 		
 		//set prescriptionitem
 		System.out.println("PrescriptionController test");
-		Prescription p = new Prescription();
+		Prescription prescription = new Prescription();
 		PrescriptionItem pItem = new PrescriptionItem();
 	
 		
@@ -60,16 +63,20 @@ public class PrescriptionController {
 		pItem.setDosagePerDay(prescriptionBean.getDosage());
 		pItem.setDuration(prescriptionBean.getDuration());
 		
-		System.out.println(prescriptionBean.getPatient());
 		
 		
-		p.setThePharmacist(prescriptionBean.getPharmacist());
-		p.setThePatient(prescriptionBean.getPatient());
-		p.setTheNote(prescriptionBean.getTheNote());
+		prescription.setTheNote(prescriptionBean.getTheNote());
+		prescription.setThePharmacist(prescriptionBean.getPharmacist());
+		System.out.println(prescriptionBean.getPharmacist().getTheEmail()); // works
 		
+		prescription.setThePatient(currentDoctor.getCurrentPatient());
+		System.out.println(prescriptionBean.getPatient().getTheName()); // showing null
+		
+		
+		//Test activation
 		System.out.println("PrescriptionController test end");
 		
-		dataStore.addPrescription(p);
+		dataStore.addPrescription(prescription);
 	
 		return null;
 	}

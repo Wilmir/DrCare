@@ -37,6 +37,10 @@
  <p><button>View Prescription</button></p>
  
 		<h:form>
+		
+			
+						
+						
 	 <h:dataTable value ="#{pharmacistController.prescriptions}" var = "prescription"
 				 styleClass="prescriptionsTable"
 				 headerClass="prescriptionsTableHeader"
@@ -84,7 +88,7 @@
 				
 				
 		</h:dataTable>
-		
+		<h:commandButton size="10" value="Refresh" action="#{pharmacistController.findPrescriptionOrders}"></h:commandButton>
 		<h:commandButton size="10" value="Save change" action="#{pharmacistController.saveChanges}"></h:commandButton>
 		</h:form>
 		
