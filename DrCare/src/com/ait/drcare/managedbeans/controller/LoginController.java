@@ -70,7 +70,10 @@ public class LoginController {
 
 			//Add user attribute to session
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", registeredUser.getTheEmail());
-
+			System.out.println("The user list bean points to " + existingUsers.hashCode());
+			
+			
+			
 			// if user is a patient
 			if (registeredUser.getRole().equals("Patient")) {
 				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("role", "Patient");
@@ -117,8 +120,8 @@ public class LoginController {
 	}
 
 	public String logout() {
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		 // FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
+		// FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "login?faces-redirect=true";
 	}
 	
