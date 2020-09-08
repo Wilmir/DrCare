@@ -67,7 +67,9 @@ public class PrescriptionItem {
 		return subtotal;
 	}
 	
-	
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
+	}
 	
 }
 
