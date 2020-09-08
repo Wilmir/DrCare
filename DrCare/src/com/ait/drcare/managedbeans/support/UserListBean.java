@@ -85,7 +85,6 @@ public class UserListBean {
 		prescription1.setThePharmacist(ph2);
 		
 		
-		
 		Prescription prescription2 = new Prescription("Beany 2 strings", new Date());
 		prescription2.setThePharmacist(ph1);
 		Prescription prescription3 = new Prescription("Beans McBeans", new Date());
@@ -96,6 +95,8 @@ public class UserListBean {
 		prescription5.setThePharmacist(ph2);
 		
 		prescription1.setTheStatus("Ready for pickup");
+		pItem1.setSubtotal(20.0);
+		prescription2.setTheItem(pItem1);
 		prescription1.setThePatient(p2);
 		prescription2.setThePatient(p1);
 		

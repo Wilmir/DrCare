@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<h:outputStylesheet name="userpage.css" library="css" />
 </h:head>
@@ -31,20 +32,21 @@
 					class="fa fa-hospital-o"></i></a>
 			</div>
 			<h:form>
-				<h:dataTable value="#{patientInfoController.currentUser.prescriptions}" var="presc">
-					<h:column>
-						<f:facet name="header">Name</f:facet>
+				<p:dataTable value="#{patientInfoController.currentUser.prescriptions}" var="presc">
+					<p:column headerText="Name">
 						<h:outputText value="#{presc.theName}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">Date Dispensed</f:facet>
+					</p:column>
+					<p:column headerText="Date Dispensed">
 						<h:outputText value="#{presc.theDatePrescribed}" />
-					</h:column>
-					<h:column>
+					</p:column>
+					<p:column headerText="Amount">
+						<h:outputText value="#{presc.theItem.subtotal}"/>
+					</p:column>
+					<p:column headerText="Pay">
 						<f:facet name="header">Pay</f:facet>
-						<h:commandLink value="Pay" action="#{patientInfoController.pay}" rendered="#{presc.theStatus == 'Waiting for payment'}"/>
-					</h:column>
-				</h:dataTable>
+						<p:commandButton value="Pay" actionListener="#{authorisePayment.pay(presc)}" rendered="#{presc.theStatus == 'Waiting for payment'}"/>
+					</p:column>
+				</p:dataTable>
 			</h:form>
 			<p>
 				<button>View Prescription</button>

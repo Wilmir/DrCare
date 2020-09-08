@@ -19,7 +19,7 @@ public class PatientInfoController {
 	private Patient currentUser;
 	private ArrayList<Patient> patients;
 	private UserListBean dataStore;
-	
+
 	@PostConstruct
 	public void init() {
 		userEmail = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
@@ -57,7 +57,4 @@ public class PatientInfoController {
 		this.patients = patients;
 	}
 
-	public String pay() {
-		return "paypal?faces-redirect=true";
-	}
 }
