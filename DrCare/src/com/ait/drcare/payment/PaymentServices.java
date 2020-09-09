@@ -24,7 +24,6 @@ public class PaymentServices {
 	private static final String MODE = "sandbox";
 	
 	public String authorisePayment(Prescription prescription) throws PayPalRESTException {
-		presc = prescription;
 		Payer payer = getPayerInformation();
         RedirectUrls redirectUrls = getRedirectURLs();
         List<Transaction> listTransaction = getTransactionInformation(prescription);
