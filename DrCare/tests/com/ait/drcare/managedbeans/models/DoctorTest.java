@@ -1,3 +1,5 @@
+package com.ait.drcare.managedbeans.models;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -5,10 +7,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.ait.drcare.model.Doctor;
+import com.ait.drcare.model.Patient;
 
 class DoctorTest {
 
-	
 	private Doctor doc;
 	@BeforeEach
 	void setUp() throws Exception {
@@ -47,8 +49,8 @@ class DoctorTest {
 		doc.setThePassword("pass");
 		
 		
-		assertEquals("Jown",doc.getTheName());
-		assertEquals("39141010",doc.getPhoneNumber());
+		assertEquals("Jon",doc.getTheName());
+		assertEquals("39i41010",doc.getPhoneNumber());
 		assertEquals("Doctr",doc.getRole());
 		assertEquals("Somewhere",doc.getTheAddress());
 		assertEquals("email",doc.getTheEmail());
@@ -62,6 +64,5 @@ class DoctorTest {
 		
 		
 	}
-	
-	
+
 }

@@ -1,4 +1,5 @@
 package com.ait.drcare.managedbeans.controller;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -7,8 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.ait.drcare.managedbeans.backing.PrescriptionBean;
-import com.ait.drcare.managedbeans.controller.DoctorController;
-import com.ait.drcare.managedbeans.controller.PrescriptionController;
 import com.ait.drcare.model.Prescription;
 
 class PrescriptionControllerTest {

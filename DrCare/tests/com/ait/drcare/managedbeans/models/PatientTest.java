@@ -1,3 +1,5 @@
+package com.ait.drcare.managedbeans.models;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -5,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.ait.drcare.model.Doctor;
 import com.ait.drcare.model.Patient;
 
 class PatientTest {
@@ -48,8 +51,8 @@ class PatientTest {
 		assertEquals("123street",patient1.getTheAddress());
 		assertEquals("harry",patient1.getTheName());
 		assertEquals("word",patient1.getThePassword());
-		assertEquals("awwq",patient1.getThePassword());
-		assertEquals("p@p@P.com",patient1.getTheEmail());
+		assertEquals("awwwq",patient1.getTheMedicalCardNumber());
+		assertEquals("p@p@p.com",patient1.getTheEmail());
 		
 		
 	}
