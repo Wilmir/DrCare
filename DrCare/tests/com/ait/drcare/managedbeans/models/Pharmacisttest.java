@@ -1,3 +1,5 @@
+package com.ait.drcare.managedbeans.models;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -8,7 +10,7 @@ import com.ait.drcare.model.Pharmacist;
 class Pharmacisttest {
 
 	private Pharmacist pharmacist;
-	private Pharmacist2 pharmacist2 = new Pharmacist();
+	private Pharmacist  pharmacist2 = new Pharmacist();
 	
 	
 	@BeforeEach
@@ -29,7 +31,4 @@ class Pharmacisttest {
 		assertEquals("Addwas",pharmacist.getTheAddress());
 		
 	}
-	
-	
-
 }

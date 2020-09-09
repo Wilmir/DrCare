@@ -1,3 +1,5 @@
+package com.ait.drcare.managedbeans.models;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Date;
@@ -14,7 +16,7 @@ class PrescriptionTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-	prescription1 = new Prescription("John",Date.valueOf("06/01/2020"));
+	prescription1 = new Prescription("John",new Date(5,2,2019));
 	
 	}
 
@@ -37,13 +39,12 @@ class PrescriptionTest {
 		
 		prescription1.setTheStatus("Order Dispenced");
 		assertEquals("Order Dispenced",prescription1.getTheStatus());
-		prescription1.setTheDatePrescribed(Date.valueOf("01/02/0000"));
-		assertEquals(prescription1.getTheStatus());
+		prescription1.setTheDatePrescribed(new Date(1,2,2020));
+	//	assertEquals(prescription1.getTheStatus());
 		prescription1.setTheName("bobo");
 		assertEquals("bobo",prescription1.getTheName());
 		
 		
 		
 	}
-
 }
