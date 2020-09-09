@@ -24,6 +24,7 @@ public class PaymentServices {
 	private static final String MODE = "sandbox";
 	
 	public String authorisePayment(Prescription prescription) throws PayPalRESTException {
+		presc = prescription;
 		Payer payer = getPayerInformation();
         RedirectUrls redirectUrls = getRedirectURLs();
         List<Transaction> listTransaction = getTransactionInformation(prescription);
@@ -48,7 +49,7 @@ public class PaymentServices {
         PayerInfo payerInfo = new PayerInfo();
         payerInfo.setFirstName("John")
                  .setLastName("Doe")
-                 .setEmail("sb-l64jk3155466@business.example.com");
+                 .setEmail("sb-eveby3155559@personal.example.com");
          
         payer.setPayerInfo(payerInfo);         
         return payer;

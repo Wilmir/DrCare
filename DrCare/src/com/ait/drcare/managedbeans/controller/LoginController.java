@@ -49,7 +49,7 @@ public class LoginController {
 		}
 		// if no user exists
 		if (!userFound) {
-			printMessage(givenUser, "The given user is not registed in the System. Please Register" );
+			printMessage(givenUser, "The given user is not registered in the System. Please Register" );
 			System.out.println(message);
 			return null;
 		}
@@ -108,8 +108,8 @@ public class LoginController {
 				registeredUser.setAccountLock(true);
 			} 
 			else {
-				System.err.println("Login Failure !!");
-				printMessage(givenUser, "Login Failure !!" );
+				System.err.println("Wrong password. Login Failure !!");
+				printMessage(givenUser, "Wrong password. Try Again!!" );
 
 				}
 		}
