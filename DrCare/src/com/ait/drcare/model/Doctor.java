@@ -34,5 +34,9 @@ public class Doctor extends User{
 		return Patients.size();
 	}
 	
+	public void addPatient(Patient newPatient) {
+		
+	}
+	
 	
 }
