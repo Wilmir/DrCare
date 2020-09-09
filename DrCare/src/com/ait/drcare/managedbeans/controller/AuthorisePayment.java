@@ -14,8 +14,10 @@ import com.paypal.base.rest.PayPalRESTException;
 @ManagedBean
 @SessionScoped
 public class AuthorisePayment {
+	private Prescription presc;
 
 	public String pay(Prescription prescription) throws IOException {
+		presc = prescription;
 		try {
 			PaymentServices paymentServices = new PaymentServices();
 			String approvalLink = paymentServices.authorisePayment(prescription);
@@ -25,4 +27,8 @@ public class AuthorisePayment {
 		}
 		return null;
 	}
+	
+    public void setPrescValue() {
+    	presc.setTheStatus("Ready for pickup");
+    }
 }
