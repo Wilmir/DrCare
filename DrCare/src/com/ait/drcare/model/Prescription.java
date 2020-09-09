@@ -42,6 +42,7 @@ public class Prescription {
 		this.statusValues.add(PRESCRIPTION_WAITING_PAYMENT);
 		this.statusValues.add(PRESCRIPTION_DISPENSED);
 		this.statusValues.add(PRESCRIPTION_READY_FOR_PICKUP);
+		this.CanEditNote = false;
 		theCount++;
 	}
 	

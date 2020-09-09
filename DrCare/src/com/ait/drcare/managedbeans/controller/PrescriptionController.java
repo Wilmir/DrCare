@@ -78,7 +78,7 @@ public class PrescriptionController {
 		
 		dataStore.addPrescription(prescription);
 	
-		return null;
+		return "successfully added";
 	}
 	
 	

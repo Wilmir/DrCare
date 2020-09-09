@@ -132,7 +132,7 @@ public class PharmacistController {
 	}
 	public String enableEditNote(Prescription prescription) {
 		prescription.setCanEditNote(true);
-		return null;
+		return "ok";
 	}
 	
 

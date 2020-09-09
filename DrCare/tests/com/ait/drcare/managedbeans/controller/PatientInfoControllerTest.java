@@ -70,27 +70,6 @@ class PatientInfoControllerTest {
 		assertEquals(3, patientInfoController.getPatients().size());
 	}
 	
-	@Test
-	public void testSetPrescriptions() {
-		// Patient(String name,int ID,String Password,String Email,ArrayList<String> Allergies,String medicalCard,String address)
-		Prescription prescription1 = new Prescription();
-		Prescription prescription2 = new Prescription();
-		Prescription prescription3 = new Prescription();
-		
-		ArrayList<Prescription> prescriptions =  new ArrayList<>();
-			prescriptions.add(prescription1);
-			prescriptions.add(prescription2);
-			prescriptions.add(prescription3);
-			
-		patientInfoController.setPrescriptions(prescriptions);
-			
-		assertEquals(3, patientInfoController.getPrescriptions().size());
-	}
-	
-	
-	@Test
-	public void testPay() {
-		assertEquals("paypal?faces-redirect=true", patientInfoController.pay());
-	}
+
 
 }
