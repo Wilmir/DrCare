@@ -120,7 +120,8 @@ public class LoginController {
 	}
 
 	public String logout() {
-		 // FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("role","");
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", "");
 		// FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "login?faces-redirect=true";
 	}
