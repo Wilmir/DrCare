@@ -1,5 +1,7 @@
 package com.ait.drcare.model;
 
+import java.util.ArrayList;
+
 import com.sun.org.apache.xml.internal.security.signature.reference.ReferenceData;
 
 public class User
@@ -13,6 +15,7 @@ public class User
 	protected boolean accountLock = false;
 	boolean canEdit;
 	protected int failedAttempts = 0;
+	protected ArrayList<Prescription> prescriptions;
 	
 	public User()
 	{
@@ -97,14 +100,7 @@ public class User
 	public void resetFailedAttempts() {
 		failedAttempts=0;
 	}
-
 	
-	@Override
-	public String toString() {
-		return "User [theName=" + theName + ", theID=" + theID + ", thePassword=" + thePassword + ", theEmail="
-				+ theEmail + ", theAddress=" + theAddress + ", role=" + role + "]";
-		
-	}
 	public boolean isCanEdit() {
 		return canEdit;
 	}
@@ -113,10 +109,29 @@ public class User
 		this.canEdit= canEdit;
 	}
 
-	/*
-	 * @Override public boolean equals(Object obj) { if (obj == null) return false;
-	 * if (!(obj instanceof User)) return false; else return true; }
-	 */
+
+	public ArrayList<Prescription> getPrescriptions() {
+		return prescriptions;
+	}
+
+
+	public void setPrescriptions(ArrayList<Prescription> prescriptions) {
+		this.prescriptions = prescriptions;
+	}
 	
+	public void addPrescription(Prescription prescription) {
+		if(prescriptions == null) {
+			prescriptions = new ArrayList<>();
+		}
+		
+		prescriptions.add(prescription);
+	}
 	
+	@Override
+	public String toString() {
+		return "User [theName=" + theName + ", theID=" + theID + ", thePassword=" + thePassword + ", theEmail="
+				+ theEmail + ", theAddress=" + theAddress + ", role=" + role + "]";
+		
+	}
+
 }
