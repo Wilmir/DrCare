@@ -1,5 +1,7 @@
 package com.ait.drcare.managedbeans.backing;
 
+import java.util.ArrayList;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -14,13 +16,15 @@ import com.ait.drcare.model.Prescription;
 @ViewScoped
 public class PharmacistBean {
 	private Pharmacist currentUser;
-	private UserListBean dataStore;
 	private Prescription currentPrescription;	
+	private UserListBean dataStore;
 	private Object placeholder;
+	private ArrayList<Prescription> paidPrescriptions;
 
 	@PostConstruct
 	public void init() {
 		dataStore = Helper.getBean("userListBean", UserListBean.class);	
+		paidPrescriptions = new ArrayList<>();
 		
 		String email = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
 		
@@ -32,11 +36,25 @@ public class PharmacistBean {
 			}
 		}	
 		
-		if(currentUser.getPrescriptions().size() > 0) {
-			this.currentPrescription = currentUser.getPrescriptions().get(0);
+		
+		
+		if(currentUser.getPrescriptions()!= null && currentUser.getPrescriptions().size() > 0) {
+			
+			// filter paid prescriptions
+			for(Prescription prescription: currentUser.getPrescriptions()) {
+				if(prescription.getTheStatus().equalsIgnoreCase("ready for pickup")) {
+					paidPrescriptions.add(prescription);
+				}
+			}
+			
+			// set current prescription to the first paid prescription
+			if(paidPrescriptions.size() > 0) {
+				this.currentPrescription = paidPrescriptions.get(0);
+			}
 		}
 		
 	}
+
 
 	public Pharmacist getCurrentUser() {
 		return currentUser;
@@ -52,6 +70,14 @@ public class PharmacistBean {
 
 	public void setCurrentPrescription(Prescription currentPrescription) {
 		this.currentPrescription = currentPrescription;
+	}
+	
+	public ArrayList<Prescription> getPaidPrescriptions() {
+		return paidPrescriptions;
+	}
+
+	public void setPaidPrescriptions(ArrayList<Prescription> paidPrescriptions) {
+		this.paidPrescriptions = paidPrescriptions;
 	}
 
 	public Object getPlaceholder() {

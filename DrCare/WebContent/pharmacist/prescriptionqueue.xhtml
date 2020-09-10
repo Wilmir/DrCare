@@ -10,12 +10,19 @@
 	<ui:composition>
 		<h:form rendered="#{sessionScope.role == 'Pharmacist'}">
 			<h3>Prescriptions Queue</h3>		
-				<ui:repeat id = "pharmacistQueue" value="#{pharmacistBean.currentUser.prescriptions}" var="prescription" varStatus="status">
-					<div class = "pharmacistQueueItem">
-						<p:commandLink value="#{prescription.theName}" 
-										   action = "#{pharmacistBean.setCurrentPrescription(prescription)}" 
-										   update="prescriptionDetails" />
-					</div>
+				<ui:repeat id = "pharmacistQueue" value="#{pharmacistBean.paidPrescriptions}" var="prescription" varStatus="status">
+
+						<p:commandLink action = "#{pharmacistBean.setCurrentPrescription(prescription)}" update="prescriptionDetails">
+								<div class = "pharmacistQueueItem">
+											<div class ="prescriptionID">
+												#{prescription.theName}
+											</div>
+											<div class ="prescriptionPatient">
+												#{prescription.thePatient.theName}
+											</div>
+								</div>			
+						</p:commandLink>
+
 				</ui:repeat>  
 	      </h:form>                
 	</ui:composition>

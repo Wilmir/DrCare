@@ -123,6 +123,7 @@ public class UserListBean {
 			prescription2.setThePatient(p2);
 			prescription2.setThePharmacist(ph1);
 			prescription2.setTheDoctor(d2);
+			prescription2.setTheStatus("Ready for pickup");
 			prescription2.addPrescriptionItem(pItem3);
 			prescription1.addPrescriptionItem(pItem4);
 			prescriptions.add(prescription2);
@@ -132,6 +133,7 @@ public class UserListBean {
 			prescription3.setThePatient(p3);
 			prescription3.setThePharmacist(ph2);
 			prescription3.setTheDoctor(d1);
+			prescription3.setTheStatus("Ready for pickup");
 			prescription3.addPrescriptionItem(pItem5);
 			prescriptions.add(prescription3);
 
@@ -140,6 +142,7 @@ public class UserListBean {
 			prescription4.setThePatient(p4);
 			prescription4.setThePharmacist(ph2);
 			prescription4.setTheDoctor(d2);		
+			prescription4.setTheStatus("Ready for pickup");
 			prescription4.addPrescriptionItem(pItem1);
 			prescriptions.add(prescription4);
 
@@ -148,6 +151,7 @@ public class UserListBean {
 			prescription5.setThePatient(p5);
 			prescription5.setThePharmacist(ph2);
 			prescription5.setTheDoctor(d1);	
+			prescription5.setTheStatus("Ready for pickup");
 			prescription5.addPrescriptionItem(pItem1);
 			prescriptions.add(prescription5);
 

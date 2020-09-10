@@ -29,14 +29,52 @@
 	padding:10px;
 }
 
+/* PRESCRIPTION QUEUE */
+
+h3{
+	text-align:center;
+}
 
 #dashboard-left{
-	border-right: 1px solid #d3d3d3;
 	padding: 5px;
 	width:25%;
+	background: #f8f8f8;
 }
 
 
+.pharmacistQueueItem{
+	padding:10px;
+	margin:10px;
+	border: 1px solid #ffffff;
+	border-radius:5px;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  	transition: 0.3s;
+  	background: #ffffff;
+}
+
+
+.pharmacistQueueItem:hover {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.prescriptionPatient{
+	color:#4f4f4f;
+	padding:5px;
+}
+
+.prescriptionID{
+	color:#4f4f4f;
+	padding:5px;
+	border-bottom:1px solid #d3d3d3;
+}
+
+a:link {
+    text-decoration: none !important;
+}
+
+
+
+/* PRESCRIPTION DETAILS */
 #dashboard-right{
 	border: 1px solid #ffffff;
 	padding: 5px;
@@ -49,6 +87,7 @@
 	margin:10px;
 	border: 1px solid #d3d3d3;
 	border-radius:10px;
+	background: #ffffff;
 }
 
 .prescriptionDetailHeading{
