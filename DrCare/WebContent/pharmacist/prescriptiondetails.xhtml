@@ -51,10 +51,11 @@
 							<p:column colspan="2"><p:outputLabel for="status" value="Status"/></p:column>
 							<p:column colspan="4">
 								<p:selectOneMenu id="status" value="#{pharmacistBean.currentPrescription.theStatus}"
-												 autoWidth = "false">
+												 autoWidth = "false" rendered = "#{pharmacistBean.currentPrescription.theStatus == 'Ready for pickup'}">
 					            		<f:selectItem itemLabel="Ready for pickup" itemValue="Ready for pickup" />	
 					            		<f:selectItem itemLabel="Order Dispensed" itemValue="Order Dispensed" />				    	
-								</p:selectOneMenu>							
+								</p:selectOneMenu>		
+								<h:outputText value="#{pharmacistBean.currentPrescription.theStatus}" rendered = "#{pharmacistBean.currentPrescription.theStatus != 'Ready for pickup'}"/>			
 							</p:column>
 				    </p:row>
 				    
@@ -88,8 +89,7 @@
 					<!-- Need a Controller to handle this action, to be integrated with the CreatePrescription form -->
 					<p:row>
 						<p:column colspan = "12">
-							<p:commandButton rendered="#{sessionScope.role == 'Doctor' || sessionScope.role == 'Pharmacist' || sessionScope.role == 'Patient'}" 
-										value = "Update"/>
+							<p:commandButton value = "Save" action="#{pharmacistBean.save()}" update="pharmacistQueueForm prescriptionDetails"/>
 						</p:column>
 					</p:row>
 			</p:panelGrid>	 

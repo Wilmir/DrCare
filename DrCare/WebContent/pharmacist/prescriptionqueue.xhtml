@@ -8,10 +8,9 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:composition>
-		<h:form rendered="#{sessionScope.role == 'Pharmacist'}">
+		<h:form rendered="#{sessionScope.role == 'Pharmacist'}" id="pharmacistQueueForm">
 			<h3>Prescriptions Queue</h3>		
 				<ui:repeat id = "pharmacistQueue" value="#{pharmacistBean.paidPrescriptions}" var="prescription" varStatus="status">
-
 						<p:commandLink action = "#{pharmacistBean.setCurrentPrescription(prescription)}" update="prescriptionDetails">
 								<div class = "pharmacistQueueItem">
 											<div class ="prescriptionID">

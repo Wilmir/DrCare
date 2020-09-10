@@ -36,8 +36,6 @@ public class PharmacistBean {
 			}
 		}	
 		
-		
-		
 		if(currentUser.getPrescriptions()!= null && currentUser.getPrescriptions().size() > 0) {
 			
 			// filter paid prescriptions
@@ -79,13 +77,27 @@ public class PharmacistBean {
 	public void setPaidPrescriptions(ArrayList<Prescription> paidPrescriptions) {
 		this.paidPrescriptions = paidPrescriptions;
 	}
-
+	
+	
+	public void save() {
+		// if the prescription is dispensed remove it from the queue
+		if(currentPrescription.getTheStatus().equalsIgnoreCase("Order Dispensed")) {
+			System.out.println("You changed the status");
+			paidPrescriptions.remove(currentPrescription);
+			
+			if(paidPrescriptions.size() > 0) {
+				currentPrescription = paidPrescriptions.get(0);
+			}else {
+				currentPrescription = null;
+			}
+		}
+	}
+	
 	public Object getPlaceholder() {
 		return placeholder;
 	}
 
 	public void setPlaceholder(Object placeholder) {
 		this.placeholder = placeholder;
-	}
-	
+	}	
 }
