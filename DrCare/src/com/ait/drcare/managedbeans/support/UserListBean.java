@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import com.ait.drcare.helpers.Helper;
 import com.ait.drcare.model.Doctor;
 import com.ait.drcare.model.Medicine;
 import com.ait.drcare.model.Patient;
@@ -30,13 +31,16 @@ public class UserListBean {
 	private ArrayList<Patient> patients;
 	
 	private ArrayList<Pharmacist> pharmacists;
-
 	
 	private ArrayList<Prescription> prescriptions;
+	
+	private MedicineListBean medicineStore;
 	
 
 	@PostConstruct
 	public void init() {
+		medicineStore = Helper.getBean("medicineListBean", MedicineListBean.class);
+	
 		//Instantiate Variables
 		users = new ArrayList<User>();
 		qualifiedDoctorsLicenses = new ArrayList<>();
@@ -88,47 +92,66 @@ public class UserListBean {
 		users.add(ph5);
 		
 		
-		// Medicine
-		Medicine med = new Medicine("Med Bean", 203);
-
 		
-		// Prescription Item
-		PrescriptionItem pItem1 =  new PrescriptionItem(med, 0.25,4);
-			pItem1.setSubtotal(20.0);
+		ArrayList<Medicine> medications = medicineStore.getMedications();
+		Medicine med1 = medications.get(0);
+		Medicine med2 = medications.get(1);
+		Medicine med3 = medications.get(2);
+		Medicine med4 = medications.get(3);
+		Medicine med5 = medications.get(4);
 
-
+		// PrescriptionItem(Medicine aMedicine, double aDosagePerDay,int aDuration)
+		PrescriptionItem pItem1 =  new PrescriptionItem(med1, 0.25,4);
+		PrescriptionItem pItem2 =  new PrescriptionItem(med2, 1, 7);
+		PrescriptionItem pItem3 =  new PrescriptionItem(med3, 3, 30);
+		PrescriptionItem pItem4 =  new PrescriptionItem(med4, 2, 14);
+		PrescriptionItem pItem5 =  new PrescriptionItem(med5, 1, 5);
+		
+			
 		//Prescriptions In Data
-		Prescription prescription1 = new Prescription("Tommy 2 strings", new Date());		
-			prescription1.setTheItem(pItem1);
+		Prescription prescription1 = new Prescription();	
+			prescription1.addPrescriptionItem(pItem1);
 			prescription1.setThePatient(p2);
 			prescription1.setThePharmacist(ph2);
+			prescription1.setTheDoctor(d1);
 			prescription1.setTheStatus("Ready for pickup");
+			prescription1.addPrescriptionItem(pItem1);
+			prescription1.addPrescriptionItem(pItem2);
+			prescription1.addPrescriptionItem(pItem3);
+			prescription1.addPrescriptionItem(pItem4);
+			prescription1.addPrescriptionItem(pItem5);
 			prescriptions.add(prescription1);
-			ph2.AddOrder(prescription1);
 
 
-
-		Prescription prescription2 = new Prescription("Beany 2 strings", new Date());
-			prescription2.setTheItem(pItem1);
+		Prescription prescription2 = new Prescription();
+			prescription2.addPrescriptionItem(pItem1);
 			prescription2.setThePatient(p1);
 			prescription2.setThePharmacist(ph1);
+			prescription2.setTheDoctor(d1);
 			prescriptions.add(prescription2);
-			ph1.AddOrder(prescription2);
 
 		
-		Prescription prescription3 = new Prescription("Beans McBeans", new Date());
+		Prescription prescription3 = new Prescription();
+			prescription3.setThePatient(p2);
 			prescription3.setThePharmacist(ph2);
-			ph2.AddOrder(prescription3);
+			prescription3.setTheDoctor(d1);
+			prescriptions.add(prescription3);
 
 		
-		Prescription prescription4 = new Prescription("Tommy loves Beans", new Date());
+		Prescription prescription4 = new Prescription();
+			prescription4.setThePatient(p2);
 			prescription4.setThePharmacist(ph2);
-		
+			prescription4.setTheDoctor(d1);		
+			prescriptions.add(prescription4);
+
 			
-		Prescription prescription5 = new Prescription("Tommy 5 trings", new Date());
+		Prescription prescription5 = new Prescription();
+			prescription5.setThePatient(p2);
 			prescription5.setThePharmacist(ph2);
-		
-			
+			prescription5.setTheDoctor(d1);		
+			prescriptions.add(prescription5);
+
+
 		//add patients, and pharmacist to a separate arraylist
 		for(User user: users) {
 			if (user instanceof Patient) {
@@ -183,9 +206,6 @@ public class UserListBean {
 		return pharmacists;
 	}
 	
-	
-	
-
 	public ArrayList<Prescription> getPrescriptions() {
 		return prescriptions;
 	}
@@ -238,7 +258,7 @@ public class UserListBean {
 		for (Prescription p : prescriptions) {
 			System.out.println("Patient Email:"+p.getThePatient().getTheEmail());
 			System.out.println("Pharmacist Email:"+p.getThePharmacist().getTheEmail());
-			
+			System.out.println("Doctor Email:"+p.getTheDoctor().getTheEmail());			
 		}
 		System.out.println("Number of prescriptions " + prescriptions.size());
 		
