@@ -252,19 +252,8 @@ public class UserListBean {
 		
 		prescriptions.add(newPrescription);
 		
-		PrintPrescriptions();
-	}
-	
-	
-	public void PrintPrescriptions() {
-		System.out.println("UserListBean PrintPrescriptions");
-		
-		for (Prescription p : prescriptions) {
-			System.out.println("Patient Email:"+p.getThePatient().getTheEmail());
-			System.out.println("Pharmacist Email:"+p.getThePharmacist().getTheEmail());
-			System.out.println("Doctor Email:"+p.getTheDoctor().getTheEmail());			
-		}
-		System.out.println("Number of prescriptions " + prescriptions.size());
 		
 	}
+	
+
 }

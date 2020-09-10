@@ -1,6 +1,7 @@
 package com.ait.drcare.managedbeans.backing;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.faces.bean.ManagedBean;
@@ -18,13 +19,13 @@ public class PrescriptionBean {
 
 	// This variable is only used as a placeholder when developing the frontEnd
 	// Remove this and its getters and setters once you are done developing the PrescriptionBean
-	private PrescriptionItem prescriptionItem;;
+	private ArrayList<PrescriptionItem>  prescriptionItems = new ArrayList<PrescriptionItem>();
 	
 	private Patient patient = new Patient();
 	private Pharmacist pharmacist = new Pharmacist();
-	private Medicine medicine = new Medicine();
 	
 	//PrescriptionItem Variables
+	private Medicine medicine = new Medicine();
 	private double dosage = 0;
 	private int duration = 0;
 	private int quantity = 0;
