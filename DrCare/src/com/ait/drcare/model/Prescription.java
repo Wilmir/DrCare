@@ -5,12 +5,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Prescription {
-
 	private String theName;
 	private Date theDatePrescribed;
-	
-	
-	private PrescriptionItem theItem;
 	
 	private String theStatus;
 	private ArrayList<String> statusValues;
@@ -20,8 +16,14 @@ public class Prescription {
 	
 	private Pharmacist thePharmacist;
 	private Patient thePatient;
+	private Doctor theDoctor;
 	
-	private static int theCount;
+	
+	private PrescriptionItem theItem; // this will need to be removed, keeping this so as not to break code I am not aware of
+	private ArrayList<PrescriptionItem> theItems;
+	
+	private double total;
+	
 
 	final String PRESCRIPTION_WAITING_PAYMENT = "Waiting for payment",
 				 PRESCRIPTION_DISPENSED = "Order Dispenced",
@@ -30,33 +32,17 @@ public class Prescription {
 	
 	public Prescription()
 	{
-
-		/*
-		 placehold Variables 	 
-		 */
-		this.theName = "Name";
+		this.theName = "Rx" +  (int) (Math.random()*(Integer.MAX_VALUE/10 - 1000000 + 1) + 1000000);
 		this.theNote = "";
-		this.theDatePrescribed = new Date(2020, 6, 21);	
+		this.theDatePrescribed = new Date();
 		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
 		this.statusValues = new ArrayList<String>();
 		this.statusValues.add(PRESCRIPTION_WAITING_PAYMENT);
 		this.statusValues.add(PRESCRIPTION_DISPENSED);
 		this.statusValues.add(PRESCRIPTION_READY_FOR_PICKUP);
 		this.CanEditNote = false;
-		theCount++;
 	}
 	
-	public Prescription(String name, Date datePrescribed)
-	{
-		this.theName = name;
-		this.theNote = "";
-		this.CanEditNote = false;
-		this.theDatePrescribed = datePrescribed;		
-		this.theStatus = PRESCRIPTION_WAITING_PAYMENT;
-		
-		theCount++;
-	}
-
 	public String getTheName() {
 		return theName;
 	}
@@ -98,14 +84,6 @@ public class Prescription {
 		thePatient.addPrescription(this);
 	}
 
-	public PrescriptionItem getTheItem() {
-		return theItem;
-	}
-
-	public void setTheItem(PrescriptionItem theItem) {
-		this.theItem = theItem;
-	}
-
 	public ArrayList<String> getTheStatuses() {
 		return statusValues;
 	}
@@ -133,8 +111,47 @@ public class Prescription {
 	public void setCanEditNote(boolean canEditNote) {
 		CanEditNote = canEditNote;
 	}
+
+	public Doctor getTheDoctor() {
+		return theDoctor;
+	}
+
+	public void setTheDoctor(Doctor theDoctor) {
+		this.theDoctor = theDoctor;
+		theDoctor.addPrescription(this);
+	}
+
+	public PrescriptionItem getTheItem() {
+		return theItem;
+	}
+
+	public void setTheItem(PrescriptionItem theItem) {
+		this.theItem = theItem;
+	}
+
+	public ArrayList<PrescriptionItem> getTheItems() {
+		return theItems;
+	}
+
+	public void setTheItems(ArrayList<PrescriptionItem> theItems) {
+		this.theItems = theItems;
+	}
 	
 	
-	
-	
+	public void addPrescriptionItem(PrescriptionItem item) {
+		if(theItems == null) {
+			theItems = new ArrayList<>();
+		}
+		
+		theItems.add(item);
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+		
 }
