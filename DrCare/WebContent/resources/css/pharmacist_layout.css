@@ -79,3 +79,11 @@
 #prescriptionDetails td{
 	border: 1px solid #ffffff;
 }
+
+.prescriptionItemsTable td:nth-child(2){
+	    width: 60px;	
+}
+
+.prescriptionItemsTable th:nth-child(2){
+	    width: 60px;	
+}

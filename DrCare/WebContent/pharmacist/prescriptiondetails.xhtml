@@ -20,17 +20,25 @@
 						</div>
 						<div class = "prescriptionDetailHeadingRight">
 							<h2 id="prescriptionCompany">DrCare</h2>
-							<div id = "prescriptionDoctor">Dr Sean Kennedy</div>
-							<div id = "prescriptionLicenseNumber">License # 63567897</div>
-							<div id = "prescriptionDoctorAddress">Athlone, Ireland</div>
+							<div id = "prescriptionDoctor">Dr #{pharmacistBean.currentPrescription.theDoctor.theName}</div>
+							<div id = "prescriptionLicenseNumber">License# #{pharmacistBean.currentPrescription.theDoctor.theID}</div>
+							<div id = "prescriptionDoctorAddress">#{pharmacistBean.currentPrescription.theDoctor.theAddress}</div>
 						</div>
 					</div>				    
 				    
 				    <p:row>
+				    	<!-- The Prescription ID-->
 				    	<p:column colspan="2"><p:outputLabel for="prescriptionID" value="Prescription ID" /></p:column>
 				    	<p:column colspan="4">
 							<h:outputText id="prescriptionID" value = "#{pharmacistBean.currentPrescription.theName}" />
 						</p:column>
+						<!-- The Prescription Date-->
+						<p:column colspan="2"><p:outputLabel for="date" value="Date" /></p:column>
+						<p:column colspan="4">
+							<h:outputText id="date" value = "#{pharmacistBean.currentPrescription.theDatePrescribed}">
+								<f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+							</h:outputText>
+						</p:column>	
 				    </p:row>  
 				    <!-- The Patient -->
 				    <p:row>
@@ -39,13 +47,15 @@
 								<h:outputText id="patient" value = "#{pharmacistBean.currentPrescription.thePatient.theName}" />
 							</p:column>
 							
-							<!-- The Prescription Date-->
-							<p:column colspan="2"><p:outputLabel for="date" value="Date" /></p:column>
+							<!-- The Status -->
+							<p:column colspan="2"><p:outputLabel for="status" value="Status"/></p:column>
 							<p:column colspan="4">
-								<h:outputText id="date" value = "#{pharmacistBean.currentPrescription.theDatePrescribed}">
-												<f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
-								</h:outputText>
-							</p:column>		
+								<p:selectOneMenu id="status" value="#{pharmacistBean.currentPrescription.theStatus}"
+												 autoWidth = "false">
+					            		<f:selectItem itemLabel="Ready for pickup" itemValue="Ready for pickup" />	
+					            		<f:selectItem itemLabel="Order Dispensed" itemValue="Order Dispensed" />				    	
+								</p:selectOneMenu>							
+							</p:column>
 				    </p:row>
 				    
 				    <!-- The Patient Address -->
@@ -54,30 +64,23 @@
 							<p:column colspan="4">
 								<h:outputText id="patientAddress" value = "#{pharmacistBean.currentPrescription.thePatient.theAddress}" />
 							</p:column>
-							<p:column colspan="2"><p:outputLabel for="status" value="Status"/></p:column>
-							<p:column colspan="4">
-								<h:outputText id="status" value = "#{pharmacistBean.currentPrescription.theStatus}" />
-							</p:column>
 				    </p:row>
 					
 					<!-- Placeholder for the PrescriptionItems Datatable -->
 					<p:row>
 				    	<p:column colspan="12">
-				    		<p:dataTable id = "items" var="item" value="#{pharmacistBean.placeholder}">
+				    		<p:dataTable id = "items" var="item" value="#{pharmacistBean.currentPrescription.theItems}" styleClass="prescriptionItemsTable">
 							    <p:column headerText="Medicine">
 							        <h:outputText value="#{item.medicine.theName}" />
 							    </p:column>
 							    
-							    <p:column headerText="Quantity">
+							    <p:column headerText="Qty">
 							        <h:outputText value="#{item.quantity}" />
 							    </p:column>
 							    
 							    <p:column headerText="Note">
+							    	<p:inputText value="#{item.notefromPharmacist}" size="30"/>
 							    </p:column>
-							    <p:column headerText="Actions">
-							    	<p:inputText value="#{item.notefromPharmacist}" rows="6" cols="33" />
-							    </p:column>
-							    
 							</p:dataTable>
 				    	</p:column>
 					</p:row>

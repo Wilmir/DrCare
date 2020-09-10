@@ -8,13 +8,8 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:composition>
-			<div class = "greetings">
-				<h2>
-					<h:outputText value="Hello Dr #{doctorBean.doctor.theName}" rendered="#{sessionScope.role == 'Doctor'}"/>
 					<h:panelGroup rendered="#{sessionScope.role != 'Doctor' or sessionScope == null}">
 						<h2>You do not have access to this page. Return to <a href="login.jsf">Login</a></h2>
 					</h:panelGroup>
-				</h2>			
-			</div>			
 	</ui:composition>
 </html>

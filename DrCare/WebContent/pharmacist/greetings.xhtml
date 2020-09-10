@@ -9,12 +9,9 @@
 
 	<ui:composition>
 			<div class = "greetings">
-				<h3>
-					<h:outputText value="Hello #{pharmacistBean.currentUser.theName}" rendered="#{sessionScope.role == 'Pharmacist'}"/>
 					<h:panelGroup rendered="#{sessionScope.role != 'Pharmacist' or sessionScope == null}">
 						<h2>You do not have access to this page. Return to <a href="login.jsf">Login</a></h2>
 					</h:panelGroup>
-				</h3>			
 			</div>			
 	</ui:composition>
 </html>
