@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition>
+		<h:form id="prescriptionDetails" rendered="#{sessionScope.role == 'Pharmacist'}">
+			<p:panelGrid rendered = "#{pharmacistBean.currentPrescription != null}">
+					<br/>
+					<div class="prescriptionDetailHeading">
+						<div class = "prescriptionDetailHeadingLeft">
+							<div class = "prescriptionLogo">
+								<img src="#{resource['images/rx.png']}" alt="pharmacist"
+									style="width: 100%"></img>
+							</div>
+						</div>
+						<div class = "prescriptionDetailHeadingRight">
+							<h2 id="prescriptionCompany">DrCare</h2>
+							<div id = "prescriptionDoctor">Dr Sean Kennedy</div>
+							<div id = "prescriptionLicenseNumber">License # 63567897</div>
+							<div id = "prescriptionDoctorAddress">Athlone, Ireland</div>
+						</div>
+					</div>				    
+				    
+				    <p:row>
+				    	<p:column colspan="2"><p:outputLabel for="prescriptionID" value="Prescription ID" /></p:column>
+				    	<p:column colspan="4">
+							<h:outputText id="prescriptionID" value = "#{pharmacistBean.currentPrescription.theName}" />
+						</p:column>
+				    </p:row>  
+				    <!-- The Patient -->
+				    <p:row>
+				    		<p:column colspan="2"><p:outputLabel for="patient" value="Patient" /></p:column>
+							<p:column colspan="4">
+								<h:outputText id="patient" value = "#{pharmacistBean.currentPrescription.thePatient.theName}" />
+							</p:column>
+							
+							<!-- The Prescription Date-->
+							<p:column colspan="2"><p:outputLabel for="date" value="Date" /></p:column>
+							<p:column colspan="4">
+								<h:outputText id="date" value = "#{pharmacistBean.currentPrescription.theDatePrescribed}">
+												<f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+								</h:outputText>
+							</p:column>		
+				    </p:row>
+				    
+				    <!-- The Patient Address -->
+				    <p:row>
+				    		<p:column colspan="2"><p:outputLabel for="patientAddress" value="Address"/></p:column>
+							<p:column colspan="4">
+								<h:outputText id="patientAddress" value = "#{pharmacistBean.currentPrescription.thePatient.theAddress}" />
+							</p:column>
+							<p:column colspan="2"><p:outputLabel for="status" value="Status"/></p:column>
+							<p:column colspan="4">
+								<h:outputText id="status" value = "#{pharmacistBean.currentPrescription.theStatus}" />
+							</p:column>
+				    </p:row>
+					
+					<!-- Placeholder for the PrescriptionItems Datatable -->
+					<p:row>
+				    	<p:column colspan="12">
+				    		<p:dataTable id = "items" var="item" value="#{pharmacistBean.placeholder}">
+							    <p:column headerText="Medicine">
+							        <h:outputText value="#{item.medicine.theName}" />
+							    </p:column>
+							    
+							    <p:column headerText="Quantity">
+							        <h:outputText value="#{item.quantity}" />
+							    </p:column>
+							    
+							    <p:column headerText="Note">
+							    </p:column>
+							    <p:column headerText="Actions">
+							    	<p:inputText value="#{item.notefromPharmacist}" rows="6" cols="33" />
+							    </p:column>
+							    
+							</p:dataTable>
+				    	</p:column>
+					</p:row>
+					
+					<!-- Need a Controller to handle this action, to be integrated with the CreatePrescription form -->
+					<p:row>
+						<p:column colspan = "12">
+							<p:commandButton rendered="#{sessionScope.role == 'Doctor' || sessionScope.role == 'Pharmacist' || sessionScope.role == 'Patient'}" 
+										value = "Update"/>
+						</p:column>
+					</p:row>
+			</p:panelGrid>	 
+	      </h:form>                
+	</ui:composition>
+</html>

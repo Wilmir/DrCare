@@ -32,11 +32,11 @@ public class PrescriptionItem {
 	}
 
 	public int getQuantity() {
+		quantity = (int) (Math.ceil(dosagePerDay * duration));
 		return quantity;
 	}
 
 	public void setQuantity(int quantity) {
-		quantity = (int) (Math.ceil(dosagePerDay * duration));
 		this.quantity = quantity;
 	}
 

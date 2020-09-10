@@ -45,10 +45,7 @@ public class PharmacistController {
 		dataStore = Helper.getBean("userListBean", UserListBean.class);	
 		
 		pharmacists = dataStore.getPharmacists();
-		
 
-		
-		
 		//find user in database
 		for (Pharmacist pharmacist : pharmacists) {
 			if (pharmacist.getTheEmail().equals(theUserEmail)) {
@@ -57,10 +54,7 @@ public class PharmacistController {
 			break;
 		}
 
-		
-		
 		findPrescriptionOrders();
-		
 	}
 
 	public void findPrescriptionOrders() {
@@ -118,8 +112,7 @@ public class PharmacistController {
 		this.prescriptions = prescriptions;
 	}
 
-	
-	
+
 	//note
 	public String getPrescriptionNote(Prescription prescription) {
 		
@@ -134,8 +127,12 @@ public class PharmacistController {
 		prescription.setCanEditNote(true);
 		return "ok";
 	}
-	
 
+	public Pharmacist getCurrentUser() {
+		return currentUser;
+	}
 
-			
+	public void setCurrentUser(Pharmacist currentUser) {
+		this.currentUser = currentUser;
+	}			
 }

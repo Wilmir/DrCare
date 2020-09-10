@@ -32,7 +32,7 @@
 								    	</div>
 								    </div>
 							    </h:form>
-							    <h:form rendered="#{sessionScope.role == 'Doctor'}">
+							    <h:form rendered="#{sessionScope.role == 'Doctor' or sessionScope.role == 'Pharmacist' or sessionScope.role == 'Patient'}">
 									<p:commandButton id="logout" styleClass = "logoutButton"  action="#{loginController.logout}" value="logout" title="Log Out"/>
 								</h:form>
 			    		   </div>

@@ -43,7 +43,6 @@ public class PrescriptionController {
 		doctorController = Helper.getBean("doctorController", DoctorController.class);	
 		
 		System.out.println(prescriptions.size());
-		
 	}
 	
 	
@@ -65,17 +64,17 @@ public class PrescriptionController {
 		System.out.println(prescriptionBean.getPharmacist().getTheEmail());
 		
 		prescription.setThePatient(doctorController.getCurrentPatient());
-		System.out.println(prescriptionBean.getPatient().getTheName());
+		System.out.println(prescription.getThePatient().getTheName());
 		
 		prescription.setTheDoctor(doctorBean.getDoctor());
 		System.out.println(prescription.getTheDoctor().getTheName());
 		
-		//Test activation
+		// Test activation
 		System.out.println("PrescriptionController test end");
 		
 		dataStore.addPrescription(prescription);
 	
-		return "successfully added";
+		 return "successfully added";
 	}
 	
 	
@@ -96,5 +95,5 @@ public class PrescriptionController {
 	public void testPrep() {
 		System.out.println("howdy");
 	}
-	
+
 }
