@@ -25,8 +25,8 @@ public class Prescription {
 	private double total;
 	
 
-	final String PRESCRIPTION_WAITING_PAYMENT = "Waiting for payment",
-				 PRESCRIPTION_DISPENSED = "Order Dispenced",
+	final static String PRESCRIPTION_WAITING_PAYMENT = "Waiting for payment",
+				 PRESCRIPTION_DISPENSED = "Order Dispensed",
 				 PRESCRIPTION_READY_FOR_PICKUP = "Ready for pickup";
 	
 	
