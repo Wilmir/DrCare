@@ -50,10 +50,10 @@ public class UserListBean {
 		prescriptions =  new ArrayList<Prescription>();
 		
 		// Doctors
-		Doctor d1 = new Doctor("Alan Care", 1234, "passw0rd", "alan@drcare.ie", "08913486", "Athlone, Co. Westmeath");
-		Doctor doco = new Doctor("Luke",5050,"Meyer","Doc","087696969","Athlone, Co. Westmeath");
+		Doctor d1 = new Doctor("Alan Care", 65467890, "passw0rd", "alan@drcare.ie", "08913486", "Athlone, Co. Westmeath");
+		Doctor d2 = new Doctor("Luke Meyer",64448901,"Doc","Doc","087696969","Athlone, Co. Westmeath");
 		users.add(d1);
-		users.add(doco);
+		users.add(d2);
 		
 		// Allergies
 		ArrayList<String> allergies = new ArrayList<String>();
@@ -81,8 +81,8 @@ public class UserListBean {
 
 		// Pharmacist
 		Pharmacist ph1 = new Pharmacist("Mary Bloggs", 2345, "password123", "mary@totalhealth.ie", "Athlone, Co. Westmeath");
-		Pharmacist ph2 = new Pharmacist("Pharmacist B", 6969,"B", "B","B,B,B");
-		Pharmacist ph3 = new Pharmacist("Pharm Acist", 2345, "password123", "pharm@totalhealth.ie", "Athlone, Co. Westmeath");
+		Pharmacist ph2 = new Pharmacist("Bibi Elliot", 6969,"B", "B","B,B,B");
+		Pharmacist ph3 = new Pharmacist("Karen May", 2345, "password123", "pharm@totalhealth.ie", "Athlone, Co. Westmeath");
 		Pharmacist ph4 = new Pharmacist("Joseph Bloggs", 2345, "password123", "Jose[h@totalhealth.ie", "Athlone, Co. Westmeath");
 		Pharmacist ph5 = new Pharmacist("Sunny Bloggs", 2345, "password123", "Sunny@totalhealth.ie", "Athlone, Co. Westmeath");
 		users.add(ph1);
@@ -112,21 +112,19 @@ public class UserListBean {
 		Prescription prescription1 = new Prescription();	
 			prescription1.setThePatient(p1);
 			prescription1.setThePharmacist(ph2);
-			prescription1.setTheDoctor(d1);
+			prescription1.setTheDoctor(d2);
 			prescription1.setTheStatus("Ready for pickup");
 			prescription1.addPrescriptionItem(pItem1);
 			prescription1.addPrescriptionItem(pItem2);
-			prescription1.addPrescriptionItem(pItem3);
-			prescription1.addPrescriptionItem(pItem4);
-			prescription1.addPrescriptionItem(pItem5);
 			prescriptions.add(prescription1);
 
 
 		Prescription prescription2 = new Prescription();
-			prescription2.addPrescriptionItem(pItem1);
 			prescription2.setThePatient(p2);
 			prescription2.setThePharmacist(ph1);
-			prescription2.setTheDoctor(d1);
+			prescription2.setTheDoctor(d2);
+			prescription2.addPrescriptionItem(pItem3);
+			prescription1.addPrescriptionItem(pItem4);
 			prescriptions.add(prescription2);
 
 		
@@ -134,20 +132,23 @@ public class UserListBean {
 			prescription3.setThePatient(p3);
 			prescription3.setThePharmacist(ph2);
 			prescription3.setTheDoctor(d1);
+			prescription3.addPrescriptionItem(pItem5);
 			prescriptions.add(prescription3);
 
 		
 		Prescription prescription4 = new Prescription();
 			prescription4.setThePatient(p4);
 			prescription4.setThePharmacist(ph2);
-			prescription4.setTheDoctor(d1);		
+			prescription4.setTheDoctor(d2);		
+			prescription4.addPrescriptionItem(pItem1);
 			prescriptions.add(prescription4);
 
 			
 		Prescription prescription5 = new Prescription();
 			prescription5.setThePatient(p5);
 			prescription5.setThePharmacist(ph2);
-			prescription5.setTheDoctor(d1);		
+			prescription5.setTheDoctor(d1);	
+			prescription5.addPrescriptionItem(pItem1);
 			prescriptions.add(prescription5);
 
 
