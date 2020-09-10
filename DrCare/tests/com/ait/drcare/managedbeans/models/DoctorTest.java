@@ -56,11 +56,6 @@ class DoctorTest {
 		assertEquals("email",doc.getTheEmail());
 		assertEquals("pass",doc.getThePassword());
 		
-		Patient Patient1 = new Patient();
-		Patient Patient2 = new Patient();
-		doc.addPatient(Patient1);
-		doc.addPatient(Patient2);
-		assertEquals(2,doc.getPatientCount());
 		
 		
 	}

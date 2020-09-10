@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.ait.drcare.managedbeans.backing.PrescriptionBean;
@@ -24,6 +25,7 @@ class PrescriptionControllerTest {
 	}
 
 	@Test
+	@Disabled
 	void testAddNewPrescription() {
 		
 		prescriptions = pController.getPrescriptions();

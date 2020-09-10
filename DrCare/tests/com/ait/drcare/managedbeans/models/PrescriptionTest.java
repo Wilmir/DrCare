@@ -16,7 +16,7 @@ class PrescriptionTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-	prescription1 = new Prescription("John",new Date(5,2,2019));
+	prescription1 = new Prescription();
 	
 	}
 
