@@ -80,8 +80,10 @@ public class PharmacistBean {
 	
 	
 	public void save() {
+
 		// if the prescription is dispensed remove it from the queue
-		if(currentPrescription.getTheStatus().equalsIgnoreCase("Order Dispensed")) {
+		if(currentPrescription.getTheStatus().equalsIgnoreCase("Order Dispensed"))
+		{
 			System.out.println("You changed the status");
 			paidPrescriptions.remove(currentPrescription);
 			
@@ -89,6 +91,16 @@ public class PharmacistBean {
 				currentPrescription = paidPrescriptions.get(0);
 			}else {
 				currentPrescription = null;
+			}
+		}
+		else // move to the next prescription in the queue
+		{
+			int index = paidPrescriptions.indexOf(currentPrescription);
+
+			if(index != paidPrescriptions.size() - 1) {
+				currentPrescription = paidPrescriptions.get(index+1);
+			}else {
+				currentPrescription = paidPrescriptions.get(0);
 			}
 		}
 	}
