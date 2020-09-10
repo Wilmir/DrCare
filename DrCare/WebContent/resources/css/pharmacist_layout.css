@@ -1,0 +1,81 @@
+*{  
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  margin:0;
+  padding:0;
+}
+
+.container{
+	min-height:100vh;
+	width:100%;
+	display:flex;
+	flex-direction:column;
+}
+
+#content{
+	width:100%;
+	flex-grow:1;
+	padding: 0 200px;
+	display:flex;
+	flex-direction:column;
+}
+
+#dashboard{
+	width:100%;
+	flex-grow:1;
+	display:flex;
+	flex-wrap: wrap;
+	border: 1px solid #d3d3d3;
+	padding:10px;
+}
+
+
+#dashboard-left{
+	border-right: 1px solid #d3d3d3;
+	padding: 5px;
+	width:25%;
+}
+
+
+#dashboard-right{
+	border: 1px solid #ffffff;
+	padding: 5px;
+	width:75%;
+}
+
+
+#prescriptionDetails{
+	padding:10px;
+	margin:10px;
+	border: 1px solid #d3d3d3;
+	border-radius:10px;
+}
+
+.prescriptionDetailHeading{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #d3d3d3;
+}
+
+.prescriptionDetailHeadingLeft{
+	width:13%;
+	padding:10px;
+}
+
+.prescriptionDetailHeadingRight{
+	display: flex;
+	flex-direction: column;
+	justify-content:flex-start;
+	align-items: flex-end;
+	padding:10px;
+}
+
+
+#prescriptionDetails tr{
+	border: 1px solid #ffffff;
+}
+
+#prescriptionDetails td{
+	border: 1px solid #ffffff;
+}
