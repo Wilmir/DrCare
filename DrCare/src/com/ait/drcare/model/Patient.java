@@ -8,9 +8,7 @@ public class Patient extends User{
 	private String theMedicalCardNumber;
 	private ArrayList<String> Allergies;
 	private Doctor gp;
-	private ArrayList<Prescription> prescriptions;
-	
-	
+		
 	public Patient() {
 		this.role = "Patient";
 	}
@@ -52,31 +50,5 @@ public class Patient extends User{
 
 	public void setTheMedicalCardNumber(String theMedicalCardNumber) {
 		this.theMedicalCardNumber = theMedicalCardNumber;
-	}
-
-
-	public ArrayList<Prescription> getPrescriptions() {
-		return prescriptions;
-	}
-
-
-	public void setPrescriptions(ArrayList<Prescription> prescriptions) {
-		this.prescriptions = prescriptions;
-	}
-	
-	public void addPrescription(Prescription prescription) {
-		if(prescriptions == null) {
-			prescriptions = new ArrayList<>();
-		}
-		
-		prescriptions.add(prescription);
-	}
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 }
