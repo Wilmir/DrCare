@@ -110,7 +110,6 @@ public class UserListBean {
 			
 		//Prescriptions In Data
 		Prescription prescription1 = new Prescription();	
-			prescription1.addPrescriptionItem(pItem1);
 			prescription1.setThePatient(p2);
 			prescription1.setThePharmacist(ph2);
 			prescription1.setTheDoctor(d1);

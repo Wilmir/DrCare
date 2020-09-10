@@ -39,13 +39,13 @@
 					<!-- Placeholder for the PrescriptionItems Datatable -->
 					<p:row>
 				    	<p:column colspan="12">
-				    		<p:dataTable id = "items" var="item" value="#{doctorController.placeholder}">
+				    		<p:dataTable id = "items" var="item" value="#{doctorController.currentPrescription.theItems}">
 							    <p:column headerText="Medicine">
 							        <h:outputText value="#{item.medicine.theName}" />
 							    </p:column>
 							 
 							    <p:column headerText="Dose per day">
-							        <h:outputText value="#{item.dosage}" />
+							        <h:outputText value="#{item.dosagePerDay}" />
 							    </p:column>
 							 
 							    <p:column headerText="Duration">
@@ -57,7 +57,7 @@
 							    </p:column>
 							    
 							    <p:column headerText="Unit Price">
-							        <h:outputText value="#{item.theUnitPrice}" />
+							        <h:outputText value="#{item.medicine.theUnitPrice}" />
 							    </p:column>
 							    
 							    <p:column headerText="Subtotal">
