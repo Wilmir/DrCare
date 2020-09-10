@@ -12,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 import org.primefaces.PrimeFaces;
 
 import com.ait.drcare.helpers.Helper;
+import com.ait.drcare.managedbeans.backing.DoctorBean;
 import com.ait.drcare.managedbeans.backing.PrescriptionBean;
 import com.ait.drcare.managedbeans.support.UserListBean;
 import com.ait.drcare.model.Medicine;
@@ -25,7 +26,8 @@ public class PrescriptionController {
 	
 	
 	private ArrayList<Prescription> prescriptions;
-	private DoctorController currentDoctor;
+	private DoctorBean doctorBean;
+	private DoctorController doctorController;
 	
 	//Change to prescriptionListBean later
 	private UserListBean dataStore;
@@ -34,13 +36,11 @@ public class PrescriptionController {
 	public void init() {
 		prescriptions = new ArrayList<Prescription>(); //insansiate 
 		
-		
-		
 		dataStore = Helper.getBean("userListBean", UserListBean.class);
 		prescriptions = dataStore.getPrescriptions();
 		
-		
-		currentDoctor = Helper.getBean("doctorController", DoctorController.class);	
+		doctorBean = Helper.getBean("doctorBean", DoctorBean.class);	
+		doctorController = Helper.getBean("doctorController", DoctorController.class);	
 		
 		System.out.println(prescriptions.size());
 		
@@ -49,29 +49,26 @@ public class PrescriptionController {
 	
 	public String addPrescription(PrescriptionBean prescriptionBean) {
 		
-		
-		
 		//set prescriptionitem
 		System.out.println("PrescriptionController test");
 		Prescription prescription = new Prescription();
 		PrescriptionItem pItem = new PrescriptionItem();
 	
-		
-		
-		
+
 		pItem.setMedicine(prescriptionBean.getMedicine());
 		pItem.setDosagePerDay(prescriptionBean.getDosage());
 		pItem.setDuration(prescriptionBean.getDuration());
 		
 		
-		
 		prescription.setTheNote(prescriptionBean.getTheNote());
 		prescription.setThePharmacist(prescriptionBean.getPharmacist());
-		System.out.println(prescriptionBean.getPharmacist().getTheEmail()); // works
+		System.out.println(prescriptionBean.getPharmacist().getTheEmail());
 		
-		prescription.setThePatient(currentDoctor.getCurrentPatient());
-		System.out.println(prescriptionBean.getPatient().getTheName()); // showing null
+		prescription.setThePatient(doctorController.getCurrentPatient());
+		System.out.println(prescriptionBean.getPatient().getTheName());
 		
+		prescription.setTheDoctor(doctorBean.getDoctor());
+		System.out.println(prescription.getTheDoctor().getTheName());
 		
 		//Test activation
 		System.out.println("PrescriptionController test end");
