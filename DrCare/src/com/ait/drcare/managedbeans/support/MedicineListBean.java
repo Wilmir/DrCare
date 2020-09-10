@@ -23,11 +23,12 @@ public class MedicineListBean {
 		theDosage  = 10;
 		theDays = 1;
 		
-		medications.add(new Medicine("Medicine", 2.00));
-		medications.add(new Medicine("Bean Juice", 3.50));
-		medications.add(new Medicine("Beanies Sip", 5.20));
-		medications.add(new Medicine("Bean", 4.25));
-		medications.add(new Medicine("Lrgal", 2.25));
+		medications.add(new Medicine("Almogran", 2.00));
+		medications.add(new Medicine("Amytryptyline", 3.50));
+		medications.add(new Medicine("Lyrica", 5.20));
+		medications.add(new Medicine("Carmustin", 4.25));
+		medications.add(new Medicine("Vimovo", 2.25));
+
 		
 		ArrayList<String> ingredients = new ArrayList<>();
 			ingredients.add("Sugar");
@@ -46,12 +47,7 @@ public class MedicineListBean {
 			medicine.setTheSideEffects(sideEffects);
 		}	
 	}
-	
-	
-	public ArrayList<Medicine> getMedicineList(){	
-		return medications;
-	}
-	
+		
 	public double getDosage() {
 		return theDosage;
 	}
