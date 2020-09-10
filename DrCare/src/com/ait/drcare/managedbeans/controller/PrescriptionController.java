@@ -88,6 +88,9 @@ public class PrescriptionController {
 		}
 		dataStore.addPrescription(prescription);
 	
+		//Clear items for next prescription
+		prescriptionItems.clear();
+		
 		 return "successfully added";
 	}
 	
