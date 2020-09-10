@@ -19,7 +19,7 @@
 
 		<div class="card">
 			<img src="#{resource['images/patient.jpg']}" alt="pharmacist"
-				style="width: 100%"></img>
+				style="width: 70%"></img>
 			<h1>PATIENT</h1>
 			<p>Name: #{patientInfoController.currentUser.theName}</p>
 			<p>ID: #{patientInfoController.currentUser.theID}</p>
@@ -36,19 +36,21 @@
 					<p:column headerText="Name">
 						<h:outputText value="#{presc.theName}" />
 					</p:column>
-					<p:column headerText="Date Dispensed">
+					<p:column headerText="Date Prescribed">
 						<h:outputText value="#{presc.theDatePrescribed}" />
 					</p:column>
 					<p:column headerText="Amount">
 						<h:outputText value="#{presc.theItem.subtotal}"/>
 					</p:column>
+					<p:column headerText="Status">
+						<h:outputText value="#{presc.theStatus}"/>
+					</p:column>
 					<p:column headerText="Pay">
-						<f:facet name="header">Pay</f:facet>
 						<p:commandButton value="Pay" actionListener="#{authorisePayment.pay(presc)}" rendered="#{presc.theStatus == 'Waiting for payment'}"/>
 					</p:column>
 				</p:dataTable>
 			</h:form>
-			<p>
+<!-- 			<p>
 				<button>View Prescription</button>
 			</p>
 
@@ -57,7 +59,7 @@
 			</p>
 			<p>
 				<button>View Videos about medicine</button>
-			</p>
+			</p> -->
 		</div>
 	</h:panelGroup>
 	<h:panelGroup

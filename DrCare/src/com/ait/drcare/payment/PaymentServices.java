@@ -48,7 +48,7 @@ public class PaymentServices {
         PayerInfo payerInfo = new PayerInfo();
         payerInfo.setFirstName("John")
                  .setLastName("Doe")
-                 .setEmail("sb-eveby3155559@personal.example.com");
+                 .setEmail("sb-l64jk3155466@business.example.com");
          
         payer.setPayerInfo(payerInfo);         
         return payer;
