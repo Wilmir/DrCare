@@ -73,6 +73,7 @@ public class Prescription {
 
 	public void setThePharmacist(Pharmacist thePharmacist) {
 		this.thePharmacist = thePharmacist;
+		thePharmacist.addPrescription(this);		
 	}
 
 	public Patient getThePatient() {
