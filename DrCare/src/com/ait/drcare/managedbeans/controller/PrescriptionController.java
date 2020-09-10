@@ -26,6 +26,7 @@ public class PrescriptionController {
 	
 	
 	private ArrayList<Prescription> prescriptions;
+	private ArrayList<PrescriptionItem> prescriptionItems;
 	private DoctorBean doctorBean;
 	private DoctorController doctorController;
 	
@@ -35,6 +36,7 @@ public class PrescriptionController {
 	@PostConstruct
 	public void init() {
 		prescriptions = new ArrayList<Prescription>(); //insansiate 
+		prescriptionItems = new ArrayList<PrescriptionItem>();
 		
 		dataStore = Helper.getBean("userListBean", UserListBean.class);
 		prescriptions = dataStore.getPrescriptions();
@@ -45,33 +47,45 @@ public class PrescriptionController {
 		System.out.println(prescriptions.size());
 	}
 	
+	public void addItem(PrescriptionBean prescriptionBean) {
+	
+		//Create new item
+		PrescriptionItem newItem = new PrescriptionItem();
+		//Set variables assigned
+		newItem.setMedicine(prescriptionBean.getMedicine());
+		newItem.setDosagePerDay(prescriptionBean.getDosage());
+		newItem.setDuration(prescriptionBean.getDuration());
+		
+		//add to the list
+		prescriptionItems.add(newItem);
+		
+		
+		//Update so form displays it
+		System.out.println("End of addItem");
+	}
+	
+	
 	
 	public String addPrescription(PrescriptionBean prescriptionBean) {
 		
 		//set prescriptionitem
 		System.out.println("PrescriptionController test");
 		Prescription prescription = new Prescription();
-		PrescriptionItem pItem = new PrescriptionItem();
-	
-
-		pItem.setMedicine(prescriptionBean.getMedicine());
-		pItem.setDosagePerDay(prescriptionBean.getDosage());
-		pItem.setDuration(prescriptionBean.getDuration());
 		
-		
+		//Set prescription variables
 		prescription.setTheNote(prescriptionBean.getTheNote());
-		prescription.setThePharmacist(prescriptionBean.getPharmacist());
-		System.out.println(prescriptionBean.getPharmacist().getTheEmail());
-		
-		prescription.setThePatient(doctorController.getCurrentPatient());
-		System.out.println(prescription.getThePatient().getTheName());
-		
-		prescription.setTheDoctor(doctorBean.getDoctor());
-		System.out.println(prescription.getTheDoctor().getTheName());
+		prescription.setThePharmacist(prescriptionBean.getPharmacist());		
+		prescription.setThePatient(doctorController.getCurrentPatient());		
+		prescription.setTheDoctor(doctorBean.getDoctor());		
+		prescription.setTheItems(prescriptionItems);
 		
 		// Test activation
 		System.out.println("PrescriptionController test end");
 		
+		
+		for (PrescriptionItem prescriptionItem : prescriptionItems) {
+			System.out.println(prescriptionItem.getMedicineName());
+		}
 		dataStore.addPrescription(prescription);
 	
 		 return "successfully added";
