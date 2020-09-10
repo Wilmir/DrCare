@@ -36,6 +36,7 @@ public class PrescriptionItem {
 	}
 
 	public void setQuantity(int quantity) {
+		quantity = (int) (Math.ceil(dosagePerDay * duration));
 		this.quantity = quantity;
 	}
 
@@ -64,13 +65,13 @@ public class PrescriptionItem {
 	}
 
 	public double getSubtotal() {
+		subtotal = theMedicine.getTheUnitPrice() * getQuantity();
 		return subtotal;
 	}
 	
 	public void setSubtotal(double subtotal) {
 		this.subtotal = subtotal;
 	}
-	
 }
 
 
