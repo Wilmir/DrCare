@@ -7,67 +7,10 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<h:outputStylesheet name="userpage.css" library="css" />
 </h:head>
 <body>
-	<h:form>
-		<h:commandButton id="logout" styleClass="ActionButton"
-			action="#{loginController.logout}" value="logout" title="Log Out" />
-	</h:form>
-	<h:panelGroup rendered="#{sessionScope.role == 'Patient'}">
-		<h2 style="text-align: center">User Profile</h2>
-
-		<div class="card">
-			<img src="#{resource['images/patient.jpg']}" alt="pharmacist"
-				style="width: 70%"></img>
-			<h1>PATIENT</h1>
-			<p>Name: #{patientInfoController.currentUser.theName}</p>
-			<p>ID: #{patientInfoController.currentUser.theID}</p>
-			<p>email: #{patientInfoController.currentUser.theEmail}</p>
-
-			<div style="margin: 24px 0;">
-				<a href="#"><i class="fa fa-ambulance"></i></a> <a href="#"><i
-					class="fa fa-plus-square"></i></a> <a href="#"><i
-					class="fa fa-user-md"></i></a> <a href="#"><i
-					class="fa fa-hospital-o"></i></a>
-			</div>
-			<h:form>
-				<p:dataTable value="#{patientInfoController.currentUser.prescriptions}" var="presc">
-					<p:column headerText="Name">
-						<h:outputText value="#{presc.theName}" />
-					</p:column>
-					<p:column headerText="Date Prescribed">
-						<h:outputText value="#{presc.theDatePrescribed}" />
-					</p:column>
-					<p:column headerText="Amount">
-						<h:outputText value="#{presc.theItem.subtotal}"/>
-					</p:column>
-					<p:column headerText="Status">
-						<h:outputText value="#{presc.theStatus}"/>
-					</p:column>
-					<p:column headerText="Pay">
-						<p:commandButton value="Pay" actionListener="#{authorisePayment.pay(presc)}" rendered="#{presc.theStatus == 'Waiting for payment'}"/>
-					</p:column>
-				</p:dataTable>
-			</h:form>
-<!-- 			<p>
-				<button>View Prescription</button>
-			</p>
-
-			<p>
-				<button>Pay</button>
-			</p>
-			<p>
-				<button>View Videos about medicine</button>
-			</p> -->
-		</div>
-	</h:panelGroup>
-	<h:panelGroup
-		rendered="#{sessionScope.role != 'Patient' or sessionScope == null}">
-		<h1>
-			You do not have access to this page. Return to <a href="login.jsf">Login</a>
-		</h1>
-	</h:panelGroup>
+	<ui:composition template="/patient/patient_layout.xhtml">
+	</ui:composition>
 </body>
 </html>
 

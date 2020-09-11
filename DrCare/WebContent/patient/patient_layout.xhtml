@@ -7,12 +7,12 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-	<h:head>
-		<title>Dr Care for GPs</title>
+<h:head>
+		<title>Dr Care</title>
+		<h:outputStylesheet  name = "css/userpage.css"/>
 	    <h:outputStylesheet  name = "css/header.css"/>
 	    <h:outputStylesheet  name = "css/footer.css"/>
 	    <h:outputStylesheet  name = "css/greetings.css"/>
-	    <h:outputStylesheet  name = "css/doctor_layout.css"/>
 		<ui:insert name="css"/>
 	</h:head>
 	
@@ -26,22 +26,13 @@
 			
 			<div id = "content">
 				<div id = "greetings">
-					<ui:include src = "/common/greetings.xhtml" />
+					<ui:include src = "/common/greetings.xhtml"/>
 				</div>
 				<div id = "dashboard">
-					<div id = "dashboard-left">
-						<ui:insert name="patientlist">
-							<ui:include src = "/doctor/patientsearch.xhtml" />
-						</ui:insert>
-						<ui:insert name="patientinfo">
-							<ui:include src = "/doctor/patientdetails.xhtml" />
-						</ui:insert>
-						<ui:insert name="prescriptiondetails">
-							<ui:include src = "/doctor/patientprescription.xhtml" />
-						</ui:insert>
-					</div>	
+					<ui:include src = "/patient/patient.xhtml"/>
 				</div>
 			</div>
+		
 			<div id = "footer">
 				<ui:insert name="footer">
 					<ui:include src = "/common/footer.xhtml" />
