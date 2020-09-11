@@ -23,11 +23,14 @@ public class MedicineListBean {
 		theDosage  = 10;
 		theDays = 1;
 		
-		medications.add(new Medicine("Almogran", 2.00));
-		medications.add(new Medicine("Amytryptyline", 3.50));
-		medications.add(new Medicine("Lyrica", 5.20));
-		medications.add(new Medicine("Carmustin", 4.25));
-		medications.add(new Medicine("Vimovo", 2.25));
+		// Medicine(String name, String strength, double price)
+		medications.add(new Medicine("Almogran", "12.5 mg", 2.00));
+		medications.add(new Medicine("Amytryptyline", "25 mg", 3.50));
+		medications.add(new Medicine("Lyrica", "100 mg", 5.20));
+		medications.add(new Medicine("Carmustin", "10 mg", 4.25));
+		medications.add(new Medicine("Vimovo","10 mg", 2.25));
+		medications.add(new Medicine("Dymista","23 g", 35));
+		medications.add(new Medicine("Duac","10mg/g + 50mg/g Gel", 32.5));
 
 		
 		ArrayList<String> ingredients = new ArrayList<>();

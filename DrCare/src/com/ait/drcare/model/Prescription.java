@@ -40,8 +40,21 @@ public class Prescription {
 		this.statusValues.add(PRESCRIPTION_WAITING_PAYMENT);
 		this.statusValues.add(PRESCRIPTION_DISPENSED);
 		this.statusValues.add(PRESCRIPTION_READY_FOR_PICKUP);
-		this.CanEditNote = false;
 	}
+	
+	
+	public Prescription(Patient patient, Pharmacist pharmacist, Doctor doctor) {
+		this();
+		
+		this.thePatient = patient;
+		this.thePharmacist = pharmacist;
+		this.theDoctor = doctor;
+		
+		thePatient.addPrescription(this);
+		thePharmacist.addPrescription(this);
+		theDoctor.addPrescription(this);
+	}
+
 	
 	public String getTheName() {
 		return theName;

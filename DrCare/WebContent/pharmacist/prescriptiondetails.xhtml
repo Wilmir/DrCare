@@ -9,7 +9,7 @@
 
 	<ui:composition>
 		<h:form id="prescriptionDetails" rendered="#{sessionScope.role == 'Pharmacist'}">
-			<p:panelGrid rendered = "#{pharmacistBean.currentPrescription != null}">
+			<p:panelGrid id="prescriptionDetailsContent" rendered = "#{pharmacistBean.currentPrescription != null}">
 					<br/>
 					<div class="prescriptionDetailHeading">
 						<div class = "prescriptionDetailHeadingLeft">
@@ -50,19 +50,19 @@
 							<!-- The Status -->
 							<p:column colspan="2"><p:outputLabel for="status" value="Status"/></p:column>
 							<p:column colspan="4">
-								<p:selectOneMenu id="status" value="#{pharmacistBean.currentPrescription.theStatus}"
-												 autoWidth = "false" rendered = "#{pharmacistBean.currentPrescription.theStatus == 'Ready for pickup'}">
+								<h:selectOneMenu id="status" value="#{pharmacistBean.currentPrescription.theStatus}"
+												 autoWidth = "false" rendered = "#{not pharmacistBean.preview}">
 					            		<f:selectItem itemLabel="Ready for pickup" itemValue="Ready for pickup" />	
 					            		<f:selectItem itemLabel="Order Dispensed" itemValue="Order Dispensed" />				    	
-								</p:selectOneMenu>		
-								<h:outputText value="#{pharmacistBean.currentPrescription.theStatus}" rendered = "#{pharmacistBean.currentPrescription.theStatus != 'Ready for pickup'}"/>			
+								</h:selectOneMenu>		
+								<h:outputText value="#{pharmacistBean.currentPrescription.theStatus}" rendered = "#{pharmacistBean.preview}"/>			
 							</p:column>
 				    </p:row>
 				    
 				    <!-- The Patient Address -->
 				    <p:row>
 				    		<p:column colspan="2"><p:outputLabel for="patientAddress" value="Address"/></p:column>
-							<p:column colspan="4">
+							<p:column colspan="10">
 								<h:outputText id="patientAddress" value = "#{pharmacistBean.currentPrescription.thePatient.theAddress}" />
 							</p:column>
 				    </p:row>
@@ -72,7 +72,7 @@
 				    	<p:column colspan="12">
 				    		<p:dataTable id = "items" var="item" value="#{pharmacistBean.currentPrescription.theItems}" styleClass="prescriptionItemsTable">
 							    <p:column headerText="Medicine">
-							        <h:outputText value="#{item.medicine.theName}" />
+							        <h:outputText value="#{item.medicine.theName} #{item.medicine.strength}" />
 							    </p:column>
 							    
 							    <p:column headerText="Qty">
@@ -80,19 +80,19 @@
 							    </p:column>
 							    
 							    <p:column headerText="Note">
-							    	<p:inputText value="#{item.notefromPharmacist}" size="30"/>
+							    	<p:inputText value="#{item.notefromPharmacist}" size="30" rendered = "#{not pharmacistBean.preview}"/>
+							    	<h:outputText value="#{item.notefromPharmacist}" rendered = "#{pharmacistBean.preview}"/>
 							    </p:column>
 							</p:dataTable>
 				    	</p:column>
 					</p:row>
-					
-					<!-- Need a Controller to handle this action, to be integrated with the CreatePrescription form -->
-					<p:row>
-						<p:column colspan = "12">
-							<p:commandButton value = "Save" action="#{pharmacistBean.save()}" update="pharmacistQueueForm prescriptionDetails"/>
-						</p:column>
-					</p:row>
 			</p:panelGrid>	 
+					
+			<!-- Need a Controller to handle this action, to be integrated with the CreatePrescription form -->
+			<div class="pharmaButtons">
+				<p:commandButton value="#{pharmacistBean.preview ? 'Exit Preview' : 'Preview'}" action="#{pharmacistBean.preview()}" update="prescriptionDetails" />
+				<p:commandButton value = "Save" action="#{pharmacistBean.save()}" update="pharmacistQueueForm prescriptionDetails"/>
+			</div>
 	      </h:form>                
 	</ui:composition>
 </html>

@@ -9,7 +9,11 @@
 
 	<ui:composition>
 		<h:form rendered="#{sessionScope.role == 'Pharmacist'}" id="pharmacistQueueForm">
-			<h3>Prescriptions Queue</h3>		
+			<h3>Prescriptions Queue</h3>
+			<div class = "prescriptionCounter">
+				<h:outputText  value="You have #{pharmacistBean.queueSize} prescription orders" rendered="#{pharmacistBean.queueSize != 0}"/>
+				<h:outputText  value="The queue is empty" rendered="#{pharmacistBean.queueSize == 0}"/>
+			</div>		
 				<ui:repeat id = "pharmacistQueue" value="#{pharmacistBean.paidPrescriptions}" var="prescription" varStatus="status">
 						<p:commandLink action = "#{pharmacistBean.setCurrentPrescription(prescription)}" update="prescriptionDetails">
 								<div class = "pharmacistQueueItem">
@@ -21,7 +25,6 @@
 											</div>
 								</div>			
 						</p:commandLink>
-
 				</ui:repeat>  
 	      </h:form>                
 	</ui:composition>

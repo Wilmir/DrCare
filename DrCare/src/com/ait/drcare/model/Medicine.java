@@ -8,6 +8,7 @@ public class Medicine {
 	
 	private int theID;
 	private String theName;
+	private String strength;
 	private Date theExpiryDate;
 	private ArrayList<String> theContents;
 	private ArrayList<String> theSideEffects;
@@ -23,9 +24,10 @@ public class Medicine {
 
 	}
 		
-	public Medicine(String name, double price) {
+	public Medicine(String name, String strength, double price) {
 		this.theID = (int) (Math.random()*(Integer.MAX_VALUE/10 - 1000000 + 1) + 1000000); // this has 1 trillionth chance of getting same ID for diff medicines;
 		this.theName = name;
+		this.strength = strength;
 		this.theUnitPrice = price;
 		
 		this.theContents = new ArrayList<String>();
@@ -40,6 +42,14 @@ public class Medicine {
 
 	public void setTheID(int theID) {
 		this.theID = theID;
+	}
+
+	public String getStrength() {
+		return strength;
+	}
+
+	public void setStrength(String strength) {
+		this.strength = strength;
 	}
 
 	public String getTheName() {

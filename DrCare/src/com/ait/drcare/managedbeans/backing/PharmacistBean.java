@@ -20,6 +20,8 @@ public class PharmacistBean {
 	private UserListBean dataStore;
 	private Object placeholder;
 	private ArrayList<Prescription> paidPrescriptions;
+	private boolean preview;
+	private int queueSize;
 
 	@PostConstruct
 	public void init() {
@@ -68,6 +70,8 @@ public class PharmacistBean {
 
 	public void setCurrentPrescription(Prescription currentPrescription) {
 		this.currentPrescription = currentPrescription;
+		// set view to edit mode
+		preview = false;
 	}
 	
 	public ArrayList<Prescription> getPaidPrescriptions() {
@@ -79,21 +83,33 @@ public class PharmacistBean {
 	}
 	
 	
-	public void save() {
+	
+	public int getQueueSize() {
+		return paidPrescriptions.size();
+	}
 
+
+	public void setQueueSize(int queueSize) {
+		this.queueSize = queueSize;
+	}
+
+
+	public void save() {
+		boolean dispenseAction = currentPrescription.getTheStatus().equalsIgnoreCase("Order Dispensed");
+		
 		// if the prescription is dispensed remove it from the queue
-		if(currentPrescription.getTheStatus().equalsIgnoreCase("Order Dispensed"))
+		if(dispenseAction)
 		{
-			System.out.println("You changed the status");
 			paidPrescriptions.remove(currentPrescription);
-			
+
+			// then move to the new top of the queue
 			if(paidPrescriptions.size() > 0) {
 				currentPrescription = paidPrescriptions.get(0);
 			}else {
 				currentPrescription = null;
 			}
 		}
-		else // move to the next prescription in the queue
+		else // just move to the next prescription in the queue
 		{
 			int index = paidPrescriptions.indexOf(currentPrescription);
 
@@ -103,6 +119,25 @@ public class PharmacistBean {
 				currentPrescription = paidPrescriptions.get(0);
 			}
 		}
+		
+		// set view to edit mode
+		preview = false;		
+	}
+	
+	
+	public boolean isPreview() {
+		return preview;
+	}
+
+	public void setPreview(boolean preview) {
+		this.preview = preview;
+	}
+
+
+	public void preview() {
+		System.out.println("Hello from preview button");
+		preview = !preview;
+		System.out.println(preview);
 	}
 	
 	public Object getPlaceholder() {
