@@ -17,9 +17,11 @@ import com.ait.drcare.model.*;
 @ManagedBean
 @SessionScoped
 public class DoctorController {
+	
 	private Patient currentPatient;
 	private Prescription currentPrescription;
 	private ArrayList<Prescription> prescriptions;
+	private ArrayList<Prescription> currentPatientPrescriptions;
 	private UserListBean dataStore;
 	private String patientName;
 	private String patientEmail;
@@ -32,7 +34,7 @@ public class DoctorController {
 	@PostConstruct
 	public void init() {
 		dataStore = Helper.getBean("userListBean", UserListBean.class);
-		
+		currentPatientPrescriptions = new ArrayList<Prescription>();
 		//get selected patient
 		//Get selected patient's prescriptions
 		//Get allergies
@@ -44,6 +46,8 @@ public class DoctorController {
 		this.currentPatient = patient;
 		this.allergies = patient.getAllergies();
 		this.prescriptions = dataStore.getPrescriptions(patient);
+		currentPatientPrescriptions = dataStore.getPrescriptions(currentPatient);
+		System.out.println("call");
 		this.currentPrescription = null;
 	}
 

@@ -96,6 +96,16 @@ public class PrescriptionBean {
 		this.theNote = theNote;
 	}
 
+	 
+	
+	public ArrayList<PrescriptionItem> getPrescriptionItems() {
+		return prescriptionItems;
+	}
+
+	public void setPrescriptionItems(ArrayList<PrescriptionItem> prescriptionItems) {
+		this.prescriptionItems = prescriptionItems;
+	}
+
 	public Object getPlaceholder() {
 		return placeholder;
 	}
