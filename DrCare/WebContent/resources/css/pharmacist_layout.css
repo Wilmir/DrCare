@@ -126,6 +126,7 @@ a:link {
 
 #prescriptionDetails{
 	height:100%;
+	padding: 10px 30px;
 }
 
 
@@ -172,19 +173,14 @@ a:link {
 	box-shadow:none;
 }
 
-
-
-
 #prescriptionDetails .ui-button	{
-	background: #f0f0f0;
+	background: gray;
 	box-shadow: none;
 	border-radius:6px;
 	border:1px solid #ffffff;
 	display:inline-block;
 	cursor:pointer;
 	color:#333333;
-	font-family:Arial;
-	font-size:15px;
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
@@ -207,7 +203,7 @@ a:link {
 }
 
 .pharmaButtons{
-	margin-top:0px;
+	margin-top:30px;
 }
 
 
