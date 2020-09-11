@@ -19,9 +19,9 @@ body
 
 
 .header{
-	min-height:100px;
+	min-height: 50px;
 	padding: 0px 200px;	
-  	background-image: linear-gradient(#f0f3f8, #f0f3f8); /* light blue to blue */
+  	background-image: linear-gradient(#0097a7ff, #0097a7ff); /* blue green*/
     font-size: 18px;
 }
 
@@ -55,7 +55,7 @@ body
 	text-decoration:none;
 	margin: 0px 10px;
 	transition: all 0.3s ease;
-	color:gray;
+	color:white;
 }
 
 #logo{
@@ -64,24 +64,19 @@ body
 }
 
 
-
 .header .nav a:hover{
-	color: #0c374d; /* dark blue */
+	color: #f8f8f8; /* dark blue */
 }
-
-
 
 .nav-login{
 	display:flex;
 	flex-wrap:wrap;
 }
 
-
 .nav-login-field{
 	margin: 0px 10px;
 	padding: 10px 0px;
 }
-
 
 input[type="text"], input[type="password"]{
 	font-family: 'Raleway', sans-serif;
@@ -116,64 +111,25 @@ input[type="text"], input[type="password"]{
 	font-family: 'Raleway', sans-serif;
 	font-size: 16px;
 	height: 35px;
-	background:rgba(255,255,255, 0.8);
+	background:rgba(255,255,255, 0.3); 
 	text-shadow: none;
 	border: 1px solid transparent;
 	box-shadow:none;
+	color: white;
 }
 
 .loginButton:hover{
-		background:rgba(255,255,255, 0.4);
+		background:rgba(255,255,255, 0.2);
 }
 
 
 .section {
-	position:relative;
     flex-grow: 1;
-	background:rgba(240, 243, 248, 0.5);
+	background: white;
 }
 
-
-.section .top-overlaid{
-	position:absolute;
-	z-index: 2;
-	top:0;
-	width:100%;
-}
-
-
-
-.section .image-overlaid{
-	position:absolute;
-	z-index: 2;
-	top:0;
-	left:750px;
-  	background-image: linear-gradient(rgba(103,128,159,0.2), rgba(255,255,255,1)); /* light blue to blue */
-	opacity:0.5;
-	height: 90%;
-	width: 450px;
-	border-radius:25px;
-	
-}
-
-
-.section .bottom-overlaid{
-	margin: 0px 150px;
-	border: 1px solid gray;
-	border-radius:10px;
-	position:absolute;
-	z-index: -1;
-	height: 90%;
-	top:0;
-	width: 550px;
-	opacity: 0.2;
-}
-
-.section .footer{
-	position:absolute;
-	margin:0;
+.footer{
 	padding:0 200px;
-	bottom:0;
 	background:#f0f3f8;
 	width:100%;
 	font-size: 12px;
@@ -208,7 +164,7 @@ input[type="text"], input[type="password"]{
 	font-size: 70px;
 	line-height:80px;
 	font-weight:bold;
-	color:gray;
+	color:black;
 }
 
 
@@ -235,12 +191,12 @@ input[type="text"], input[type="password"]{
     font-size: 14px;
     color: #ffffff;
     border: 1px solid transparent;
-	background: black;
+	background: gray;
 }  
 
 
 #register:hover{
-	background:#0b384d;
+	background:#0097a7ff;
 }
 
 /* Responsive Styles */
@@ -272,38 +228,9 @@ input[type="text"], input[type="password"]{
 	}
 	
 	
-	
-	.svg-container{
-		display:none;
-	}
-	
-	
 	.section .bottom-overlaid{
 		display:none;
 	}
-	
-	
-	.footer{
-		position:static;
-	}
-	
-	.footer p{
-		position:static;
-		top: 0;
-	}
-	
-	.section .top-overlaid{
-		position:static;
-		padding-bottom: 40px;
-	}
-	
-	
-	.section .image-overlaid{
-		position:static;
-		width:100%;
-	}
-	
-	
 
 	.form{
 		flex-direction:column;

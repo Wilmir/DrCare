@@ -10,6 +10,7 @@
 	width:100%;
 	display:flex;
 	flex-direction:column;
+	background: #white;
 }
 
 #content{
@@ -21,11 +22,12 @@
 }
 
 #dashboard{
+	background:#f8f8f8;
 	width:100%;
 	flex-grow:1;
 	display:flex;
 	flex-wrap: wrap;
-	border: 1px solid #d3d3d3;
+	border: 1px solid #ffffff;
 	padding:10px;
 }
 
@@ -38,7 +40,6 @@ h3{
 #dashboard-left{
 	padding: 5px;
 	width:25%;
-	background: #f8f8f8;
 }
 
 
@@ -85,7 +86,7 @@ a:link {
 
 /* PRESCRIPTION DETAILS */
 #dashboard-right{
-	border: 1px solid #ffffff;
+	border: 1px solid transparent;
 	padding: 5px;
 	width:75%;
 }
@@ -93,9 +94,10 @@ a:link {
 #prescriptionDetails{
 	padding:10px;
 	margin:10px;
-	border: 1px solid #d3d3d3;
-	border-radius:10px;
+	border: 1px solid #ffffff;
+	border-radius:5px;
 	background: #ffffff;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);	
 }
 
 .prescriptionCounter{
@@ -121,6 +123,8 @@ a:link {
 	justify-content:flex-start;
 	align-items: flex-end;
 	padding:10px;
+	font-size:18px;
+	color: #4f4f4f;
 }
 
 
@@ -128,6 +132,11 @@ a:link {
 	height:100%;
 	padding: 10px 30px;
 }
+
+#prescriptionCompany{
+	color:#d0d0d0;
+}
+
 
 
 .prescriptionItemsTable{
@@ -188,7 +197,7 @@ a:link {
 }
 
 #prescriptionDetails .ui-button:hover{
-	background:black;
+	background:#0097a7ff;
 }
 
 #prescriptionDetails .ui-button:active{

@@ -1,7 +1,8 @@
 .header{
 	padding: 0px 200px;	
-  	background-image: linear-gradient(#f0f3f8, #f0f3f8); /* light blue to blue */
+  	background-image: linear-gradient(#0097a7ff, #0097a7ff); /* bluegreen */
     font-size: 18px;
+    color:white;
 }
 
 .header .nav{
@@ -35,7 +36,7 @@
 	text-decoration:none;
 	margin: 0px 10px;
 	transition: all 0.3s ease;
-	color:gray;
+	color:white;
 }
 
 #logo{
@@ -46,7 +47,7 @@
 
 
 .header .nav a:hover{
-	color: #0c374d; /* dark blue */
+	color: #f8f8f8; /* dark blue */
 }
 
 
@@ -100,12 +101,13 @@ input[type="text"], input[type="password"]{
 	font-family: 'Raleway', sans-serif;
 	font-size: 16px;
 	height: 35px;
-	background:rgba(255,255,255, 0.8);
+	background:rgba(255,255,255, 0.3);
 	text-shadow: none;
 	border: 1px solid transparent;
 	box-shadow:none;
+	color:white;
 }
 
 .loginButton:hover, .logoutButton:hover{
-		background:rgba(255,255,255, 0.4);
+	background:rgba(255,255,255, 0.2);
 }
