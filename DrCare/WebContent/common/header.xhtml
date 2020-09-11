@@ -33,6 +33,7 @@
 								    </div>
 							    </h:form>
 							    <h:form rendered="#{sessionScope.role == 'Doctor' or sessionScope.role == 'Pharmacist' or sessionScope.role == 'Patient'}">
+							    	<h:outputText rendered="#{sessionScope.role == 'Patient'}" value="Hi #{patientInfoController.currentUser.theName}!"/>
 							    	<h:outputText rendered="#{sessionScope.role == 'Pharmacist'}" value="Hi #{pharmacistBean.currentUser.theName}!"/>
 									<h:outputText rendered="#{sessionScope.role == 'Doctor'}" value="Hi #{doctorBean.doctor.theName}!"/>&nbsp;
 									<p:commandButton id="logout" styleClass = "logoutButton"  action="#{loginController.logout}" value="logout" title="Log Out"/>
