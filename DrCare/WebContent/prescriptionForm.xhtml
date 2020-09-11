@@ -146,6 +146,7 @@
 						<p:column colspan="4"><p:inputText id="note" value="#{prescriptionBean.theNote}" /></p:column>
 					</p:row>
 					
+					<!-- Items Display -->
 					<p:row>
 				    	<p:column colspan="12">Items</p:column>
 					</p:row>
@@ -153,13 +154,13 @@
 					<!-- Placeholder for the PrescriptionItems Datatable -->
 					<p:row>
 				    	<p:column colspan="12">
-				    		<p:dataTable id = "items" var="item" value="#{prescriptionBean.placeholder}">
+				    		<p:dataTable id = "items" var="item" value="#{prescriptionBean.prescriptionItems}">
 							    <p:column headerText="Medicine">
 							        <h:outputText value="#{item.medicine.theName}" />
 							    </p:column>
 							 
 							    <p:column headerText="Dosage">
-							        <h:outputText value="#{item.dosage}" />
+							        <h:outputText value="#{item.dosagePerDay}" />
 							    </p:column>
 							 
 							    <p:column headerText="Duration">

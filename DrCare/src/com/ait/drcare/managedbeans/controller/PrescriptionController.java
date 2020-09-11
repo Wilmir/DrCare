@@ -58,18 +58,18 @@ public class PrescriptionController {
 		
 		//add to the list
 		prescriptionItems.add(newItem);
-		
+		prescriptionBean.setPrescriptionItems(prescriptionItems);
 		
 		//Update so form displays it
-		System.out.println("End of addItem");
+		
 	}
 	
 	
 	
-	public String addPrescription(PrescriptionBean prescriptionBean) {
+	public void addPrescription(PrescriptionBean prescriptionBean) {
 		
 		//set prescriptionitem
-		System.out.println("PrescriptionController test");
+		
 		Prescription prescription = new Prescription();
 		
 		//Set prescription variables
@@ -79,19 +79,12 @@ public class PrescriptionController {
 		prescription.setTheDoctor(doctorBean.getDoctor());		
 		prescription.setTheItems(prescriptionItems);
 		
-		// Test activation
-		System.out.println("PrescriptionController test end");
-		
-		
-		for (PrescriptionItem prescriptionItem : prescriptionItems) {
-			System.out.println(prescriptionItem.getMedicineName());
-		}
 		dataStore.addPrescription(prescription);
 	
 		//Clear items for next prescription
 		prescriptionItems.clear();
+		doctorController.show(doctorController.getCurrentPatient());
 		
-		 return "successfully added";
 	}
 	
 	
