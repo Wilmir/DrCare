@@ -15,7 +15,7 @@
 				<h:outputText  value="The queue is empty" rendered="#{pharmacistBean.queueSize == 0}"/>
 			</div>		
 				<ui:repeat id = "pharmacistQueue" value="#{pharmacistBean.paidPrescriptions}" var="prescription" varStatus="status">
-						<p:commandLink action = "#{pharmacistBean.setCurrentPrescription(prescription)}" update="prescriptionDetails">
+						<p:commandLink action = "#{pharmacistBean.setCurrentPrescription(prescription)}" update="prescriptionDetails pharmacistQueueForm" styleClass="#{pharmacistBean.currentPrescription.theName == prescription.theName? 'current' : 'notcurrent'}">
 								<div class = "pharmacistQueueItem">
 											<div class ="prescriptionID">
 												#{prescription.theName}

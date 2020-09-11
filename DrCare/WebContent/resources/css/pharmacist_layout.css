@@ -52,6 +52,10 @@ h3{
   	background: #ffffff;
 }
 
+.current .pharmacistQueueItem{
+	border: 1px solid rgba(33,182,168,0.5);
+	box-shadow: 0 2px 4px 0 rgba(33,182,168,0.5);	
+}
 
 .pharmacistQueueItem:hover {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -67,6 +71,11 @@ h3{
 	padding:5px;
 	border-bottom:1px solid #d3d3d3;
 }
+
+.current .prescriptionID{
+	font-weight:bold;
+}
+
 
 a:link {
     text-decoration: none !important;

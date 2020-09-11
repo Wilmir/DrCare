@@ -70,6 +70,7 @@ public class PharmacistBean {
 
 	public void setCurrentPrescription(Prescription currentPrescription) {
 		this.currentPrescription = currentPrescription;
+					
 		// set view to edit mode
 		preview = false;
 	}
@@ -81,7 +82,6 @@ public class PharmacistBean {
 	public void setPaidPrescriptions(ArrayList<Prescription> paidPrescriptions) {
 		this.paidPrescriptions = paidPrescriptions;
 	}
-	
 	
 	
 	public int getQueueSize() {
@@ -104,7 +104,7 @@ public class PharmacistBean {
 
 			// then move to the new top of the queue
 			if(paidPrescriptions.size() > 0) {
-				currentPrescription = paidPrescriptions.get(0);
+				setCurrentPrescription(paidPrescriptions.get(0));
 			}else {
 				currentPrescription = null;
 			}
@@ -112,16 +112,14 @@ public class PharmacistBean {
 		else // just move to the next prescription in the queue
 		{
 			int index = paidPrescriptions.indexOf(currentPrescription);
-
+						
 			if(index != paidPrescriptions.size() - 1) {
-				currentPrescription = paidPrescriptions.get(index+1);
+				setCurrentPrescription(paidPrescriptions.get(index+1));
 			}else {
-				currentPrescription = paidPrescriptions.get(0);
+				setCurrentPrescription(paidPrescriptions.get(0));
 			}
 		}
-		
-		// set view to edit mode
-		preview = false;		
+			
 	}
 	
 	
@@ -146,5 +144,6 @@ public class PharmacistBean {
 
 	public void setPlaceholder(Object placeholder) {
 		this.placeholder = placeholder;
-	}	
+	}
+	
 }
