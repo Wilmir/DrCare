@@ -67,12 +67,26 @@
 							</p:column>
 				    </p:row>
 					
-					<!-- Placeholder for the PrescriptionItems Datatable -->
+					<!-- PrescriptionItems Datatable -->
 					<p:row>
 				    	<p:column colspan="12">
 				    		<p:dataTable id = "items" var="item" value="#{pharmacistBean.currentPrescription.theItems}" styleClass="prescriptionItemsTable">
 							    <p:column headerText="Medicine">
-							        <h:outputText value="#{item.medicine.theName} #{item.medicine.strength}" />
+							        <h:outputText id="medicineName" value="#{item.medicine.theName} #{item.medicine.strength}" />
+							            <!-- Tooltip for Medicine -->
+							            <p:tooltip id="toolTipContent" for="medicineName" position="top">
+									       	<div class ="tooltipMedicineName">#{item.medicine.theName} #{item.medicine.strength}</div>
+				    				        <div class ="tooltipMedicineContentHeading">Content:</div>
+				    				        <ui:repeat id = "theContents" value="#{item.medicine.theContents}" var="medContent" varStatus="status">
+				    				        	<div class ="tooltipMedicineContent">#{medContent}</div>
+				    				        </ui:repeat> 
+				    				        <div class ="tooltipMedicineSideEffectHeading">Side Effects:</div>
+				    				        <ul>
+				    				        <ui:repeat id = "theSideEffects" value="#{item.medicine.theSideEffects}" var="sideEffect" varStatus="status">
+				    				        	<div class ="tooltipMedicineSideEffect">#{sideEffect}</div>
+				    				        </ui:repeat> 	
+				    				        </ul>
+									    </p:tooltip>
 							    </p:column>
 							    
 							    <p:column headerText="Qty">
@@ -87,11 +101,29 @@
 				    	</p:column>
 					</p:row>
 			</p:panelGrid>	 
+			
+			<!-- placeholder for instructional videos -->
+			<div class="instructionalVideos">
+				<div class="instructionalVideosHeading">Instructional Videos Placeholder (Hardcoded)</div>
+				<div class="prescriptionVideos">
+					<a href ="https://www.youtube.com/watch?v=rk_lU-NKezM" target="_blank">
+						<img src="https://img.youtube.com/vi/rk_lU-NKezM/default.jpg" />
+					</a>
+					<a href ="https://www.youtube.com/watch?v=-a5b2u7MG7U" target="_blank">
+						<img src="https://img.youtube.com/vi/-a5b2u7MG7U/default.jpg" />
+					</a>
+				</div>
+			</div>
 					
 			<!-- Need a Controller to handle this action, to be integrated with the CreatePrescription form -->
 			<div class="pharmaButtons">
-				<p:commandButton value="#{pharmacistBean.preview ? 'Exit Preview' : 'Preview'}" action="#{pharmacistBean.preview()}" update="prescriptionDetails" />
-				<p:commandButton value = "Save" action="#{pharmacistBean.save()}" update="pharmacistQueueForm prescriptionDetails"/>
+				<p:commandButton value="#{pharmacistBean.preview ? 'Exit Preview' : 'Preview'}" 
+								 action="#{pharmacistBean.preview()}" 
+								 update="prescriptionDetails"
+								 rendered="#{pharmacistBean.queueSize > 0}"/>
+				<p:commandButton value = "Save" action="#{pharmacistBean.save()}" 
+				                 update="pharmacistQueueForm prescriptionDetails"
+				                 rendered="#{pharmacistBean.queueSize > 0}"/>
 			</div>
 	      </h:form>                
 	</ui:composition>

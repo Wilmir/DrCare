@@ -133,9 +133,7 @@ public class PharmacistBean {
 
 
 	public void preview() {
-		System.out.println("Hello from preview button");
 		preview = !preview;
-		System.out.println(preview);
 	}
 	
 	public Object getPlaceholder() {

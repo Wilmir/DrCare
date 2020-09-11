@@ -11,7 +11,8 @@
 		<h:form rendered="#{sessionScope.role == 'Pharmacist'}" id="pharmacistQueueForm">
 			<h3>Prescriptions Queue</h3>
 			<div class = "prescriptionCounter">
-				<h:outputText  value="You have #{pharmacistBean.queueSize} prescription orders" rendered="#{pharmacistBean.queueSize != 0}"/>
+				<h:outputText  value="You have #{pharmacistBean.queueSize} prescription order" rendered="#{pharmacistBean.queueSize != 0}"/>
+				<h:outputText  value="s" rendered="#{pharmacistBean.queueSize > 1}"/>
 				<h:outputText  value="The queue is empty" rendered="#{pharmacistBean.queueSize == 0}"/>
 			</div>		
 				<ui:repeat id = "pharmacistQueue" value="#{pharmacistBean.paidPrescriptions}" var="prescription" varStatus="status">
