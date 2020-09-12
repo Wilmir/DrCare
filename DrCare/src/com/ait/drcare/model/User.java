@@ -2,7 +2,6 @@ package com.ait.drcare.model;
 
 import java.util.ArrayList;
 
-import com.sun.org.apache.xml.internal.security.signature.reference.ReferenceData;
 
 public class User
 {
