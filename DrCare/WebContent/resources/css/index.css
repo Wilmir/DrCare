@@ -3,7 +3,7 @@
 }
 
 body  
-{  	position:relative;
+{  	
     margin: 0;  
     padding: 0;  
   	height:100%;
@@ -152,6 +152,7 @@ input[type="text"], input[type="password"]{
 	flex-grow: 1;
     width:100%;
     display:flex;
+    overflow:hidden;
 }
 
 
@@ -168,6 +169,9 @@ input[type="text"], input[type="password"]{
 	flex-direction:column;
 }
 
+.main-right-content{
+	position:relative;
+}
 
 .h1-one-liner .one-liner-line{
 	margin-top:60px;
@@ -177,6 +181,28 @@ input[type="text"], input[type="password"]{
 	font-weight:bold;
 	color:black;
 }
+
+
+
+/*Banner text rainbow animation effect*/
+/* Add shining class to the text you need to apply this to. */
+.shining {
+        background: linear-gradient(45deg, #073763, #0097a7, #73c9d2);
+		background-size: auto auto;
+		background-clip: border-box;
+		background-size: 200% auto;
+		background-clip: border-box;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+        animation: textclip 20s linear infinite;
+    }
+
+@keyframes textclip {
+	to {
+		background-position: 200% center;
+	}
+}
+/*End of Banner text rainbow animation effect*/
 
 
 .form{
@@ -202,13 +228,47 @@ input[type="text"], input[type="password"]{
     font-size: 14px;
     color: #ffffff;
     border: 1px solid transparent;
-	background: gray;
+	background: black;
 }  
 
 
 #register:hover{
 	background:#0097a7ff;
 }
+
+
+.indeximage{
+	padding:20px;
+	top:60px;
+	position:absolute;
+	width:600px;
+	z-index:1;
+	border-top-left-radius:100px;
+}
+
+.doctordiv, .pharmacistdiv, .patientdiv{
+	position:absolute;
+	top:320px;
+	height:100px;
+	width:100px;
+	background: rgba(255,255,0, 0);
+	border-radius: 50px;
+	z-index: 2;
+}
+
+.doctordiv{
+	left: 25px;
+}
+
+.pharmacistdiv{
+	left: 200px;
+}
+
+.patientdiv{
+	left: 375px;
+}
+
+
 
 /* Responsive Styles */
 /* Styles when the viewport is 800px or smaller */
