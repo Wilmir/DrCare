@@ -13,7 +13,7 @@
 						<div class = "header-row-left">
 							<div class = "nav">
 								<ul>
-								  <li id = "logo"><a href="index.jsf">DrCare</a></li>
+						  			<li id = "logo"><p:link outcome="#{sessionScope.role == 'Doctor' ? 'doctor' : (sessionScope.role == 'Pharmacist' ? 'pharmacist' : (sessionScope.role == 'Patient' ? 'patient' : 'index'))}" value="DrCare" /></li>
 								</ul>	
 							</div>
 						</div>
