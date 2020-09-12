@@ -33,7 +33,7 @@ public class RegistrationControllerTest {
 		userBean.setRole("GP");
 		userBean.setLicenseNumber(300000005);
 		
-		assertEquals("login?faces-redirect=true", regController.addUser(userBean));
+		assertEquals("index?faces-redirect=true", regController.addUser(userBean));
 	}
 	
 	@Test
@@ -47,7 +47,7 @@ public class RegistrationControllerTest {
 		userBean.setRole("Pharmacist");
 		userBean.setLicenseNumber(600000005);
 		
-		assertEquals("login?faces-redirect=true", regController.addUser(userBean));
+		assertEquals("index?faces-redirect=true", regController.addUser(userBean));
 	}
 	
 	@Test
@@ -60,7 +60,7 @@ public class RegistrationControllerTest {
 		userBean.setPasswordConfirmation("abc");
 		userBean.setRole("Patient");
 		
-		assertEquals("login?faces-redirect=true", regController.addUser(userBean));
+		assertEquals("index?faces-redirect=true", regController.addUser(userBean));
 	}
 	
 	@Test

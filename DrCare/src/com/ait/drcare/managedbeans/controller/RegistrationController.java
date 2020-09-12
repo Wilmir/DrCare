@@ -69,7 +69,7 @@ public class RegistrationController {
 		
 		
 		//5. Redirect the user to Login page, faces-redirect changes the URl to login.jsf
-		return "login?faces-redirect=true";
+		return "index?faces-redirect=true";
 	}
 
 	// Password validation
