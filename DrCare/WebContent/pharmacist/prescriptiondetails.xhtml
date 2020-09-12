@@ -9,6 +9,16 @@
 
 	<ui:composition>
 		<h:form id="prescriptionDetails" rendered="#{sessionScope.role == 'Pharmacist'}">
+			<!-- The Buttons -->
+			<div class="pharmaButtons">
+				<p:commandButton value="#{pharmacistBean.preview ? 'Update' : 'Preview'}" 
+								 action="#{pharmacistBean.preview()}" 
+								 update="prescriptionDetails"
+								 rendered="#{pharmacistBean.queueSize > 0}"/>
+				<p:commandButton value = "Next" action="#{pharmacistBean.next()}" 
+				                 update="pharmacistQueueForm prescriptionDetails"
+				                 rendered="#{pharmacistBean.queueSize > 0}"/>
+			</div>
 			<p:panelGrid id="prescriptionDetailsContent" rendered = "#{pharmacistBean.currentPrescription != null}">
 					<br/>
 					<div class="prescriptionDetailHeading">
@@ -104,26 +114,32 @@
 			
 			<!-- placeholder for instructional videos -->
 			<div class="instructionalVideos">
-				<div class="instructionalVideosHeading">Instructional Videos Placeholder (Hardcoded)</div>
-				<div class="prescriptionVideos">
-					<a href ="https://www.youtube.com/watch?v=rk_lU-NKezM" target="_blank">
-						<img src="https://img.youtube.com/vi/rk_lU-NKezM/default.jpg" />
-					</a>
-					<a href ="https://www.youtube.com/watch?v=-a5b2u7MG7U" target="_blank">
-						<img src="https://img.youtube.com/vi/-a5b2u7MG7U/default.jpg" />
-					</a>
-				</div>
-			</div>
-					
-			<!-- Need a Controller to handle this action, to be integrated with the CreatePrescription form -->
-			<div class="pharmaButtons">
-				<p:commandButton value="#{pharmacistBean.preview ? 'Exit Preview' : 'Preview'}" 
-								 action="#{pharmacistBean.preview()}" 
-								 update="prescriptionDetails"
-								 rendered="#{pharmacistBean.queueSize > 0}"/>
-				<p:commandButton value = "Save" action="#{pharmacistBean.save()}" 
-				                 update="pharmacistQueueForm prescriptionDetails"
-				                 rendered="#{pharmacistBean.queueSize > 0}"/>
+				<!-- The add video form -->
+				<div class="instructionalVideosHeading">
+				   	<p:autoComplete id="videoSearch" 
+				   					value="#{pharmacistBean.video}" 
+				   					size="30"
+				   					placeholder	="instructional videos"
+				   					completeMethod="#{pharmacistBean.completeSearch}"
+	                        		var="video" 
+	                        		itemLabel="#{video.title}" 
+	                        		itemValue="#{video}" 
+	                        		converter="videoConverter" 
+	                        		forceSelection="true"
+	                        		rendered = "#{not pharmacistBean.preview}">			 
+					        <p:column>
+					        	<img src="https://img.youtube.com/vi/#{video.id}/default.jpg"  style="width:50px;" alt="#{video.title}"/>
+					        </p:column>
+					        <p:column>
+					             <h:outputText value="#{video.title}" />
+					        </p:column>
+	        		</p:autoComplete>
+	        		<p:commandButton value="Add" 
+	        						 action="#{pharmacistBean.addVideo}" 
+	        						 rendered = "#{not pharmacistBean.preview}"/>
+					<h:outputText value="Instructional Videos" rendered = "#{pharmacistBean.preview}"/>
+				</div>	
+
 			</div>
 	    </h:form>               
 	</ui:composition>

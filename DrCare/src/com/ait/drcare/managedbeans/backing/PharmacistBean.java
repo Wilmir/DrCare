@@ -1,6 +1,9 @@
 package com.ait.drcare.managedbeans.backing;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -9,23 +12,30 @@ import javax.faces.context.FacesContext;
 
 import com.ait.drcare.helpers.Helper;
 import com.ait.drcare.managedbeans.support.UserListBean;
+import com.ait.drcare.managedbeans.support.VideoListBean;
 import com.ait.drcare.model.Pharmacist;
 import com.ait.drcare.model.Prescription;
+import com.ait.drcare.model.Video;
 
 @ManagedBean
 @ViewScoped
-public class PharmacistBean {
+public class PharmacistBean implements Serializable{
 	private Pharmacist currentUser;
 	private Prescription currentPrescription;	
 	private UserListBean dataStore;
+	private VideoListBean videoStore;
 	private Object placeholder;
 	private ArrayList<Prescription> paidPrescriptions;
 	private boolean preview;
 	private int queueSize;
+	private int videosCount;
+	private Video video;
 
 	@PostConstruct
 	public void init() {
 		dataStore = Helper.getBean("userListBean", UserListBean.class);	
+		videoStore = Helper.getBean("videoListBean", VideoListBean.class);	
+
 		paidPrescriptions = new ArrayList<>();
 		
 		String email = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
@@ -49,7 +59,7 @@ public class PharmacistBean {
 			
 			// set current prescription to the first paid prescription
 			if(paidPrescriptions.size() > 0) {
-				this.currentPrescription = paidPrescriptions.get(0);
+				setCurrentPrescription(paidPrescriptions.get(0));
 			}
 		}
 		
@@ -72,7 +82,10 @@ public class PharmacistBean {
 		this.currentPrescription = currentPrescription;
 					
 		// set view to edit mode
-		preview = false;
+		preview = true;
+		
+		// set video to null
+		video = null;
 	}
 	
 	public ArrayList<Prescription> getPaidPrescriptions() {
@@ -83,7 +96,7 @@ public class PharmacistBean {
 		this.paidPrescriptions = paidPrescriptions;
 	}
 	
-	
+	// get number of prescription
 	public int getQueueSize() {
 		return paidPrescriptions.size();
 	}
@@ -92,9 +105,22 @@ public class PharmacistBean {
 	public void setQueueSize(int queueSize) {
 		this.queueSize = queueSize;
 	}
+	
+	// get number of videos
+	public int getVideosCount() {
+		if(currentPrescription.getVideos() !=null) {
+			return currentPrescription.getVideos().size();
+		}
+		return 0;
+	}
+
+	public void setVideosCount(int videosCount) {
+		this.videosCount = videosCount;
+	}
 
 
-	public void save() {
+	// save the prescription
+	public void next() {
 		boolean dispenseAction = currentPrescription.getTheStatus().equalsIgnoreCase("Order Dispensed");
 		
 		// if the prescription is dispensed remove it from the queue
@@ -122,7 +148,29 @@ public class PharmacistBean {
 			
 	}
 	
+	// autocomplete searcg feature
+	public List<Video> completeSearch(String query) {
+	        String queryLowerCase = query.toLowerCase();
+	        List<Video> allVideos = videoStore.getVideos();
+	        return allVideos.stream().filter(t -> t.getTitle().toLowerCase().startsWith(queryLowerCase)).collect(Collectors.toList());
+	}
 	
+	// add video to prescription
+	public void addVideo() {
+		
+		// check if video already exists in the list
+		if(currentPrescription.getVideos() != null) {
+			for(Video existingVideo: currentPrescription.getVideos()) {
+				if(existingVideo.getId().equals(video.getId())) {
+					return;
+				}
+			}
+		}
+		
+		currentPrescription.addVideo(video);
+	}
+	
+
 	public boolean isPreview() {
 		return preview;
 	}
@@ -143,5 +191,15 @@ public class PharmacistBean {
 	public void setPlaceholder(Object placeholder) {
 		this.placeholder = placeholder;
 	}
-	
+
+
+	public Video getVideo() {
+		return video;
+	}
+
+
+	public void setVideo(Video video) {
+		this.video = video;
+	}
+		
 }
