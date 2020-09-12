@@ -1,13 +1,17 @@
 package com.ait.drcare.managedbeans.models;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.ait.drcare.model.Prescription;
+import com.ait.drcare.model.Video;
 
 class PrescriptionTest {
 
@@ -44,7 +48,14 @@ class PrescriptionTest {
 		prescription1.setTheName("bobo");
 		assertEquals("bobo",prescription1.getTheName());
 		
+		// test Getter and Setter for Videos
+		ArrayList<Video> videos = new ArrayList<>();
+		videos.add(new Video("id", "title"));
+		prescription1.setVideos(videos);
 		
-		
+		assertEquals("id", prescription1.getVideos().get(0).getId());
+		assertEquals("title", prescription1.getVideos().get(0).getTitle());
+		assertEquals(1, prescription1.getVideos().size());
+
 	}
 }

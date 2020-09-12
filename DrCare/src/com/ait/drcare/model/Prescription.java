@@ -21,11 +21,12 @@ public class Prescription {
 	
 	private PrescriptionItem theItem; // this will need to be removed, keeping this so as not to break code I am not aware of
 	private ArrayList<PrescriptionItem> theItems;
+	private ArrayList<Video> videos;
 	
 	private double total;
 	
 
-	final static String PRESCRIPTION_WAITING_PAYMENT = "Waiting for payment",
+	public final static String PRESCRIPTION_WAITING_PAYMENT = "Waiting for payment",
 				 PRESCRIPTION_DISPENSED = "Order Dispensed",
 				 PRESCRIPTION_READY_FOR_PICKUP = "Ready for pickup";
 	
@@ -151,7 +152,6 @@ public class Prescription {
 		this.theItems = theItems;
 	}
 	
-	
 	public void addPrescriptionItem(PrescriptionItem item) {
 		if(theItems == null) {
 			theItems = new ArrayList<>();
@@ -159,7 +159,24 @@ public class Prescription {
 		
 		theItems.add(item);
 	}
+	
+	public ArrayList<Video> getVideos() {
+		return videos;
+	}
 
+
+	public void setVideos(ArrayList<Video> videos) {
+		this.videos = videos;
+	}
+
+	public void addVideo(Video video) {
+		if(videos == null) {
+			videos = new ArrayList<>();
+		}
+		
+		videos.add(video);
+	}
+	
 	public double getTotal() {
 		return total;
 	}
