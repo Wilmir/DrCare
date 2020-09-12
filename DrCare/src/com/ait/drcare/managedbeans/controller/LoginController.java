@@ -49,13 +49,13 @@ public class LoginController {
 		}
 		// if no user exists
 		if (!userFound) {
-			printMessage(givenUser, "The given user is not registered in the System. Please Register" );
+			printMessage(givenUser, "The given user is not registered in the system, please register" );
 			System.out.println(message);
 			return null;
 		}
 		// If account is locked
 		if (registeredUser.getAccountLock()) {
-			message = "Account Locked";
+			message = "Your account is now locked";
 			System.out.println(message);
 			printMessage(givenUser, message);
 
@@ -128,8 +128,9 @@ public class LoginController {
 	
 	// function prints messages for error handling
 	public void printMessage(String user, String printline) {
-		FacesMessage message =new FacesMessage (printline);
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.addMessage(user, message);
+        FacesContext currentInstance = FacesContext.getCurrentInstance();
+        if(currentInstance != null) {
+            currentInstance.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", printline));
+        }
 	}
 }
