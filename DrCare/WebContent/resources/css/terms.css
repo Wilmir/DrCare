@@ -1,3 +1,4 @@
+
 .container {
     min-height: 100vh;
     display: flex;
@@ -40,6 +41,6 @@ text-align: justify;
 .footer{
 	padding:0 200px;
 	background:#f0f3f8;
-	width:100%;
+/* 	width:100%; */
 	font-size: 12px;
 }
