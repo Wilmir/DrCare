@@ -29,7 +29,7 @@ public class URLFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		HttpSession session = httpRequest.getSession(false);
-        String loginURL = httpRequest.getContextPath() + "/login.jsf";
+        String loginURL = httpRequest.getContextPath() + "/index.jsf";
 
         boolean loggedIn = (session != null) && (session.getAttribute("user") != null);
 
