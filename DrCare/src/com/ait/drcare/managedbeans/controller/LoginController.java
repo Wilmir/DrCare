@@ -123,7 +123,7 @@ public class LoginController {
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("role","");
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", "");
 		// FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "login?faces-redirect=true";
+		return "index?faces-redirect=true";
 	}
 	
 	// function prints messages for error handling
