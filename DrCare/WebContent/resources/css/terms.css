@@ -1,0 +1,45 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.header{
+	min-height: 50px;
+	padding: 0px 200px;	
+  	background-image: linear-gradient(#0097a7ff, #0097a7ff); /* blue green*/
+    font-size: 18px;
+    color:white;
+    
+}
+body  
+{  	position:relative;
+    margin: 0;  
+    padding: 0;  
+  	height:100%;
+  	font-family: 'Raleway', sans-serif;
+}
+.section {
+    flex-grow: 1;
+	background: white;
+	margin: 50px 50px 50px 50px;
+	
+}
+h2 {
+	text-align: center;
+}
+h4 {
+	display: flex;
+margin-block-start: 5em;
+margin-block-end: 10em;
+margin-inline-start: 70px;
+margin-inline-end: 70px;
+text-align: justify;
+
+}
+.footer{
+	padding:0 200px;
+	background:#f0f3f8;
+	width:100%;
+	font-size: 12px;
+}
