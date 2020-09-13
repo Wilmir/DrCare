@@ -1,0 +1,399 @@
+*{  
+  box-sizing: border-box;
+  font-family: 'Google Sans', sans-serif;
+  margin:0;
+  padding:0;
+}
+
+label, select, input[type="text"]{
+  font-family: 'Google Sans', sans-serif !important;
+}
+
+
+.container{
+	min-height:100vh;
+	width:100%;
+	display:flex;
+	flex-direction:column;
+	background: #white;
+}
+
+#content{
+	width:100%;
+	flex-grow:1;
+	padding: 0 200px;
+	display:flex;
+	flex-direction:column;
+}
+
+#dashboard{
+	background:#f8f8f8;
+	width:100%;
+	flex-grow:1;
+	display:flex;
+	flex-wrap: wrap;
+	border: 1px solid #ffffff;
+	padding:10px;
+}
+
+/* PRESCRIPTION QUEUE */
+
+h3{
+	text-align:center;
+}
+
+#dashboard-left{
+	padding: 5px;
+	width:25%;
+}
+
+
+.pharmacistQueueItem{
+	padding:10px;
+	margin:10px;
+	border: 1px solid #ffffff;
+	border-radius:5px;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  	transition: 0.3s;
+  	background: #ffffff;
+}
+
+.current .pharmacistQueueItem{
+	border: 1px solid rgba(33,182,168,0.5);
+	box-shadow: 0 2px 4px 0 rgba(33,182,168,0.5);	
+}
+
+.pharmacistQueueItem:hover {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.prescriptionPatient{
+	color:#4f4f4f;
+	padding:5px;
+}
+
+.prescriptionID{
+	color:#4f4f4f;
+	padding:5px;
+	border-bottom:1px solid #d3d3d3;
+}
+
+.current .prescriptionID{
+	font-weight:bold;
+}
+
+
+a:link {
+    text-decoration: none !important;
+}
+
+
+
+/* PRESCRIPTION DETAILS */
+#dashboard-right{
+	border: 1px solid transparent;
+	padding: 5px;
+	width:75%;
+}
+
+#prescriptionDetails{
+	position:relative;
+	padding:10px;
+	margin:10px;
+	border: 1px solid #ffffff;
+	border-radius:5px;
+	background: #ffffff;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);	
+}
+
+.prescriptionCounter{
+	text-align:center;
+	margin:10px;	
+}
+
+.prescriptionDetailHeading{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #d3d3d3;
+}
+
+.prescriptionDetailHeadingLeft{
+	width:13%;
+	padding:10px;
+}
+
+.prescriptionDetailHeadingRight{
+	display: flex;
+	flex-direction: column;
+	justify-content:flex-start;
+	align-items: flex-end;
+	padding:10px;
+	font-size:18px;
+	color: #4f4f4f;
+}
+
+
+#prescriptionDetails{
+	height:100%;
+	padding: 10px 30px;
+}
+
+#prescriptionCompany{
+	color:#d0d0d0;
+}
+
+select{
+	padding:5px;
+}
+
+select:focus{
+	border: 1px solid #0097a7ff;
+}
+
+
+.readyForPickUp{
+	color:orange;
+}
+
+.dispensed{
+	color:#0097a7ff;
+}
+
+.prescriptionItemsTable{
+	margin-top:20px;
+}
+
+.prescriptionItemsTable th{
+	background: #f0f3f8 !important;
+	color: black !important;
+	text-shadow: none !important;
+	box-shadow:none;
+	border:1px solid #f0f0f0 !important;
+	font-weight: 400 !important;
+	height:45px;
+}
+
+.prescriptionItemsTable th:nth-child(2){
+	    width: 60px;	
+}
+
+.prescriptionItemsTable .ui-datatable-even{
+	background: white !important;
+}
+
+.prescriptionItemsTable .ui-datatable-odd{
+	background: white !important;
+}
+
+
+#prescriptionDetails tr{
+	border: 1px solid gray !important;
+	height:45px;
+}
+
+#prescriptionDetails td{
+	border: 1px solid #ffffff !important;
+	height:45px;
+}
+
+.prescriptionItemsTable td:nth-child(2){
+	    width: 60px;	
+}
+
+#prescriptionDetails .ui-inputfield	{
+	border: 1px solid gray;
+	box-shadow:none;
+	height:30px;
+}
+
+#prescriptionDetails .ui-inputfield:focus	{
+	border: 1px solid #0d98ba;
+}
+
+
+#prescriptionDetails .ui-button	{
+	background: #5dbac4;
+	box-shadow: none;
+	border-radius:6px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	text-decoration:none;
+	min-width:100px !important;
+}
+
+#prescriptionDetails .ui-button:hover{
+	background:#0097a7ff;
+}
+
+#prescriptionDetails .ui-button:active{
+	background:black;
+	border:1px solid #ffffff;
+}
+
+#prescriptionDetails .ui-button-text{
+	text-shadow:none;
+	color:white;
+	padding: 6px !important;
+	font-weight: normal;
+	font-size:18px;
+}
+
+.ui-tooltip-text{
+	padding:20px !important;
+	background-color:white !important;
+	color:black !important;
+	font-size:14px !important;
+}
+
+.tooltipMedicineName{
+	font-weight:bold;
+}
+
+.tooltipMedicineName{
+	font-weight:bold;
+}
+
+.tooltipMedicineContentHeading, .tooltipMedicineSideEffectHeading{
+	margin-top:5px;
+	color:gray;
+}
+
+ 
+.ui-tooltip-arrow{
+	border-top-color:white !important;
+}
+
+.ui-shadow{
+	box-shadow: 0 5px 10px rgba(0,0,0,0.2) !important;
+}
+
+.pharmaButtons{
+	display:flex;
+	justify-content:flex-end;
+}
+
+/* INSTRUCTIONAL VIDEOS*/
+.instructionalVideos{
+	margin-top:10px;
+}
+
+.instructionalVideosHeading{
+	background:#f0f3f8;
+	text-align:center;
+	margin: auto 10px;
+	font-size:18px;
+	color: black;
+	height:45px;
+	line-height:45px;
+}
+
+.instructionalVideosHeading .ui-inputfield{
+	border: 1px solid gray !important;
+	margin: auto 10px !important;
+	box-shadow:none;
+	font-size:16px;
+	height: 35px !important;
+	padding: auto 20px;
+}
+
+.instructionalVideosHeading .ui-inputfield:focus{
+	border: 1px solid #0097a7ff !important;
+}
+
+
+/*AUTOCOMPLETE*/
+.autocomplete-panel td{
+	border: 1px solid #ffffff !important;
+}
+
+.ui-state-highlight{
+	background:#f0f3f8 !important;
+	text-shadow:none !important;
+	color: black !important;
+}
+
+.ui-widget-content{
+	border: 1px solid #ffffff !important;
+}
+
+
+.prescriptionVideos{
+	margin:10px;
+	display:flex;
+	flex-wrap:wrap;
+}
+
+.videoContainer{
+	position:relative;
+}
+
+.videoContainer img{
+	transition: opacity 0.8s ease;
+}
+
+.videoContainer:hover img{
+	opacity:0.6;
+}
+
+
+.removeVideo{
+	top:0;
+	right:0;
+	position:absolute;
+	z-index:100;
+}
+
+.prescriptionVideos a{
+	margin: 5px;
+	color:white !important;
+	font-size:25px !important;
+	transition: all 0.7s ease;
+}
+
+.prescriptionVideos a:hover{
+	color:#a30455 !important;
+	text-shadow: 1px white;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-family: 'Google Sans', sans-serif;
+  font-size: 16px;
+  color: gray;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-family: 'Google Sans', sans-serif;
+  font-size: 16px;
+  color: gray;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-family: 'Google Sans', sans-serif;
+  font-size: 16px;
+  color: gray;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-family: 'Google Sans', sans-serif;
+  font-size: 16px;
+  color: gray;
+}
+
+.noneIndicator{
+	display:block;
+	color:gray;
+	text-align:center;
+	width:100%;
+}
+
+
+
+#prescriptionFooter{
+	position:absolute;
+	bottom:10px;
+	color:gray;
+	text-align:center;
+	display:block;
+	font-size: 12px;
+}
+
