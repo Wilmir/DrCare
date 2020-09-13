@@ -111,6 +111,7 @@ public class UserListBean {
 		PrescriptionItem pItem6 =  new PrescriptionItem(med6, 1, 5);
 		PrescriptionItem pItem7 =  new PrescriptionItem(med7, 1, 1);
 		PrescriptionItem pItem8 =  new PrescriptionItem(med7, 1, 1);
+		PrescriptionItem pItem9 =  new PrescriptionItem(med7, 1, 1);
 
 			
 		// Prescription(Patient patient, Pharmacist pharmacist, Doctor doctor)
@@ -155,6 +156,12 @@ public class UserListBean {
 			prescription7.addPrescriptionItem(pItem7);
 			prescriptions.add(prescription7);
 			
+		Prescription prescription8 = new Prescription(p2, ph2, d2);
+			prescription8.setTheStatus("Order Dispensed");
+			prescription8.addPrescriptionItem(pItem9);
+			prescriptions.add(prescription8);
+			prescription8.addVideo(new Video("vykYmXIiOs0","Accutane"));
+
 			
 		//add patients, and pharmacist to a separate arraylist
 		for(User user: users) {
