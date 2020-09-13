@@ -158,6 +158,7 @@ public class Prescription {
 		}
 		
 		theItems.add(item);
+		total += item.getSubtotal();
 	}
 	
 	public ArrayList<Video> getVideos() {

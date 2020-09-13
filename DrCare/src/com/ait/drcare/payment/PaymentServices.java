@@ -63,7 +63,7 @@ public class PaymentServices {
     
     private List<Transaction> getTransactionInformation(Prescription prescription) {
     	Details details = new Details();
-    	String subtotal = String.format("%.2f", prescription.getTheItem().getSubtotal());
+    	String subtotal = String.format("%.2f", prescription.getTotal());
     	details.setSubtotal(subtotal);
     	
     	Amount amount = new Amount();
