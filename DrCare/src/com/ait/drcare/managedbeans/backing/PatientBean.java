@@ -14,7 +14,14 @@ public class PatientBean {
 	public int id;
 	public String email;
 	public ArrayList<Prescription> prescriptions;
+	public Prescription currentPrescription;
 	
+	public Prescription getCurrentPrescription() {
+		return currentPrescription;
+	}
+	public void setCurrentPrescription(Prescription currentPrescription) {
+		this.currentPrescription = currentPrescription;
+	}
 	public String getName() {
 		return name;
 	}

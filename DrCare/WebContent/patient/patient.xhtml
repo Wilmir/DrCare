@@ -26,7 +26,8 @@
 			<h:form>
 				<p:dataTable value="#{patientInfoController.currentUser.prescriptions}" var="presc">
 					<p:column headerText="Name">
-						<h:outputText value="#{presc.theName}" />
+						<p:commandLink action = "#{patientBean.setCurrentPrescription(presc)}" value="#{presc.theName}" update="@all" style="text-decoration:none;color:blue;">
+						</p:commandLink>
 					</p:column>
 					<p:column headerText="Date Prescribed">
 						<h:outputText value="#{presc.theDatePrescribed}" />
@@ -41,7 +42,89 @@
 						<p:commandButton value="Pay" actionListener="#{authorisePayment.pay(presc)}" rendered="#{presc.theStatus == 'Waiting for payment'}"/>
 					</p:column>
 				</p:dataTable>
+					<p:panelGrid id="prescriptionDetailsContent">
+					<br/>
+					<div class="prescriptionDetailHeading">
+						<div class = "prescriptionDetailHeadingLeft">
+							<div class = "prescriptionLogo">
+								<img src="#{resource['images/rx.png']}" alt="patient"
+									style="width: 20%"></img>
+							</div>
+						</div>
+						<div class = "prescriptionDetailHeadingRight">
+							<h2 id="prescriptionCompany">DrCare</h2>
+							<div id = "prescriptionDoctor">Dr #{patientBean.currentPrescription.theDoctor.theName}</div>
+							<div id = "prescriptionLicenseNumber">License# #{patientBean.currentPrescription.theDoctor.theID}</div>
+							<div id = "prescriptionDoctorAddress">#{patientBean.currentPrescription.theDoctor.theAddress}</div>
+						</div>
+					</div>				    
+				    
+				    <p:row>
+				    	<!-- The Prescription ID-->
+				    	<p:column colspan="2"><p:outputLabel for="prescriptionID" value="Prescription ID" /></p:column>
+				    	<p:column colspan="4">
+							<h:outputText id="prescriptionID" value = "#{patientBean.currentPrescription.theName}" />
+						</p:column>
+						<!-- The Prescription Date-->
+						<p:column colspan="2"><p:outputLabel for="date" value="Date" /></p:column>
+						<p:column colspan="4">
+							<h:outputText id="date" value = "#{patientBean.currentPrescription.theDatePrescribed}">
+								<f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+							</h:outputText>
+						</p:column>	
+				    </p:row>  
+				    
+					<!-- PrescriptionItems Datatable -->
+					<p:row>
+				    	<p:column colspan="12">
+				    		<p:dataTable id = "items" var="item" value="#{patientBean.currentPrescription.theItems}" styleClass="prescriptionItemsTable">
+							    <p:column headerText="Medicine">
+							        <h:outputText id="medicineName" value="#{item.medicine.theName} #{item.medicine.strength}" />
+							            <!-- Tooltip for Medicine -->
+							            <p:tooltip id="toolTipContent" for="medicineName" position="top">
+									       	<div class ="tooltipMedicineName">#{item.medicine.theName} #{item.medicine.strength}</div>
+				    				        <div class ="tooltipMedicineContentHeading">Content:</div>
+				    				        <ui:repeat id = "theContents" value="#{item.medicine.theContents}" var="medContent" varStatus="status">
+				    				        	<div class ="tooltipMedicineContent">#{medContent}</div>
+				    				        </ui:repeat> 
+				    				        <div class ="tooltipMedicineSideEffectHeading">Side Effects:</div>
+				    				        <ul>
+				    				        <ui:repeat id = "theSideEffects" value="#{item.medicine.theSideEffects}" var="sideEffect" varStatus="status">
+				    				        	<div class ="tooltipMedicineSideEffect">#{sideEffect}</div>
+				    				        </ui:repeat> 	
+				    				        </ul>
+									    </p:tooltip>
+							    </p:column>
+							    
+							    <p:column headerText="Qty">
+							        <h:outputText value="#{item.quantity}" />
+							    </p:column>
+							    
+							    <p:column headerText="Note">
+							    	<p:inputText value="#{item.notefromPharmacist}" size="28"/>
+							    	<h:outputText value="#{item.notefromPharmacist}"/>
+							    </p:column>
+							</p:dataTable>
+				    	</p:column>
+					</p:row>
+		
+			</p:panelGrid>
+			<div class="instructionalVideosHeading">
+				<h:outputText value="Instructional Videos"/>
+			</div>	
+			<div class="prescriptionVideos">
+					<ui:repeat id = "videosList" 
+							   value="#{patientBean.currentPrescription.videos}" 
+							   var="video" 
+							   varStatus="status">
+								<a href ="https://www.youtube.com/watch?v=#{video.id}" target="_blank">
+									<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg" style="width:148px;" alt="#{video.title}"/>								
+								</a>
+					</ui:repeat> 
+			
+			</div> 
 			</h:form>
+			
 		</div>
 	</h:panelGroup>         
 	</ui:composition>
