@@ -65,7 +65,9 @@
 					            		<f:selectItem itemLabel="Ready for pickup" itemValue="Ready for pickup" />	
 					            		<f:selectItem itemLabel="Order Dispensed" itemValue="Order Dispensed" />				    	
 								</h:selectOneMenu>		
-								<h:outputText value="#{pharmacistBean.currentPrescription.theStatus}" rendered = "#{pharmacistBean.preview}"/>			
+								<h:outputText value="#{pharmacistBean.currentPrescription.theStatus}" 
+											  rendered = "#{pharmacistBean.preview}"
+											  styleClass = "#{pharmacistBean.currentPrescription.theStatus == 'Ready for pickup' ? 'readyForPickUp' : 'dispensed'}"/>			
 							</p:column>
 				    </p:row>
 				    
@@ -143,13 +145,21 @@
 				</div>	
 				<!-- The list of videos -->		
 				<div class="prescriptionVideos">
+					<p:growl id="growl" showDetail="true" sticky="true" />  
 					<ui:repeat id = "videosList" 
 							   value="#{pharmacistBean.currentPrescription.videos}" 
 							   var="video" 
 							   varStatus="status">
-								<a href ="https://www.youtube.com/watch?v=#{video.id}" target="_blank">
-									<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg" style="width:148px;" alt="#{video.title}"/>								
-								</a>
+							  	<div class = "videoContainer">
+									<a href ="https://www.youtube.com/watch?v=#{video.id}" target="_blank">
+										<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg" style="width:148px;" alt="#{video.title}"/>								
+									</a>
+									<div class = "removeVideo">
+										<p:commandLink class="removeVideoButton" update="prescriptionDetails" action="#{pharmacistBean.removeVideo(video)}" rendered = "#{not pharmacistBean.preview}">
+											<i class="pi pi-times"></i>
+										</p:commandLink>
+									</div>
+								</div>
 					</ui:repeat> 
 					<div class="noneIndicator"><h:outputText value="-- none --" rendered = "#{pharmacistBean.preview and pharmacistBean.videosCount == 0}"/></div>
 					<div id="prescriptionFooter">

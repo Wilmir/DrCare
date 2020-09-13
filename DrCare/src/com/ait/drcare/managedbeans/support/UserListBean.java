@@ -16,6 +16,7 @@ import com.ait.drcare.model.Pharmacist;
 import com.ait.drcare.model.Prescription;
 import com.ait.drcare.model.PrescriptionItem;
 import com.ait.drcare.model.User;
+import com.ait.drcare.model.Video;
 
 
 @ManagedBean
@@ -33,14 +34,10 @@ public class UserListBean {
 	private ArrayList<Pharmacist> pharmacists;
 	
 	private ArrayList<Prescription> prescriptions;
-	
-	private MedicineListBean medicineStore;
-	
+		
 
 	@PostConstruct
-	public void init() {
-		medicineStore = Helper.getBean("medicineListBean", MedicineListBean.class);
-	
+	public void init() {	
 		//Instantiate Variables
 		users = new ArrayList<User>();
 		qualifiedDoctorsLicenses = new ArrayList<>();
@@ -96,18 +93,15 @@ public class UserListBean {
 		users.add(ph4);
 		users.add(ph5);
 		
+		// Medicine(String name, String strength, double price)
+		Medicine med1 = new Medicine("Accutane", "12.5 mg", 2.00);
+		Medicine med2 = new Medicine("Collagen", "25 mg", 3.50);
+		Medicine med3 = new Medicine("Levothyroxine", "100 mg", 5.20);
+		Medicine med4 = new Medicine("Metformin", "10 mg", 4.25);
+		Medicine med5 = new Medicine("Vimovo","10 mg", 2.25);
+		Medicine med6 = new Medicine("Dymista","23 g", 35);
+		Medicine med7 = new Medicine("Eye Drops","10mg/g", 32.5);
 		
-		
-		ArrayList<Medicine> medications = medicineStore.getMedications();
-		Medicine med1 = medications.get(0);
-		Medicine med2 = medications.get(1);
-		Medicine med3 = medications.get(2);
-		Medicine med4 = medications.get(3);
-		Medicine med5 = medications.get(4);
-		Medicine med6 = medications.get(5);
-		Medicine med7 = medications.get(6);
-
-
 		// PrescriptionItem(Medicine aMedicine, double aDosagePerDay,int aDuration)
 		PrescriptionItem pItem1 =  new PrescriptionItem(med1, 0.25,4);
 		PrescriptionItem pItem2 =  new PrescriptionItem(med2, 1, 7);
@@ -125,10 +119,10 @@ public class UserListBean {
 			prescription1.addPrescriptionItem(pItem1);
 			prescription1.addPrescriptionItem(pItem8);
 			prescriptions.add(prescription1);
+			prescription1.addVideo(new Video("vykYmXIiOs0","Accutane"));
 
 
 		Prescription prescription2 = new Prescription(p2, ph1, d2);
-			prescription2.setTheStatus("Ready for pickup");
 			prescription2.addPrescriptionItem(pItem2);
 			prescriptions.add(prescription2);
 
