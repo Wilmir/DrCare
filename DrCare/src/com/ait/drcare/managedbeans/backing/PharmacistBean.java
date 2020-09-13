@@ -3,6 +3,7 @@ package com.ait.drcare.managedbeans.backing;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
@@ -149,10 +150,15 @@ public class PharmacistBean implements Serializable{
 	}
 	
 	// autocomplete searcg feature
-	public List<Video> completeSearch(String query) {
-	        String queryLowerCase = query.toLowerCase();
+	public List<Object> completeSearch(String query) {
+	        final String queryLowerCase = query.toLowerCase();
 	        List<Video> allVideos = videoStore.getVideos();
-	        return allVideos.stream().filter(t -> t.getTitle().toLowerCase().startsWith(queryLowerCase)).collect(Collectors.toList());
+	        return allVideos.stream().filter(new Predicate<Video>() {
+				@Override
+				public boolean test(Video t) {
+					return t.getTitle().toLowerCase().startsWith(queryLowerCase);
+				}
+			}).collect(Collectors.toList());
 	}
 	
 	// add video to prescription
