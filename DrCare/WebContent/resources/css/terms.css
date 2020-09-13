@@ -31,12 +31,13 @@ h2 {
 }
 h4 {
 	display: flex;
-margin-block-start: 5em;
-margin-block-end: 10em;
-margin-inline-start: 70px;
-margin-inline-end: 70px;
-text-align: justify;
-
+	margin-block-start: 5em;
+	margin-block-end: 10em;
+	margin-inline-start: 70px;
+	margin-inline-end: 70px;
+	text-align: justify;
+	font-family: 'Google Sans', sans-serif;
+	font-weight:normal;
 }
 .footer{
 	padding:0 200px;

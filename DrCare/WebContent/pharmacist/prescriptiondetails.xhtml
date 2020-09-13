@@ -11,11 +11,11 @@
 		<h:form id="prescriptionDetails" rendered="#{sessionScope.role == 'Pharmacist'}">
 			<!-- The Buttons -->
 			<div class="pharmaButtons">
-				<p:commandButton value="#{pharmacistBean.preview ? 'Update' : 'Preview'}" 
+				<p:commandButton id="previewButton" value="#{pharmacistBean.preview ? 'Update' : 'Preview'}" 
 								 action="#{pharmacistBean.preview()}" 
 								 update="prescriptionDetails"
 								 rendered="#{pharmacistBean.queueSize > 0}"/>
-				<p:commandButton value = "Next" action="#{pharmacistBean.next()}" 
+				<p:commandButton id="nextButton" value = "Next" action="#{pharmacistBean.next()}" 
 				                 update="pharmacistQueueForm prescriptionDetails"
 				                 rendered="#{pharmacistBean.queueSize > 0}"/>
 			</div>
@@ -126,9 +126,9 @@
 	                        		itemValue="#{video}" 
 	                        		converter="videoConverter" 
 	                        		forceSelection="true"
-	                        		rendered = "#{not pharmacistBean.preview}">			 
+	                        		rendered = "#{pharmacistBean.queueSize > 0 and not pharmacistBean.preview}">			 
 					        <p:column>
-					        	<img src="https://img.youtube.com/vi/#{video.id}/default.jpg"  style="width:50px;" alt="#{video.title}"/>
+					        	<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg"  style="width:50px;" alt="#{video.title}"/>
 					        </p:column>
 					        <p:column>
 					             <h:outputText value="#{video.title}" />
@@ -137,7 +137,8 @@
 	        		<p:commandButton value="Add" 
 	        						 action="#{pharmacistBean.addVideo}" 
 	        						 update="prescriptionDetails" 
-	        						 rendered = "#{not pharmacistBean.preview}"/>
+	        						 rendered = "#{pharmacistBean.queueSize > 0 and not pharmacistBean.preview}"/>
+	        		<h:outputText value="Have a nice day!" rendered = "#{pharmacistBean.queueSize == 0}"/>
 					<h:outputText value="Instructional Videos" rendered = "#{pharmacistBean.preview}"/>
 				</div>	
 				<!-- The list of videos -->		
@@ -150,7 +151,12 @@
 									<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg" style="width:148px;" alt="#{video.title}"/>								
 								</a>
 					</ui:repeat> 
-					<h:outputText value="-- none --" rendered = "#{pharmacistBean.preview and pharmacistBean.videosCount == 0}"/>
+					<div class="noneIndicator"><h:outputText value="-- none --" rendered = "#{pharmacistBean.preview and pharmacistBean.videosCount == 0}"/></div>
+					<div id="prescriptionFooter">
+						<h:outputText value="To be facilitated by" rendered = "#{pharmacistBean.preview and pharmacistBean.currentPrescription.theStatus == 'Ready for pickup'}"/>
+						<h:outputText value="Dispensed by" rendered = "#{pharmacistBean.preview and pharmacistBean.currentPrescription.theStatus == 'Order Dispensed'}"/>
+						<h:outputText value=" #{pharmacistBean.currentUser.theName} License# #{pharmacistBean.currentUser.theID}" />
+					</div>
 				</div>
 			</div>
 	    </h:form>               
