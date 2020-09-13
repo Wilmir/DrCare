@@ -164,6 +164,7 @@ public class PharmacistBean implements Serializable{
 	
 	// add video to prescription
 	public void addVideo() {	
+		// if no video is selected just return
 		if(video == null) {
 			return;
 		}
@@ -185,11 +186,9 @@ public class PharmacistBean implements Serializable{
 		video = null;
 	}
 	
-	
+	// remove video
 	public void removeVideo(Video video) {
 		currentPrescription.getVideos().remove(video);
-		
-		System.out.println("New count of videos: " + currentPrescription.getVideos().size());
 	}
 
 
