@@ -164,20 +164,25 @@ public class PharmacistBean implements Serializable{
 	
 	// add video to prescription
 	public void addVideo() {	
+		if(video == null) {
+			return;
+		}
+		
 		// check if video already exists in the list
 		if(currentPrescription.getVideos() != null) {
 			for(Video existingVideo: currentPrescription.getVideos()) {
 				if(existingVideo.getId().equals(video.getId())) {
-			        FacesContext context = FacesContext.getCurrentInstance();
-			         
-			        context.addMessage(null, new FacesMessage("Successful",  "Your message: " + existingVideo.getTitle()) );
-									
+			        FacesContext currentInstance = FacesContext.getCurrentInstance();
+			        if(currentInstance != null) {
+			            currentInstance.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Video is already in the prescription", existingVideo.getTitle()));
+			        }		
 					return;
 				}
 			}
 		}
 		
 		currentPrescription.addVideo(video);
+		video = null;
 	}
 	
 	

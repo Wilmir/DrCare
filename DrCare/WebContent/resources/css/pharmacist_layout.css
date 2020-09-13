@@ -397,3 +397,17 @@ select:focus{
 	font-size: 12px;
 }
 
+/*GROWL*/
+.ui-growl{
+	right: 5% !important;
+	top: 75% !important;
+}
+
+.ui-growl-item-container{
+	border:1px solid #fff !important;
+	background:white;
+}
+
+.ui-growl-title	{
+	color: #0097a7ff;
+}
