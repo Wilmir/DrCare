@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -156,12 +157,15 @@ public class PharmacistBean implements Serializable{
 	}
 	
 	// add video to prescription
-	public void addVideo() {
-		
+	public void addVideo() {	
 		// check if video already exists in the list
 		if(currentPrescription.getVideos() != null) {
 			for(Video existingVideo: currentPrescription.getVideos()) {
 				if(existingVideo.getId().equals(video.getId())) {
+			        FacesContext context = FacesContext.getCurrentInstance();
+			         
+			        context.addMessage(null, new FacesMessage("Successful",  "Your message: " + existingVideo.getTitle()) );
+									
 					return;
 				}
 			}
@@ -170,6 +174,13 @@ public class PharmacistBean implements Serializable{
 		currentPrescription.addVideo(video);
 	}
 	
+	
+	public void removeVideo(Video video) {
+		currentPrescription.getVideos().remove(video);
+		
+		System.out.println("New count of videos: " + currentPrescription.getVideos().size());
+	}
+
 
 	public boolean isPreview() {
 		return preview;
