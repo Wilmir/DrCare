@@ -66,29 +66,30 @@
 							    </p:column>
 							 
 							    <p:column headerText="Duration">
-							        <h:outputText value="#{item.duration}" />
+							        <h:outputText value="#{item.duration}" style="display:block; text-align:right" />
 							    </p:column>
 							    
 							    <p:column headerText="Quantity">
-							        <h:outputText value="#{item.quantity}" />
+							        <h:outputText value="#{item.quantity}" style="display:block; text-align:right" />
 							    </p:column>
 							    
 							    <p:column headerText="Unit Price">
-							        <h:outputText value="#{item.medicine.theUnitPrice}" />
+							        <h:outputText value="#{item.medicine.theUnitPrice}" style="display:block; text-align:right"/>
 							    </p:column>
 							    
 							    <p:column headerText="Subtotal">
-							        <h:outputText value="#{item.subtotal}" />
-							    </p:column>				    
+							        <h:outputText value="#{item.subtotal}" style="display:block; text-align:right" />
+							    </p:column>
+							    <f:facet name="footer">
+							        <h:panelGroup style="display:block; text-align:right">
+							            <h:outputText value="Total: #{patientBean.currentPrescription.total}" />
+							        </h:panelGroup>
+    							</f:facet>				    
 							</p:dataTable>
 				    	</p:column>
 					</p:row>
 			</p:panelGrid>
 			<p:panelGrid id="prescriptionmisc" rendered = "#{patientBean.currentPrescription != null}">
-				<div class="totalvalue">
-						<h:outputText style="display: block" value="Total" rendered="#{patientBean.currentPrescription.total != 0}" />
-						<h:outputText value="#{patientBean.currentPrescription.total}" rendered="#{patientBean.currentPrescription.total != 0}"/>
-				</div>	
 				<div class="instructionalVideos">
 					<h:outputText value="Instructional Videos" rendered="#{patientBean.currentPrescription != null}"/>
 				</div>	
