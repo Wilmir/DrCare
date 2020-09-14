@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Patient extends User{
 	
-	
+	private String photo;
 	private String theMedicalCardNumber;
 	private ArrayList<String> Allergies;
 	private Doctor gp;
@@ -47,8 +47,19 @@ public class Patient extends User{
 		return theMedicalCardNumber;
 	}
 
-
 	public void setTheMedicalCardNumber(String theMedicalCardNumber) {
 		this.theMedicalCardNumber = theMedicalCardNumber;
+	}
+
+
+	public String getPhoto() {
+		return photo;
+	}
+
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}	
+	
+	
 }
