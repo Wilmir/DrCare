@@ -62,6 +62,11 @@ public class DoctorController {
 		this.currentPrescription = null;
 	}
 
+	
+	
+	
+	
+	
 	// view prescription details 
 	public void viewPrescriptionDetails(Prescription prescription) {
 		this.currentPrescription = prescription;

@@ -75,7 +75,7 @@ public class PrescriptionController {
 		//Set prescription variables
 		prescription.setTheNote(prescriptionBean.getTheNote());
 		prescription.setThePharmacist(prescriptionBean.getPharmacist());		
-		prescription.setThePatient(doctorController.getCurrentPatient());		
+		prescription.setThePatient(doctorBean.getCurrentPatient());		
 		prescription.setTheDoctor(doctorBean.getDoctor());		
 		prescription.setTheItems(prescriptionItems);
 		
@@ -83,7 +83,6 @@ public class PrescriptionController {
 	
 		//Clear items for next prescription
 		prescriptionItems.clear();
-		doctorController.show(doctorController.getCurrentPatient());
 		
 	}
 	
