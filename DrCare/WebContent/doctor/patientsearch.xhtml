@@ -15,7 +15,7 @@
 						<div id = "patientSearchField">
 					        <p:autoComplete id="patientSearch" 
 					   					value="#{doctorBean.currentPatient}" 
-					   					size="20"
+					   					size="25"
 					   					placeholder	="search for patient"
 					   					completeMethod="#{doctorController.completeSearch}"
 		                        		var="patient" 
@@ -34,7 +34,6 @@
 
 				        <div >
 					        <p:commandButton value="Show"
-					                         action="#{doctorController.showPatient()}"
 					                         update="patientDetails prescriptionDetailsSection" />
 				        </div>
 				</div>

@@ -48,6 +48,5 @@ public class DoctorBean {
 	public void setCurrentPatient(Patient currentPatient) {
 		this.currentPatient = currentPatient;
 	}
-	
-	
+
 }

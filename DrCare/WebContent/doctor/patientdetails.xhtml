@@ -37,13 +37,13 @@
 	        </p:tab>
 	        
 	        <p:tab title="Prescriptions">
-	        	<p:commandButton value = "Create New Prescription" action="#{prescriptionController.createPrescription}" rendered="#{doctorController.currentPatient != null}"/>
+	        	<p:commandButton value = "Create New Prescription" action="#{prescriptionController.createPrescription}" rendered="#{doctorBean.currentPatient != null}"/>
 	        	<br/>
 	        	<br/>
-	        	<p:dataTable value="#{doctorController.prescriptions}" var="prescription" >
+	        	<p:dataTable value="#{doctorBean.currentPatient.prescriptions}" var="prescription" >
 	        		<p:column headerText="ID">
 						<p:commandLink value="#{prescription.theName}" 
-									   action = "#{doctorController.viewPrescriptionDetails(prescription)}" 
+									   action = "#{doctorBean.viewPrescriptionDetails(prescription)}" 
 									   update="prescriptionDetailsSection">
 						</p:commandLink>
 					</p:column>
