@@ -8,59 +8,60 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:composition>
-		<h3>Patient Details</h3>		
-	    <p:accordionPanel id="patientDetails" multiple="true" activeIndex = "0,1,2" rendered="#{sessionScope.role == 'Doctor'}" >
-	        <p:tab title="Bio">
-	            <p:panelGrid>
-	            		<h:outputText id="name" value="Name: " style="font-weight:bold"/>
-					   	<h:outputText value="#{doctorBean.currentPatient.theName}"/>
-					   	<br></br>
-					   	<h:outputText id="address" value="Address: " style="font-weight:bold"/>
-					   	<h:outputText value="#{doctorBean.currentPatient.theAddress}"/>
-					   	<br></br>
-					   	<h:outputText id="email" value="Email: " style="font-weight:bold"/>
-					   	<h:outputText value="#{doctorBean.currentPatient.theEmail}"/>
-					   	<br></br>
-					   	<h:outputText id="pid" value="ID: " style="font-weight:bold"/>
-                       	<h:outputText value="#{doctorBean.currentPatient.theID}"/>
-                       	<br></br>
-
-	            </p:panelGrid>
-	        </p:tab>
-	        
-	        <p:tab title="Allergies">
-	            <p:panelGrid>
-	            	<h:dataTable value="#{doctorBean.currentPatient.allergies}" var="allergy">
-				    	<h:column>
-					        <h:outputText value="#{allergy}"/>
-				    	</h:column>
-					</h:dataTable>
-	            </p:panelGrid>
-	        </p:tab>
-	        
-	        <p:tab title="Prescriptions">
-	        	<p:commandButton value = "Create New Prescription" action="#{prescriptionController.createPrescription}" rendered="#{doctorBean.currentPatient != null}"/>
-	        	<br/>
-	        	<br/>
-	        	<p:dataTable value="#{doctorBean.currentPatient.prescriptions}" var="prescription" >
-	        		<p:column headerText="ID">
-						<p:commandLink value="#{prescription.theName}" 
-									   action = "#{doctorBean.setCurrentPrescription(prescription)}" 
-									   update="prescriptionDetailsSection">
-						</p:commandLink>
-					</p:column>
-					
-					<p:column headerText="Patient">
-						<h:outputText value="#{prescription.thePatient.theName}" />
-					</p:column>
-					
-					<p:column headerText="Date">
-						<h:outputText value="#{prescription.theDatePrescribed}">
-							<f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
-						</h:outputText>
-					</p:column>
-	        	</p:dataTable>                    
-	        </p:tab>
-	    </p:accordionPanel>
+		<h:form id="patientDetails" rendered="#{sessionScope.role == 'Doctor'}" >
+			<div id="patientHeading">
+				<h3><span id="patientHeadingLabel">Patient's Profile:</span> #{doctorBean.currentPatient.theName}</h3>
+			</div>		
+		    <p:accordionPanel multiple="true" activeIndex = "0,1,2">
+		        <p:tab title="Bio">
+		        	<div id="bio">
+		  				<div id="pic">
+		  					<img src="#{resource['images/emptyprofilepic.png']}" alt="patient's photo" style="width: 100px" />
+		  				</div>      	
+		        		<div class="biolabel">
+		        			<div id="namelabel">Full Name</div>
+		        			<div id="addresslabel">Address</div>
+		        			<div id="emaillabel">Email</div>
+		        			<div id="medicalcardlabel">HealthCard No.</div>
+		        			<div id="allergieslabel">Allergies</div>
+		        		</div>
+		        		<div class="biodata">
+		        			<div id="namedata"><h:outputText value="#{doctorBean.currentPatient.theName}"/></div>
+		        			<div id="addressdata"><h:outputText value="#{doctorBean.currentPatient.theAddress}"/></div>
+		        			<div id="emaildata"><h:outputText value="#{doctorBean.currentPatient.theEmail}"/></div>
+		        			<div id="medicalcarddata"><h:outputText value="#{doctorBean.currentPatient.theMedicalCardNumber}"/></div>
+		        			<div id="allergiesdata">
+		        				<ui:repeat value="#{doctorBean.currentPatient.allergies}" var="allergy" varStatus="status">
+				    			#{allergy}<h:outputText value=",&nbsp;" rendered="#{not status.last}"/><h:outputText value="." rendered="#{status.last}"/>
+	                       		</ui:repeat>
+		        			</div>
+		        		</div>
+		        	</div>
+		        </p:tab>
+		        <p:tab title="Prescriptions">
+		        	<div id="prescriptionCards">
+		        			<p:commandLink action = "#{prescriptionController.createPrescription}" 
+										   update="prescriptionDetailsSection">
+								<div class="prescriptionMiniCard" id="createPrescriptionCard">
+									<i class="fa fa-plus shining"></i>
+									<div class="prescriptionMiniCardLabel">
+										New Prescription
+									</div>
+								</div>
+							</p:commandLink>
+							<ui:repeat value="#{doctorBean.currentPatient.prescriptions}" var="prescription" varStatus="status">
+								<p:commandLink action = "#{doctorBean.setCurrentPrescription(prescription)}" 
+										   update="prescriptionDetailsSection">
+									<div class="prescriptionMiniCard">
+										<div class="prescriptionMiniCardLabel">
+											#{prescription.theName} #{prescription.theDatePrescribed}
+										</div>
+									</div>
+								</p:commandLink>
+							</ui:repeat>       	
+		        	</div>                
+		        </p:tab>
+		    </p:accordionPanel>
+	    </h:form>
 	</ui:composition>
 </html>
