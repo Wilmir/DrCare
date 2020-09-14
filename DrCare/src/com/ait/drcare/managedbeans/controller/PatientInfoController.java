@@ -1,11 +1,12 @@
 package com.ait.drcare.managedbeans.controller;
 
+
 import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
+
 import javax.faces.bean.ManagedBean;
 
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -15,12 +16,12 @@ import com.ait.drcare.model.*;
 
 @ManagedBean
 @ViewScoped
-public class PatientInfoController {
+public class PatientInfoController{
 	private String userEmail;
 	private Patient currentUser;
 	private ArrayList<Patient> patients;
 	private UserListBean dataStore;
-
+    
 	@PostConstruct
 	public void init() {
 		userEmail = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
@@ -57,5 +58,5 @@ public class PatientInfoController {
 	public void setPatients(ArrayList<Patient> patients) {
 		this.patients = patients;
 	}
-
+    
 }

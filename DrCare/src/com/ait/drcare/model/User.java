@@ -1,6 +1,8 @@
 package com.ait.drcare.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class User
@@ -110,6 +112,18 @@ public class User
 
 
 	public ArrayList<Prescription> getPrescriptions() {
+		// sort the prescription from latest to old if the user is a Patient or a Doctor
+		if(prescriptions != null && !(this instanceof Pharmacist)) {
+			Collections.sort(prescriptions, new Comparator<Prescription>(){
+
+				@Override
+				public int compare(Prescription p1, Prescription p2) {
+					return (p2.getTheDatePrescribed()).compareTo(p1.getTheDatePrescribed());
+				}
+				
+			});
+		}
+	
 		return prescriptions;
 	}
 

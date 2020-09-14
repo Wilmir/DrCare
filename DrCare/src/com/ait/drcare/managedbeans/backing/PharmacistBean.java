@@ -157,7 +157,7 @@ public class PharmacistBean implements Serializable{
 	        return allVideos.stream().filter(new Predicate<Video>() {
 				@Override
 				public boolean test(Video t) {
-					return t.getTitle().toLowerCase().startsWith(queryLowerCase);
+					return t.getTitle().toLowerCase().contains(queryLowerCase);
 				}
 			}).collect(Collectors.toList());
 	}

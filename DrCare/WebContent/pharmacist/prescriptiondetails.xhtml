@@ -161,7 +161,7 @@
 									</div>
 								</div>
 					</ui:repeat> 
-					<div class="noneIndicator"><h:outputText value="-- none --" rendered = "#{pharmacistBean.preview and pharmacistBean.videosCount == 0}"/></div>
+					<div id="noneIndicator"><h:outputText value="-- none --" rendered = "#{pharmacistBean.preview and pharmacistBean.videosCount == 0}"/></div>
 					<div id="prescriptionFooter">
 						<h:outputText value="To be facilitated by" rendered = "#{pharmacistBean.preview and pharmacistBean.currentPrescription.theStatus == 'Ready for pickup'}"/>
 						<h:outputText value="Dispensed by" rendered = "#{pharmacistBean.preview and pharmacistBean.currentPrescription.theStatus == 'Order Dispensed'}"/>

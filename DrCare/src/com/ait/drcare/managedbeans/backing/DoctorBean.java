@@ -1,5 +1,10 @@
 package com.ait.drcare.managedbeans.backing;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,22 +23,32 @@ public class DoctorBean {
 	private Doctor doctor;
 	private Patient currentPatient;
 	private Prescription currentPrescription;
-	private UserListBean existingUsers;
+	private UserListBean dataStore;
+	private List<Patient> patients;
+	private String query;
+	private int searchResultSize;
+	private int allPatientsSize;
+
 	
 	@PostConstruct
 	public void init() {
-		 existingUsers = Helper.getBean("userListBean", UserListBean.class);		
+		dataStore = Helper.getBean("userListBean", UserListBean.class);	
+		
+		currentPatient = dataStore.getPatients().get(0);
 	}
 
 	public Doctor getDoctor() {
 		String email = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
 		
-		for(User user: existingUsers.getUsers()) {
+		for(User user: dataStore.getUsers()) {
 			if(user.getTheEmail().equalsIgnoreCase(email)) {
 				this.doctor = (Doctor) user;
 				break;
 			}
 		}
+		
+		patients = dataStore.getPatients();
+				
 		return doctor;
 	}
 
@@ -47,6 +62,7 @@ public class DoctorBean {
 
 	public void setCurrentPatient(Patient currentPatient) {
 		this.currentPatient = currentPatient;
+		this.query = "";
 	}
 
 	public Prescription getCurrentPrescription() {
@@ -56,5 +72,37 @@ public class DoctorBean {
 	public void setCurrentPrescription(Prescription currentPrescription) {
 		this.currentPrescription = currentPrescription;
 	}
+
+	public List<Patient> getPatients() {
+		return patients;
+	}
+
+	public void setPatients(List<Patient> patients) {
+		this.patients = patients;
+	}
 	
+	public String getQuery() {
+		return query;
+	}
+
+	public void setQuery(String query) {
+		this.query = query.toLowerCase();
+	}
+
+	public int getSearchResultSize() {
+		return patients.size();
+	}
+
+	public void setSearchResultSize(int searchResultSize) {
+		this.searchResultSize = searchResultSize;
+	}
+
+	public int getAllPatientsSize() {
+		return dataStore.getPatients().size();
+	}
+
+	public void setAllPatientsSize(int allPatientsSize) {
+		this.allPatientsSize = allPatientsSize;
+	}
+
 }

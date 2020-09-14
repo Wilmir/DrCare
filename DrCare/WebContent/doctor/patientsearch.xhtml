@@ -12,33 +12,14 @@
 		<h:form rendered="#{sessionScope.role == 'Doctor'}" id="patients">
 			<h3>Patients</h3>
 				<div id = "patientSearch">
-						<div id = "patientSearchField">
-					        <p:autoComplete id="patientSearch" 
-					   					value="#{doctorBean.currentPatient}" 
-					   					size="25"
-					   					placeholder	="search for patient"
-					   					completeMethod="#{doctorController.completeSearch}"
-		                        		var="patient" 
-		                        		itemLabel="#{patient.theName}" 
-		                        		itemValue="#{patient}" 
-		                        		converter="userConverter" 
-		                        		forceSelection="true">
-						        <p:column>
-						        		<h:outputText value="#{patient.theName}" />
-						        </p:column>
-						        <p:column>
-						        		<h:outputText value="#{patient.theAddress}" />
-						        </p:column>
-		        			</p:autoComplete>
-				        </div>
-
-				        <div >
-					        <p:commandButton value="Show"
-					                         update="patientDetails patients prescriptionDetailsSection" />
-				        </div>
+						<div id="patientNameInputField">
+							<p:inputText id="searchInputField" value="#{doctorBean.query}" size="38" placeholder="Find a patient" autocomplete="off">
+								<p:ajax event="keyup" listener="#{doctorController.search}" update="patients" />
+							</p:inputText>
+						</div>
 				</div>
 				<div>
-					<ui:repeat id = "patientsList" value="#{userListBean.patients}" var="patient" varStatus="status">
+					<ui:repeat id = "patientsList" value="#{doctorBean.patients}" var="patient" varStatus="status">
 							<p:commandLink action = "#{doctorBean.setCurrentPatient(patient)}" update="patientDetails patients prescriptionDetailsSection" styleClass="#{doctorBean.currentPatient.theName == patient.theName? 'current' : 'notcurrent'}">
 									<div class = "patientCard">
 												<div class ="patientName">
@@ -50,6 +31,14 @@
 									</div>			
 							</p:commandLink>
 					</ui:repeat> 
+				</div>
+				<div id = "noPatientFoundMessage">
+					<h:outputText value="No patient found in records" rendered = "#{doctorBean.searchResultSize == 0}" />
+				</div>
+				<div id="showAllPatientsButton">
+					<p:commandButton value = "List All Patients" action="#{doctorController.showAllPatients()}" 
+				                 update="patients"
+				                 rendered="#{doctorBean.searchResultSize lt doctorBean.allPatientsSize}"/>
 				</div>
 		</h:form>
 	</ui:composition>
