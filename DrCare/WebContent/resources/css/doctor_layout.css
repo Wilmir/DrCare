@@ -38,14 +38,64 @@ label, select, input[type="text"]{
 
 #dashboard-left{
 	padding: 5px;
-	width:25%;
+	width:35%;
 }
 
 #dashboard-right{
 	border: 1px solid transparent;
 	padding: 5px;
-	width:75%;
+	width:65%;
 }
+
+/*PATIENT SEARCH COLUMN */
+#patientSearch{
+	display:flex;
+	justtify-content:space-between;
+	flex-wrap:wrap;
+}
+
+.autocomplete-panel td{
+	border: 1px solid #ffffff !important;
+}
+
+.ui-state-highlight{
+	background:#f0f3f8 !important;
+	text-shadow:none !important;
+	color: black !important;
+}
+
+.ui-widget-content{
+	border: 1px solid #ffffff !important;
+}
+
+/* BUTTONS */
+#patientSearch .ui-button,
+#patientDetails .ui-button{
+	background: #5dbac4;
+	box-shadow: none;
+	border-radius:6px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:white !important;
+	text-decoration:none;
+	min-width:75px !important;
+	text-shadow:none;
+}
+
+#patientSearch .ui-button:hover,
+#patientDetails .ui-button:hover{
+	background:#0097a7ff;
+}
+
+
+#patientSearchField{
+	margin-right:10px;
+}
+
+
+
+/*PATIENT DETAILS */
 
 #prescriptionDetailsSection .ui-panelgrid-cell{
 	border: 1px solid #ffffff;

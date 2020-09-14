@@ -150,7 +150,7 @@ public class PharmacistBean implements Serializable{
 			
 	}
 	
-	// autocomplete searcg feature
+	// autocomplete search feature
 	public List<Object> completeSearch(String query) {
 	        final String queryLowerCase = query.toLowerCase();
 	        List<Video> allVideos = videoStore.getVideos();

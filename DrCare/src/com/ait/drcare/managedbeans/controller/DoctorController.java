@@ -1,6 +1,9 @@
 package com.ait.drcare.managedbeans.controller;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -41,13 +44,21 @@ public class DoctorController {
 		
 	}
 	
+	// autocomplete search feature
+	public List<Object> completeSearch(String query) {
+	        final String queryLowerCase = query.toLowerCase();
+	        List<Patient> allPatients = dataStore.getPatients();
+	        return allPatients.stream().filter(new Predicate<Patient>() {
+				@Override
+				public boolean test(Patient t) {
+					return t.getTheName().toLowerCase().startsWith(queryLowerCase);
+				}
+			}).collect(Collectors.toList());
+	}
+	
+
 	// show the Patient upon search
-	public void show(Patient patient) {
-		this.currentPatient = patient;
-		this.allergies = patient.getAllergies();
-		this.prescriptions = dataStore.getPrescriptions(patient);
-		currentPatientPrescriptions = dataStore.getPrescriptions(currentPatient);
-		System.out.println("call");
+	public void showPatient() {
 		this.currentPrescription = null;
 	}
 

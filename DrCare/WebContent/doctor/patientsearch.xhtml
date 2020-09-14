@@ -9,32 +9,35 @@
 	
 	<!-- This template is for the list of patients for a GP -->
 	<ui:composition>
-		<h:form rendered="#{sessionScope.role == 'Doctor'}">
-			<h3>Patient</h3>
-			<h:panelGroup>
-				<!-- Need a backing doctorBean that holds a Doctor object -->		
-				
-				<!--  Need a backing bean that holds the current Patient object -->
-				<!--  I need a converter that converts the user ID into a user object -->
-			    <!--<p:selectOneMenu value="#{doctorBean.currentPatient}"  -->
-			    	<p:selectOneMenu value="#{doctorBean.currentPatient}"
-			    	             converter="userConverter"
-			    	             panelStyle="width: 180px"
-			                     effect="fade" 
-			                     style="width:180px"
-			                     filter="true" 
-			                     filterMatchMode="startsWith" 
-			                     label = "Search for Patient">
-			            <f:selectItems value="#{userListBean.patients}"
-									   var="patient"
-                                       itemLabel="#{patient.theName}"
-                                       itemValue="#{patient}" />
+		<h:form rendered="#{sessionScope.role == 'Doctor'}" id="patientsList">
+			<h3>Patients</h3>
+				<div id = "patientSearch">
+						<div id = "patientSearchField">
+					        <p:autoComplete id="patientSearch" 
+					   					value="#{doctorBean.currentPatient}" 
+					   					size="20"
+					   					placeholder	="search for patient"
+					   					completeMethod="#{doctorController.completeSearch}"
+		                        		var="patient" 
+		                        		itemLabel="#{patient.theName}" 
+		                        		itemValue="#{patient}" 
+		                        		converter="userConverter" 
+		                        		forceSelection="true">
+						        <p:column>
+						        		<h:outputText value="#{patient.theName}" />
+						        </p:column>
+						        <p:column>
+						        		<h:outputText value="#{patient.theAddress}" />
+						        </p:column>
+		        			</p:autoComplete>
+				        </div>
 
-			        </p:selectOneMenu>
-			        <p:commandButton value="Show"
-			                         action="#{doctorController.show(doctorBean.currentPatient)}"
-			                         update="patientDetails prescriptionDetailsSection" />
-			</h:panelGroup>
+				        <div >
+					        <p:commandButton value="Show"
+					                         action="#{doctorController.showPatient()}"
+					                         update="patientDetails prescriptionDetailsSection" />
+				        </div>
+				</div>
 		</h:form>
 	</ui:composition>
 </html>

@@ -66,14 +66,6 @@
 							</p:dataTable>
 				    	</p:column>
 					</p:row>
-					
-					<!-- Need a Controller to handle this action, to be integrated with the CreatePrescription form -->
-					<p:row>
-						<p:column colspan = "12">
-							<p:commandButton rendered="#{sessionScope.role == 'Doctor' || sessionScope.role == 'Pharmacist' || sessionScope.role == 'Patient'}" 
-										value = "Update"/>
-						</p:column>
-					</p:row>
 			</p:panelGrid>
 		</h:form>
 	</ui:composition>

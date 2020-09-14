@@ -13,22 +13,22 @@
 	        <p:tab title="Bio">
 	            <p:panelGrid>
 	            		<h:outputText id="name" value="Name: " style="font-weight:bold"/>
-					   	<h:outputText value="#{doctorController.currentPatient.theName}"/>
+					   	<h:outputText value="#{doctorBean.currentPatient.theName}"/>
 					   	<br></br>
 					   	<h:outputText id="email" value="Email: " style="font-weight:bold"/>
-					   	<h:outputText value="#{doctorController.currentPatient.theEmail}"/>
+					   	<h:outputText value="#{doctorBean.currentPatient.theEmail}"/>
 					   	<br></br>
 					   	<h:outputText id="pid" value="ID: " style="font-weight:bold"/>
-                       	<h:outputText value="#{doctorController.currentPatient.theID}"/>
+                       	<h:outputText value="#{doctorBean.currentPatient.theID}"/>
                        	<br></br>
                        	<h:outputText id="address" value="Address: " style="font-weight:bold"/>
-					   	<h:outputText value="#{doctorController.currentPatient.theAddress}"/>
+					   	<h:outputText value="#{doctorBean.currentPatient.theAddress}"/>
 	            </p:panelGrid>
 	        </p:tab>
 	        
 	        <p:tab title="Allergies">
 	            <p:panelGrid>
-	            	<h:dataTable value="#{doctorController.allergies}" var="allergy">
+	            	<h:dataTable value="#{doctorBean.currentPatient.allergies}" var="allergy">
 				    	<h:column>
 					        <h:outputText value="#{allergy}"/>
 				    	</h:column>
