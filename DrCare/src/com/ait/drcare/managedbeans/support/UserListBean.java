@@ -2,6 +2,8 @@ package com.ait.drcare.managedbeans.support;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
@@ -205,6 +207,16 @@ public class UserListBean {
 	}
 	
 	public ArrayList<Patient> getPatients() {
+		// sort the patients alphabetically by name before returning
+		Collections.sort(patients, new Comparator<Patient>() {
+
+			@Override
+			public int compare(Patient p1, Patient p2) {
+				return (p1.getTheName()).compareTo(p2.getTheName());
+			}
+
+		});
+	
 		return patients;
 	}
 
@@ -214,6 +226,16 @@ public class UserListBean {
 
 
 	public ArrayList<Pharmacist> getPharmacists(){
+		// sort the patients alphabetically by name before returning
+		Collections.sort(pharmacists, new Comparator<Pharmacist>() {
+
+			@Override
+			public int compare(Pharmacist p1, Pharmacist p2) {
+				return (p1.getTheName()).compareTo(p2.getTheName());
+			}
+
+		});
+		
 		return pharmacists;
 	}
 	
