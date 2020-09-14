@@ -14,6 +14,7 @@
 	    <h:outputStylesheet  name = "css/header.css"/>
 	    <h:outputStylesheet  name = "css/footer.css"/>
 	    <h:outputStylesheet  name = "css/greetings.css"/>
+	    <h:outputStylesheet  name = "css/patient_layout.css"/>
 		<ui:insert name="css"/>
 	</h:head>
 	
@@ -30,7 +31,16 @@
 					<ui:include src = "/common/greetings.xhtml"/>
 				</div>
 				<div id = "dashboard">
-					<ui:include src = "/patient/patient.xhtml"/>
+					<div id = "dashboard-left">
+						<ui:insert name="prescriptionqueue">
+							<ui:include src = "/patient/prescriptionlist.xhtml" />
+						</ui:insert>
+					</div>
+					<div id = "dashboard-right">
+						<ui:insert name="prescriptiondetails">
+							<ui:include src = "/patient/prescriptiondetails.xhtml" />
+						</ui:insert>
+					</div>
 				</div>
 			</div>
 		

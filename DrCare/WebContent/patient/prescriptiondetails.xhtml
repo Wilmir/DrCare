@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition>
+		<h:panelGroup rendered="#{sessionScope.role == 'Patient'}">
+	        <h:form id="prescriptionDetails" rendered="#{sessionScope.role == 'Patient'}">
+	        <p:panelGrid id="prescriptionDetailsContent" rendered = "#{patientBean.currentPrescription != null}">
+					<br/>
+					<div class="prescriptionDetailHeading">
+						<div class = "prescriptionDetailHeadingLeft">
+							<div class = "prescriptionLogo">
+								<img src="#{resource['images/rx.png']}" alt="pharmacist"
+									style="width: 100%"></img>
+							</div>
+						</div>
+						<div class = "prescriptionDetailHeadingRight">
+							<h2 id="prescriptionCompany">DrCare</h2>
+							<div id = "prescriptionDoctor">Dr #{patientBean.currentPrescription.theDoctor.theName}</div>
+							<div id = "prescriptionLicenseNumber">License# #{patientBean.currentPrescription.theDoctor.theID}</div>
+							<div id = "prescriptionDoctorAddress">#{patientBean.currentPrescription.theDoctor.theAddress}</div>
+						</div>
+					</div>				    
+				    
+				    <p:row>
+				    	<!-- The Prescription ID-->
+				    	<p:column colspan="2"><p:outputLabel for="prescriptionID" value="Prescription ID" /></p:column>
+				    	<p:column colspan="4">
+							<h:outputText id="prescriptionID" value = "#{patientBean.currentPrescription.theName}" />
+						</p:column>
+						<!-- The Prescription Date-->
+						<p:column colspan="2"><p:outputLabel for="date" value="Date" /></p:column>
+						<p:column colspan="4">
+							<h:outputText id="date" value = "#{patientBean.currentPrescription.theDatePrescribed}">
+								<f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+							</h:outputText>
+						</p:column>	
+				    </p:row>  
+				    <!-- The Patient -->
+				    <p:row>
+				    		<p:column colspan="2"><p:outputLabel for="pharmacist" value="Pharmacist" /></p:column>
+							<p:column colspan="4">
+								<h:outputText id="pharmacist" value = "#{patientBean.currentPrescription.thePharmacist.theName}" />
+							</p:column>
+							<p:column colspan="2"><p:outputLabel for="pharmacistLicense" value="License" /></p:column>
+							<p:column colspan="4">
+								<h:outputText id="pharmacistLicense" value = "#{patientBean.currentPrescription.thePharmacist.theID}" />
+							</p:column>
+				    </p:row>
+				    				
+					<!-- PrescriptionItems Datatable -->
+					<p:row>
+				    	<p:column colspan="12">
+				    		<p:dataTable id = "items" var="item" value="#{patientBean.currentPrescription.theItems}" styleClass="prescriptionItemsTable">
+				    			<p:column headerText="Medicine">
+							        <h:outputText value="#{item.medicine.theName}" />
+							    </p:column>
+							 
+							    <p:column headerText="Dose per day">
+							        <h:outputText value="#{item.dosagePerDay}" />
+							    </p:column>
+							 
+							    <p:column headerText="Duration">
+							        <h:outputText value="#{item.duration}" />
+							    </p:column>
+							    
+							    <p:column headerText="Quantity">
+							        <h:outputText value="#{item.quantity}" />
+							    </p:column>
+							    
+							    <p:column headerText="Unit Price">
+							        <h:outputText value="#{item.medicine.theUnitPrice}" />
+							    </p:column>
+							    
+							    <p:column headerText="Subtotal">
+							        <h:outputText value="#{item.subtotal}" />
+							    </p:column>				    
+							</p:dataTable>
+				    	</p:column>
+					</p:row>
+			</p:panelGrid>
+			<p:panelGrid id="prescriptionmisc" rendered = "#{patientBean.currentPrescription != null}">
+				<div class="totalvalue">
+						<h:outputText style="display: block" value="Total" rendered="#{patientBean.currentPrescription.total != 0}" />
+						<h:outputText value="#{patientBean.currentPrescription.total}" rendered="#{patientBean.currentPrescription.total != 0}"/>
+				</div>	
+				<div class="instructionalVideos">
+					<h:outputText value="Instructional Videos" rendered="#{patientBean.currentPrescription != null}"/>
+				</div>	
+					<!-- The list of videos -->		
+				<div class="prescriptionVideos">
+					<p:growl id="growl" showDetail="true"/>  
+					<ui:repeat id = "videosList" 
+							   value="#{patientBean.currentPrescription.videos}" 
+							   var="video" 
+							   varStatus="status">
+							  	<div class = "videoContainer">
+									<a href ="https://www.youtube.com/watch?v=#{video.id}" target="_blank">
+										<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg" style="width:148px;" alt="#{video.title}"/>								
+									</a>
+								</div>
+					</ui:repeat> 
+				</div>
+				<div class="pharmaButtons">
+					<p:commandButton id="previewButton" value="pay"
+									 actionListener="#{authorisePayment.pay(patientBean.currentPrescription)}"
+									 rendered="#{patientBean.currentPrescription.theStatus == 'Waiting for payment'}"/>
+				</div>
+			</p:panelGrid>
+			</h:form>
+	</h:panelGroup>         
+	</ui:composition>
+</html>
