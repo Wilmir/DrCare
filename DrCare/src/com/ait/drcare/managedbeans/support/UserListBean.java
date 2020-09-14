@@ -2,6 +2,7 @@ package com.ait.drcare.managedbeans.support;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -184,6 +185,12 @@ public class UserListBean {
 			qualifiedPharmacistsLicenses.add(i);
 		}
 		
+		//randomly update the prescriptionDates
+		for(Prescription prescription:prescriptions) {
+			prescription.setTheDatePrescribed(getRandomDay());
+		}
+		
+		
 	}
 
 	public ArrayList<User> getUsers() {
@@ -283,6 +290,24 @@ public class UserListBean {
 		
 		
 	}
+	
+	private Date getRandomDay() {
+		Calendar c = Calendar.getInstance();
+		c.setTime(new Date());
+		
+		
+        int max = 28; 
+        int min = 3; 
+        int range = max - min + 1; 
+        int randNum = (int)(Math.random() * range) + min; 
+
+		c.add(Calendar.DAY_OF_MONTH, -randNum); 
+		
+		Date randomDay = c.getTime();
+		
+		return randomDay;
+	}
+
 	
 
 }
