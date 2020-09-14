@@ -123,7 +123,19 @@ public class User
 				
 			});
 		}
-	
+		
+		// sort from oldest to new if the user is a Pharmacist
+		if(prescriptions != null && (this instanceof Pharmacist)) {
+			Collections.sort(prescriptions, new Comparator<Prescription>(){
+
+				@Override
+				public int compare(Prescription p1, Prescription p2) {
+					return (p1.getTheDatePrescribed()).compareTo(p2.getTheDatePrescribed());
+				}
+				
+			});
+		}
+		
 		return prescriptions;
 	}
 
