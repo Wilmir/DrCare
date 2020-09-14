@@ -9,7 +9,7 @@
 	
 	<!-- This template is for the list of patients for a GP -->
 	<ui:composition>
-		<h:form rendered="#{sessionScope.role == 'Doctor'}" id="patientsList">
+		<h:form rendered="#{sessionScope.role == 'Doctor'}" id="patients">
 			<h3>Patients</h3>
 				<div id = "patientSearch">
 						<div id = "patientSearchField">
@@ -34,8 +34,22 @@
 
 				        <div >
 					        <p:commandButton value="Show"
-					                         update="patientDetails prescriptionDetailsSection" />
+					                         update="patientDetails patients prescriptionDetailsSection" />
 				        </div>
+				</div>
+				<div>
+					<ui:repeat id = "patientsList" value="#{userListBean.patients}" var="patient" varStatus="status">
+							<p:commandLink action = "#{doctorBean.setCurrentPatient(patient)}" update="patientDetails patients prescriptionDetailsSection" styleClass="#{doctorBean.currentPatient.theName == patient.theName? 'current' : 'notcurrent'}">
+									<div class = "patientCard">
+												<div class ="patientName">
+													#{patient.theName} (#{patient.theMedicalCardNumber})
+												</div>
+												<div class ="patientAddress">
+													#{patient.theAddress}
+												</div>
+									</div>			
+							</p:commandLink>
+					</ui:repeat> 
 				</div>
 		</h:form>
 	</ui:composition>
