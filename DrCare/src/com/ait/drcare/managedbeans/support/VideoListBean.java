@@ -26,7 +26,9 @@ public class VideoListBean {
 		videos.add(new Video("eOsY84oYqKg","How to Test Blood Sugar"));
 		videos.add(new Video("meft0OwowLE","How to Use Eye Drops"));
 		videos.add(new Video("iO8HpORGHOA","How to Use an Inhaler"));
+		videos.add(new Video("mYQhIaoIKj0","How to Use Nasal Spray"));
 
+		
 	}
 
 	public ArrayList<Video> getVideos() {

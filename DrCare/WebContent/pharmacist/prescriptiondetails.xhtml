@@ -117,7 +117,7 @@
 			<!-- placeholder for instructional videos -->
 			<div class="instructionalVideos">
 				<!-- The add video form -->
-				<div class="instructionalVideosHeading">
+				<div class="instructionalVideosHeading" id="searchVideo">
 				   	<p:autoComplete id="videoSearch" 
 				   					value="#{pharmacistBean.video}" 
 				   					size="30"
@@ -128,7 +128,7 @@
 	                        		itemValue="#{video}" 
 	                        		converter="videoConverter" 
 	                        		forceSelection="true"
-	                        		rendered = "#{pharmacistBean.queueSize > 0 and not pharmacistBean.preview}">			 
+	                        		rendered = "#{pharmacistBean.queueSize > 0 and not pharmacistBean.preview}">
 					        <p:column>
 					        	<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg"  style="width:50px;" alt="#{video.title}"/>
 					        </p:column>
@@ -136,7 +136,7 @@
 					             <h:outputText value="#{video.title}" />
 					        </p:column>
 	        		</p:autoComplete>
-	        		<p:commandButton value="Add" 
+	        		<p:commandButton id = "addVideoButton" value="Add" 
 	        						 action="#{pharmacistBean.addVideo}" 
 	        						 update="prescriptionDetails" 
 	        						 rendered = "#{pharmacistBean.queueSize > 0 and not pharmacistBean.preview}"/>

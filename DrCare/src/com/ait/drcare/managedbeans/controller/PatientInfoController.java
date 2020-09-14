@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import com.ait.drcare.helpers.Helper;
@@ -13,7 +14,7 @@ import com.ait.drcare.managedbeans.support.UserListBean;
 import com.ait.drcare.model.*;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class PatientInfoController {
 	private String userEmail;
 	private Patient currentUser;
