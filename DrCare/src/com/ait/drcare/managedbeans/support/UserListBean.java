@@ -48,7 +48,7 @@ public class UserListBean {
 		
 		// Doctors
 		Doctor d1 = new Doctor("Alan Care", 65467890, "passw0rd", "alan@drcare.ie", "08913486", "Athlone, Co. Westmeath");
-		Doctor d2 = new Doctor("Luke Meyer",64448901,"Doc","Doc","087696969","Athlone, Co. Westmeath");
+		Doctor d2 = new Doctor("Luke Meyer",64448901,"Doc","doc@drcare.ie","087696969","Athlone, Co. Westmeath");
 		users.add(d1);
 		users.add(d2);
 		
@@ -57,18 +57,18 @@ public class UserListBean {
 		allergies.add("Penicillin");
 		allergies.add("Aspirin");
 
-		// Patients
-		Patient p1 = new Patient("John Doe", 3456, "password234", "johndoe@gmail.com", allergies, "18734F", "Grand Canal Dock, Co. Dublin");
-		Patient p2 = new Patient("Daniel Nelms", 3535, "A", "A",allergies,"A","Hanover Quay,  Dublin");
-		Patient p3 = new Patient("Lingfei Fan", 3536, "A", "pB",allergies,"343","The Point, Dublin 1, Co. Dublin");
-		Patient p4 = new Patient("Keith Linehan", 3537, "A", "pC",allergies,"A3413", "Goatstown, Dublin");
-		Patient p5 = new Patient("Paloma Pastor", 3538, "A", "pD",allergies,"A999","Bellanode, Sligo");
-		Patient p6 = new Patient("Guy Abimbola", 3539, "A", "pE",allergies,"Aw42","Droghea, Co. Louth");
-		Patient p7 = new Patient("Sugar Khouiami", 3352, "A", "pF",allergies,"Beans","Malahide, Dublin");
-		Patient p8 = new Patient("Francis Lucena", 3535, "A", "pG",allergies,"BEANSBEANS","Bray, Wicklow");
-		Patient p9 = new Patient("James Lanagan", 3535, "A", "pG",allergies,"BEANSBEANS","The Foundry, Dublin");
-		Patient p10 = new Patient("Ciaran White", 3535, "A", "pG",allergies,"BEANSBEANS","Maynooth, Co.Kildare");
-		Patient p11 = new Patient("Andreas Romer", 3535, "A", "pG",allergies,"BEANSBEANS","Bray, Wicklow");
+		// Patient(String name,int ID,String Password,String Email, ArrayList<String> Allergies,String medicalCard,String address)
+		Patient p1 = new Patient("John Doe", 3456, "password234", "johndoe@gmail.com", allergies, "A18734", "Grand Canal Dock, Co. Dublin");
+		Patient p2 = new Patient("Daniel Nelms", 3535, "A", "test@gmail.com",allergies,"A78645","Hanover Quay,  Dublin");
+		Patient p3 = new Patient("Lingfei Fan", 3536, "A", "lingfei@gmail.com",allergies,"A3435","The Point, Dublin 1, Co. Dublin");
+		Patient p4 = new Patient("Keith Linehan", 3537, "A", "klinehan@gmail.com",allergies,"A3413", "Goatstown, Dublin");
+		Patient p5 = new Patient("Paloma Pastor", 3538, "A", "ppastor@hotmail.com",allergies,"A999","Bellanode, Sligo");
+		Patient p6 = new Patient("Guy Abimbola", 3539, "A", "guya@gmail.com",allergies,"A4219","Droghea, Co. Louth");
+		Patient p7 = new Patient("Sugar Khouiami", 3352, "A", "sugar@hotmail.com",allergies,"A78645","Malahide, Dublin");
+		Patient p8 = new Patient("Francis Lucena", 3535, "A", "flucena@gmail.com",allergies,"A45675","Bray, Wicklow");
+		Patient p9 = new Patient("James Lanagan", 3535, "A", "jlanagan@gmail.com",allergies,"A83421","The Foundry, Dublin");
+		Patient p10 = new Patient("Ciaran White", 3535, "A", "ciaran@gmail.com",allergies,"A67543","Maynooth, Co.Kildare");
+		Patient p11 = new Patient("Andreas Romer", 3535, "A", "andreas@gmail.com",allergies,"A32415","Bray, Wicklow");
 			users.add(p1);
 			users.add(p2);	
 			users.add(p3);

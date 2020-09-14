@@ -9,7 +9,7 @@
 
 	<ui:composition>
 		<h3>Patient Details</h3>		
-	    <p:accordionPanel multiple="true" activeIndex = "0,1,2" rendered="#{sessionScope.role == 'Doctor'}" >
+	    <p:accordionPanel id="patientDetails" multiple="true" activeIndex = "0,1,2" rendered="#{sessionScope.role == 'Doctor'}" >
 	        <p:tab title="Bio">
 	            <p:panelGrid>
 	            		<h:outputText id="name" value="Name: " style="font-weight:bold"/>
