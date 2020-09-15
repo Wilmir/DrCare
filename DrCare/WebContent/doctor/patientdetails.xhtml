@@ -40,6 +40,7 @@
 		        	</div>
 		        </p:tab>
 		        <p:tab title="Prescriptions">
+		        	<p:growl id="growl" showDetail="true"/>  
 		        	<div id="prescriptionCards">
 		        			<p:commandLink action = "#{prescriptionController.createPrescription}" 
 										   update="prescriptionDetails">
@@ -49,6 +50,8 @@
 										New Prescription
 									</div>
 								</div>
+								<p:ajax event="dialogReturn" listener="#{doctorController.dialogReturnListener}" update="patientDetails" />
+								<p:ajax event = "dialogReturn" update="growl" />
 							</p:commandLink>
 							<ui:repeat value="#{doctorBean.currentPatient.prescriptions}" var="prescription" varStatus="status">
 								<p:commandLink action = "#{doctorBean.setCurrentPrescription(prescription)}" 

@@ -84,6 +84,8 @@ public class PrescriptionController {
 		//Clear items for next prescription
 		prescriptionItems.clear();
 		
+		//Close the dialog upon save
+		PrimeFaces.current().dialog().closeDynamic(prescription);
 	}
 	
 	

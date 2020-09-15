@@ -1,0 +1,89 @@
+*{  
+  box-sizing: border-box;
+  font-family: 'Google Sans', sans-serif;
+  margin:0;
+  padding:0;
+}
+
+label, select, input[type="text"]{
+  font-family: 'Google Sans', sans-serif !important;
+}
+
+select{
+	padding:5px;
+}
+
+select:focus{
+	border: 1px solid #0097a7ff;
+}
+
+			
+.ui-widget-content.ui-datalist-content{
+	border: 1px solid #ffffff;
+	padding: 5px;
+}
+			
+.ui-datalist-data{
+	margin-block-start: 0;
+   	margin-block-end: 0;
+   	width:100%;
+}		
+			
+			
+#prescriptionForm{
+	padding:15px;
+	text-shadow :none !important;
+}
+			
+#prescriptionForm .ui-button{
+	background: #5dbac4;
+	box-shadow: none;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	text-decoration:none;
+	text-shadow:none;
+}
+
+#prescriptionForm .ui-button:hover{
+	background:#0097a7ff;
+}
+
+#prescriptionForm .ui-button:active{
+	background:black;
+	border:1px solid #ffffff;
+}
+
+#prescriptionForm{
+	text-shadow:none;
+	color:white;
+	padding: 6px !important;
+	font-weight: normal;
+	font-size:18px;
+}
+
+
+
+#prescriptionForm .ui-widget-header,
+#prescriptionForm th
+,
+tr[id*='medicineRow']{
+	background: #f0f3f8;
+	border: 1px solid #f0f3f8;
+	box-shadow:none;
+	text-shadow:none;
+}
+
+#prescriptionForm td{
+	border: 1px solid #ffffff;
+}
+
+tr[id*='medicineHeading'],
+tr[id*='itemsHeading']{
+	background-image: linear-gradient(#70c7d0, #70c7d0); /* blue green*/
+	color:white;
+	text-align:center;
+}
+
+

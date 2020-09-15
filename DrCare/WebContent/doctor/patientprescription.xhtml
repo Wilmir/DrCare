@@ -86,8 +86,13 @@
 										    </p:tooltip>
 								    </p:column>
 								    
-								    <p:column headerText="Qty">
-								        <h:outputText value="#{item.quantity}" />
+								    
+									<p:column headerText="Dosage">
+								        <h:outputText value="#{item.dosagePerDay}" />
+								    </p:column>
+								 
+								    <p:column headerText="Duration">
+								        <h:outputText value="#{item.duration}" />
 								    </p:column>
 								    
 								    <p:column headerText="Note" rendered = "#{doctorBean.currentPrescription.theStatus == 'Ready for pickup'}">
@@ -118,7 +123,7 @@
 										</div>
 							</ui:repeat> 
 							<div id="prescriptionFooter">
-								<h:outputText value="To be facilitated by" rendered = "#{doctorBean.currentPrescription.theStatus == 'Ready for pickup'}"/>
+								<h:outputText value="To be facilitated by" rendered = "#{doctorBean.currentPrescription.theStatus == 'Ready for pickup' or doctorBean.currentPrescription.theStatus == 'Waiting for payment'}"/>
 								<h:outputText value="Dispensed by" rendered = "#{doctorBean.currentPrescription.theStatus == 'Order Dispensed'}"/>
 								<h:outputText value=" #{doctorBean.currentPrescription.thePharmacist.theName} License# #{doctorBean.currentPrescription.thePharmacist.theID}" />
 							</div>

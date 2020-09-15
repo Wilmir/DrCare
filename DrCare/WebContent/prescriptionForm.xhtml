@@ -10,44 +10,14 @@
 	<h:head>
 		<title>Prescription Form</title>
 		<link href="https://fonts.googleapis.com/css2?family=Google+Sans" rel="stylesheet" />
-		<style>
-			*{  
-			  box-sizing: border-box;
-			  font-family: 'Google Sans', sans-serif;
-			  margin:0;
-			  padding:0;
-			}
-		
-			label{
-	  			font-family: 'Google Sans', sans-serif !important;
-			}
-			
-			.ui-widget-content.ui-datalist-content{
-				border: 1px solid #ffffff;
-				padding: 5px;
-			}
-			
-			.ui-datalist-data{
-				margin-block-start: 0;
-   				margin-block-end: 0;
-
-   				width:100%;
-			}		
-			
-		</style>
+		<h:outputStylesheet  name = "css/prescForm.css"/>
 	</h:head>
 
 
 	<!-- NOTE: The values in all fields are mainly placeholders. Update each of them as the backend is developed -->
 	<h:body>
 		<h:form id = "prescriptionForm">
-			<p:panelGrid>
-				    <f:facet name="header">
-				    	<p:row>
-    						<p:column colspan="12"><h:outputText value="Prescription" /></p:column>
-    					</p:row>
-				    </f:facet>
-				    
+			<p:panelGrid>				    
 				    <!-- The Patient Dropdown -->
 				    <p:row>
 				    		<p:column colspan="2"><p:outputLabel for="patient" value="Patient" /></p:column>
@@ -66,41 +36,38 @@
 				    
 				    <!-- The Pharmacist Dropdown -->
 				    <p:row>
-				    		<p:column colspan="2"><p:outputLabel for="pharmacist" value="Pharmacist  "/></p:column>
+				    		<p:column colspan="2"><h:outputLabel for="pharmacist" value="Pharmacist  "/></p:column>
 							<p:column colspan="10">
 								<!-- Lamiaa to create the userConverter class used here -->
-								<p:selectOneMenu value="#{prescriptionBean.pharmacist}"
+								<h:selectOneMenu value="#{prescriptionBean.pharmacist}"
 												 autoWidth = "false"
 												 converter = "userConverter"
-										 		 id = "pharmacist" 
 										 		 rendered="#{sessionScope.role == 'Doctor'}">
 					            		<f:selectItems value="#{userListBean.pharmacists}" 
-					                           var="pharmacist" 
-					                           
+					                           var="pharmacist"         
 					                           itemLabel="#{pharmacist.theName}" 
 					                           itemValue="#{pharmacist}" />				    	
-								</p:selectOneMenu>
+								</h:selectOneMenu>
 							</p:column>
 				    </p:row>
 				    
 				    
 				    <!-- Add Medicine Section -->
-				    <p:row>
+				    <p:row id="medicineHeading">
 				    	<p:column colspan="12">Medicine</p:column>
 				    </p:row>
-				    <p:row>
+				    <p:row  id="medicineRow">
 				    	<p:column colspan="3">Name</p:column>
 				    	<p:column colspan="3">Dosage</p:column>
 				    	<p:column colspan="3">Duration</p:column>	
 				    	<p:column colspan="3">Action</p:column>	
 				    </p:row>
 				    
-				    
 				    <p:row>
 				    	<!-- The Medicine Dropdown -->
 						<p:column colspan="3">
 							<!-- See com.ait.drcare.converters MedicineConverter Class for the implem if the converter used here -->
-							<p:selectOneMenu value="#{prescriptionBean.medicine}"
+							<h:selectOneMenu value="#{prescriptionBean.medicine}"
 										 converter = "medicineConverter"
 										 id = "medicine" 
 										 rendered="#{sessionScope.role == 'Doctor'}">
@@ -109,7 +76,7 @@
 					                           var="medicine" 
 					                           itemLabel="#{medicine.theName}" 
 					                           itemValue="#{medicine}" />
-							</p:selectOneMenu>
+							</h:selectOneMenu>
 						 </p:column>
 						 
 						 <!-- The Dosage Spinner -->
@@ -120,8 +87,8 @@
 							<p:column colspan="3"><p:spinner id="duration" value="#{prescriptionBean.duration}" min = "1" rendered="#{sessionScope.role == 'Doctor'}" size = "5"/></p:column>
 						
 						<!-- The Button for Adding The Prescription Item -->
-							<p:column colspan="3">
-								<p:commandButton value = "Add" update = "items" action="#{prescriptionController.addItem(prescriptionBean)}"/>
+							<p:column colspan="3" >
+								<p:commandButton id="addItemButton" value = "Add" update = "items" action="#{prescriptionController.addItem(prescriptionBean)}"/>
 							</p:column>
 					</p:row>
 					
@@ -159,7 +126,7 @@
 					</p:row>
 					
 					<!-- Items Display -->
-					<p:row>
+					<p:row id="itemsHeading">
 				    	<p:column colspan="12">Items</p:column>
 					</p:row>
 					
