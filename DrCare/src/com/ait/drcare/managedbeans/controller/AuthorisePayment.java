@@ -15,6 +15,14 @@ import com.paypal.base.rest.PayPalRESTException;
 public class AuthorisePayment {
 	private Prescription presc;
 
+	public Prescription getPresc() {
+		return presc;
+	}
+
+	public void setPresc(Prescription presc) {
+		this.presc = presc;
+	}
+
 	public String pay(Prescription prescription) throws IOException {
 		presc = prescription;
 		try {
