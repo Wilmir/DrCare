@@ -63,6 +63,7 @@ public class DoctorBean {
 	public void setCurrentPatient(Patient currentPatient) {
 		this.currentPatient = currentPatient;
 		this.query = "";
+		this.currentPrescription = null;
 	}
 
 	public Prescription getCurrentPrescription() {

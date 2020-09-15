@@ -314,8 +314,6 @@ a:link {
 	opacity:1;
 }
 
-
-
 .prescriptionMiniCardLabel{
 	position:absolute;
 	bottom:0;
@@ -423,16 +421,227 @@ a:link {
 }
 
 
-#prescriptionDetailsSection .ui-panelgrid-cell{
+/*PRESCRIPTION DETAILS*/
+#prescriptionDetails{
+	position:relative;
+	padding:10px;
+	margin:10px;
 	border: 1px solid #ffffff;
-	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+	border-radius:5px;
+	background: #ffffff;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);	
 }
 
-#prescriptionDetailsSection{
-	border: 1px solid gray;
-	margin:20px;
-	padding:20px;
+.prescriptionDetailHeading{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #d3d3d3;
 }
+
+.prescriptionDetailHeadingLeft{
+	width:13%;
+	padding:10px;
+}
+
+.prescriptionDetailHeadingRight{
+	display: flex;
+	flex-direction: column;
+	justify-content:flex-start;
+	align-items: flex-end;
+	padding:10px;
+	font-size:18px;
+	color: #4f4f4f;
+}
+
+
+#prescriptionDetails{
+	padding: 10px 30px;
+}
+
+#prescriptionCompany{
+	color:#d0d0d0;
+}
+
+
+.readyForPickUp{
+	color:orange;
+}
+
+.dispensed{
+	color:#0097a7ff;
+}
+
+.prescriptionItemsTable{
+	margin-top:20px;
+}
+
+.prescriptionItemsTable th{
+	background: #f0f3f8 !important;
+	color: black !important;
+	text-shadow: none !important;
+	box-shadow:none;
+	border:1px solid #f0f0f0 !important;
+	font-weight: 400 !important;
+	height:45px;
+}
+
+.prescriptionItemsTable th:nth-child(2){
+	    width: 60px;	
+}
+
+.prescriptionItemsTable .ui-datatable-even{
+	background: white !important;
+}
+
+.prescriptionItemsTable .ui-datatable-odd{
+	background: white !important;
+}
+
+
+#prescriptionDetails tr{
+	border: 1px solid gray !important;
+	height:45px;
+}
+
+#prescriptionDetails td{
+	border: 1px solid #ffffff !important;
+	height:45px;
+}
+
+.prescriptionItemsTable td:nth-child(2){
+	    width: 60px;	
+}
+
+#prescriptionDetails .ui-inputfield	{
+	border: 1px solid gray;
+	box-shadow:none;
+	height:30px;
+}
+
+#prescriptionDetails .ui-inputfield:focus	{
+	border: 1px solid #0d98ba;
+}
+
+
+#prescriptionDetails .ui-button	{
+	background: #5dbac4;
+	box-shadow: none;
+	border-radius:6px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	text-decoration:none;
+	min-width:100px !important;
+}
+
+#prescriptionDetails .ui-button:hover{
+	background:#0097a7ff;
+}
+
+#prescriptionDetails .ui-button:active{
+	background:black;
+	border:1px solid #ffffff;
+}
+
+#prescriptionDetails .ui-button-text{
+	text-shadow:none;
+	color:white;
+	padding: 6px !important;
+	font-weight: normal;
+	font-size:18px;
+}
+
+
+
+
+/* INSTRUCTIONAL VIDEOS*/
+.instructionalVideos{
+	margin-top:10px;
+}
+
+.instructionalVideosHeading{
+	background:#f0f3f8;
+	text-align:center;
+	margin: auto 10px;
+	font-size:18px;
+	color: black;
+	height:45px;
+	line-height:45px;
+}
+
+
+/*AUTOCOMPLETE*/
+
+.ui-widget-content{
+	border: 1px solid #ffffff !important;
+}
+
+
+.prescriptionVideos{
+	margin:10px;
+	display:flex;
+	flex-wrap:wrap;
+}
+
+.videoContainer{
+	position:relative;
+}
+
+.videoContainer img{
+	transition: opacity 0.8s ease;
+}
+
+.videoContainer:hover img{
+	opacity:0.6;
+}
+
+
+
+.prescriptionVideos a{
+	margin: 5px;
+	color:white !important;
+	font-size:25px !important;
+	transition: all 0.7s ease;
+}
+
+.prescriptionVideos a:hover{
+	color:#a30455 !important;
+	text-shadow: 1px white;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-family: 'Google Sans', sans-serif;
+  font-size: 16px;
+  color: gray;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-family: 'Google Sans', sans-serif;
+  font-size: 16px;
+  color: gray;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-family: 'Google Sans', sans-serif;
+  font-size: 16px;
+  color: gray;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-family: 'Google Sans', sans-serif;
+  font-size: 16px;
+  color: gray;
+}
+
+
+#prescriptionFooter{
+	position:absolute;
+	bottom:10px;
+	color:gray;
+	text-align:center;
+	display:block;
+	font-size: 12px;
+}
+
 
 /*Banner text rainbow animation effect*/
 /* Add shining class to the text you need to apply this to. */

@@ -42,7 +42,7 @@
 		        <p:tab title="Prescriptions">
 		        	<div id="prescriptionCards">
 		        			<p:commandLink action = "#{prescriptionController.createPrescription}" 
-										   update="prescriptionDetailsSection">
+										   update="prescriptionDetails">
 								<div class="prescriptionMiniCard" id="createPrescriptionCard">
 									<i class="fa fa-plus shining"></i>
 									<div class="prescriptionMiniCardLabel">
@@ -52,7 +52,7 @@
 							</p:commandLink>
 							<ui:repeat value="#{doctorBean.currentPatient.prescriptions}" var="prescription" varStatus="status">
 								<p:commandLink action = "#{doctorBean.setCurrentPrescription(prescription)}" 
-										   update="prescriptionDetailsSection">
+										   update="prescriptionDetails">
 									<div class="prescriptionMiniCard">
 										<div class = "prescriptionMiniCardLogo">
 											<img src="#{resource['images/rx.png']}" alt="pharmacist"></img>
