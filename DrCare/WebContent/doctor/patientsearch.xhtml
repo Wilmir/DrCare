@@ -20,13 +20,19 @@
 				</div>
 				<div>
 					<ui:repeat id = "patientsList" value="#{doctorBean.patients}" var="patient" varStatus="status">
-							<p:commandLink action = "#{doctorBean.setCurrentPatient(patient)}" update="patientDetails patients prescriptionDetailsSection" styleClass="#{doctorBean.currentPatient.theName == patient.theName? 'current' : 'notcurrent'}">
+							<p:commandLink action = "#{doctorBean.setCurrentPatient(patient)}" update="patientDetails patients prescriptionDetails" styleClass="#{doctorBean.currentPatient.theName == patient.theName? 'current' : 'notcurrent'}">
 									<div class = "patientCard">
-												<div class ="patientName">
-													#{patient.theName} (#{patient.theMedicalCardNumber})
-												</div>
-												<div class ="patientAddress">
-													#{patient.theAddress}
+												<div class="searchpic">
+								  					<p:graphicImage library="images/profilepics" name="#{patient.photo}" rendered = "#{patient.photo != null}"/>
+								  					<p:graphicImage library="images" name="emptyprofilepic.png" rendered = "#{patient.photo == null}"/>
+										  		</div> 
+										  		<div class = "patientCardBlurb">
+													<div class ="patientName">
+														#{patient.theName} (#{patient.theMedicalCardNumber})
+													</div>
+													<div class ="patientAddress">
+														#{patient.theAddress}
+													</div>
 												</div>
 									</div>			
 							</p:commandLink>

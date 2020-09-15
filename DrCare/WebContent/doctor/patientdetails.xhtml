@@ -16,8 +16,9 @@
 		        <p:tab title="Bio">
 		        	<div id="bio">
 		  				<div id="pic">
-		  					<img src="#{resource['images/emptyprofilepic.png']}" alt="patient's photo" style="width: 100px" />
-		  				</div>      	
+		  					<p:graphicImage library="images/profilepics" name="#{doctorBean.currentPatient.photo}" rendered = "#{doctorBean.currentPatient.photo != null}"/>
+		  					<p:graphicImage library="images" name="emptyprofilepic.png" rendered = "#{doctorBean.currentPatient.photo == null}"/>
+				  		</div>      	
 		        		<div class="biolabel">
 		        			<div id="namelabel">Full Name</div>
 		        			<div id="addresslabel">Address</div>
@@ -41,7 +42,7 @@
 		        <p:tab title="Prescriptions">
 		        	<div id="prescriptionCards">
 		        			<p:commandLink action = "#{prescriptionController.createPrescription}" 
-										   update="prescriptionDetailsSection">
+										   update="prescriptionDetails">
 								<div class="prescriptionMiniCard" id="createPrescriptionCard">
 									<i class="fa fa-plus shining"></i>
 									<div class="prescriptionMiniCardLabel">
@@ -51,10 +52,67 @@
 							</p:commandLink>
 							<ui:repeat value="#{doctorBean.currentPatient.prescriptions}" var="prescription" varStatus="status">
 								<p:commandLink action = "#{doctorBean.setCurrentPrescription(prescription)}" 
-										   update="prescriptionDetailsSection">
+										   update="prescriptionDetails">
 									<div class="prescriptionMiniCard">
+										<div class = "prescriptionMiniCardLogo">
+											<img src="#{resource['images/rx.png']}" alt="pharmacist"></img>
+										</div>
+										<div class = "drCareMiniLogo">
+											DrCare
+										</div>
+										<div class = "prescriptionMiniCardDate">
+											<h:outputText value="#{prescription.theDatePrescribed}">
+												<f:convertDateTime pattern="dd-MMM-yyyy" />
+											</h:outputText>
+										</div>
+										<div class = "prescriptionMiniCardStatus">
+											<h:outputText value="#{prescription.theStatus}" />
+										</div>
+										<div class = "prescriptionMiniPatientName">
+											Patient: #{prescription.thePatient.theName}						
+										</div>
+										<div class = "prescriptionMiniPatientAddress">
+											Address: #{prescription.thePatient.theAddress}						
+										</div>
+										<div class = "prescriptionMiniCardDetail">
+												<table>
+													<thead class = "prescriptionMiniCardItems">
+														<tr>
+															<th>Medicine</th>
+															<th>Quantity</th>
+															<th>Subtotal</th>
+														</tr>
+													</thead>
+													<tbody>
+														<ui:repeat class = "prescriptionMinCardItems" value="#{prescription.theItems}" var="item" varStatus="status">
+															<tr>
+																<td><h:outputText class="medicineName" value="#{item.medicine.theName} #{item.medicine.strength}" /></td>
+																<td><h:outputText value="#{item.quantity}" /></td>
+																<td>
+																	<h:outputText value="#{item.subtotal}">
+																		<f:convertNumber type="currency" currencySymbol="€" maxFractionDigits="2"/>
+																	</h:outputText>
+																</td>
+															</tr>
+														</ui:repeat>
+													</tbody>
+												</table>
+												<div class = "prescriptionMiniCardVideos">
+													<div class = "prescriptionMiniCardVideosHeading">Instructional Videos</div>
+													<div class = "miniVideosList">
+													<ui:repeat
+															   value="#{prescription.videos}" 
+															   var="video" 
+															   varStatus="status">
+															  	<div class = "miniVideoContainer">
+																	<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg" style="width:30px;" alt="#{video.title}"/>								
+																</div>
+													</ui:repeat> 
+													</div>
+												</div>
+										</div>
 										<div class="prescriptionMiniCardLabel">
-											#{prescription.theName} #{prescription.theDatePrescribed}
+											<h:outputText value="#{prescription.theName}" />
 										</div>
 									</div>
 								</p:commandLink>

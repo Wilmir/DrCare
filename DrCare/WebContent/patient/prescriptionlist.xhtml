@@ -12,7 +12,7 @@
 			<h:form rendered="#{sessionScope.role == 'Patient'}" id="pharmacistQueueForm">
 			<h3>My Prescriptions</h3>
 				<ui:repeat id = "pharmacistQueue" value="#{patientInfoController.currentUser.prescriptions}" var="prescription" varStatus="status">
-						<p:commandLink action = "#{patientBean.setCurrentPrescription(prescription)}" update="@all" styleClass="#{patientBean.currentPrescription.theName == prescription.theName? 'current' : 'notcurrent'}">
+						<p:commandLink action = "#{patientBean.setCurrentPrescription(prescription)}" update="prescriptionDetails" styleClass="#{patientBean.currentPrescription.theName == prescription.theName? 'current' : 'notcurrent'}">
 								<div class = "pharmacistQueueItem">
 											<div class ="prescriptionID">
 												#{prescription.theName}
