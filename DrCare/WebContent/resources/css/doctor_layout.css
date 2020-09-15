@@ -299,11 +299,22 @@ a:link {
   	transition: 0.3s;
   	background: #ffffff;	
   	transition: border 0.8s ease;
+  	overflow:hidden;
 }
 
 .prescriptionMiniCard:hover{
 	border: 1px solid #0097a7;
 }
+
+.prescriptionMiniCard:hover .prescriptionMiniCardLabel{
+	color:#0097a7;
+}
+
+.prescriptionMiniCard:hover img{
+	opacity:1;
+}
+
+
 
 .prescriptionMiniCardLabel{
 	position:absolute;
@@ -316,6 +327,7 @@ a:link {
 	border-top: 1px solid #dadce0;
 	border-radius: 0 0px 5px 5px;
 	font-weight:bold;
+	z-index:2;
 }
 
 
@@ -323,24 +335,93 @@ a:link {
 	top:12px;
 	left:12px;
 	position:absolute;
-	width:16px;
+	width:18px;
+	opacity:0.9;
+	trancisition: opacity 0.3s ease;
+}
+
+.drCareMiniLogo{
+	position:absolute;
+	top:12px;
+	right:12px;
+	font-size:6px;
+	color:#dadce0;
 }
 
 .prescriptionMiniCardDate{
-	top:12px;
+	top:24px;
 	right:12px;
 	position:absolute;
-	font-size:8px;	
-	color:gray;
+	font-size:6px;	
 }
 
 .prescriptionMiniCardStatus{
 	position:absolute;
-	font-size:8px;	
-	top: 24px;
+	font-size:6px;	
+	top: 36px;
 	right: 12px;
-	color:gray;
 }
+
+.prescriptionMiniPatientName{
+	position:absolute;
+	font-size:6px;	
+	top: 48px;
+	left: 12px;
+}
+
+.prescriptionMiniPatientAddress{
+	position:absolute;
+	font-size:6px;	
+	top: 60px;
+	left: 12px;
+}
+
+
+.prescriptionMiniCardDetail{
+	position:absolute;
+	font-size:6px;	
+	top: 80px;
+	left: 12px;	
+	text-align:left;
+}
+
+.prescriptionMiniCardDetail td,
+.prescriptionMiniCardDetail th{
+	padding:2px;
+}
+
+.prescriptionMiniCardDetail th{
+	background: #f0f3f8;
+	border: 1px solid #f0f3f8;
+}
+
+
+.prescriptionMiniCardVideos{
+	margin:2px;
+	margin-top:6px;
+}
+
+.prescriptionMiniCardVideosHeading{
+	background: #f0f3f8;
+	padding:2px;
+	display:block;
+	width:100%;
+}
+
+.miniVideosList{
+	display:flex;
+	margin-top:2px;
+}
+
+.miniVideoContainer{
+	margin:1px;
+}
+
+.miniVideoContainer img{
+	opacity:0.8;
+	trancisition: opacity 0.3s ease;
+}
+
 
 #prescriptionDetailsSection .ui-panelgrid-cell{
 	border: 1px solid #ffffff;
