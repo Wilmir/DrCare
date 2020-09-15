@@ -55,6 +55,35 @@
 				    		<p:column colspan="2"><p:outputLabel for="patient" value="Patient" /></p:column>
 							<p:column colspan="4">
 								<h:outputText id="patient" value = "#{pharmacistBean.currentPrescription.thePatient.theName}" />
+									<!-- Tooltip for Medicine -->
+							            <p:tooltip id="toolTipPatient" for="patient" position="top">
+								        	<div id="bio">
+								  				<div id="pic">
+								  					<p:graphicImage library="images/profilepics" name="#{pharmacistBean.currentPrescription.thePatient.photo}" rendered = "#{pharmacistBean.currentPrescription.thePatient.photo != null}"/>
+								  					<p:graphicImage library="images" name="emptyprofilepic.png" rendered = "#{pharmacistBean.currentPrescription.thePatient.photo == null}"/>
+										  		</div> 
+										  		<div class="biodetails">     	
+									        		<div class="biolabel">
+									        			<div id="namelabel">Full Name</div>
+									        			<div id="addresslabel">Address</div>
+									        			<div id="emaillabel">Email</div>
+									        			<div id="medicalcardlabel">HealthCard No.</div>
+									        			<div id="allergieslabel">Allergies</div>
+									        		</div>
+									        		<div class="biodata">
+									        			<div id="namedata"><h:outputText value="#{pharmacistBean.currentPrescription.thePatient.theName}"/></div>
+									        			<div id="addressdata"><h:outputText value="#{pharmacistBean.currentPrescription.thePatient.theAddress}"/></div>
+									        			<div id="emaildata"><h:outputText value="#{pharmacistBean.currentPrescription.thePatient.theEmail}"/></div>
+									        			<div id="medicalcarddata"><h:outputText value="#{pharmacistBean.currentPrescription.thePatient.theMedicalCardNumber}"/></div>
+									        			<div id="allergiesdata">
+									        				<ui:repeat value="#{pharmacistBean.currentPrescription.thePatient.allergies}" var="allergy" varStatus="status">
+											    			#{allergy}<h:outputText value=",&nbsp;" rendered="#{not status.last}"/><h:outputText value="." rendered="#{status.last}"/>
+								                       		</ui:repeat>
+									        			</div>
+									        		</div>
+								        		</div>
+								        	</div>
+									    </p:tooltip>
 							</p:column>
 							
 							<!-- The Status -->

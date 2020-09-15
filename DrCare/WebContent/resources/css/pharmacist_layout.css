@@ -49,6 +49,8 @@ h3{
 
 
 .pharmacistQueueItem{
+	position:relative;
+	display:flex;
 	padding:10px;
 	margin:10px;
 	border: 1px solid #ffffff;
@@ -63,9 +65,22 @@ h3{
 	box-shadow: 0 2px 4px 0 rgba(33,182,168,0.5);	
 }
 
-.pharmacistQueueItem:hover {
+.pharmacistQueueItem:hover{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
+
+.pharmacistQueueItem:hover img{
+  opacity: 1;
+}
+
+.pharmacistQueueItemDetail{
+	width:100%;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	margin:auto;
+}
+
 
 .prescriptionPatient{
 	color:#4f4f4f;
@@ -78,7 +93,24 @@ h3{
 	border-bottom:1px solid #d3d3d3;
 }
 
+.pharmacistQueueLogo img{
+	position:absolute;
+	width:16px;
+	opacity:0.7;
+	bottom:12px;
+	right:12px;
+}
+
+.current img{
+	opacity:1;
+	
+}
+
 .current .prescriptionID{
+	font-weight:bold;
+}
+
+.current .prescriptionPatient{
 	font-weight:bold;
 }
 
@@ -86,6 +118,45 @@ h3{
 a:link {
     text-decoration: none !important;
 }
+
+
+/*PATIENT TOOLTIP*/
+#bio{
+	display:flex;
+}
+
+#pic{
+	margin:auto 10px;
+}
+
+#pic img{
+	width:100px;
+	height:100px;
+	border-radius:50px;
+}
+
+#bio > div{
+	padding:10px;
+}
+
+.biodetails{
+	display:flex;
+}
+
+.biolabel{
+	display:flex;
+	flex-direction:column;
+}
+
+.biolabel > div{
+	color:gray;
+	padding:5px;
+}
+
+.biodata > div{
+	padding:5px;
+}
+
 
 
 

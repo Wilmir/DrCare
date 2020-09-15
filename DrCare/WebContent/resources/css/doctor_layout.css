@@ -15,7 +15,6 @@ label, select, input[type="text"]{
   font-family: 'Google Sans', sans-serif !important;
 }
 
-
 .container{
 	min-height:100vh;
 	width:100%;
@@ -95,6 +94,8 @@ label, select, input[type="text"]{
 
 
 
+
+
 /*SEARCH FIELD*/
 .ui-state-highlight{
 	background:#f0f3f8 !important;
@@ -147,6 +148,7 @@ label, select, input[type="text"]{
 /*PATIENT LIST*/
 
 .patientCard{
+	display:flex;
 	padding:10px;
 	margin:10px;
 	border: 1px solid #ffffff;
@@ -164,6 +166,11 @@ label, select, input[type="text"]{
 .patientCard:hover {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
+
+.patientCard:hover img{
+	opacity: 0.7;
+}
+
 
 .patientAddress{
 	color:#4f4f4f;
@@ -186,6 +193,18 @@ label, select, input[type="text"]{
 a:link {
     text-decoration: none !important;
 }
+
+.searchpic{
+	margin:auto 10px;
+}
+
+.searchpic img{
+	width:50px;
+	height:50px;
+	border-radius:25px;
+	transition: opacity 0.8s ease;
+}
+
 
 /* PATIENT LIST MISCELLANEOUS */
 #noPatientFoundMessage, #showAllPatientsButton{
@@ -228,6 +247,12 @@ a:link {
 	margin:auto 10px;
 }
 
+#pic img{
+	width:120px;
+	height:120px;
+	border-radius:60px;
+}
+
 #bio > div{
 	padding:10px;
 }
@@ -260,7 +285,7 @@ a:link {
 
 .fa-plus{
 	margin:auto;
-	font-size:40px;
+	font-size:50px;
 }
 
 .prescriptionMiniCard{
@@ -269,11 +294,15 @@ a:link {
 	position:relative;
 	width:150px;
 	height:175px;
-	border: 1px solid #ffffff;
+	border: 1px solid #dadce0;
 	border-radius:5px;
-	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
   	transition: 0.3s;
   	background: #ffffff;	
+  	transition: border 0.8s ease;
+}
+
+.prescriptionMiniCard:hover{
+	border: 1px solid #0097a7;
 }
 
 .prescriptionMiniCardLabel{
@@ -284,11 +313,38 @@ a:link {
 	padding:4px;
 	width:100%;
 	background: #f0f3f8;
+	border-top: 1px solid #dadce0;
+	border-radius: 0 0px 5px 5px;
+	font-weight:bold;
 }
 
 
+.prescriptionMiniCardLogo img{
+	top:12px;
+	left:12px;
+	position:absolute;
+	width:16px;
+}
+
+.prescriptionMiniCardDate{
+	top:12px;
+	right:12px;
+	position:absolute;
+	font-size:8px;	
+	color:gray;
+}
+
+.prescriptionMiniCardStatus{
+	position:absolute;
+	font-size:8px;	
+	top: 24px;
+	right: 12px;
+	color:gray;
+}
+
 #prescriptionDetailsSection .ui-panelgrid-cell{
 	border: 1px solid #ffffff;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
 }
 
 #prescriptionDetailsSection{
@@ -316,3 +372,30 @@ a:link {
 	}
 }
 /*End of Banner text rainbow animation effect*/
+
+
+
+/* Responsive Styles */
+/* Styles when the viewport is 800px or smaller */
+@media screen and (max-width: 800px) {
+	#content{
+		padding: 0 20px;
+	}
+	
+	#dashboard{
+		display:flex;
+		flex-direction:column;
+	}
+	
+	#dashboard-left{
+		padding: 5px;
+		width:100%;
+	}
+	
+	#dashboard-right{
+		padding: 5px;
+		width:100%;
+	}
+	
+}
+
