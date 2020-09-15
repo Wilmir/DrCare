@@ -52,7 +52,7 @@
 								<p:column colspan="2"><p:outputLabel for="status" value="Status"/></p:column>
 								<p:column colspan="4">	
 									<h:outputText id="status" value="#{doctorBean.currentPrescription.theStatus}" 
-												  styleClass = "#{doctorBean.currentPrescription.theStatus == 'Ready for pickup' ? 'readyForPickUp' : 'dispensed'}"/>			
+												  styleClass = "#{doctorBean.currentPrescription.theStatus == 'Order Dispensed' ? 'dispensed' : 'readyForPickUp'}"/>			
 								</p:column>
 					    </p:row>
 					    
