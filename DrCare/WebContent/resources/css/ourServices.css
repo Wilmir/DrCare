@@ -14,8 +14,9 @@
 
 h2{
 	text-align:center;
-	font-size: 2em;
+	font-size: 3em;
 	margin-bottom:1em;
+	font-family: 'Viga', sans-serif;	
 }
 
 h3{
@@ -42,30 +43,32 @@ h3{
 	flex-direction:column;
 }
 
-.offer-content{
+.content{
 	display:flex;
+	padding:10px;
 }
 
-.offer-list{
+.list{
 	display:flex;
 	flex-direction:column;
 	justify-content:center;
 	align-items: left;
 	width:50%;
 	height:100%;
-	font-size:1.25em;
 }
 
-.offer-list>div{
+.list>div{
 	margin-top:auto;
+	padding:5px;
+	font-size:1.125em;
 }
 
 
-.offer-image{
+.image{
 	width:50%
 }
 
-.offer-image img{
+.image img{
 	width:500px;
 	border-top-left-radius: 100px;
 	border-bottom-right-radius: 100px;
@@ -94,20 +97,21 @@ h3{
 }
 
 .progressbar li:before{
-	content:counter(step);
+  content:counter(step);
   counter-increment: step;
   width: 50px;
   height: 50px;
-   border: 2px solid #bebebe;
+  border: 2px solid #bebebe;
   display: block;
-  margin: 0 auto 10px auto;
+  padding:auto;
+  margin: auto;
   border-radius: 50%;
   line-height: 40px;
   background: #4294a4;
   color: white;
   text-align: center;
   font-weight: bold;
-  font-size:200%;
+  font-size:150%;
   border-color: #4294a4;
 }
 
@@ -120,7 +124,7 @@ h3{
   top: 15px;
   left: -50%;
   z-index: -1;
-  font-size:200%;
+  font-size:150%;
 }
 .progressbar li:first-child:after{
 content: none;
@@ -131,9 +135,9 @@ content: none;
 }
 
 .progressbar li.active + li:before{
-border-color: #4294a4;
-background: #4294a4;
-color: white
+	border-color: #4294a4;
+	background: #4294a4;
+	color: white
 }
 
 
@@ -160,7 +164,7 @@ color: white
 		background-clip: border-box;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-        animation: textclip 15s linear infinite;
+        animation: textclip 30s linear infinite;
     }
 
 @keyframes textclip {
