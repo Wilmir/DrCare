@@ -68,8 +68,9 @@
 				    	<p:column colspan="3">Action</p:column>	
 				    </p:row>
 				    
+				    <!-- The Medicine Dropdown -->
 				    <p:row>
-				    	<!-- The Medicine Dropdown -->
+				    	
 						<p:column colspan="3">
 							<!-- See com.ait.drcare.converters MedicineConverter Class for the implem if the converter used here -->
 							<h:selectOneMenu value="#{prescriptionBean.medicine}"
@@ -97,8 +98,9 @@
 							</p:column>
 					</p:row>
 					
+					<!-- The Medicine Details -->
 					<p:row>
-						<!-- The Medicine Details -->
+						
 						 <p:column colspan="12" rendered="#{sessionScope.role == 'Doctor'}">
 				    		    <p:dataList id = "selectedMedicine" value="#{prescriptionBean.medicine}" var="medicine" type="definition">
 				    		    	<f:facet name="header">
