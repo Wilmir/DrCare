@@ -10,47 +10,22 @@
 <h:head>
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet" />
-   <link href="https://fonts.googleapis.com/css2?family=Viga" rel="stylesheet" />
-   <link rel="stylesheet" href="resources/css/ourServices.css"/>
+   <link href="https://fonts.googleapis.com/css2?family=Google Sans" rel="stylesheet" />
    <h:outputStylesheet library="primefaces" name="primeicons/primeicons.css"  />
-   <h:outputStylesheet  name = "resources/css/ourServices.css"/>
+   <h:outputStylesheet  name = "css/header.css"/>
+   <h:outputStylesheet  name = "css/footer.css"/>
+   <h:outputStylesheet  name = "css/index.css"/>
+   <h:outputStylesheet  name = "css/ourServices.css"/>
    <title>Our Services</title>
 	   <!-- Required meta tags -->
 </h:head>
 	
 <body>
 	<div class = "container">
-			<!-- Header -->		
-			<div class = "header">
-				<div class = "header-row">
-					<div class = "header-row-left">
-						<div class = "nav">
-							<ul>
-							  <li id = "logo"><p:link outcome="#{sessionScope.role == 'Doctor' ? 'doctor' : (sessionScope.role == 'Pharmacist' ? 'pharmacist' : (sessionScope.role == 'Patient' ? 'patient' : 'index'))}" value="DrCare" /></li>
-							</ul>	
-						</div>
-					</div>
-					<div class = "header-row-right">
-						<div class = "login-form"> 
-							<h:form>
-								<div class="nav-login">
-							        <div class="nav-login-field">
-							            <p:inputText id="email" placeholder="email" value="#{userLoginBean.email}"/>
-							        </div>
-							        <div class="nav-login-field">
-		        						<p:password id="password" placeholder="password	" value="#{userLoginBean.password}"/>
-							        </div>
-							        <div class="nav-login-field">
-		    							<p:commandButton styleClass = "loginButton" value="Log in" action="#{loginController.validateUserLogin()}" style="margin-right:20px;" ajax="false" />
-							    	</div>
-							    </div>
-						    </h:form>
-		    		   </div>
-		    		</div>
-				</div>
-			</div>
-			
-	
+		<!-- Header -->		
+		<ui:insert name="header">
+			<ui:include src = "/common/header.xhtml" />
+		</ui:insert>
 			<div class = "title">
 				<div class = "top-overlaid">
 					<h:form class="loginmessages">
@@ -58,90 +33,61 @@
 							<p:autoUpdate />
 						</p:messages>
 					</h:form>
-					<h:form>
-						<h2>Our Response to Coronavirus Pandemic </h2>
-					</h:form>
 				</div>	
 			</div>
-	
-	
 			<div class ="section">
-      			<h:form>
-               
-      				<h3>Your Health is Our Priority</h3>
-                   		 <h4>During the pandemic, DrCare aims to reduce the pressure on patients, pharmacists, and doctors through facilitating and sharing prescriptions online.</h4>
-      					<h4>With DrCare, patients will no longer need to meet their GP in person, to get a repeat prescription. </h4>
-                   		 <h4>Our online prescriptions will enable patients to get their prescription from the pharmacist without presenting a paper script.</h4>
-                    	<h4>All of these is aligned with the mandate from HSE to help reduce the spread of coronavirus</h4>
-      		
-      			</h:form>
-      			
-      		</div>
-      		
-      			
-      		
-      			<img src="#{resource['images/indeximage.png']}" alt="pharmacist"
-				 ></img>
-			
-			
-			<br></br>
-			<br></br>
-			<br></br>
-      		<div class = "offer">
-      			<h:form>
-      				<h3>What does our system offer?</h3>
-      			
-      			</h:form>
-      		
-      			<h:form>
-      				<h3>
-						&#10003; Safe, Fast and Convenient
-						<br></br>
-						&#10003; No more missed information
-						<br></br>
-						&#10003; No more illegible handwritten prescriptions
-						<br></br>
-						&#10003; Conveniently pay via PayPal
-						<br></br>
-	 					&#10003; Pickup medications from pharmacy of your choice
-	 					
-	 				</h3>
-				</h:form>
-			</div>	
+				<div class ="main">
+					<div class = "main-content">
+						<h2 class = "shining">Your Health is Always Our Priority</h2>
 						
-			<h:form>
-					<h2> How does it work?</h2>
-				</h:form>
-				
-			
-			<div class ="root">
-				<div class="process">
-					<ul class="progressbar">
-						<li class="active"> Your doctor writes you prescription.</li>
-			            <li class="active">Prescription directly sent to Pharmacy of your choice online</li>
-			            <li class="active">Conveniently pay via PayPal</li>
-			             <li class="active">Pharmacy prepares your prescription.</li>
-			            <li class="active">Prescription ready for collection.</li>
-			            
-			         	 </ul>
-			      </div>
-			  </div>
-						
-			
-				<div class="form">    
-					<div class = "signup-form">
-						<form action="signup.jsf">
-							<input type="submit" id="register" value="Register Today" />
-						</form>
-					</div>
-				</div>
-	   		
-   
-	
-
-		<div class = "footer">
-			<p>&copy; Copyright 2020 DrCare by Station 19</p>
-		</div>
+						<div class="coronavirusmessage">
+		      				<h3>Our Response to Coronavirus Pandemic</h3>
+		                   		<h4>During the pandemic, DrCare aims to reduce the pressure on patients, pharmacists, and doctors through facilitating and sharing prescriptions online.</h4>
+		      					<h4>With DrCare, patients will no longer need to meet their GP in person, to get a repeat prescription. </h4>
+		                   		<h4>Our online prescriptions will enable patients to get their prescription from the pharmacist without presenting a paper script.</h4>
+		                    	<h4>All of these is aligned with the mandate from HSE to help reduce the spread of coronavirus</h4>      			
+		      			</div>      		
+					
+		      			<div class = "offer">
+		      					<h3>What Our System Offers</h3>			      		
+			      				<div class = "offer-content">
+					      			<div class = "offer-list">
+											<div>&#10003; Safe, Fast and Convenient</div>
+											<div>&#10003; No more missed information</div>
+											<div>&#10003; No more illegible handwritten prescriptions</div>
+											<div>&#10003; Conveniently pay via PayPal</div>
+						 					<div>&#10003; Pickup medications from pharmacy of your choice</div>
+						 			</div>
+						 			<div class = "offer-image">
+						 				<img src="#{resource['images/indeximage.png']}" alt="pharmacist"/>
+						 			</div>
+				 				</div>
+						</div>	
+								
+						<div class ="root">
+							<h3> How It Works</h3>
+							<div class="process">
+								<ul class="progressbar">
+									<li class="active"> Your doctor writes you prescription.</li>
+						            <li class="active">Prescription directly sent to Pharmacy of your choice online</li>
+						            <li class="active">Conveniently pay via PayPal</li>
+						            <li class="active">Pharmacy prepares your prescription.</li>
+						            <li class="active">Prescription ready for collection.</li>    
+						        </ul>
+						      </div>
+					  	</div>
+						<div class = "signup-form">
+								<form action="signup.jsf">
+									<input type="submit" id="register" value="Register Today" />
+								</form>
+						</div>
+			</div>
+		   	</div>
+   		</div>
+		<!-- Footer -->
+		<ui:insert name="footer">
+			<ui:include src = "/common/footer.xhtml" />
+		</ui:insert>	
 	</div>	
 </body>
 
