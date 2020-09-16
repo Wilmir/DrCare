@@ -93,7 +93,6 @@
 						
 						<!-- The Button for Adding The Prescription Item -->
 							<p:column colspan="3" >
-								<p:growl id="growl" showDetail="true"/>  
 								<p:commandButton id="addItemButton" value = "Add" update = "items" action="#{prescriptionController.addItem(prescriptionBean)}"/>
 							</p:column>
 					</p:row>
@@ -122,6 +121,9 @@
 				    				        	&nbsp;
 				    				        </ui:repeat> 	
 				    			</p:dataList>
+				    			<p:messages id="messages" showDetail="true" escape="false">
+									<p:autoUpdate />
+								</p:messages>
 				    	</p:column>
 					</p:row>
 					
