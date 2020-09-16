@@ -5,9 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.PrimeFaces;
 
@@ -58,23 +60,29 @@ public class PrescriptionController {
 		newItem.setDosagePerDay(prescriptionBean.getDosage());
 		newItem.setDuration(prescriptionBean.getDuration());
 		
-		//add to the list
+	
 		
+	
+        //Check if item is already added
 		for (PrescriptionItem prescriptionItem : prescriptionItems) {
 			if (newItem.getMedicineName() == prescriptionItem.getMedicineName()) {
 				System.out.println("Error, already added");
 				exists = true;
+				
+				//Display error message
+				FacesContext currentInstance = FacesContext.getCurrentInstance();
+		        if(currentInstance != null) {
+		            currentInstance.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Medicine is already in the prescription:", prescriptionItem.getMedicineName()));
+		        }		
+				return;
 			}
 		}
-		
+		//If not, add item to prescription
 		if (exists == false) {
 			prescriptionItems.add(newItem);
 			prescriptionBean.setPrescriptionItems(prescriptionItems);
 		}
-		//Use for display
-
-		
-		//Update so form displays it
+	
 		
 	}
 	
