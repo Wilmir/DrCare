@@ -137,6 +137,19 @@ color: white
 }
 
 
+.signup-form{
+	display:flex;
+	justify-content:center;
+}
+
+.signup-form #register{
+	height:75px;
+	padding:15px;
+	width:100%;
+	font-size: 2em;
+}
+
+
 /*Banner text rainbow animation effect*/
 /* Add shining class to the text you need to apply this to. */
 .shining {
