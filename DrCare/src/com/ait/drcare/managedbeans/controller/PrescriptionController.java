@@ -50,6 +50,7 @@ public class PrescriptionController {
 	
 	public void addItem(PrescriptionBean prescriptionBean) {
 	
+		boolean exists = false;
 		//Create new item
 		PrescriptionItem newItem = new PrescriptionItem();
 		//Set variables assigned
@@ -59,10 +60,19 @@ public class PrescriptionController {
 		
 		//add to the list
 		
+		for (PrescriptionItem prescriptionItem : prescriptionItems) {
+			if (newItem.getMedicineName() == prescriptionItem.getMedicineName()) {
+				System.out.println("Error, already added");
+				exists = true;
+			}
+		}
 		
+		if (exists == false) {
+			prescriptionItems.add(newItem);
+			prescriptionBean.setPrescriptionItems(prescriptionItems);
+		}
 		//Use for display
-		prescriptionItems.add(newItem);
-		prescriptionBean.setPrescriptionItems(prescriptionItems);
+
 		
 		//Update so form displays it
 		
