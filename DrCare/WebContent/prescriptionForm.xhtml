@@ -11,13 +11,13 @@
 		<title>Prescription Form</title>
 		<link href="https://fonts.googleapis.com/css2?family=Google+Sans" rel="stylesheet" />
 		<h:outputStylesheet  name = "css/prescForm.css"/>
+		<h:outputStylesheet  name = "css/greetings.css"/>
 	</h:head>
 
 
 	<!-- NOTE: The values in all fields are mainly placeholders. Update each of them as the backend is developed -->
 	<h:body>
-		<h:form id = "prescriptionForm">
-		
+		<h:form id = "prescriptionForm" rendered="#{sessionScope.role == 'Doctor'}">
 			<p:panelGrid>	
 					<div class="prescriptionDetailHeading">
 						<div class = "prescriptionDetailHeadingLeft">
@@ -50,8 +50,7 @@
 								<!-- Lamiaa to create the userConverter class used here -->
 								<h:selectOneMenu value="#{prescriptionBean.pharmacist}"
 												 autoWidth = "false"
-												 converter = "userConverter"
-										 		 rendered="#{sessionScope.role == 'Doctor'}">
+												 converter = "userConverter">
 					            		<f:selectItems value="#{userListBean.pharmacists}" 
 					                           var="pharmacist"         
 					                           itemLabel="#{pharmacist.theName}" 
@@ -79,8 +78,7 @@
 							<!-- See com.ait.drcare.converters MedicineConverter Class for the implem if the converter used here -->
 							<h:selectOneMenu value="#{prescriptionBean.medicine}"
 										 converter = "medicineConverter"
-										 id = "medicine" 
-										 rendered="#{sessionScope.role == 'Doctor'}">
+										 id = "medicine">
 										<p:ajax update="selectedMedicine"/>
 					            		<f:selectItems value="#{medicineListBean.medications}" 
 					                           var="medicine" 
@@ -90,11 +88,11 @@
 						 </p:column>
 						 
 						 <!-- The Dosage Spinner -->
-						 <p:column colspan="3"><p:spinner id="dosage" value="#{prescriptionBean.dosage}" stepFactor="0.25" min = "0.25" rendered="#{sessionScope.role == 'Doctor'}" size = "5"
+						 <p:column colspan="3"><p:spinner id="dosage" value="#{prescriptionBean.dosage}" stepFactor="0.25" min = "0.25" size = "5"
 						 /></p:column>
 				    
 						 <!-- The Duration Spinner -->
-							<p:column colspan="3"><p:spinner id="duration" value="#{prescriptionBean.duration}" min = "1" rendered="#{sessionScope.role == 'Doctor'}" size = "5"/></p:column>
+							<p:column colspan="3"><p:spinner id="duration" value="#{prescriptionBean.duration}" min = "1" size = "5"/></p:column>
 						
 						<!-- The Button for Adding The Prescription Item -->
 							<p:column colspan="3" >
@@ -105,7 +103,7 @@
 					<!-- The Medicine Details -->
 					<p:row>
 						
-						 <p:column colspan="12" rendered="#{sessionScope.role == 'Doctor'}">
+						 <p:column colspan="12">
 				    		    <p:dataList id = "selectedMedicine" value="#{prescriptionBean.medicine}" var="medicine" type="definition">
 				    		    	<f:facet name="header">
 							            Selected Medicine Details
@@ -133,11 +131,6 @@
 				    	</p:column>
 					</p:row>
 					
-					<!-- The Note Spinner -->
-				    <p:row rendered="#{sessionScope.role == 'Pharmacist'}">
-				    	<p:column colspan="2"><p:outputLabel for="note" value="Note  " /></p:column>
-						<p:column colspan="4"><p:inputText id="note" value="#{prescriptionBean.theNote}" /></p:column>
-					</p:row>
 					
 					<!-- Items Display -->
 					<p:row id="itemsHeading">
@@ -168,12 +161,13 @@
 					<!-- Need a Controller to handle this action -->
 					<p:row id="savebuttonContainer">
 						<p:column colspan = "12">
-							<p:commandButton rendered="#{sessionScope.role == 'Doctor' || sessionScope.role == 'Pharmacist' || sessionScope.role == 'Patient'}" 
-										value = "Save" action="#{prescriptionController.addPrescription(prescriptionBean)}"/>
+							<p:commandButton value = "Save" action="#{prescriptionController.addPrescription(prescriptionBean)}"/>
 						</p:column>
 					</p:row>
 			</p:panelGrid>
-			
 		</h:form>
+		<div id = "greetings">
+					<ui:include src = "/common/greetings.xhtml" />
+		</div>
 	</h:body>
 </html>
