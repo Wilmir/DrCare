@@ -11,12 +11,18 @@
 		<title>Prescription Form</title>
 		<link href="https://fonts.googleapis.com/css2?family=Google+Sans" rel="stylesheet" />
 		<h:outputStylesheet  name = "css/prescForm.css"/>
-		<h:outputStylesheet  name = "css/greetings.css"/>
 	</h:head>
 
 
 	<!-- NOTE: The values in all fields are mainly placeholders. Update each of them as the backend is developed -->
 	<h:body>
+		<h:form  rendered="#{sessionScope.role != 'Doctor'}">
+			<h:panelGroup>
+						<div class ="securityMessage">
+							<h2>You do not have access to this page.</h2>
+						</div>
+			</h:panelGroup>
+		</h:form>
 		<h:form id = "prescriptionForm" rendered="#{sessionScope.role == 'Doctor'}">
 			<p:panelGrid>	
 					<div class="prescriptionDetailHeading">
@@ -166,8 +172,5 @@
 					</p:row>
 			</p:panelGrid>
 		</h:form>
-		<div id = "greetings">
-					<ui:include src = "/common/greetings.xhtml" />
-		</div>
 	</h:body>
 </html>
