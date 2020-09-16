@@ -32,7 +32,10 @@
 				</h:panelGroup>
 				<div id = "dashboard">
 					<div id = "dashboard-left">
-						<ui:insert name="prescriptionqueue">
+						<ui:insert name="patientinfo">
+							<ui:include src = "/patient/patientdetails.xhtml" />
+						</ui:insert>
+						<ui:insert name="prescriptionlist">
 							<ui:include src = "/patient/prescriptionlist.xhtml" />
 						</ui:insert>
 					</div>

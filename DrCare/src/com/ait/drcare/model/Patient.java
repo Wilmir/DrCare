@@ -8,7 +8,21 @@ public class Patient extends User{
 	private String theMedicalCardNumber;
 	private ArrayList<String> Allergies;
 	private Doctor gp;
+	private int noOfPrescription = 0;
 		
+	public int getNoOfPrescription() {
+		if(prescriptions != null) {
+			return prescriptions.size();
+		}
+		return noOfPrescription;
+	}
+
+
+	public void setNoOfPrescription(int pres) {
+		this.noOfPrescription = pres;
+	}
+
+
 	public Patient() {
 		this.role = "Patient";
 	}

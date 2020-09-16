@@ -21,7 +21,7 @@ label, select, input[type="text"]{
 #content{
 	width:100%;
 	flex-grow:1;
-	padding: 0  12%;
+	padding: 0 200px;
 	display:flex;
 	flex-direction:column;
 }
@@ -39,6 +39,7 @@ label, select, input[type="text"]{
 
 h3{
 	text-align:center;
+	padding-top: 40px;
 }
 
 #dashboard-left{
@@ -47,7 +48,7 @@ h3{
 }
 
 
-.pharmacistQueueItem{
+.patientQueueItem{
 	position:relative;
 	padding:10px;
 	margin:10px;
@@ -58,20 +59,20 @@ h3{
   	background: #ffffff;
 }
 
-.current .pharmacistQueueItem{
+.current .patientQueueItem{
 	border: 1px solid rgba(33,182,168,0.5);
 	box-shadow: 0 2px 4px 0 rgba(33,182,168,0.5);	
 }
 
-.pharmacistQueueItem:hover {
+.patientQueueItem:hover {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.pharmacistQueueItem:hover img{
+.patientQueueItem:hover img{
   opacity: 1;
 }
 
-.pharmacistQueueItemDetail{
+.patientQueueItemDetail{
 	width:100%;
 	display:flex;
 	flex-direction:column;
@@ -90,7 +91,7 @@ h3{
 	border-bottom:1px solid #d3d3d3;
 }
 
-.pharmacistQueueLogo img{
+.patientQueueLogo img{
 	position:absolute;
 	width:16px;
 	opacity:0.7;
@@ -120,6 +121,221 @@ a:link {
 	padding: 5px;
 	width:75%;
 }
+
+/*PATIENT DETAILS */
+
+.selectPrescription{
+	color:#b0b0b0;
+	display:flex;
+	justify-content:center;
+}
+
+#patientHeading{
+	display:flex;
+	justify-content:center;
+}
+
+#patientHeadingLabel{
+	color:#b0b0b0;
+}
+
+
+#patientDetails .ui-accordion-header{
+	background:#70c7d0; 
+	text-shadow:none;
+	box-shadow:none;
+	color:white;
+}
+
+#patientDetails .ui-accordion-header:hover{
+	background:#0097a7ff; 
+	text-shadow:none;
+	box-shadow:none;
+}
+
+#bio{
+	display:flex;
+}
+
+#pic{
+	margin:auto 10px;
+}
+
+#pic img{
+	display: block;
+	width:50%;
+	border-radius:60px;
+	margin-left: auto;
+  	margin-right: auto;
+}
+
+#bio > div{
+	padding:10px;
+}
+
+.biolabel{
+	display:flex;
+	flex-direction: column;
+}
+
+.biolabel > div{
+	color:gray;
+	padding:5px;
+}
+
+.biodata > div{
+	padding:5px;
+}
+
+
+/*Prescription Mini Cards*/
+#prescriptionCards{
+	display:flex;
+	flex-wrap:no-wrap;
+}
+
+#prescriptionCards > a{
+	margin:10px;
+}
+
+
+.fa-plus{
+	margin:auto;
+	font-size:50px;
+}
+
+.prescriptionMiniCard{
+	display:flex;
+	flex-direction:column;
+	position:relative;
+	width:150px;
+	height:175px;
+	border: 1px solid #dadce0;
+	border-radius:5px;
+  	transition: 0.3s;
+  	background: #ffffff;	
+  	transition: border 0.8s ease;
+  	overflow:hidden;
+}
+
+.prescriptionMiniCard:hover{
+	border: 1px solid #0097a7;
+}
+
+.prescriptionMiniCard:hover .prescriptionMiniCardLabel{
+	color:#0097a7;
+}
+
+.prescriptionMiniCard:hover img{
+	opacity:1;
+}
+
+.prescriptionMiniCardLabel{
+	position:absolute;
+	bottom:0;
+	font-size:16px;
+	text-align:center;
+	padding:4px;
+	width:100%;
+	background: #f0f3f8;
+	border-top: 1px solid #dadce0;
+	border-radius: 0 0px 5px 5px;
+	font-weight:bold;
+	z-index:2;
+}
+
+
+.prescriptionMiniCardLogo img{
+	top:12px;
+	left:12px;
+	position:absolute;
+	width:18px;
+	opacity:0.9;
+	trancisition: opacity 0.3s ease;
+}
+
+.drCareMiniLogo{
+	position:absolute;
+	top:12px;
+	right:12px;
+	font-size:6px;
+	color:#dadce0;
+}
+
+.prescriptionMiniCardDate{
+	top:24px;
+	right:12px;
+	position:absolute;
+	font-size:6px;	
+}
+
+.prescriptionMiniCardStatus{
+	position:absolute;
+	font-size:6px;	
+	top: 36px;
+	right: 12px;
+}
+
+.prescriptionMiniPatientName{
+	position:absolute;
+	font-size:6px;	
+	top: 48px;
+	left: 12px;
+}
+
+.prescriptionMiniPatientAddress{
+	position:absolute;
+	font-size:6px;	
+	top: 60px;
+	left: 12px;
+}
+
+
+.prescriptionMiniCardDetail{
+	position:absolute;
+	font-size:6px;	
+	top: 80px;
+	left: 12px;	
+	text-align:left;
+}
+
+.prescriptionMiniCardDetail td,
+.prescriptionMiniCardDetail th{
+	padding:2px;
+}
+
+.prescriptionMiniCardDetail th{
+	background: #f0f3f8;
+	border: 1px solid #f0f3f8;
+}
+
+
+.prescriptionMiniCardVideos{
+	margin:2px;
+	margin-top:6px;
+}
+
+.prescriptionMiniCardVideosHeading{
+	background: #f0f3f8;
+	padding:2px;
+	display:block;
+	width:100%;
+}
+
+.miniVideosList{
+	display:flex;
+	margin-top:2px;
+}
+
+.miniVideoContainer{
+	margin:1px;
+}
+
+.miniVideoContainer img{
+	opacity:0.8;
+	trancisition: opacity 0.3s ease;
+}
+
 
 #prescriptionDetails{
 	position:relative;
@@ -454,3 +670,42 @@ select:focus{
 .ui-growl-title	{
 	color: #0097a7ff;
 }
+
+/*PATIENT TOOLTIP*/
+#bio{
+	display:flex;
+}
+
+#pic{
+	margin:auto 10px;
+}
+
+#pic img{
+	width:100px;
+	height:100px;
+	border-radius:50px;
+}
+
+#bio > div{
+	padding:10px;
+}
+
+.biodetails{
+	display:flex;
+}
+
+.biolabel{
+	display:flex;
+	flex-direction:column;
+}
+
+.biolabel > div{
+	color:gray;
+	padding:5px;
+}
+
+.biodata > div{
+	padding:5px;
+}
+
+

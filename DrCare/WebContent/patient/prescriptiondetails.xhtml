@@ -10,6 +10,9 @@
 	<ui:composition>
 		<h:panelGroup rendered="#{sessionScope.role == 'Patient'}">
 	        <h:form id="prescriptionDetails" rendered="#{sessionScope.role == 'Patient'}">
+	        <div class="selectPrescription">
+					<h:outputText value="Select prescription" rendered="#{patientBean.currentPrescription == null}"/>
+			</div>	
 	        <p:panelGrid id="prescriptionDetailsContent" rendered = "#{patientBean.currentPrescription != null}">
 					<br/>
 					<div class="prescriptionDetailHeading">
