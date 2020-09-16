@@ -130,7 +130,7 @@ public class LoginController {
 	public void printMessage(String user, String printline) {
         FacesContext currentInstance = FacesContext.getCurrentInstance();
         if(currentInstance != null) {
-            currentInstance.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", printline));
+            currentInstance.addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", printline));
         }
 	}
 }

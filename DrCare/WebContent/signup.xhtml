@@ -10,82 +10,94 @@
      <link href="https://fonts.googleapis.com/css2?family=Google+Sans" rel="stylesheet" />
 	    <h:outputStylesheet  name = "css/header.css"/>
 	    <h:outputStylesheet  name = "css/footer.css"/>
+	   	<h:outputStylesheet name = "css/index.css"/>
 	    <h:outputStylesheet name = "css/register.css"/>
 		<ui:insert name="css"/>
 </h:head>
 <body>
 <div class = "container">
-			<div id = "header">
-				<ui:insert name="header">
-					<ui:include src = "/common/header.xhtml" />
-				</ui:insert>
-			</div>
-			</div>
-<div class = "card">
-<h:form>      
-     <p:messages id="messages" showDetail="true" escape="false">
-     	<p:autoUpdate />
-     </p:messages>
-      
-   	 <h2 class = "title">Create your account</h2>
-    
-     <p:outputLabel class="label">Name</p:outputLabel>
-   
-    <p:inputText class="input" id="username" value="#{userBean.name}" label="username"        
-		size="20" alt="username" autocomplete="off" readonly="false" required="true" requiredMessage="Username is required"/>
-	
-    <br></br>
-    <p:outputLabel class="label">Email</p:outputLabel>
-    <p:inputText class="input" id="email" value="#{userBean.email}" label="email" alt="email" autocomplete="off" readonly="false" required="true"              
-		requiredMessage="Email is required" validatorMessage="Email is invalid">
-		    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
-	</p:inputText>
-	<br></br>
-    <p:outputLabel class="label">Address</p:outputLabel>
-    <p:inputText class="input" id="address" value="#{userBean.address}" label="address" maxlength="200" alt="address" autocomplete="off" readonly="false"/>  
-  
-   <br></br>   
-   
-   <p:outputLabel class="label">Password</p:outputLabel>
-   <p:password class="input" id="pwd" value="#{userBean.password}" label="pwd" alt="pwd" autocomplete="off" readonly="false" required="true" feedback="true"             
-		requiredMessage="Password is required" validatorMessage="Password should contain minimum 6 characters">
-		<f:validateLength minimum="6"/>
-   </p:password>  
- 
-   <br></br>
-   <p:outputLabel class="label">Re-enter Password</p:outputLabel>
-   <p:password class="input" id="re-pwd" value="#{userBean.passwordConfirmation}" label="re-pwd" maxlength="20" alt="re-pwd" autocomplete="off" readonly="false" required="true"              
-		requiredMessage="Password is required"/>  
+	<ui:insert name="header">
+		<ui:include src = "/common/header.xhtml" />
+	</ui:insert>
+	<div class = "section">
+		<div class ="registrationCardContainer">
+			<h:form class="registrationglobalmessage">      
+				<p:messages id="loginmessages" showDetail="true" escape="false" for="login">
+					<p:autoUpdate />
+				 </p:messages>
+			</h:form>
+			<div class = "card">
+				<h:form id="registrationform"> 
+					 <p:messages id="registrationmessages" showDetail="true" globalOnly="true">
+						<p:autoUpdate />
+					 </p:messages>
+				
+				   	 <h2 class = "title">Create your account</h2>
+				    
+				    <div class = "field">
+					    <p:outputLabel class="label">Name</p:outputLabel>
+					    <p:inputText class="input" id="username" value="#{userBean.name}" label="username"        
+							size="20" alt="username" autocomplete="off" readonly="false" required="true" requiredMessage="Username is required"/>
+					</div>
+					
+					<div class = "field">					
+				    <p:outputLabel class="label">Email</p:outputLabel>
+					    <p:inputText class="input" id="email" value="#{userBean.email}" label="email" alt="email" autocomplete="off" readonly="false" required="true"              
+							requiredMessage="Email is required" validatorMessage="Email is invalid">
+							    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+						</p:inputText>
+					</div>
 
-    <br></br>
-    <p:outputLabel class="label">Select Role</p:outputLabel>
-    <p:selectOneMenu class="input" id="hard-dropdown" value="#{userBean.role}">
-         <p:ajax update="licensePanel" />
-      	 <f:selectItem itemValue="Patient" itemLabel="Patient"/>
-   		 <f:selectItem itemValue="GP" itemLabel="GP"/>
-   		 <f:selectItem itemValue="Pharmacist" itemLabel="Pharmacist"/>
-	</p:selectOneMenu>
-	
-	<br></br>
-	<p:outputPanel id="licensePanel">
-		<p:outputLabel class="label" for="licenseNumber" rendered = "#{userBean.role == 'Pharmacist' || userBean.role == 'GP'}">License Number</p:outputLabel>
-	   	<p:inputText class="input" id="licenseNumber" rendered = "#{userBean.role == 'Pharmacist' || userBean.role == 'GP'}" value="#{userBean.licenseNumber}" label="licenseNumber" minlength="9" maxlength="9"            
-			size="20" alt="licenseNumber" autocomplete="off" readonly="false"            
-			requiredMessage="License number is required"/>  	
-	</p:outputPanel>
-	<br/>
-    <p:outputLabel>By creating an account you agree to our </p:outputLabel>
-     <h:outputLink value="terms.jsf" >Terms of Service</h:outputLink>
-	<br></br>
-    <p:commandButton id="submit" styleClass="ActionButton" action="#{registrationController.addUser(userBean)}" value="Register" title="Register"/> 
-    <br></br>
- 	<p:outputLabel>Already have an account? </p:outputLabel>
-   <h:outputLink value="index.jsf" >Sign in</h:outputLink> <br/>
-  
-</h:form>
-</div>
-		<div class = "footer">
-			<p>&copy; Copyright 2020 DrCare by Station 19</p>
+					<div class = "field">					
+					    <p:outputLabel class="label">Address</p:outputLabel>
+					    <p:inputText class="input" id="address" value="#{userBean.address}" label="address" maxlength="200" alt="address" autocomplete="off" readonly="false"/>  
+					</div>
+				   
+				   <div class = "field">
+				   <p:outputLabel class="label">Password</p:outputLabel>
+				   <p:password class="input" id="pwd" value="#{userBean.password}" label="pwd" alt="pwd" autocomplete="off" readonly="false" required="true"  
+				        placeholder = "min 6 characters"          
+						requiredMessage="Password is required" validatorMessage="Password should contain minimum 6 characters">
+						<f:validateLength minimum="6"/>
+				   </p:password>  
+				   </div>
+				 
+				 	<div class = "field">
+					   <p:outputLabel class="label">Re-enter Password</p:outputLabel>
+					   <p:password class="input" id="re-pwd" value="#{userBean.passwordConfirmation}" label="re-pwd" maxlength="20" alt="re-pwd" autocomplete="off" readonly="false" required="true" placeholder = "min 6 characters" requiredMessage="Password is required"/>  
+					</div>				
+
+					<div class = "field">
+					    <p:outputLabel class="label">Select Role</p:outputLabel>
+					    <h:selectOneMenu class="input" id="hard-dropdown" value="#{userBean.role}">
+					         <p:ajax update="licensePanel" />
+					      	 <f:selectItem itemValue="Patient" itemLabel="Patient"/>
+					   		 <f:selectItem itemValue="GP" itemLabel="GP"/>
+					   		 <f:selectItem itemValue="Pharmacist" itemLabel="Pharmacist"/>
+						</h:selectOneMenu>
+					</div>
+					
+					<p:outputPanel id="licensePanel">
+							<div class = "field">
+							<p:outputLabel class="label" for="licenseNumber" rendered = "#{userBean.role == 'Pharmacist' || userBean.role == 'GP'}">License Number</p:outputLabel>
+						   	<p:inputText class="input" id="licenseNumber" rendered = "#{userBean.role == 'Pharmacist' || userBean.role == 'GP'}" value="#{userBean.licenseNumber}" label="licenseNumber" minlength="9" maxlength="9"            
+								size="20" alt="licenseNumber" autocomplete="off" readonly="false"            
+								requiredMessage="License number is required" placeholder = "9 digits"/>  	
+							</div>
+					</p:outputPanel>
+					<br/>
+				    <p:outputLabel>By creating an account you agree to our </p:outputLabel>
+				     <h:outputLink value="terms.jsf" >Terms of Service</h:outputLink>
+					<br></br>
+				    <p:commandButton id="submit" styleClass="ActionButton" action="#{registrationController.addUser(userBean)}" value="Register" title="Register"/> 
+				</h:form>
+			</div>
 		</div>
+	</div>
+	<!-- Footer -->
+	<ui:insert name="footer">
+		<ui:include src = "/common/footer.xhtml" />
+	</ui:insert>
+</div>
 </body>
 </html>

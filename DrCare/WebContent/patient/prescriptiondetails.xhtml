@@ -37,7 +37,7 @@
 						<p:column colspan="2"><p:outputLabel for="date" value="Date" /></p:column>
 						<p:column colspan="4">
 							<h:outputText id="date" value = "#{patientBean.currentPrescription.theDatePrescribed}">
-								<f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+								<f:convertDateTime pattern="dd-MMM-yyyy" />
 							</h:outputText>
 						</p:column>	
 				    </p:row>  

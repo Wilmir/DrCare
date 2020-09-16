@@ -13,13 +13,17 @@
 						<div class = "header-row-left">
 							<div class = "nav">
 								<ul>
-						  			<li id = "logo"><p:link outcome="#{sessionScope.role == 'Doctor' ? 'doctor' : (sessionScope.role == 'Pharmacist' ? 'pharmacist' : (sessionScope.role == 'Patient' ? 'patient' : 'index'))}" value="DrCare" /></li>
+						  			<li id = "logo">
+						  			<p:link outcome="#{sessionScope.role == 'Doctor' ? 'doctor' : (sessionScope.role == 'Pharmacist' ? 'pharmacist' : (sessionScope.role == 'Patient' ? 'patient' : 'index'))}">
+						  				<span id="doctor">Dr</span>Care
+						  			</p:link>
+						  			</li>
 								</ul>	
 							</div>
 						</div>
 						<div class = "header-row-right">
 							<div class = "login-form"> 
-								<h:form rendered="#{sessionScope.role == null}">
+								<h:form rendered="#{sessionScope.role == null or sessionScope.role == ''}" id="loginform">
 									<div class="nav-login">
 								        <div class="nav-login-field">
 								            <p:inputText id="email" placeholder="email" value="#{userLoginBean.email}"/>

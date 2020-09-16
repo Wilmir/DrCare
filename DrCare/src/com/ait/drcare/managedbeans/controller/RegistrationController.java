@@ -59,7 +59,7 @@ public class RegistrationController {
 		// 4. Add the attributes from the userBean to a new User object
 		addToRegistry(userBean);
 	
-		/*success("Registration successul" + "&nbsp;<a href='login.jsf'>Login</a>");*/
+		success("Registration successful");
 		
 		System.out.println("New List of Users");
 		
@@ -69,7 +69,7 @@ public class RegistrationController {
 		
 		
 		//5. Redirect the user to Login page, faces-redirect changes the URl to login.jsf
-		return "index?faces-redirect=true";
+		return null;
 	}
 
 	// Password validation

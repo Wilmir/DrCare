@@ -1,45 +1,125 @@
 *{  
   box-sizing: border-box;
+  font-family: 'Google Sans', sans-serif;
+  margin:0;
+  padding:0;
 }
 
-label{
-	  font-family: 'Google Sans', sans-serif !important;
+label, select, input[type="text"]{
+  font-family: 'Google Sans', sans-serif !important;
 }
 
-.container{
-	min-height:15vh;
-	width:100%;
+.registrationglobalmessage{
+		margin:0 12%;
+		min-height:60px;
+}
+
+.ui-messages-error,
+.ui-messages-info{
+	border: 1px solid white !important;
+	font-size: 16px !important;
+	font-family: 'Google Sans', sans-serif;
+	border-radius: 5px;
+}
+
+.ui-messages-info{
+	background: #c3e6de !important;
+	color:#004e6d !important;
+}	
+
+
+.registrationCardContainer{
 	display:flex;
 	flex-direction:column;
+	width:100%;
 }
 
 .card {
+  display:flex;
+  flex-direction:column;
+  position:relative;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 550px;
-  margin: auto;
+  width:600px;
+  margin: 20px auto;
   text-align: center;
   font-family: arial;
+  padding:30px;
+  margin-bottom:20px;
+}
+
+.field{
+	display:flex;
+	margin:10px;
+}
+
+.card input[type="text"], 
+.card input[type="password"]{
+	border:1px solid #767676;
+	padding:10px;
+}
+
+.card select{
+	padding:10px;
+}
+
+.card input[type="text"]:focus, 
+.card input[type="password"]:focus,
+.card select:focus{
+	border:1px solid #0d98ba;
+	box-shadow:none;
 }
 
 .title {
-  color: grey;
   font-size: 28px;
+  margin:20px;
 }
 
-.label {
-		  display: inline-block;
-	  	width: 25%;
-	  	text-align: right;
-	  	margin: 10px;
-}
-
-.input {
-	display: inline-block;
+.label{
 	width: 45%;
+	text-align: left;
+	color:#a0a0a0;
+	margin:10px;
+}
+
+.input, 
+.card select {
+	width: 55%;
 	text-align: left;
 	margin: 10px;
 }
 
-button {
-	margin: 10px;
+.card .ui-button	{
+	margin:5px;
+	background: #5dbac4;
+	box-shadow: none;
+	border-radius:6px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	text-decoration:none;
+	min-width:200px !important;
 }
+
+.card  .ui-button:hover{
+	background:#0097a7ff;
+}
+
+.card  .ui-button:active{
+	background:black;
+	border:1px solid #ffffff;
+}
+
+.card  .ui-button-text{
+	text-shadow:none;
+	color:white;
+	padding: 10px !important;
+	font-weight: normal;
+	font-size:18px;
+}
+
+.card a{
+	text-decoration: none;
+	color:#0d98ba;
+}
+

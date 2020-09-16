@@ -1,23 +1,38 @@
+*{  
+  box-sizing: border-box;
+  font-family: 'Google Sans', sans-serif;
+  margin:0;
+  padding:0;
+}
+
+
 .header{
-	padding: 0px 200px;	
+	padding: 8px 12%;	
   	background-image: linear-gradient(#0097a7ff, #0097a7ff); /* bluegreen */
-    font-size: 18px;
-    color:white;
 }
-
-.header .nav{
-	flex-grow:1;
-}
-
 
 .header-row{
 	display:flex;
 	justify-content: space-between;
 	flex-wrap:wrap;
+	margin-auto;
+	font-size: 18px;
+    color:white;
 }
+
 
 .header-row-left{
 	display:flex;
+}
+
+.header-row-right{
+	display:flex;
+	flex-wrap:wrap;
+}
+
+
+.header .nav{
+	flex-grow:1;
 }
 
 .header ul {
@@ -45,12 +60,13 @@
 	font-family: 'Google Sans', sans-serif;
 }
 
-
-
 .header .nav a:hover{
 	color: #f8f8f8; /* dark blue */
 }
 
+.doctor{
+	color:pink;
+}
 
 
 .nav-login{
@@ -70,36 +86,43 @@
 
 
 input[type="text"], input[type="password"]{
-	font-family: 'Raleway', sans-serif;
+  	font-family: 'Google Sans', sans-serif;
     font-size: 16px;
 	border:none;
 	padding: 7px;
+	box-shadow:none;
 }
 
+
+input[type="text"]:focus, input[type="password"]:focus{
+	box-shadow:none;
+}
+
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-size: 16px;
   color: gray;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-size: 16px;
   color: gray;
 }
 :-ms-input-placeholder { /* IE 10+ */
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-size: 16px;
   color: pink;
 }
 :-moz-placeholder { /* Firefox 18- */
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Google Sans', sans-serif;
   font-size: 16px;
   color: gray;
 }
 
 
 .loginButton, .logoutButton{
-	font-family: 'Raleway', sans-serif;
+ 	font-family: 'Google Sans', sans-serif;
 	font-size: 16px;
 	height: 35px;
 	background:rgba(255,255,255, 0.3);
@@ -112,3 +135,33 @@ input[type="text"], input[type="password"]{
 .loginButton:hover, .logoutButton:hover{
 	background:rgba(255,255,255, 0.2);
 }
+
+@media screen and (max-width: 800px) {
+	.header{
+		display:flex;
+		padding: 5px 12%;		
+	}
+	
+	.header-row{
+		flex-direction:column;
+		justify-content:left;
+	}
+
+	
+	.signup-form, .login-form{
+		margin:0px;
+	}
+
+}
+
+@media screen and (max-width: 400px) {
+	form{
+		flex-direction:column;
+	}
+	
+	.header{
+		padding: 5px 12%;	
+		min-height:175px;	
+	}
+}
+
