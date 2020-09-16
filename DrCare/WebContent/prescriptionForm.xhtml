@@ -17,6 +17,7 @@
 	<!-- NOTE: The values in all fields are mainly placeholders. Update each of them as the backend is developed -->
 	<h:body>
 		<h:form id = "prescriptionForm">
+		
 			<p:panelGrid>				    
 				    <!-- Add Medicine Section -->
 				    <p:row id="prescriptionHeading">
@@ -92,6 +93,7 @@
 						
 						<!-- The Button for Adding The Prescription Item -->
 							<p:column colspan="3" >
+								<p:growl id="growl" showDetail="true"/>  
 								<p:commandButton id="addItemButton" value = "Add" update = "items" action="#{prescriptionController.addItem(prescriptionBean)}"/>
 							</p:column>
 					</p:row>
