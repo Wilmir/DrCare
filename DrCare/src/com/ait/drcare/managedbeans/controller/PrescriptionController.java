@@ -44,7 +44,7 @@ public class PrescriptionController {
 		doctorBean = Helper.getBean("doctorBean", DoctorBean.class);	
 		doctorController = Helper.getBean("doctorController", DoctorController.class);	
 		
-		newPrescription = new Prescription();
+	
 		System.out.println(prescriptions.size());
 	}
 	
@@ -58,7 +58,7 @@ public class PrescriptionController {
 		newItem.setDuration(prescriptionBean.getDuration());
 		
 		//add to the list
-		newPrescription.addPrescriptionItem(newItem);
+		
 		
 		//Use for display
 		prescriptionItems.add(newItem);
@@ -74,7 +74,7 @@ public class PrescriptionController {
 		
 		//set prescriptionitem
 		
-		
+		newPrescription = new Prescription();
 		
 		//Set prescription variables
 		newPrescription.setTheNote(prescriptionBean.getTheNote());
@@ -85,7 +85,7 @@ public class PrescriptionController {
 		
 		//test tems are there
 		for (PrescriptionItem prescriptionItem : prescriptionItems) {
-			System.out.println(prescriptionItem.getMedicineName());
+			newPrescription.addPrescriptionItem(prescriptionItem);;
 		}
 		dataStore.addPrescription(newPrescription);
 	
