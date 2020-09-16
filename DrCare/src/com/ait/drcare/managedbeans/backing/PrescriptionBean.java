@@ -37,9 +37,7 @@ public class PrescriptionBean {
 	//when adding new prescription, use this bean
 	
 	
-	public void doTheThing() {
-	System.out.println("did a thing");
-	}
+	
 	
 	public Patient getPatient() {
 		return patient;

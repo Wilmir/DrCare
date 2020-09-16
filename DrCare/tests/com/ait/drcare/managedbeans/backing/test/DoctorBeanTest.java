@@ -2,6 +2,8 @@ package com.ait.drcare.managedbeans.backing.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +11,7 @@ import com.ait.drcare.managedbeans.backing.DoctorBean;
 import com.ait.drcare.managedbeans.support.UserListBean;
 import com.ait.drcare.model.Doctor;
 import com.ait.drcare.model.Patient;
+import com.ait.drcare.model.Prescription;
 
 class DoctorBeanTest {
 
@@ -37,6 +40,33 @@ class DoctorBeanTest {
 		doctorBean.setCurrentPatient(patient);
 		
 		assertEquals(patient, doctorBean.getCurrentPatient());
+	}
+	
+	@Test
+	void testGettersAndSetters() {
+		Prescription prescription  = new Prescription();
+		doctorBean.setCurrentPrescription(prescription);
+		assertEquals(prescription,doctorBean.getCurrentPrescription());
+		
+		String qry =  "try this";
+		doctorBean.setQuery(qry);
+		assertEquals(qry, doctorBean.getQuery());
+		
+		int searchResult = 25;
+		
+		int patientsSize = 5;
+		
+		
+		Patient p = new Patient();
+		Patient p2 = new Patient();
+		ArrayList<Patient> patients  = new ArrayList<>();
+		patients.add(p);
+		patients.add(p2);
+		doctorBean.setPatients(patients);
+		assertEquals(patients,doctorBean.getPatients());
+		assertEquals(2,doctorBean.getSearchResultSize());
+		doctorBean.setSearchResultSize(searchResult);
+		
 	}
 
 }
