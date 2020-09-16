@@ -48,6 +48,7 @@ h3{
 
 
 .pharmacistQueueItem{
+	position:relative;
 	padding:10px;
 	margin:10px;
 	border: 1px solid #ffffff;
@@ -66,6 +67,18 @@ h3{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
+.pharmacistQueueItem:hover img{
+  opacity: 1;
+}
+
+.pharmacistQueueItemDetail{
+	width:100%;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	margin:auto;
+}
+
 .prescriptionPatient{
 	color:#4f4f4f;
 	padding:5px;
@@ -75,6 +88,19 @@ h3{
 	color:#4f4f4f;
 	padding:5px;
 	border-bottom:1px solid #d3d3d3;
+}
+
+.pharmacistQueueLogo img{
+	position:absolute;
+	width:16px;
+	opacity:0.7;
+	bottom:12px;
+	right:12px;
+}
+
+.current img{
+	opacity:1;
+	
 }
 
 .current .prescriptionID{

@@ -103,8 +103,6 @@ public class PrescriptionController {
 		return prescriptions;
 	}
 	
-	public void testPrep() {
-		System.out.println("howdy");
-	}
+	
 
 }
