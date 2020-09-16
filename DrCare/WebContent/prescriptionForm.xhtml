@@ -18,25 +18,29 @@
 	<h:body>
 		<h:form id = "prescriptionForm">
 		
-			<p:panelGrid>				    
-				    <!-- Add Medicine Section -->
-				    <p:row id="prescriptionHeading">
-				    	<p:column colspan="12">Prescription</p:column>
-				    </p:row>			    
+			<p:panelGrid>	
+					<div class="prescriptionDetailHeading">
+						<div class = "prescriptionDetailHeadingLeft">
+							<div class = "prescriptionLogo">
+								<img src="#{resource['images/rx.png']}" alt="pharmacist"
+									style="width: 100%"></img>
+							</div>
+						</div>
+						<div class = "prescriptionDetailHeadingRight">
+							<h2 id="prescriptionCompany">DrCare</h2>
+							<div id = "prescriptionDoctor">Dr #{doctorBean.doctor.theName}</div>
+							<div id = "prescriptionLicenseNumber">License# #{doctorBean.doctor.theID}</div>
+							<div id = "prescriptionDoctorAddress">#{doctorBean.doctor.theAddress}</div>
+						</div>
+					</div>					    
+			    
 				    <!-- The Patient Dropdown -->
 				    <p:row>
 				    		<p:column colspan="2"><p:outputLabel for="patient" value="Patient" /></p:column>
-							<p:column colspan="4">
+							<p:column colspan="10">
 								<h:outputText id = "patient" value = "#{doctorBean.currentPatient.theName}" />
 							</p:column>
-							
-							<!-- The Prescription Date Field -->
-							<p:column colspan="2"><p:outputLabel for="date" value="Date" /></p:column>
-							<p:column colspan="4">
-								<h:outputText id="date" value = "#{prescriptionBean.placeholder}">
-												<f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
-								</h:outputText>
-							</p:column>		
+	
 				    </p:row>
 				    
 				    <!-- The Pharmacist Dropdown -->
@@ -160,7 +164,7 @@
 					
 					<!-- The Button for Saving the Prescription -->
 					<!-- Need a Controller to handle this action -->
-					<p:row>
+					<p:row id="savebuttonContainer">
 						<p:column colspan = "12">
 							<p:commandButton rendered="#{sessionScope.role == 'Doctor' || sessionScope.role == 'Pharmacist' || sessionScope.role == 'Patient'}" 
 										value = "Save" action="#{prescriptionController.addPrescription(prescriptionBean)}"/>
