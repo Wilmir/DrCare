@@ -159,12 +159,12 @@ public class RegistrationController {
     private void error(String message) {
         FacesContext currentInstance = FacesContext.getCurrentInstance();
         if(currentInstance != null) {
-            currentInstance.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", message));
+            currentInstance.addMessage("registration", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", message));
         }
     }
     
     private void success(String message) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", message));
+        FacesContext.getCurrentInstance().addMessage("registration", new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", message));
     }
      
 }

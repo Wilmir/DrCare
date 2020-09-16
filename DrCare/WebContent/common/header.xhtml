@@ -23,7 +23,7 @@
 						</div>
 						<div class = "header-row-right">
 							<div class = "login-form"> 
-								<h:form rendered="#{sessionScope.role == null or sessionScope.role == ''}">
+								<h:form rendered="#{sessionScope.role == null or sessionScope.role == ''}" id="loginform">
 									<div class="nav-login">
 								        <div class="nav-login-field">
 								            <p:inputText id="email" placeholder="email" value="#{userLoginBean.email}"/>

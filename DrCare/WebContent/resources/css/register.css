@@ -9,29 +9,41 @@ label, select, input[type="text"]{
   font-family: 'Google Sans', sans-serif !important;
 }
 
+.registrationglobalmessage{
+		margin:0 12%;
+		min-height:60px;
+}
+
+.ui-messages-error{
+	border: 1px solid white !important;
+	font-size: 14px !important;
+	font-family: 'Google Sans', sans-serif;
+}
 
 
 .registrationCardContainer{
 	display:flex;
+	flex-direction:column;
 	width:100%;
-	min-height:90vh;	
+}
+
+.card {
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width:600px;
+  margin: 20px auto;
+  text-align: center;
+  font-family: arial;
+  padding:30px;
+  margin-bottom:20px;
 }
 
 .field{
 	display:flex;
 	margin:10px;
 }
-
-.card {
-  position:relative;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 550px;
-  margin: auto;
-  text-align: center;
-  font-family: arial;
-  padding:30px;
-}
-
 
 .card input[type="text"], 
 .card input[type="password"]{
@@ -43,14 +55,12 @@ label, select, input[type="text"]{
 	padding:10px;
 }
 
-
 .card input[type="text"]:focus, 
 .card input[type="password"]:focus,
 .card select:focus{
 	border:1px solid #0d98ba;
 	box-shadow:none;
 }
-
 
 .title {
   font-size: 28px;
@@ -61,7 +71,7 @@ label, select, input[type="text"]{
 	width: 45%;
 	text-align: left;
 	color:#a0a0a0;
-	margin:auto;
+	margin:10px;
 }
 
 .input, 

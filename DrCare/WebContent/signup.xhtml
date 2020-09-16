@@ -21,13 +21,17 @@
 	</ui:insert>
 	<div class = "section">
 		<div class ="registrationCardContainer">
-			<h:form>      
-				<p:messages id="messages" showDetail="true" escape="false" globalOnly="true">
+			<h:form class="registrationglobalmessage">      
+				<p:messages id="loginmessages" showDetail="true" escape="false" for="login">
 					<p:autoUpdate />
 				 </p:messages>
 			</h:form>
 			<div class = "card">
-				<h:form>      				      
+				<h:form id="registrationform"> 
+					<p:messages id="registrationmessages" showDetail="true" escape="false">
+						<p:autoUpdate />
+					 </p:messages>
+				
 				   	 <h2 class = "title">Create your account</h2>
 				    
 				    <div class = "field">
