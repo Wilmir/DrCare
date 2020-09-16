@@ -99,9 +99,7 @@ public class Prescription {
 		thePatient.addPrescription(this);
 	}
 
-	public ArrayList<String> getTheStatuses() {
-		return statusValues;
-	}
+	
 
 	public String getTheNote() {
 		return theNote;
@@ -114,10 +112,11 @@ public class Prescription {
 	public ArrayList<String> getStatusValues() {
 		return statusValues;
 	}
-
-	public void setStatusValues(ArrayList<String> statusValues) {
-		this.statusValues = statusValues;
+	public ArrayList<String> getTheStatuses() {
+		return statusValues;
 	}
+	
+	
 
 	public boolean isCanEditNote() {
 		return CanEditNote;

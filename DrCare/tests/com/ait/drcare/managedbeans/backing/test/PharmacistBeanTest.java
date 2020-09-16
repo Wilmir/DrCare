@@ -19,6 +19,9 @@ class PharmacistBeanTest {
 	private PharmacistBean pharmacistBean;
 	private UserListBean dataStore;
 	
+	
+	//Elements of Pharmacist Bean cannot be tested
+	//as it retreieves user at run time based on loged in user
 	@BeforeEach
 	public void setUp() {
 		pharmacistBean = new PharmacistBean();
@@ -71,17 +74,32 @@ class PharmacistBeanTest {
 		
 		
 	}
+		
+	
 	
 	@Test 
-	void testnextPrescription() {
+	void testVideosInPrescription() {
 		Prescription prescription = new Prescription();
 		Prescription prescription1 = new Prescription();
 		ArrayList<Prescription> prescriptions = new ArrayList<Prescription>();
 		prescriptions.add(prescription1);
 		prescriptions.add(prescription);
+		
 		pharmacistBean.setPaidPrescriptions(prescriptions);
 		Pharmacist pharmacist = new Pharmacist("Wilmir Nicanor", 30000001, "password", "wilmir@google.com", "Athlone, Ireland");
 		pharmacistBean.setCurrentUser(pharmacist);
+		
+		
+
+		Video v = new Video("Video", "whoop");
+		prescription1.addVideo(v);
+		pharmacistBean.setCurrentPrescription(prescription1);	
+		assertEquals(1,pharmacistBean.getVideosCount());
+		pharmacistBean.removeVideo(v);
+		assertEquals(0,pharmacistBean.getVideosCount());
+
+		pharmacistBean.setVideo(v);
+		pharmacistBean.addVideo();
 		
 	}
 	

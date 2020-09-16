@@ -116,9 +116,7 @@ public class PharmacistBean implements Serializable{
 		return 0;
 	}
 
-	public void setVideosCount(int videosCount) {
-		this.videosCount = videosCount;
-	}
+	
 
 
 	// save the prescription

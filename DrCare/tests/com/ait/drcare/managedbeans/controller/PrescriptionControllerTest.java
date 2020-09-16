@@ -29,7 +29,7 @@ class PrescriptionControllerTest {
 	void testAddNewPrescription() {
 		
 		prescriptions = pController.getPrescriptions();
-		assertEquals("successfully added",pController.addPrescription(prescripBean));
+		
 		assertEquals(prescriptions,pController.getPrescriptions());
 	}
 
