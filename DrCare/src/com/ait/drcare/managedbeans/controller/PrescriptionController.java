@@ -24,7 +24,7 @@ import com.ait.drcare.model.PrescriptionItem;
 @SessionScoped
 public class PrescriptionController {
 	
-	
+	private Prescription newPrescription;
 	private ArrayList<Prescription> prescriptions;
 	private ArrayList<PrescriptionItem> prescriptionItems;
 	private DoctorBean doctorBean;
@@ -44,6 +44,7 @@ public class PrescriptionController {
 		doctorBean = Helper.getBean("doctorBean", DoctorBean.class);	
 		doctorController = Helper.getBean("doctorController", DoctorController.class);	
 		
+		newPrescription = new Prescription();
 		System.out.println(prescriptions.size());
 	}
 	
@@ -57,6 +58,9 @@ public class PrescriptionController {
 		newItem.setDuration(prescriptionBean.getDuration());
 		
 		//add to the list
+		newPrescription.addPrescriptionItem(newItem);
+		
+		//Use for display
 		prescriptionItems.add(newItem);
 		prescriptionBean.setPrescriptionItems(prescriptionItems);
 		
@@ -70,22 +74,26 @@ public class PrescriptionController {
 		
 		//set prescriptionitem
 		
-		Prescription prescription = new Prescription();
+		
 		
 		//Set prescription variables
-		prescription.setTheNote(prescriptionBean.getTheNote());
-		prescription.setThePharmacist(prescriptionBean.getPharmacist());		
-		prescription.setThePatient(doctorBean.getCurrentPatient());		
-		prescription.setTheDoctor(doctorBean.getDoctor());		
-		prescription.setTheItems(prescriptionItems);
+		newPrescription.setTheNote(prescriptionBean.getTheNote());
+		newPrescription.setThePharmacist(prescriptionBean.getPharmacist());		
+		newPrescription.setThePatient(doctorBean.getCurrentPatient());		
+		newPrescription.setTheDoctor(doctorBean.getDoctor());		
 		
-		dataStore.addPrescription(prescription);
+		
+		//test tems are there
+		for (PrescriptionItem prescriptionItem : prescriptionItems) {
+			System.out.println(prescriptionItem.getMedicineName());
+		}
+		dataStore.addPrescription(newPrescription);
 	
 		//Clear items for next prescription
 		prescriptionItems.clear();
 		
 		//Close the dialog upon save
-		PrimeFaces.current().dialog().closeDynamic(prescription);
+		PrimeFaces.current().dialog().closeDynamic(newPrescription);
 	}
 	
 	

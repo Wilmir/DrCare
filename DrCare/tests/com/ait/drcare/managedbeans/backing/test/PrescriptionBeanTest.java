@@ -54,6 +54,12 @@ class PrescriptionBeanTest {
 		items.add(pItem);
 		pbean.setPrescriptionItems(items);
 		assertEquals(1,pbean.getPrescriptionItems().size());
+		
+		pbean.setQuantity(2);
+		assertEquals(2,pbean.getQuantity());
+		Object emp = new Object();
+		pbean.setPlaceholder(emp);
+		assertEquals(emp, pbean.getPlaceholder());
 	}
 
 }

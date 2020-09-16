@@ -315,7 +315,6 @@ public class UserListBean {
 	
 	
 	public void addPrescription(Prescription newPrescription) {
-		
 		prescriptions.add(newPrescription);
 		
 		

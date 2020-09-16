@@ -102,8 +102,6 @@ public class DoctorBean {
 		return dataStore.getPatients().size();
 	}
 
-	public void setAllPatientsSize(int allPatientsSize) {
-		this.allPatientsSize = allPatientsSize;
-	}
+	
 
 }
