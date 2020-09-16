@@ -29,23 +29,34 @@
 		</ui:insert>
 			<div class = "title">
 				<div class = "top-overlaid">
-					<h:form class="loginmessages">
-						<p:messages id="messages" showDetail="true" escape="false">
-							<p:autoUpdate />
-						</p:messages>
-					</h:form>
 				</div>	
 			</div>
 			<div class ="section">
 				<div class ="main">
 					<div class = "main-content">
-						<h2 class = "shining">Your Health is Always Our Priority</h2>
+						<div class = "waves">
+						  	<div class="ocean">
+							  <div class="wave"></div>
+							  <div class="wave"></div>
+							</div>  
+							<h:form class="loginmessages">
+								<p:messages id="messages" showDetail="true" escape="false" closable="true">
+									<p:autoUpdate />
+								</p:messages>
+							</h:form>
+							<h2>Your Health is Always Our Priority</h2>	
+							<div class = "signup">
+								<form id="signup-form" action="signup.jsf">
+									<input type="submit" id="register" value="Join DrCare" />
+								</form>
+							</div>
+					  	</div>
 						
 						<div class="coronavirusmessage">
-		      				<h3>Our Response to Coronavirus Pandemic</h3>
+		      				<h3>Our Response To The Coronavirus Pandemic</h3>
 		      				<div class = "content">
 		      					<div class = "image">
-						 				<img src="#{resource['images/indeximage.png']}" alt="pharmacist"/>
+						 				<img src="#{resource['images/femaledoctor.jpg']}" alt="pharmacist"/>
 						 		</div>
 		      					<div class = "list">
 			                   		<div>During the pandemic, DrCare aims to reduce the pressure on patients, pharmacists, and doctors through facilitating and sharing prescriptions online.</div>
@@ -60,36 +71,49 @@
 		      					<h3>What Our System Offers</h3>			      		
 			      				<div class = "content">
 					      			<div class = "list">
-											<div>&#10003;&nbsp;  Safe, Fast and Convenient</div>
-											<div>&#10003;&nbsp;  No more missed information</div>
-											<div>&#10003;&nbsp;  No more illegible handwritten prescriptions</div>
-											<div>&#10003;&nbsp;  Conveniently pay via PayPal</div>
-						 					<div>&#10003;&nbsp;  Pickup medications from pharmacy of your choice</div>
+											<div><i class="fa fa-fw fa-check-square-o"></i>&nbsp;  Safe, Fast and Convenient</div>
+											<div><i class="fa fa-fw fa-check-square-o"></i>&nbsp;  No more missed information</div>
+											<div><i class="fa fa-fw fa-check-square-o"></i>&nbsp;  No more illegible handwritten prescriptions</div>
+											<div><i class="fa fa-fw fa-check-square-o"></i>&nbsp;  Conveniently pay via PayPal</div>
+						 					<div><i class="fa fa-fw fa-check-square-o"></i>&nbsp;  Pickup medications from pharmacy of your choice</div>
 						 			</div>
 						 			<div class = "image">
-						 				<img src="#{resource['images/electronichealthrecord.jpg']}" alt="pharmacist"/>
+						 				<img src="#{resource['images/maledoctor.jpg']}" alt="pharmacist"/>
 						 			</div>
 				 				</div>
 						</div>	
 								
 						<div class ="root">
 							<h3> How It Works</h3>
-							<div class="process">
-								<ul class="progressbar">
-									<li class="active"> Your doctor writes you prescription.</li>
-						            <li class="active">Prescription directly sent to Pharmacy of your choice online</li>
-						            <li class="active">Conveniently pay via PayPal</li>
-						            <li class="active">Pharmacy prepares your prescription.</li>
-						            <li class="active">Prescription ready for collection.</li>    
-						        </ul>
-						      </div>
+							<div class = "content">
+								<div class = "image">
+						 			<img src="#{resource['images/howitworks.png']}" alt="pharmacist"/>
+						 		</div>
+					      		<div class = "list">
+									<div class = "step">
+										<div class ="number">1</div>
+										<div class="description">Your doctor writes your prescription.</div>
+									</div>
+									<div class = "step">
+										<div class ="number">2</div>
+										<div class="description">Prescription directly sent to Pharmacy of your choice online</div>
+									</div>
+									<div class = "step">
+										<div class ="number">3</div>
+										<div class="description">Conveniently pay via PayPal</div>
+									</div>
+									<div class = "step">
+										<div class ="number">4</div>
+										<div class="description">Pharmacy prepares your prescription.</div>
+									</div>
+									<div class = "step">
+										<div class ="number">5</div>
+										<div class="description">Prescription ready for collection.</div>
+									</div>
+								</div>
+						    </div>
 					  	</div>
-						<div class = "signup-form">
-								<form action="signup.jsf">
-									<input type="submit" id="register" value="Register Today" />
-								</form>
-						</div>
-			</div>
+				</div>
 		   	</div>
    		</div>
 		<!-- Footer -->
