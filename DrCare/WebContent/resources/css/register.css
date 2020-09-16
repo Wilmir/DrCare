@@ -14,11 +14,19 @@ label, select, input[type="text"]{
 		min-height:60px;
 }
 
-.ui-messages-error{
+.ui-messages-error,
+.ui-messages-info{
 	border: 1px solid white !important;
 	font-size: 14px !important;
 	font-family: 'Google Sans', sans-serif;
+	border-radius: 5px;
 }
+
+.ui-messages-info{
+	background: #C5E3BF !important;
+	font-size: 16px !important;
+	color:green !important;
+}	
 
 
 .registrationCardContainer{

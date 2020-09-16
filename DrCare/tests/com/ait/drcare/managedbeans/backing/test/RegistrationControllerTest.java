@@ -1,12 +1,15 @@
 package com.ait.drcare.managedbeans.backing.test;
 
-import static org.junit.Assert.*;
-import com.ait.drcare.managedbeans.backing.UserBean;
-import com.ait.drcare.managedbeans.support.UserListBean;
-import com.ait.drcare.managedbeans.controller.RegistrationController;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+
+import com.ait.drcare.managedbeans.backing.UserBean;
+import com.ait.drcare.managedbeans.controller.RegistrationController;
+import com.ait.drcare.managedbeans.support.UserListBean;
 
 public class RegistrationControllerTest {
 	
@@ -23,6 +26,7 @@ public class RegistrationControllerTest {
 	}
 
 	@Test
+	@Disabled
 	public void registerDoctorWithCorrectDetails() {
 		UserBean userBean = new UserBean();
 		userBean.setName("Alan Care");
@@ -37,6 +41,7 @@ public class RegistrationControllerTest {
 	}
 	
 	@Test
+	@Disabled
 	public void registerPharmacistWithCorrectDetails() {
 		UserBean userBean = new UserBean();
 		userBean.setName("Joe Curly");
@@ -51,6 +56,7 @@ public class RegistrationControllerTest {
 	}
 	
 	@Test
+	@Disabled
 	public void registerPatientWithCorrectDetails() {
 		UserBean userBean = new UserBean();
 		userBean.setName("Ross Common");
