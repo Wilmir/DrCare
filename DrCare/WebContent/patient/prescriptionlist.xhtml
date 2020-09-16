@@ -14,12 +14,16 @@
 				<ui:repeat id = "pharmacistQueue" value="#{patientInfoController.currentUser.prescriptions}" var="prescription" varStatus="status">
 						<p:commandLink action = "#{patientBean.setCurrentPrescription(prescription)}" update="prescriptionDetails" styleClass="#{patientBean.currentPrescription.theName == prescription.theName? 'current' : 'notcurrent'}">
 								<div class = "pharmacistQueueItem">
+											<div class = "pharmacistQueueLogo">
+												<img src="#{resource['images/rx.png']}" alt="prescription logo"></img>
+											</div>
 											<div class ="prescriptionID">
 												#{prescription.theName}
 											</div>
 											<div class ="prescriptionPatient">
 												#{prescription.theStatus}
 											</div>
+											
 								</div>			
 						</p:commandLink>
 				</ui:repeat>  
