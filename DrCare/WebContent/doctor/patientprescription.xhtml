@@ -8,8 +8,8 @@
 	xmlns:p="http://primefaces.org/ui"	>
 
 	<ui:composition>
-		<p:outputPanel rendered="#{doctorBean.currentPrescription != null}">
 			<h:form id="prescriptionDetails" rendered="#{sessionScope.role == 'Doctor'}">
+					<p:outputPanel rendered="#{doctorBean.currentPrescription != null}">
 					<p:panelGrid id="prescriptionDetailsContent">
 							<br/>
 							<div class="prescriptionDetailHeading">
@@ -131,7 +131,7 @@
 								</div>
 							</div>
 						</p:outputLabel>
+				</p:outputPanel>          
 		    </h:form> 
-	    </p:outputPanel>          
 	</ui:composition>
 </html>
