@@ -170,7 +170,7 @@
 	        						 update="prescriptionDetails" 
 	        						 rendered = "#{pharmacistBean.queueSize > 0 and not pharmacistBean.preview}"/>
 	        		<h:outputText value="Have a nice day!" rendered = "#{pharmacistBean.queueSize == 0}"/>
-					<h:outputText value="Instructional Videos" rendered = "#{pharmacistBean.preview}"/>
+					<h:outputText value="Instructional Videos" rendered = "#{pharmacistBean.preview and pharmacistBean.queueSize != 0}"/>
 				</div>	
 				<!-- The list of videos -->		
 				<div class="prescriptionVideos">
