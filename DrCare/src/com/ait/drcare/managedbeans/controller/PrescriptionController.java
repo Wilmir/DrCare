@@ -31,6 +31,7 @@ public class PrescriptionController {
 	private ArrayList<PrescriptionItem> prescriptionItems;
 	private DoctorBean doctorBean;
 	private DoctorController doctorController;
+	private int itemsCount;
 	
 	//Change to prescriptionListBean later
 	private UserListBean dataStore;
@@ -116,6 +117,7 @@ public class PrescriptionController {
 	
 	
 	
+
 	// The method for displaying the Create Prescription modal
 	public void createPrescription() {
 		Map<String, Object> options  = new HashMap<String, Object>();
@@ -128,7 +130,9 @@ public class PrescriptionController {
 	public ArrayList<Prescription> getPrescriptions() {
 		return prescriptions;
 	}
-	
-	
 
+	public int getItemsCount() {
+		return prescriptionItems.size();
+	}
+	
 }

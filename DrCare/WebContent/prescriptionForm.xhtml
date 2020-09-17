@@ -102,7 +102,7 @@
 						
 						<!-- The Button for Adding The Prescription Item -->
 							<p:column colspan="3" >
-								<p:commandButton id="addItemButton" value = "Add" update = "items" action="#{prescriptionController.addItem(prescriptionBean)}"/>
+								<p:commandButton id="addItemButton" value = "Add" update = "items saveButton" action="#{prescriptionController.addItem(prescriptionBean)}"/>
 							</p:column>
 					</p:row>
 					
@@ -167,7 +167,7 @@
 					<!-- Need a Controller to handle this action -->
 					<p:row id="savebuttonContainer">
 						<p:column colspan = "12">
-							<p:commandButton value = "Save" action="#{prescriptionController.addPrescription(prescriptionBean)}"/>
+							<p:commandButton id="saveButton" value = "Save" action="#{prescriptionController.addPrescription(prescriptionBean)}"  disabled="#{prescriptionController.itemsCount == 0}"/>
 						</p:column>
 					</p:row>
 			</p:panelGrid>
