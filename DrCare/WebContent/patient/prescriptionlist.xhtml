@@ -9,12 +9,15 @@
 
 	<ui:composition>
 		<h:panelGroup rendered="#{sessionScope.role == 'Patient'}">
-			<h:form rendered="#{sessionScope.role == 'Patient'}" id="pharmacistQueueForm">
+			<h:form rendered="#{sessionScope.role == 'Patient'}" id="patientQueueForm">
 			<h3>My Prescriptions</h3>
-				<ui:repeat id = "pharmacistQueue" value="#{patientInfoController.currentUser.prescriptions}" var="prescription" varStatus="status">
-						<p:commandLink action = "#{patientBean.setCurrentPrescription(prescription)}" update="prescriptionDetails" styleClass="#{patientBean.currentPrescription.theName == prescription.theName? 'current' : 'notcurrent'}">
-								<div class = "pharmacistQueueItem">
-											<div class = "pharmacistQueueLogo">
+				<div class = "prescriptionCounter">
+					<h:outputText  value="Currently you have no prescriptions !!!" rendered="#{patientInfoController.currentUser.prescriptions == null}"/>
+				</div>	
+				<ui:repeat id = "patientQueue" value="#{patientInfoController.currentUser.prescriptions}" var="prescription" varStatus="status">
+						<p:commandLink action = "#{patientBean.setCurrentPrescription(prescription)}" update="prescriptionDetails patientQueueForm" styleClass="#{patientBean.currentPrescription.theName == prescription.theName? 'current' : 'notcurrent'}">
+								<div class = "patientQueueItem">
+											<div class = "patientQueueLogo">
 												<img src="#{resource['images/rx.png']}" alt="prescription logo"></img>
 											</div>
 											<div class ="prescriptionID">
