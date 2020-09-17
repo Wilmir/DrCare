@@ -15,6 +15,7 @@ public class PatientBean {
 	public String email;
 	public ArrayList<Prescription> prescriptions;
 	public Prescription currentPrescription;
+	private int videosCount;
 	
 	public Prescription getCurrentPrescription() {
 		return currentPrescription;
@@ -46,4 +47,13 @@ public class PatientBean {
 	public void setPrescriptions(ArrayList<Prescription> prescriptions) {
 		this.prescriptions = prescriptions;
 	}
+	public int getVideosCount() {
+		if(currentPrescription.getVideos() != null) {
+			return currentPrescription.getVideos().size();
+		}
+		return 0;
+	}
+	
+	
+	
 }
