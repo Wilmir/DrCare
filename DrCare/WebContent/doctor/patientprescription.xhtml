@@ -7,131 +7,131 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"	>
 
-	<ui:composition>		
-		<h:form id="prescriptionDetails" rendered="#{sessionScope.role == 'Doctor'}">
-			<p:outputPanel rendered="#{doctorBean.currentPrescription != null}">
-				<p:panelGrid id="prescriptionDetailsContent">
-						<br/>
-						<div class="prescriptionDetailHeading">
-							<div class = "prescriptionDetailHeadingLeft">
-								<div class = "prescriptionLogo">
-									<img src="#{resource['images/rx.png']}" alt="pharmacist"
-										style="width: 100%"></img>
+	<ui:composition>
+		<p:outputPanel rendered="#{doctorBean.currentPrescription != null}">
+			<h:form id="prescriptionDetails" rendered="#{sessionScope.role == 'Doctor'}">
+					<p:panelGrid id="prescriptionDetailsContent">
+							<br/>
+							<div class="prescriptionDetailHeading">
+								<div class = "prescriptionDetailHeadingLeft">
+									<div class = "prescriptionLogo">
+										<img src="#{resource['images/rx.png']}" alt="pharmacist"
+											style="width: 100%"></img>
+									</div>
 								</div>
-							</div>
-							<div class = "prescriptionDetailHeadingRight">
-								<h2 id="prescriptionCompany">DrCare</h2>
-								<div id = "prescriptionDoctor">Dr #{doctorBean.currentPrescription.theDoctor.theName}</div>
-								<div id = "prescriptionLicenseNumber">License# #{doctorBean.currentPrescription.theDoctor.theID}</div>
-								<div id = "prescriptionDoctorAddress">#{doctorBean.currentPrescription.theDoctor.theAddress}</div>
-							</div>
-						</div>				    
-					    
-					    <p:row>
-					    	<!-- The Prescription ID-->
-					    	<p:column colspan="2"><p:outputLabel for="prescriptionID" value="Prescription ID" /></p:column>
-					    	<p:column colspan="4">
-								<h:outputText id="prescriptionID" value = "#{doctorBean.currentPrescription.theName}" />
-							</p:column>
-							<!-- The Prescription Date-->
-							<p:column colspan="2"><p:outputLabel for="date" value="Date" /></p:column>
-							<p:column colspan="4">
-								<h:outputText id="date" value = "#{doctorBean.currentPrescription.theDatePrescribed}">
-									<f:convertDateTime pattern="dd-MMM-yyyy" />
-								</h:outputText>
-							</p:column>	
-					    </p:row>  
-					    <!-- The Patient -->
-					    <p:row>
-					    		<p:column colspan="2"><p:outputLabel for="patient" value="Patient" /></p:column>
+								<div class = "prescriptionDetailHeadingRight">
+									<h2 id="prescriptionCompany">DrCare</h2>
+									<div id = "prescriptionDoctor">Dr #{doctorBean.currentPrescription.theDoctor.theName}</div>
+									<div id = "prescriptionLicenseNumber">License# #{doctorBean.currentPrescription.theDoctor.theID}</div>
+									<div id = "prescriptionDoctorAddress">#{doctorBean.currentPrescription.theDoctor.theAddress}</div>
+								</div>
+							</div>				    
+						    
+						    <p:row>
+						    	<!-- The Prescription ID-->
+						    	<p:column colspan="2"><p:outputLabel for="prescriptionID" value="Prescription ID" /></p:column>
+						    	<p:column colspan="4">
+									<h:outputText id="prescriptionID" value = "#{doctorBean.currentPrescription.theName}" />
+								</p:column>
+								<!-- The Prescription Date-->
+								<p:column colspan="2"><p:outputLabel for="date" value="Date" /></p:column>
 								<p:column colspan="4">
-									<h:outputText id="patient" value = "#{doctorBean.currentPrescription.thePatient.theName}" />
-								</p:column>
-								
-								<!-- The Status -->
-								<p:column colspan="2"><p:outputLabel for="status" value="Status"/></p:column>
-								<p:column colspan="4">	
-									<h:outputText id="status" value="#{doctorBean.currentPrescription.theStatus}" 
-												  styleClass = "#{doctorBean.currentPrescription.theStatus == 'Order Dispensed' ? 'dispensed' : 'readyForPickUp'}"/>			
-								</p:column>
-					    </p:row>
-					    
-					    <!-- The Patient Address -->
-					    <p:row>
-					    		<p:column colspan="2"><p:outputLabel for="patientAddress" value="Address"/></p:column>
-								<p:column colspan="10">
-									<h:outputText id="patientAddress" value = "#{doctorBean.currentPrescription.thePatient.theAddress}" />
-								</p:column>
-					    </p:row>
-						
-						<!-- PrescriptionItems Datatable -->
-						<p:row>
-					    	<p:column colspan="12">
-					    		<p:dataTable id = "items" var="item" value="#{doctorBean.currentPrescription.theItems}" styleClass="prescriptionItemsTable">
-								    <p:column headerText="Medicine">
-								        <h:outputText id="medicineName" value="#{item.medicine.theName} #{item.medicine.strength}" />
-								            <!-- Tooltip for Medicine -->
-								            <p:tooltip id="toolTipContent" for="medicineName" position="top">
-										       	<div class ="tooltipMedicineName">#{item.medicine.theName} #{item.medicine.strength}</div>
-					    				        <div class ="tooltipMedicineContentHeading">Content:</div>
-					    				        <ui:repeat id = "theContents" value="#{item.medicine.theContents}" var="medContent" varStatus="status">
-					    				        	<div class ="tooltipMedicineContent">#{medContent}</div>
-					    				        </ui:repeat> 
-					    				        <div class ="tooltipMedicineSideEffectHeading">Side Effects:</div>
-					    				        <ul>
-					    				        <ui:repeat id = "theSideEffects" value="#{item.medicine.theSideEffects}" var="sideEffect" varStatus="status">
-					    				        	<div class ="tooltipMedicineSideEffect">#{sideEffect}</div>
-					    				        </ui:repeat> 	
-					    				        </ul>
-										    </p:tooltip>
-								    </p:column>
-								    
-								    
-									<p:column headerText="Dosage">
-								        <h:outputText value="#{item.dosagePerDay}" />
-								    </p:column>
-								 
-								    <p:column headerText="Duration">
-								        <h:outputText value="#{item.duration}" />
-								    </p:column>
-								    
-								    <p:column headerText="Note" rendered = "#{doctorBean.currentPrescription.theStatus == 'Ready for pickup'}">
-								    	<h:outputText value="#{item.notefromPharmacist}"/>
-								    </p:column>
-								</p:dataTable>
-					    	</p:column>
-						</p:row>
-				</p:panelGrid>	 
-				
-				<!-- placeholder for instructional videos -->
-					<p:outputLabel rendered = "#{doctorBean.currentPrescription.theStatus == 'Order Dispensed'}">
-						<div class="instructionalVideos">
-							<!-- The add video form -->
-								<div class="instructionalVideosHeading" id="searchVideo">
-									<h:outputText value="Instructional Videos"/>
-								</div>	
-							<!-- The list of videos -->		
-							<div class="prescriptionVideos">
-								<p:growl id="growl" showDetail="true"/>  
-								<ui:repeat id = "videosList" 
-										   value="#{doctorBean.currentPrescription.videos}" 
-										   var="video" 
-										   varStatus="status">
-										  	<div class = "videoContainer">
-												<a href ="https://www.youtube.com/watch?v=#{video.id}" target="_blank">
-													<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg" style="width:148px;" alt="#{video.title}"/>								
-												</a>
-											</div>
-								</ui:repeat> 
-								<div id="prescriptionFooter">
-									<h:outputText value="To be facilitated by" rendered = "#{doctorBean.currentPrescription.theStatus == 'Ready for pickup' or doctorBean.currentPrescription.theStatus == 'Waiting for payment'}"/>
-									<h:outputText value="Dispensed by" rendered = "#{doctorBean.currentPrescription.theStatus == 'Order Dispensed'}"/>
-									<h:outputText value=" #{doctorBean.currentPrescription.thePharmacist.theName} License# #{doctorBean.currentPrescription.thePharmacist.theID}" />
+									<h:outputText id="date" value = "#{doctorBean.currentPrescription.theDatePrescribed}">
+										<f:convertDateTime pattern="dd-MMM-yyyy" />
+									</h:outputText>
+								</p:column>	
+						    </p:row>  
+						    <!-- The Patient -->
+						    <p:row>
+						    		<p:column colspan="2"><p:outputLabel for="patient" value="Patient" /></p:column>
+									<p:column colspan="4">
+										<h:outputText id="patient" value = "#{doctorBean.currentPrescription.thePatient.theName}" />
+									</p:column>
+									
+									<!-- The Status -->
+									<p:column colspan="2"><p:outputLabel for="status" value="Status"/></p:column>
+									<p:column colspan="4">	
+										<h:outputText id="status" value="#{doctorBean.currentPrescription.theStatus}" 
+													  styleClass = "#{doctorBean.currentPrescription.theStatus == 'Order Dispensed' ? 'dispensed' : 'readyForPickUp'}"/>			
+									</p:column>
+						    </p:row>
+						    
+						    <!-- The Patient Address -->
+						    <p:row>
+						    		<p:column colspan="2"><p:outputLabel for="patientAddress" value="Address"/></p:column>
+									<p:column colspan="10">
+										<h:outputText id="patientAddress" value = "#{doctorBean.currentPrescription.thePatient.theAddress}" />
+									</p:column>
+						    </p:row>
+							
+							<!-- PrescriptionItems Datatable -->
+							<p:row>
+						    	<p:column colspan="12">
+						    		<p:dataTable id = "items" var="item" value="#{doctorBean.currentPrescription.theItems}" styleClass="prescriptionItemsTable">
+									    <p:column headerText="Medicine">
+									        <h:outputText id="medicineName" value="#{item.medicine.theName} #{item.medicine.strength}" />
+									            <!-- Tooltip for Medicine -->
+									            <p:tooltip id="toolTipContent" for="medicineName" position="top">
+											       	<div class ="tooltipMedicineName">#{item.medicine.theName} #{item.medicine.strength}</div>
+						    				        <div class ="tooltipMedicineContentHeading">Content:</div>
+						    				        <ui:repeat id = "theContents" value="#{item.medicine.theContents}" var="medContent" varStatus="status">
+						    				        	<div class ="tooltipMedicineContent">#{medContent}</div>
+						    				        </ui:repeat> 
+						    				        <div class ="tooltipMedicineSideEffectHeading">Side Effects:</div>
+						    				        <ul>
+						    				        <ui:repeat id = "theSideEffects" value="#{item.medicine.theSideEffects}" var="sideEffect" varStatus="status">
+						    				        	<div class ="tooltipMedicineSideEffect">#{sideEffect}</div>
+						    				        </ui:repeat> 	
+						    				        </ul>
+											    </p:tooltip>
+									    </p:column>
+									    
+									    
+										<p:column headerText="Dosage">
+									        <h:outputText value="#{item.dosagePerDay}" />
+									    </p:column>
+									 
+									    <p:column headerText="Duration">
+									        <h:outputText value="#{item.duration}" />
+									    </p:column>
+									    
+									    <p:column headerText="Note" rendered = "#{doctorBean.currentPrescription.theStatus == 'Ready for pickup'}">
+									    	<h:outputText value="#{item.notefromPharmacist}"/>
+									    </p:column>
+									</p:dataTable>
+						    	</p:column>
+							</p:row>
+					</p:panelGrid>	 
+					
+					<!-- placeholder for instructional videos -->
+						<p:outputLabel rendered = "#{doctorBean.currentPrescription.theStatus == 'Order Dispensed'}">
+							<div class="instructionalVideos">
+								<!-- The add video form -->
+									<div class="instructionalVideosHeading" id="searchVideo">
+										<h:outputText value="Instructional Videos"/>
+									</div>	
+								<!-- The list of videos -->		
+								<div class="prescriptionVideos">
+									<p:growl id="growl" showDetail="true"/>  
+									<ui:repeat id = "videosList" 
+											   value="#{doctorBean.currentPrescription.videos}" 
+											   var="video" 
+											   varStatus="status">
+											  	<div class = "videoContainer">
+													<a href ="https://www.youtube.com/watch?v=#{video.id}" target="_blank">
+														<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg" style="width:148px;" alt="#{video.title}"/>								
+													</a>
+												</div>
+									</ui:repeat> 
+									<div id="prescriptionFooter">
+										<h:outputText value="To be facilitated by" rendered = "#{doctorBean.currentPrescription.theStatus == 'Ready for pickup' or doctorBean.currentPrescription.theStatus == 'Waiting for payment'}"/>
+										<h:outputText value="Dispensed by" rendered = "#{doctorBean.currentPrescription.theStatus == 'Order Dispensed'}"/>
+										<h:outputText value=" #{doctorBean.currentPrescription.thePharmacist.theName} License# #{doctorBean.currentPrescription.thePharmacist.theID}" />
+									</div>
 								</div>
 							</div>
-						</div>
-					</p:outputLabel>
-			</p:outputPanel>
-	    </h:form>           
+						</p:outputLabel>
+		    </h:form> 
+	    </p:outputPanel>          
 	</ui:composition>
 </html>
