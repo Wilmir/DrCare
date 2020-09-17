@@ -8,27 +8,32 @@
 	<h:outputStylesheet name="css/payment.css" />
 	<h:outputStylesheet name="css/header.css" />
 	<h:outputStylesheet name="css/footer.css" />
+	<h:outputStylesheet name="css/index.css" />
 	<ui:insert name="css" />
 </h:head>
 <body>
 	<div class="container">
-		<div id="header">
-			<ui:insert name="header">
-				<ui:include src="/common/header.xhtml" />
-			</ui:insert>
+		<!-- Header -->		
+		<ui:insert name="header">
+			<ui:include src = "/common/header.xhtml" />
+		</ui:insert>
+		<div class = "section">
+			<div class = "main">
+				<div class="card">
+					<img src="resources/images/x-mark-3-64.png" alt="red x" />
+					<h1>Payment Cancellation</h1>
+					<p>Your payment of &euro;#{authorisePayment.presc.total} has been
+						cancelled</p>
+					<p>
+						<a href="patient.jsf">Return to dashboard</a>
+					</p>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="card">
-		<img src="resources/images/x-mark-3-64.png" alt="red x" />
-		<h1>Payment Cancellation</h1>
-		<p>Your payment of &euro;#{authorisePayment.presc.total} has been
-			cancelled</p>
-		<p>
-			<a href="patient.jsf">Return to dashboard</a>
-		</p>
-	</div>
-	<div class="footer">
-		<p>&copy; Copyright 2020 DrCare by Station 19</p>
+		<!-- Footer -->
+		<ui:insert name="footer">
+			<ui:include src = "/common/footer.xhtml" />
+		</ui:insert>	
 	</div>
 </body>
 </html>
