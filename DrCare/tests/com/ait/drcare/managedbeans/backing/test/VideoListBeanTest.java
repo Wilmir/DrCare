@@ -17,6 +17,8 @@ class VideoListBeanTest {
 
 	@Test
 	void testSetGetVideos() {
+		
+	
 		videoListBean = new VideoListBean();
 		videosList = new ArrayList<Video>();
 		
@@ -28,6 +30,12 @@ class VideoListBeanTest {
 		
 		videoListBean.setVideos(videosList);
 		assertEquals(videosList,videoListBean.getVideos());
+	}
+	
+	@Test
+	void testInit() {
+		videoListBean = new VideoListBean();
+		videoListBean.init();
 	}
 		
 
