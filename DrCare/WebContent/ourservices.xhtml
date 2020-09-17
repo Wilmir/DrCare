@@ -106,6 +106,13 @@
 										<div class ="number">5</div>
 										<div class="description">Prescription ready for collection.</div>
 									</div>
+									<div class = "step">
+										<h:form>   
+										    <p:commandButton value="Download User Guide" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="pi pi-arrow-down">
+										        <p:fileDownload value="#{fileDownloadView.file}" />
+										    </p:commandButton>      
+										</h:form>
+									</div>
 								</div>
 						    </div>
 					  	</div>
