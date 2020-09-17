@@ -104,31 +104,33 @@
 				</p:panelGrid>	 
 				
 				<!-- placeholder for instructional videos -->
-					<div class="instructionalVideos">
-						<!-- The add video form -->
-						<div class="instructionalVideosHeading" id="searchVideo">
-							<h:outputText value="Instructional Videos"/>
-						</div>	
-						<!-- The list of videos -->		
-						<div class="prescriptionVideos">
-							<p:growl id="growl" showDetail="true"/>  
-							<ui:repeat id = "videosList" 
-									   value="#{doctorBean.currentPrescription.videos}" 
-									   var="video" 
-									   varStatus="status">
-									  	<div class = "videoContainer">
-											<a href ="https://www.youtube.com/watch?v=#{video.id}" target="_blank">
-												<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg" style="width:148px;" alt="#{video.title}"/>								
-											</a>
-										</div>
-							</ui:repeat> 
-							<div id="prescriptionFooter">
-								<h:outputText value="To be facilitated by" rendered = "#{doctorBean.currentPrescription.theStatus == 'Ready for pickup' or doctorBean.currentPrescription.theStatus == 'Waiting for payment'}"/>
-								<h:outputText value="Dispensed by" rendered = "#{doctorBean.currentPrescription.theStatus == 'Order Dispensed'}"/>
-								<h:outputText value=" #{doctorBean.currentPrescription.thePharmacist.theName} License# #{doctorBean.currentPrescription.thePharmacist.theID}" />
+					<p:outputLabel rendered = "#{doctorBean.currentPrescription.theStatus == 'Order Dispensed'}">
+						<div class="instructionalVideos">
+							<!-- The add video form -->
+								<div class="instructionalVideosHeading" id="searchVideo">
+									<h:outputText value="Instructional Videos"/>
+								</div>	
+							<!-- The list of videos -->		
+							<div class="prescriptionVideos">
+								<p:growl id="growl" showDetail="true"/>  
+								<ui:repeat id = "videosList" 
+										   value="#{doctorBean.currentPrescription.videos}" 
+										   var="video" 
+										   varStatus="status">
+										  	<div class = "videoContainer">
+												<a href ="https://www.youtube.com/watch?v=#{video.id}" target="_blank">
+													<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg" style="width:148px;" alt="#{video.title}"/>								
+												</a>
+											</div>
+								</ui:repeat> 
+								<div id="prescriptionFooter">
+									<h:outputText value="To be facilitated by" rendered = "#{doctorBean.currentPrescription.theStatus == 'Ready for pickup' or doctorBean.currentPrescription.theStatus == 'Waiting for payment'}"/>
+									<h:outputText value="Dispensed by" rendered = "#{doctorBean.currentPrescription.theStatus == 'Order Dispensed'}"/>
+									<h:outputText value=" #{doctorBean.currentPrescription.thePharmacist.theName} License# #{doctorBean.currentPrescription.thePharmacist.theID}" />
+								</div>
 							</div>
 						</div>
-					</div>
+					</p:outputLabel>
 			</p:outputPanel>
 	    </h:form>           
 	</ui:composition>

@@ -53,12 +53,12 @@ public class DoctorController {
 	
 	public void dialogReturnListener(SelectEvent selectEvent) {
 		System.out.println("The prescription form is closed.");
-		
-		String newPrescriptionID =((Prescription)selectEvent.getObject()).getTheName();
+				
+		// String newPrescriptionID =((Prescription)selectEvent.getObject()).getTheName();
 		
         FacesContext currentInstance = FacesContext.getCurrentInstance();
         if(currentInstance != null) {
-            currentInstance.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "The new prescription has been successfully saved", newPrescriptionID));
+            currentInstance.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "The new prescription has been successfully saved", ""));
         }		
 		return;
 	}

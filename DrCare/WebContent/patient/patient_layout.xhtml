@@ -10,10 +10,8 @@
 <h:head>
 		<title>Dr Care</title>
 		<link href="https://fonts.googleapis.com/css2?family=Google+Sans" rel="stylesheet" />
-		<h:outputStylesheet  name = "css/userpage.css"/>
 	    <h:outputStylesheet  name = "css/header.css"/>
 	    <h:outputStylesheet  name = "css/footer.css"/>
-	    <h:outputStylesheet  name = "css/greetings.css"/>
 	    <h:outputStylesheet  name = "css/patient_layout.css"/>
 		<ui:insert name="css"/>
 	</h:head>
@@ -25,14 +23,18 @@
 					<ui:include src = "/common/header.xhtml" />
 				</ui:insert>
 			</div>
-			
 			<div id = "content">
-				<div id = "greetings">
-					<ui:include src = "/common/greetings.xhtml"/>
-				</div>
+				<h:panelGroup rendered="#{sessionScope.role != 'Patient'}">
+						<div class ="securityMessage">
+							<h2>You do not have access to this page.</h2>
+						</div>
+				</h:panelGroup>
 				<div id = "dashboard">
 					<div id = "dashboard-left">
-						<ui:insert name="prescriptionqueue">
+						<ui:insert name="patientinfo">
+							<ui:include src = "/patient/patientdetails.xhtml" />
+						</ui:insert>
+						<ui:insert name="prescriptionlist">
 							<ui:include src = "/patient/prescriptionlist.xhtml" />
 						</ui:insert>
 					</div>
@@ -43,7 +45,6 @@
 					</div>
 				</div>
 			</div>
-		
 			<div id = "footer">
 				<ui:insert name="footer">
 					<ui:include src = "/common/footer.xhtml" />

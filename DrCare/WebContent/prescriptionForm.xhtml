@@ -16,27 +16,37 @@
 
 	<!-- NOTE: The values in all fields are mainly placeholders. Update each of them as the backend is developed -->
 	<h:body>
-		<h:form id = "prescriptionForm">
-		
-			<p:panelGrid>				    
-				    <!-- Add Medicine Section -->
-				    <p:row id="prescriptionHeading">
-				    	<p:column colspan="12">Prescription</p:column>
-				    </p:row>			    
+		<h:form  rendered="#{sessionScope.role != 'Doctor'}">
+			<h:panelGroup>
+						<div class ="securityMessage">
+							<h2>You do not have access to this page.</h2>
+						</div>
+			</h:panelGroup>
+		</h:form>
+		<h:form id = "prescriptionForm" rendered="#{sessionScope.role == 'Doctor'}">
+			<p:panelGrid>	
+					<div class="prescriptionDetailHeading">
+						<div class = "prescriptionDetailHeadingLeft">
+							<div class = "prescriptionLogo">
+								<img src="#{resource['images/rx.png']}" alt="pharmacist"
+									style="width: 100%"></img>
+							</div>
+						</div>
+						<div class = "prescriptionDetailHeadingRight">
+							<h2 id="prescriptionCompany">DrCare</h2>
+							<div id = "prescriptionDoctor">Dr #{doctorBean.doctor.theName}</div>
+							<div id = "prescriptionLicenseNumber">License# #{doctorBean.doctor.theID}</div>
+							<div id = "prescriptionDoctorAddress">#{doctorBean.doctor.theAddress}</div>
+						</div>
+					</div>					    
+			    
 				    <!-- The Patient Dropdown -->
 				    <p:row>
 				    		<p:column colspan="2"><p:outputLabel for="patient" value="Patient" /></p:column>
-							<p:column colspan="4">
+							<p:column colspan="10">
 								<h:outputText id = "patient" value = "#{doctorBean.currentPatient.theName}" />
 							</p:column>
-							
-							<!-- The Prescription Date Field -->
-							<p:column colspan="2"><p:outputLabel for="date" value="Date" /></p:column>
-							<p:column colspan="4">
-								<h:outputText id="date" value = "#{prescriptionBean.placeholder}">
-												<f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
-								</h:outputText>
-							</p:column>		
+	
 				    </p:row>
 				    
 				    <!-- The Pharmacist Dropdown -->
@@ -46,8 +56,7 @@
 								<!-- Lamiaa to create the userConverter class used here -->
 								<h:selectOneMenu value="#{prescriptionBean.pharmacist}"
 												 autoWidth = "false"
-												 converter = "userConverter"
-										 		 rendered="#{sessionScope.role == 'Doctor'}">
+												 converter = "userConverter">
 					            		<f:selectItems value="#{userListBean.pharmacists}" 
 					                           var="pharmacist"         
 					                           itemLabel="#{pharmacist.theName}" 
@@ -75,8 +84,7 @@
 							<!-- See com.ait.drcare.converters MedicineConverter Class for the implem if the converter used here -->
 							<h:selectOneMenu value="#{prescriptionBean.medicine}"
 										 converter = "medicineConverter"
-										 id = "medicine" 
-										 rendered="#{sessionScope.role == 'Doctor'}">
+										 id = "medicine">
 										<p:ajax update="selectedMedicine"/>
 					            		<f:selectItems value="#{medicineListBean.medications}" 
 					                           var="medicine" 
@@ -86,22 +94,22 @@
 						 </p:column>
 						 
 						 <!-- The Dosage Spinner -->
-						 <p:column colspan="3"><p:spinner id="dosage" value="#{prescriptionBean.dosage}" stepFactor="0.25" min = "0.25" rendered="#{sessionScope.role == 'Doctor'}" size = "5"
+						 <p:column colspan="3"><p:spinner id="dosage" value="#{prescriptionBean.dosage}" stepFactor="0.25" min = "0.25" size = "5"
 						 /></p:column>
 				    
 						 <!-- The Duration Spinner -->
-							<p:column colspan="3"><p:spinner id="duration" value="#{prescriptionBean.duration}" min = "1" rendered="#{sessionScope.role == 'Doctor'}" size = "5"/></p:column>
+							<p:column colspan="3"><p:spinner id="duration" value="#{prescriptionBean.duration}" min = "1" size = "5"/></p:column>
 						
 						<!-- The Button for Adding The Prescription Item -->
 							<p:column colspan="3" >
-								<p:commandButton id="addItemButton" value = "Add" update = "items" action="#{prescriptionController.addItem(prescriptionBean)}"/>
+								<p:commandButton id="addItemButton" value = "Add" update = "items saveButton" action="#{prescriptionController.addItem(prescriptionBean)}"/>
 							</p:column>
 					</p:row>
 					
 					<!-- The Medicine Details -->
 					<p:row>
 						
-						 <p:column colspan="12" rendered="#{sessionScope.role == 'Doctor'}">
+						 <p:column colspan="12">
 				    		    <p:dataList id = "selectedMedicine" value="#{prescriptionBean.medicine}" var="medicine" type="definition">
 				    		    	<f:facet name="header">
 							            Selected Medicine Details
@@ -129,11 +137,6 @@
 				    	</p:column>
 					</p:row>
 					
-					<!-- The Note Spinner -->
-				    <p:row rendered="#{sessionScope.role == 'Pharmacist'}">
-				    	<p:column colspan="2"><p:outputLabel for="note" value="Note  " /></p:column>
-						<p:column colspan="4"><p:inputText id="note" value="#{prescriptionBean.theNote}" /></p:column>
-					</p:row>
 					
 					<!-- Items Display -->
 					<p:row id="itemsHeading">
@@ -162,14 +165,12 @@
 					
 					<!-- The Button for Saving the Prescription -->
 					<!-- Need a Controller to handle this action -->
-					<p:row>
+					<p:row id="savebuttonContainer">
 						<p:column colspan = "12">
-							<p:commandButton rendered="#{sessionScope.role == 'Doctor' || sessionScope.role == 'Pharmacist' || sessionScope.role == 'Patient'}" 
-										value = "Save" action="#{prescriptionController.addPrescription(prescriptionBean)}"/>
+							<p:commandButton id="saveButton" value = "Save" action="#{prescriptionController.addPrescription(prescriptionBean)}"  disabled="#{prescriptionController.itemsCount == 0}"/>
 						</p:column>
 					</p:row>
 			</p:panelGrid>
-			
 		</h:form>
 	</h:body>
 </html>

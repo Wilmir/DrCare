@@ -8,9 +8,12 @@
 <h:head>
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css2?family=Google Sans" rel="stylesheet" />
    <link href="https://fonts.googleapis.com/css2?family=Viga" rel="stylesheet" />
-   <link href="https://fonts.googleapis.com/css2?family=Google+Sans" rel="stylesheet" />
    <h:outputStylesheet library="primefaces" name="primeicons/primeicons.css"  />
+   <h:outputStylesheet  name = "css/header.css"/>
+   <h:outputStylesheet  name = "css/footer.css"/>
+   <h:outputStylesheet  name = "css/index.css"/>
    <h:outputStylesheet  name = "css/terms.css"/>
    <title>Our Terms of Service</title>
 	   <!-- Required meta tags -->
@@ -18,30 +21,36 @@
 	
 <body>
 	<div class= "container">
-		<div class = "header">
-			<h1>Dr Care Prescription Management System</h1>
-		</div>
+		<ui:insert name="header">
+			<ui:include src = "/common/header.xhtml" />
+		</ui:insert>
  	
 	
 		<div class = "section">
-			<h:form>
-				<h2>Our Terms of Service</h2>
-			</h:form>
-			<h:form>
-      			<h4>Dr Care Practice is a trusted community governed by an ethic of privacy and confidentiality.
-      			 In order to provide for your care, we need to collect and keep information about you and your health in our records.
-      				 Our policies are consistent with the Medical Council guidelines and the privacy principles of the Data Protection Regulations.
-      			</h4>
-       			 <p>Back to main page <a href="index.jsf">Click here</a></p> <br/>
-   			</h:form>
+			<div class ="main">
+					<div class = "main-content">
+						<div class="terms">
+							<h2>Our Terms of Service</h2>
+							<div class="content">
+								<div class = "image">
+							 		<img src="#{resource['images/maledoctor.jpg']}" alt="pharmacist"/>
+							 	</div>
+							 	<div class="description">
+					      			Dr Care Practice is a trusted community governed by an ethic of privacy and confidentiality.
+					      			 In order to provide for your care, we need to collect and keep information about you and your health in our records.
+					      				 Our policies are consistent with the Medical Council guidelines and the privacy principles of the Data Protection Regulations.
+				      			</div>
+				      		</div>
+			      		</div>
+			   		</div>
+			</div>
    		</div>
-   
-	
-
-	<div class = "footer">
-			<p>&copy; Copyright 2020 DrCare by Station 19</p>
-		</div>
-	</div>	
+  
+		<!-- Footer -->
+		<ui:insert name="footer">
+			<ui:include src = "/common/footer.xhtml" />
+		</ui:insert>
+	</div>
 </body>
 
 </html>

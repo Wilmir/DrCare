@@ -100,19 +100,22 @@
 														</ui:repeat>
 													</tbody>
 												</table>
-												<div class = "prescriptionMiniCardVideos">
-													<div class = "prescriptionMiniCardVideosHeading">Instructional Videos</div>
-													<div class = "miniVideosList">
-													<ui:repeat
-															   value="#{prescription.videos}" 
-															   var="video" 
-															   varStatus="status">
-															  	<div class = "miniVideoContainer">
-																	<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg" style="width:30px;" alt="#{video.title}"/>								
-																</div>
-													</ui:repeat> 
+												
+												<p:outputLabel rendered = "#{prescription.theStatus == 'Order Dispensed'}">
+													<div class = "prescriptionMiniCardVideos">
+														<div class = "prescriptionMiniCardVideosHeading">Instructional Videos</div>
+														<div class = "miniVideosList">
+														<ui:repeat
+																   value="#{prescription.videos}" 
+																   var="video" 
+																   varStatus="status">
+																  	<div class = "miniVideoContainer">
+																		<img src="https://img.youtube.com/vi/#{video.id}/maxresdefault.jpg" style="width:30px;" alt="#{video.title}"/>								
+																	</div>
+														</ui:repeat> 
+														</div>
 													</div>
-												</div>
+												</p:outputLabel>
 										</div>
 										<div class="prescriptionMiniCardLabel">
 											<h:outputText value="#{prescription.theName}" />

@@ -10,6 +10,9 @@
 	<ui:composition>
 		<h:panelGroup rendered="#{sessionScope.role == 'Patient'}">
 	        <h:form id="prescriptionDetails" rendered="#{sessionScope.role == 'Patient'}">
+	        <div class="selectPrescription">
+					<h:outputText value="Select prescription" rendered="#{patientBean.currentPrescription == null}"/>
+			</div>	
 	        <p:panelGrid id="prescriptionDetailsContent" rendered = "#{patientBean.currentPrescription != null}">
 					<br/>
 					<div class="prescriptionDetailHeading">
@@ -74,15 +77,22 @@
 							    </p:column>
 							    
 							    <p:column headerText="Unit Price">
-							        <h:outputText value="#{item.medicine.theUnitPrice}" style="display:block; text-align:right"/>
+							        <h:outputText value="#{item.medicine.theUnitPrice}" style="display:block; text-align:right">
+							        	<f:convertNumber type="currency" currencySymbol="€" maxFractionDigits="2"/>
+							        </h:outputText>
 							    </p:column>
 							    
 							    <p:column headerText="Subtotal">
-							        <h:outputText value="#{item.subtotal}" style="display:block; text-align:right" />
+							        <h:outputText value="#{item.subtotal}" style="display:block; text-align:right">
+							        	<f:convertNumber type="currency" currencySymbol="€" maxFractionDigits="2"/>
+							        </h:outputText>
 							    </p:column>
 							    <f:facet name="footer">
 							        <h:panelGroup style="display:block; text-align:right">
-							            <h:outputText value="Total: #{patientBean.currentPrescription.total}" />
+							            <h:outputText value="Total:&nbsp;"/>
+							            <h:outputText value="#{patientBean.currentPrescription.total}">
+							            	<f:convertNumber type="currency" currencySymbol="€" maxFractionDigits="2"/>
+							            </h:outputText>
 							        </h:panelGroup>
     							</f:facet>				    
 							</p:dataTable>
@@ -90,9 +100,11 @@
 					</p:row>
 			</p:panelGrid>
 			<p:panelGrid id="prescriptionmisc" rendered = "#{patientBean.currentPrescription != null}">
+				<p:outputLabel rendered = "#{patientBean.videosCount != 0}">
 				<div class="instructionalVideos">
 					<h:outputText value="Instructional Videos" rendered="#{patientBean.currentPrescription != null}"/>
 				</div>	
+				</p:outputLabel>
 					<!-- The list of videos -->		
 				<div class="prescriptionVideos">
 					<p:growl id="growl" showDetail="true"/>  

@@ -31,6 +31,7 @@ public class PrescriptionController {
 	private ArrayList<PrescriptionItem> prescriptionItems;
 	private DoctorBean doctorBean;
 	private DoctorController doctorController;
+	private int itemsCount;
 	
 	//Change to prescriptionListBean later
 	private UserListBean dataStore;
@@ -116,19 +117,22 @@ public class PrescriptionController {
 	
 	
 	
+
 	// The method for displaying the Create Prescription modal
 	public void createPrescription() {
 		Map<String, Object> options  = new HashMap<String, Object>();
-		options.put("resizable", false);
-		options.put("height", "600");
-		options.put("contentHeight", "600");
+		options.put("resizable", true);
+		options.put("height", "650");
+		options.put("contentHeight", "650");
         PrimeFaces.current().dialog().openDynamic("prescriptionForm", options, null);
 	}
 	
 	public ArrayList<Prescription> getPrescriptions() {
 		return prescriptions;
 	}
-	
-	
 
+	public int getItemsCount() {
+		return prescriptionItems.size();
+	}
+	
 }

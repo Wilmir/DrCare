@@ -6,8 +6,17 @@
 	background:#f0f3f8;
 	width:100%;
 	font-size: 12px;
+	display:flex;
+	justify-content:space-between;
 }
 
-.footer p{
-	padding:10px 0px;	
+.footer .copyright,
+.footer .links{
+	padding:10px 10px;	
+}
+
+.footer a{
+	margin:10px;
+	text-decoration:none;
+	color:#0097a7ff;
 }

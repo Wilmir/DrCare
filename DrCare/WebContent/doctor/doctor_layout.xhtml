@@ -13,7 +13,6 @@
 		<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
 	    <h:outputStylesheet  name = "css/header.css"/>
 	    <h:outputStylesheet  name = "css/footer.css"/>
-	    <h:outputStylesheet  name = "css/greetings.css"/>
 	    <h:outputStylesheet  name = "css/doctor_layout.css"/>
 		<ui:insert name="css"/>
 	</h:head>
@@ -27,10 +26,12 @@
 			</div>
 			
 			<div id = "content">
-				<div id = "greetings">
-					<ui:include src = "/common/greetings.xhtml" />
-				</div>
 				<div id = "dashboard">
+					<h:panelGroup rendered="#{sessionScope.role != 'Doctor'}">
+						<div class ="securityMessage">
+							<h2>You do not have access to this page.</h2>
+						</div>
+					</h:panelGroup>
 					<div id = "dashboard-left">
 						<ui:insert name="patientlist">
 							<ui:include src = "/doctor/patientsearch.xhtml" />
