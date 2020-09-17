@@ -155,13 +155,13 @@ public class UserListBean {
 			prescriptions.add(prescription2);
 
 		
-		Prescription prescription3 = new Prescription(p3, ph2, d1);
+		Prescription prescription3 = new Prescription(p3, ph1, d1);
 			prescription3.setTheStatus("Ready for pickup");
 			prescription3.addPrescriptionItem(pItem3);
 			prescriptions.add(prescription3);
 
 		
-		Prescription prescription4 = new Prescription(p4, ph2, d2);	
+		Prescription prescription4 = new Prescription(p4, ph1, d2);	
 			prescription4.setTheStatus("Ready for pickup");
 			prescription4.addPrescriptionItem(pItem4);
 			prescriptions.add(prescription4);
