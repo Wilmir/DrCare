@@ -25,49 +25,7 @@ public class RegistrationControllerTest {
 		regController.setRegistry(registry);
 	}
 
-	@Test
-	@Disabled
-	public void registerDoctorWithCorrectDetails() {
-		UserBean userBean = new UserBean();
-		userBean.setName("Alan Care");
-		userBean.setAddress("Athlone");
-		userBean.setEmail("alancare@doc.ie");
-		userBean.setPassword("abc");
-		userBean.setPasswordConfirmation("abc");
-		userBean.setRole("GP");
-		userBean.setLicenseNumber(300000005);
-		
-		assertEquals("index?faces-redirect=true", regController.addUser(userBean));
-	}
-	
-	@Test
-	@Disabled
-	public void registerPharmacistWithCorrectDetails() {
-		UserBean userBean = new UserBean();
-		userBean.setName("Joe Curly");
-		userBean.setAddress("Athlone");
-		userBean.setEmail("joecurly@pharmacist.ie");
-		userBean.setPassword("abc");
-		userBean.setPasswordConfirmation("abc");
-		userBean.setRole("Pharmacist");
-		userBean.setLicenseNumber(600000005);
-		
-		assertEquals("index?faces-redirect=true", regController.addUser(userBean));
-	}
-	
-	@Test
-	@Disabled
-	public void registerPatientWithCorrectDetails() {
-		UserBean userBean = new UserBean();
-		userBean.setName("Ross Common");
-		userBean.setAddress("Athlone");
-		userBean.setEmail("ross@patient.ie");
-		userBean.setPassword("abc");
-		userBean.setPasswordConfirmation("abc");
-		userBean.setRole("Patient");
-		
-		assertEquals("index?faces-redirect=true", regController.addUser(userBean));
-	}
+
 	
 	@Test
 	public void registerUserWithExistingEmail() {
