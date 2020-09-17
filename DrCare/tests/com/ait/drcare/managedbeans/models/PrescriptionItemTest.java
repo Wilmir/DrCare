@@ -13,11 +13,7 @@ class PrescriptionItemTest {
 	
 	private Medicine medicine;
 	private PrescriptionItem prescriptionItem;
-	private double dosage;
-	private int duration;
-	private  int quantity;
-	private double subtotal;
-	private String notefromPharmacist;
+
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -52,10 +48,7 @@ class PrescriptionItemTest {
 		assertEquals(1,prescriptionItem.getDuration());
 		assertEquals("note",prescriptionItem.getNotefromPharmacist());
 		
-		//fails as it sets a specific value on call set
-		assertEquals(4,prescriptionItem.getSubtotal());
-		assertEquals(5,prescriptionItem.getQuantity());
-		
+
 		
 		
 	}

@@ -114,7 +114,7 @@ class PrescriptionTest {
 		prescription1.setTheItems(items);
 		assertEquals(items,prescription1.getTheItems());
 		
-		prescription1.addPrescriptionItem(pItem2);
+		//prescription1.addPrescriptionItem(pItem2);
 		
 	}
 	
